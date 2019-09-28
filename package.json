@@ -1,0 +1,18 @@
+{
+  "name": "@attk/website",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "yarn serve & browser-sync start --proxy \"localhost:5000\" --files \"dist/\"",
+    "serve": "serve dist"
+  },
+  "devDependencies": {
+    "firebase-tools": "^7.4.0",
+    "serve": "^11.2.0"
+  },
+  "dependencies": {
+    "browser-sync": "^2.26.7"
+  }
+}

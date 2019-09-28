@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Attk.io</title>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Fira+Sans:400,600|Source+Serif+Pro:700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style media="screen">
+      :root {
+        --sans-serif: "Fira Sans", sans-serif;
+        --serif: "Source Serif Pro", serif;
+        --body-line-height: 1.444444;
+        --title-line-height: 1.2;
+        --dark-neutral: #020014;
+        --yellow: #fef209;
+      }
+    </style>
+
+    <style media="screen">
+      * {
+        box-sizing: border-box;
+        font-size: 1em;
+        font-style: normal;
+      }
+
+      *::before,
+      *::after {
+        box-sizing: inherit;
+      }
+
+      html {
+        font-family: var(--sans-serif);
+        height: 100%;
+        color: var(--dark-neutral);
+        background-color: white;
+      }
+
+      body {
+        margin: 0;
+        font-size: 100%;
+        min-height: 100%;
+        line-height: var(--body-line-height);
+      }
+
+      h1 {
+        font-family: var(--serif);
+        line-height: var(--title-line-height);
+        font-size: 2.25rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      h3 {
+        font-size: 1.25rem;
+      }
+
+      p,
+      a,
+      button,
+      input {
+        font-size: 1rem;
+      }
+    </style>
+
+    <style media="screen">
+      section {
+        background-color: white;
+        position: relative;
+        z-index: 0;
+      }
+
+      header,
+      main,
+      footer {
+        padding: 1.5rem 2rem;
+      }
+
+      .brand-title span {
+        position: relative;
+      }
+
+      .brand-title span::before {
+        content: "";
+        background-color: var(--yellow);
+        position: absolute;
+        height: 0.4375rem;
+        width: 200%;
+        z-index: -1;
+        transform: translate(-48%, 0.5666667em);
+      }
+
+      .brand-tagline {
+        font-size: 1.5em;
+      }
+
+      a {
+        color: inherit;
+        font-weight: bold;
+        text-decoration: none;
+        position: relative;
+      }
+
+      a::before {
+        content: "";
+        background-color: var(--yellow);
+        position: absolute;
+        height: 0.4375rem;
+        width: 200%;
+        z-index: -1;
+        transform: translate(-48%, 0.5666667em);
+      }
+
+      address > * {
+        font-size: 1rem;
+        margin: 0;
+      }
+
+      .contact-name {
+        font-size: 1.25rem;
+        margin: 0;
+      }
+
+      .contact-title {
+        font-size: 0.9em;
+        margin: 0;
+        margin-bottom: 0.75rem;
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <header>
+        <h1 class="brand-title"><span>Attk</span> Software</h1>
+        <p class="brand-tagline">
+          Custom cloud software and automation consulting
+        </p>
+      </header>
+
+      <main>
+        <p>
+          Attack Software provides consulting and contracting services to public
+          and private sector clients. We specialize in project management and
+          team development are dedicated to ensuring that the solutions we
+          provide are practical and sustainable.
+        </p>
+      </main>
+
+      <footer>
+        <address>
+          <h1 class="contact-name">Christian Naths</h1>
+          <p class="contact-title">Principal Consultant</p>
+
+          <a class="contact-link" href="mailto:christian@attk.io"
+            >christian@attk.io</a
+          >
+        </address>
+      </footer>
+    </section>
+  </body>
+</html>
