@@ -14,9 +14,10 @@
       :root {
         --sans-serif: "Fira Sans", sans-serif;
         --serif: "Source Serif Pro", serif;
-        --body-line-height: 1.444444;
+        --body-line-height: 1.7;
         --title-line-height: 1.2;
         --dark-neutral: #020014;
+        --light-neutral: #fafcff;
         --yellow: #fef209;
       }
     </style>
@@ -26,6 +27,8 @@
         box-sizing: border-box;
         font-size: 1em;
         font-style: normal;
+        margin: 0;
+        padding: 0;
       }
 
       *::before,
@@ -74,12 +77,18 @@
         background-color: white;
         position: relative;
         z-index: 0;
+        padding: 1.5rem 2rem;
       }
 
       header,
       main,
+      address,
       footer {
-        padding: 1.5rem 2rem;
+        margin: 4.5rem 0;
+      }
+
+      footer {
+        margin-bottom: 0;
       }
 
       .brand-title span {
@@ -112,9 +121,9 @@
         background-color: var(--yellow);
         position: absolute;
         height: 0.4375rem;
-        width: 200%;
+        width: 120%;
         z-index: -1;
-        transform: translate(-48%, 0.5666667em);
+        transform: translate(-10%, 0.5666667em);
       }
 
       address > * {
@@ -133,6 +142,27 @@
         margin-bottom: 0.75rem;
         text-transform: uppercase;
       }
+
+      footer {
+        font-size: small;
+      }
+    </style>
+
+    <style media="(min-width: 36rem)">
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--light-neutral);
+      }
+
+      section {
+        margin: 2rem;
+        max-width: 48rem;
+        box-shadow: #eceff1 0 12px 30px;
+        overflow: hidden;
+        padding: 2rem;
+      }
     </style>
   </head>
   <body>
@@ -146,22 +176,23 @@
 
       <main>
         <p>
-          Attack Software provides consulting and contracting services to public
-          and private sector clients. We specialize in project management and
-          team development are dedicated to ensuring that the solutions we
-          provide are practical and sustainable.
+          Attack Software provides consulting and contracting services to
+          ambitious startups and estabilished businesses. We specialize in
+          project management and team development are dedicated to ensuring that
+          the solutions we provide are practical and sustainable.
         </p>
       </main>
 
-      <footer>
-        <address>
-          <h1 class="contact-name">Christian Naths</h1>
-          <p class="contact-title">Principal Consultant</p>
+      <address>
+        <h1 class="contact-name">Christian Naths</h1>
+        <p class="contact-title">Principal Consultant</p>
 
-          <a class="contact-link" href="mailto:christian@attk.io"
-            >christian@attk.io</a
-          >
-        </address>
+        <a class="contact-link" href="mailto:christian@attk.io">
+          christian@attk.io
+        </a>
+      </address>
+      <footer>
+        &copy;2019 Attk Software Inc.
       </footer>
     </section>
   </body>

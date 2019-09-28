@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "start": "yarn serve & browser-sync start --proxy \"localhost:5000\" --files \"dist/\"",
-    "serve": "serve dist"
+    "serve": "serve dist",
+    "deploy": "firebase deploy"
   },
   "devDependencies": {
     "firebase-tools": "^7.4.0",
