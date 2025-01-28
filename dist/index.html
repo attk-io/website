@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -24,12 +24,13 @@
 
     <style media="screen">
       :root {
-        --sans-serif: "Fira Sans", sans-serif;
-        --serif: "Source Serif Pro", serif;
+        --sans-serif: 'Fira Sans', sans-serif;
+        --serif: 'Source Serif Pro', serif;
         --body-line-height: 1.7;
         --title-line-height: 1.2;
         --dark-neutral: #031530;
         --light-neutral: #fafcff;
+        --neutral: #edeff1;
         --yellow: #fef209;
       }
     </style>
@@ -60,6 +61,26 @@
         font-size: 100%;
         min-height: 100%;
         line-height: var(--body-line-height);
+      }
+
+      footer {
+        padding-top: 1rem;
+        border-top: 1px solid var(--neutral);
+        display: grid;
+        gap: 0.25rem;
+      }
+
+      footer a {
+        color: var(--dark-neutral);
+        font-size: small;
+        font-style: italic;
+        font-weight: 400;
+        background-color: transparent;
+        text-decoration: underline;
+      }
+
+      footer a::before {
+        background-color: transparent;
       }
 
       h1 {
@@ -108,7 +129,7 @@
       }
 
       .brand-title span::before {
-        content: "";
+        content: '';
         background-color: var(--yellow);
         position: absolute;
         height: 0.4375rem;
@@ -129,7 +150,7 @@
       }
 
       a::before {
-        content: "";
+        content: '';
         background-color: var(--yellow);
         position: absolute;
         height: 0.4375rem;
@@ -204,7 +225,10 @@
         </a>
       </address>
       <footer>
-        &copy;2019 Attk Software Inc.
+        &copy;2025 Attk Software Inc.
+
+        <a href="/terms-of-service">Terms of Service</a>
+        <a href="/privacy-policy">Privacy Policy</a>
       </footer>
     </section>
   </body>
