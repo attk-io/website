@@ -8,16 +8,23 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "deploy": "firebase deploy"
+    "deploy": "firebase deploy",
+    "prepare": "husky",
+    "fmt": "prettier --write --ignore-unknown ."
   },
   "dependencies": {
     "astro": "^5"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4",
-    "tailwindcss": "^4",
     "firebase-tools": "^13.29.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
     "prettier": "^3.4.2",
-    "prettier-plugin-astro": "^0.14"
+    "prettier-plugin-astro": "^0.14",
+    "tailwindcss": "^4"
+  },
+  "lint-staged": {
+    "*": "prettier --write --ignore-unknown"
   }
 }
