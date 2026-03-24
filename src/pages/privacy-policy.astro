@@ -1,20 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-    </style>
-</head>
-<body>
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Privacy Policy">
+  <div class="legal-content">
     <h1>Privacy Policy</h1>
     <p>Last updated: 2025-01-28</p>
 
@@ -24,17 +13,17 @@
     <h2>2. Information Collection</h2>
     <p>We collect only the minimum information necessary to provide our services, including:</p>
     <ul>
-        <li>Name and contact information</li>
-        <li>Billing and payment information</li>
-        <li>Transaction history</li>
+      <li>Name and contact information</li>
+      <li>Billing and payment information</li>
+      <li>Transaction history</li>
     </ul>
 
     <h2>3. Use of Information</h2>
     <p>We use the collected information solely for:</p>
     <ul>
-        <li>Processing payments and invoicing for services rendered</li>
-        <li>Communicating with you about your services</li>
-        <li>Fulfilling our legal and regulatory obligations</li>
+      <li>Processing payments and invoicing for services rendered</li>
+      <li>Communicating with you about your services</li>
+      <li>Fulfilling our legal and regulatory obligations</li>
     </ul>
 
     <h2>4. Data Protection</h2>
@@ -49,9 +38,9 @@
     <h2>7. Your Rights</h2>
     <p>You have the right to:</p>
     <ul>
-        <li>Access your personal information</li>
-        <li>Request correction of inaccurate information</li>
-        <li>Request deletion of your information (subject to legal requirements)</li>
+      <li>Access your personal information</li>
+      <li>Request correction of inaccurate information</li>
+      <li>Request deletion of your information (subject to legal requirements)</li>
     </ul>
 
     <h2>8. Contact Us</h2>
@@ -59,5 +48,43 @@
 
     <h2>9. Changes to This Policy</h2>
     <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page.</p>
-</body>
-</html>
+  </div>
+</BaseLayout>
+
+<style>
+  .legal-content {
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    color: var(--color-dark-neutral);
+  }
+
+  h1, h2 {
+    color: var(--color-dark-neutral);
+  }
+
+  h1 {
+    font-family: var(--font-serif);
+    margin-bottom: 0.5rem;
+  }
+
+  h2 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    margin-bottom: 0.75rem;
+  }
+
+  ul {
+    margin-bottom: 0.75rem;
+    padding-left: 2rem;
+  }
+
+  li {
+    margin-bottom: 0.25rem;
+  }
+</style>

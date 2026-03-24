@@ -1,23 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Service - ATTK Software Inc</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        h1, h2 {
-            color: #333;
-        }
-    </style>
-</head>
-<body>
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Terms of Service - ATTK Software Inc">
+  <div class="legal-content">
     <h1>Terms of Service</h1>
     <p>Last updated: 2025-01-28</p>
 
@@ -30,27 +16,27 @@
     <h2>3. Professional Services and Limitation of Warranties</h2>
     <p>While we will provide our services in a professional and workmanlike manner, consistent with industry standards, you acknowledge and agree that:</p>
     <ul>
-        <li>Software development and related services are inherently complex and may contain bugs, errors, or other issues;</li>
-        <li>We do not guarantee uninterrupted, error-free operation of any deliverables;</li>
-        <li>We are not liable for any system downtime, whether planned or unplanned;</li>
-        <li>We make no warranties, express or implied, regarding our services beyond those explicitly stated in individual service agreements.</li>
+      <li>Software development and related services are inherently complex and may contain bugs, errors, or other issues;</li>
+      <li>We do not guarantee uninterrupted, error-free operation of any deliverables;</li>
+      <li>We are not liable for any system downtime, whether planned or unplanned;</li>
+      <li>We make no warranties, express or implied, regarding our services beyond those explicitly stated in individual service agreements.</li>
     </ul>
 
     <h2>4. Payment Terms</h2>
     <p>Unless otherwise specified in a service agreement:</p>
     <ul>
-        <li>Payment terms are net 30 days from invoice date;</li>
-        <li>All fees are for services rendered and are non-refundable;</li>
-        <li>We reserve the right to suspend services for non-payment;</li>
-        <li>Late payments may be subject to interest charges.</li>
+      <li>Payment terms are net 30 days from invoice date;</li>
+      <li>All fees are for services rendered and are non-refundable;</li>
+      <li>We reserve the right to suspend services for non-payment;</li>
+      <li>Late payments may be subject to interest charges.</li>
     </ul>
 
     <h2>5. Data Collection and Privacy</h2>
     <p>In the course of providing our services, we collect and process certain personal information, including:</p>
     <ul>
-        <li>Individual names and contact information (email addresses and phone numbers);</li>
-        <li>Business legal names and billing addresses;</li>
-        <li>Other relevant business information as required for service delivery.</li>
+      <li>Individual names and contact information (email addresses and phone numbers);</li>
+      <li>Business legal names and billing addresses;</li>
+      <li>Other relevant business information as required for service delivery.</li>
     </ul>
     <p>We process this information in accordance with applicable privacy laws and use it solely for business purposes related to service delivery, billing, and communication.</p>
 
@@ -63,10 +49,10 @@
     <h2>8. Limitation of Liability</h2>
     <p>To the maximum extent permitted by law:</p>
     <ul>
-        <li>ATTK Software Inc shall not be liable for any indirect, incidental, special, consequential, or punitive damages;</li>
-        <li>Our total liability for any claims arising from or related to our services shall not exceed the amount paid by you for the specific services giving rise to such claim;</li>
-        <li>We are not liable for any losses or damages resulting from software bugs, errors, or system downtime;</li>
-        <li>You agree to indemnify and hold us harmless from any claims arising from your use of our services.</li>
+      <li>ATTK Software Inc shall not be liable for any indirect, incidental, special, consequential, or punitive damages;</li>
+      <li>Our total liability for any claims arising from or related to our services shall not exceed the amount paid by you for the specific services giving rise to such claim;</li>
+      <li>We are not liable for any losses or damages resulting from software bugs, errors, or system downtime;</li>
+      <li>You agree to indemnify and hold us harmless from any claims arising from your use of our services.</li>
     </ul>
 
     <h2>9. Changes to Terms</h2>
@@ -77,5 +63,43 @@
 
     <h2>11. Contact Information</h2>
     <p>For questions about these Terms, please contact ATTK Software Inc at christiannaths@gmail.com.</p>
-</body>
-</html>
+  </div>
+</BaseLayout>
+
+<style>
+  .legal-content {
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    color: var(--color-dark-neutral);
+  }
+
+  h1, h2 {
+    color: var(--color-dark-neutral);
+  }
+
+  h1 {
+    font-family: var(--font-serif);
+    margin-bottom: 0.5rem;
+  }
+
+  h2 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    margin-bottom: 0.75rem;
+  }
+
+  ul {
+    margin-bottom: 0.75rem;
+    padding-left: 2rem;
+  }
+
+  li {
+    margin-bottom: 0.25rem;
+  }
+</style>

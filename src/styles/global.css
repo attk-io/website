@@ -1,0 +1,11 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Fira Sans', sans-serif;
+  --font-serif: 'Source Serif Pro', serif;
+
+  --color-dark-neutral: #031530;
+  --color-light-neutral: #fafcff;
+  --color-neutral: #edeff1;
+  --color-yellow: #fef209;
+}
