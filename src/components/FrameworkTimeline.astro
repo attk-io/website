@@ -48,15 +48,15 @@ const phases = [
           <div
             class:list={[
               'relative pl-10 pb-10',
-              i < phases.length - 1 && 'border-l-2 border-neutral',
+              i < phases.length - 1 && 'border-l-2 border-separator',
               i === phases.length - 1 && 'border-l-2 border-transparent',
             ]}
           >
-            <div class="absolute -left-3 top-0 w-6 h-6 bg-yellow border-2 border-dark-neutral rounded-full flex items-center justify-center text-xs font-bold">
+            <div class="absolute -left-3 top-0 w-6 h-6 bg-accent border-2 border-outline rounded-full flex items-center justify-center text-xs font-bold">
               {phase.number}
             </div>
             <h3 class="font-serif text-xl font-bold mb-1">{phase.name}</h3>
-            <p class="text-dark-neutral/80">{phase.description}</p>
+            <p class="text-muted">{phase.description}</p>
           </div>
         ))
       }

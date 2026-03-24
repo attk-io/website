@@ -1,0 +1,14 @@
+@import '@radix-ui/colors/slate.css';
+@import '@radix-ui/colors/yellow.css';
+
+:root {
+  --color-page: var(--slate-1);
+  --color-surface: var(--slate-2);
+  --color-primary: var(--slate-12);
+  --color-muted: var(--slate-11);
+  --color-faint: var(--slate-9);
+  --color-accent: var(--yellow-9);
+  --color-on-accent: var(--slate-12);
+  --color-separator: var(--slate-6);
+  --color-outline: var(--slate-12);
+}

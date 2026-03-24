@@ -1,0 +1,14 @@
+@import '@radix-ui/colors/blue.css';
+@import '@radix-ui/colors/amber.css';
+
+[data-theme='ocean'] {
+  --color-page: var(--blue-1);
+  --color-surface: var(--blue-2);
+  --color-primary: var(--blue-12);
+  --color-muted: var(--blue-11);
+  --color-faint: var(--blue-9);
+  --color-accent: var(--amber-9);
+  --color-on-accent: var(--blue-12);
+  --color-separator: var(--blue-6);
+  --color-outline: var(--blue-12);
+}

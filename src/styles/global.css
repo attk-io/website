@@ -1,12 +1,20 @@
 @import 'tailwindcss';
+@import './themes/tokens.css';
+@import './themes/default.css';
+@import './themes/ocean.css';
 @plugin '@tailwindcss/typography';
 
 @theme {
   --font-sans: 'Fira Sans', sans-serif;
   --font-serif: 'Source Serif Pro', serif;
 
-  --color-dark-neutral: #031530;
-  --color-light-neutral: #fafcff;
-  --color-neutral: #edeff1;
-  --color-yellow: #fef209;
+  --color-page: var(--color-page);
+  --color-surface: var(--color-surface);
+  --color-primary: var(--color-primary);
+  --color-muted: var(--color-muted);
+  --color-faint: var(--color-faint);
+  --color-accent: var(--color-accent);
+  --color-on-accent: var(--color-on-accent);
+  --color-separator: var(--color-separator);
+  --color-outline: var(--color-outline);
 }
