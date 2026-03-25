@@ -3,11 +3,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import CopyVariantSection from '../components/CopyVariantSection.astro';
 import HeroV1 from '../components/copy-variants/Hero/v1.astro';
 import HeroV2 from '../components/copy-variants/Hero/v2.astro';
-import WhoThisIsFor from '../components/WhoThisIsFor.astro';
-import FrameworkTimeline from '../components/FrameworkTimeline.astro';
-import About from '../components/About.astro';
-import FAQ from '../components/FAQ.astro';
-import FinalCTA from '../components/FinalCTA.astro';
+import WhoThisIsForV1 from '../components/copy-variants/WhoThisIsFor/v1.astro';
+import WhoThisIsForV2 from '../components/copy-variants/WhoThisIsFor/v2.astro';
+import WhoThisIsForV3 from '../components/copy-variants/WhoThisIsFor/v3.astro';
+import FrameworkTimelineV1 from '../components/copy-variants/FrameworkTimeline/v1.astro';
+import AboutV1 from '../components/copy-variants/About/v1.astro';
+import FAQV1 from '../components/copy-variants/FAQ/v1.astro';
+import FinalCTAV1 from '../components/copy-variants/FinalCTA/v1.astro';
 import Footer from '../components/Footer.astro';
 ---
 
@@ -17,11 +19,23 @@ import Footer from '../components/Footer.astro';
       <HeroV1 slot="v1" />
       <HeroV2 slot="v2" />
     </CopyVariantSection>
-    <WhoThisIsFor />
-    <FrameworkTimeline />
-    <About />
-    <FAQ />
-    <FinalCTA />
+    <CopyVariantSection section="WhoThisIsFor">
+      <WhoThisIsForV1 slot="v1" />
+      <WhoThisIsForV2 slot="v2" />
+      <WhoThisIsForV3 slot="v3" />
+    </CopyVariantSection>
+    <CopyVariantSection section="FrameworkTimeline">
+      <FrameworkTimelineV1 slot="v1" />
+    </CopyVariantSection>
+    <CopyVariantSection section="About">
+      <AboutV1 slot="v1" />
+    </CopyVariantSection>
+    <CopyVariantSection section="FAQ">
+      <FAQV1 slot="v1" />
+    </CopyVariantSection>
+    <CopyVariantSection section="FinalCTA">
+      <FinalCTAV1 slot="v1" />
+    </CopyVariantSection>
     <Footer />
   </div>
 </BaseLayout>

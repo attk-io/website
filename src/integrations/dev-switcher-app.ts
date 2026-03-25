@@ -1,7 +1,7 @@
 import { defineToolbarApp } from 'astro/toolbar';
+import { variants } from '../components/copy-variants/manifest';
 
 const THEMES = ['default', 'ocean'] as const;
-const COPY_VARIANTS = ['v1', 'v2', 'v3'] as const;
 
 const THEME_KEY = 'attk-theme';
 const VARIANT_KEY = 'attk-copy-variant';
@@ -46,10 +46,12 @@ export default defineToolbarApp({
       <div class="section">
         <h2>Copy Variant</h2>
         <div class="options" id="variant-options">
-          ${COPY_VARIANTS.map(
-            (v) =>
-              `<astro-dev-toolbar-button data-variant-option="${v}" size="small">${v}</astro-dev-toolbar-button>`
-          ).join('')}
+          ${variants
+            .map(
+              (v) =>
+                `<astro-dev-toolbar-button data-variant-option="${v.id}" size="small">${v.label}</astro-dev-toolbar-button>`
+            )
+            .join('')}
         </div>
       </div>
     `;
