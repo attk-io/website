@@ -1,0 +1,25 @@
+---
+interface Props {
+  section: string;
+}
+const { section } = Astro.props;
+const isDev = import.meta.env.DEV;
+---
+
+{
+  isDev ? (
+    <Fragment>
+      <div data-copy-variant="v1" data-copy-section={section}>
+        <slot name="v1" />
+      </div>
+      <div data-copy-variant="v2" data-copy-section={section}>
+        <slot name="v2" />
+      </div>
+      <div data-copy-variant="v3" data-copy-section={section}>
+        <slot name="v3" />
+      </div>
+    </Fragment>
+  ) : (
+    <slot name="v1" />
+  )
+}

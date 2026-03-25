@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
+import devSwitcher from './src/integrations/dev-switcher';
 
 export default defineConfig({
   output: 'static',
@@ -11,4 +12,5 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  integrations: [devSwitcher()],
 });

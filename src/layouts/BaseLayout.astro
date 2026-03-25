@@ -1,13 +1,10 @@
 ---
-import ThemeSwitcher from '../components/ThemeSwitcher.astro';
-
 interface Props {
   title: string;
   description?: string;
 }
 
 const { title, description = 'Custom cloud software and automation consulting' } = Astro.props;
-const isDev = import.meta.env.DEV;
 ---
 
 <!doctype html>
@@ -16,6 +13,15 @@ const isDev = import.meta.env.DEV;
     <script is:inline>
       const t = localStorage.getItem('attk-theme');
       if (t) document.documentElement.setAttribute('data-theme', t);
+    </script>
+    <script is:inline>
+      (function() {
+        var v = localStorage.getItem('attk-copy-variant') || 'v1';
+        var s = document.createElement('style');
+        s.id = 'copy-variant-style';
+        s.textContent = '[data-copy-variant]:not([data-copy-variant="' + v + '"]){display:none!important}';
+        document.head.appendChild(s);
+      })();
     </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -34,7 +40,6 @@ const isDev = import.meta.env.DEV;
   </head>
   <body>
     <slot />
-    {isDev && <ThemeSwitcher />}
   </body>
 </html>
 

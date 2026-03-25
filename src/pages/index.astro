@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/Hero.astro';
+import CopyVariantSection from '../components/CopyVariantSection.astro';
+import HeroV1 from '../components/copy-variants/Hero/v1.astro';
+import HeroV2 from '../components/copy-variants/Hero/v2.astro';
 import WhoThisIsFor from '../components/WhoThisIsFor.astro';
 import FrameworkTimeline from '../components/FrameworkTimeline.astro';
 import About from '../components/About.astro';
@@ -11,7 +13,10 @@ import Footer from '../components/Footer.astro';
 
 <BaseLayout title="ATTK Software">
   <div class="font-sans text-primary bg-page">
-    <Hero />
+    <CopyVariantSection section="Hero">
+      <HeroV1 slot="v1" />
+      <HeroV2 slot="v2" />
+    </CopyVariantSection>
     <WhoThisIsFor />
     <FrameworkTimeline />
     <About />
