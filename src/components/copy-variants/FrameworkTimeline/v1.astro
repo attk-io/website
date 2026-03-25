@@ -4,46 +4,45 @@ export const label = 'Strategic partnership; punchy, direct';
 const phases = [
   {
     number: 1,
-    name: 'Discovery',
+    name: 'Align',
+    tagline: 'We figure out if I\u2019m the right person for what you need.',
     description:
-      'Understand your vision, business context, and what success looks like.',
+      'You tell me about your vision, your market, and what\u2019s at stake. I tell you honestly whether I can help and what it\u2019ll take. No pitch deck, no sales process. Just a conversation between two people deciding if they want to work together.',
   },
   {
     number: 2,
-    name: 'Audience',
+    name: 'Plan',
+    tagline: 'I turn your vision into a plan you can actually read.',
     description:
-      'Define who the product is for and what problem it solves for them.',
+      'I translate what you need into a technical strategy\u200a\u2014\u200ain plain language, not jargon. We agree on what gets built first, what waits, and what gets cut entirely. You\u2019ll know exactly where your money goes and why.',
   },
   {
     number: 3,
-    name: 'Scope',
+    name: 'Build',
+    tagline: 'You see progress every week, not every quarter.',
     description:
-      'Translate insights into a focused, buildable plan with clear boundaries.',
+      'I design and develop in short cycles. You get regular updates you can understand\u200a\u2014\u200awhat\u2019s done, what\u2019s next, what changed and why. You stay focused on the business. I handle the technical decisions.',
   },
   {
     number: 4,
-    name: 'Build',
+    name: 'Launch',
+    tagline: 'A real product in real users\u2019 hands.',
     description:
-      'Design and develop in short cycles, prioritizing speed to market.',
+      'Not a demo. Not a prototype. A product\u200a\u2014\u200adeployed, monitored, and ready for the market. I handle the infrastructure, the deployment, and the things you didn\u2019t know you needed to worry about.',
   },
   {
     number: 5,
-    name: 'Launch',
+    name: 'Adapt',
+    tagline: 'We decide what\u2019s next\u200a\u2014\u200atogether.',
     description:
-      'Get the product into real users\u2019 hands with smooth deployment.',
-  },
-  {
-    number: 6,
-    name: 'Iterate',
-    description:
-      'Collect feedback, measure results, decide what to improve or cut.',
+      'Real users generate real data. We look at what\u2019s working, what isn\u2019t, and where the biggest opportunities are. I tell you what\u2019s possible technically. You decide what matters for the business. We plan the next cycle.',
   },
 ];
 ---
 
 <section class="py-16 px-6">
   <div class="max-w-3xl mx-auto">
-    <h2 class="font-serif text-3xl font-bold mb-12">How we work together</h2>
+    <h2 class="font-serif text-3xl font-bold mb-12">From concept to launched product</h2>
     <div class="relative">
       {
         phases.map((phase, i) => (
@@ -58,6 +57,7 @@ const phases = [
               {phase.number}
             </div>
             <h3 class="font-serif text-xl font-bold mb-1">{phase.name}</h3>
+            <p class="text-muted italic mb-2">{phase.tagline}</p>
             <p class="text-muted">{phase.description}</p>
           </div>
         ))
