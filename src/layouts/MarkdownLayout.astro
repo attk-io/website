@@ -1,0 +1,32 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-white text-neutral-900 min-h-screen">
+    <main class="max-w-3xl mx-auto px-6 py-12">
+      <p class="text-xs font-mono text-neutral-400 mb-8">{title}</p>
+      <article class="prose prose-neutral max-w-none">
+        <slot />
+      </article>
+    </main>
+  </body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>

@@ -1,0 +1,30 @@
+---
+import { marked } from 'marked';
+import MarkdownLayout from '../../layouts/MarkdownLayout.astro';
+
+export async function getStaticPaths() {
+  const files = import.meta.glob('/src/**/*.md', { query: '?raw', import: 'default' });
+  const paths = [];
+
+  for (const filePath of Object.keys(files)) {
+    // Strip leading /src/ to get the URL path segment
+    const slug = filePath.replace(/^\/src\//, '');
+    paths.push({ params: { path: slug }, props: { loader: files[filePath] } });
+  }
+
+  return paths;
+}
+
+const { path } = Astro.params;
+const { loader } = Astro.props;
+
+const raw = await loader();
+
+// Strip YAML frontmatter
+const content = raw.replace(/^---[\s\S]*?---\n*/, '');
+const html = marked(content);
+---
+
+<MarkdownLayout title={path!}>
+  <Fragment set:html={html} />
+</MarkdownLayout>
