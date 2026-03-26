@@ -4,53 +4,51 @@ tone: Punchy, direct
 description: Positions ATTK as a trusted technical co-founder figure. Emphasizes shared ownership, mutual commitment, and long-term partnership. Speaks to founders who want a collaborator, not a vendor. Confident but not aggressive — the authority comes from track record and directness, not from tearing down alternatives.
 ---
 
-# Hero
+# Your vision + my track record = your competitive edge
 
-Your vision + my track record = your competitive edge
+### You bring the vision and the business sense. I bring a decade of helping founders go from concept to launched product. Together, we'll make a product that stands out and delivers results.
 
-You bring the vision and the business sense. I bring a decade of helping founders go from concept to launched product. Together, we'll make a product that stands out and delivers results.
+[Book a 30-minute call](https://example.com)
 
-[CTA] Book a 30-minute call
+## Who This Is For
 
-# Who This Is For
-
-You've got the vision and you're looking for a strategic partnership.
+### You've got the vision and you're looking for a strategic partnership.
 
 You have a clear idea for a product and the drive to see it through. What you need is a technical partner who can take ownership of the entire build — from solid foundational architecture to zero-downtime deployments — so you can focus on what makes your business unique. If that sounds like you, we should talk.
 
-# From Concept to Launched Product
+## From Concept to Launched Product
 
-## Phase 1: Align
+### Phase 1: Align
 
 We figure out if I'm the right person for what you need.
 
 You tell me about your vision, your market, and what's at stake. I tell you honestly whether I can help and what it'll take. No pitch deck, no sales process. Just a conversation between two people deciding if they want to work together.
 
-## Phase 2: Plan
+### Phase 2: Plan
 
 I turn your vision into a plan you can actually read.
 
 I translate what you need into a technical strategy — in plain language, not jargon. We agree on what gets built first, what waits, and what gets cut entirely. You'll know exactly where your money goes and why.
 
-## Phase 3: Build
+### Phase 3: Build
 
 You see progress every week, not every quarter.
 
 I design and develop in short cycles. You get regular updates you can understand — what's done, what's next, what changed and why. You stay focused on the business. I handle the technical decisions.
 
-## Phase 4: Launch
+### Phase 4: Launch
 
 A real product in real users' hands.
 
 Not a demo. Not a prototype. A product — deployed, monitored, and ready for the market. I handle the infrastructure, the deployment, and the things you didn't know you needed to worry about.
 
-## Phase 5: Adapt
+### Phase 5: Adapt
 
 We decide what's next — together.
 
 Real users generate real data. We look at what's working, what isn't, and where the biggest opportunities are. I tell you what's possible technically. You decide what matters for the business. We plan the next cycle.
 
-# About ATTK Software
+## About ATTK Software
 
 You have a product that needs to exist. You know what it should do and who it's for — you just can't build it yourself. And hiring the wrong person to build it is the most expensive mistake you can make right now.
 
@@ -60,11 +58,11 @@ Products Christian has shipped are still running in production years later. Not 
 
 Canadian. christian@attk.io
 
-# Pricing
+## Pricing
 
 Let's talk about investment.
 
-Coming soon.
+_Coming soon._
 
 # You Might Be Wondering
 
