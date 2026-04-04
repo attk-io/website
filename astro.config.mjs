@@ -1,16 +1,14 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
-import devSwitcher from './src/integrations/dev-switcher';
 
 export default defineConfig({
   output: 'static',
   outDir: './dist',
   build: {
-    format: 'file',
+    format: 'directory',
   },
-  trailingSlash: 'never',
+  trailingSlash: 'always',
   vite: {
     plugins: [tailwindcss()],
   },
-  integrations: [devSwitcher()],
 });

@@ -1,0 +1,225 @@
+---
+import { variants } from './copy-variants/manifest';
+
+const themes = ['default', 'ocean'] as const;
+
+const toolbarData = {
+  themes,
+  variants: variants.map((v) => ({ id: v.id, label: v.label, tone: v.tone })),
+};
+---
+
+<div
+  id="review-toolbar-host"
+  data-toolbar={JSON.stringify(toolbarData)}
+  style="display:contents"
+>
+</div>
+
+<script is:inline>
+      (function () {
+        const host = document.getElementById('review-toolbar-host');
+        if (!host) return;
+
+        const data = JSON.parse(host.dataset.toolbar);
+        const THEME_KEY = 'attk-theme';
+        const VARIANT_KEY = 'attk-copy-variant';
+        const THEME_PARAM = 'theme';
+        const VARIANT_PARAM = 'variant';
+        const TOOLBAR_HEIGHT = 56;
+        const validThemes = data.themes;
+        const validVariants = data.variants.map((v) => v.id);
+
+        const shadow = host.attachShadow({ mode: 'open' });
+
+        const style = document.createElement('style');
+        style.textContent = `
+          :host {
+            all: initial;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+          }
+          .bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 2147483647;
+            height: ${TOOLBAR_HEIGHT}px;
+            background: #0f0f1a;
+            border-bottom: 1px solid #2a2a40;
+            color: #f5f5fa;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 0 1rem;
+            font-size: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+            box-sizing: border-box;
+            overflow-x: auto;
+            white-space: nowrap;
+          }
+          .brand {
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #a78bfa;
+            padding-right: 1rem;
+            border-right: 1px solid #2a2a40;
+          }
+          .group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+          }
+          .label {
+            color: #8a8aa3;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 10px;
+          }
+          .buttons {
+            display: flex;
+            gap: 0.25rem;
+          }
+          button {
+            background: transparent;
+            color: #c5c5d6;
+            border: 1px solid #2a2a40;
+            padding: 0.375rem 0.625rem;
+            border-radius: 4px;
+            font-size: 11px;
+            font-family: inherit;
+            cursor: pointer;
+            transition: background 0.1s, border-color 0.1s, color 0.1s;
+          }
+          button:hover {
+            background: #1a1a2e;
+            border-color: #3a3a55;
+            color: #fff;
+          }
+          button[data-active='true'] {
+            background: #a78bfa;
+            border-color: #a78bfa;
+            color: #0f0f1a;
+            font-weight: 600;
+          }
+        `;
+        shadow.appendChild(style);
+
+        const bar = document.createElement('div');
+        bar.className = 'bar';
+
+        const brand = document.createElement('div');
+        brand.className = 'brand';
+        brand.textContent = 'Review';
+        bar.appendChild(brand);
+
+        const themeGroup = createGroup('Theme');
+        const themeButtons = data.themes.map((theme) =>
+          createButton(theme, theme, () => setTheme(theme))
+        );
+        themeButtons.forEach((btn) => themeGroup.buttonsEl.appendChild(btn));
+        bar.appendChild(themeGroup.el);
+
+        const variantGroup = createGroup('Copy');
+        const variantButtons = data.variants.map((variant) =>
+          createButton(variant.id, `${variant.id} · ${variant.tone}`, () =>
+            setVariant(variant.id)
+          )
+        );
+        variantButtons.forEach((btn) => variantGroup.buttonsEl.appendChild(btn));
+        bar.appendChild(variantGroup.el);
+
+        shadow.appendChild(bar);
+
+        const bodyPadStyle = document.createElement('style');
+        bodyPadStyle.textContent = `body { padding-top: ${TOOLBAR_HEIGHT}px !important; }`;
+        document.head.appendChild(bodyPadStyle);
+
+        const url = new URL(window.location.href);
+        const urlTheme = url.searchParams.get(THEME_PARAM);
+        const urlVariant = url.searchParams.get(VARIANT_PARAM);
+        const initialTheme =
+          (urlTheme && validThemes.includes(urlTheme) && urlTheme) ||
+          localStorage.getItem(THEME_KEY) ||
+          'default';
+        const initialVariant =
+          (urlVariant && validVariants.includes(urlVariant) && urlVariant) ||
+          localStorage.getItem(VARIANT_KEY) ||
+          'v1';
+        applyTheme(initialTheme);
+        applyVariant(initialVariant);
+        localStorage.setItem(THEME_KEY, initialTheme);
+        localStorage.setItem(VARIANT_KEY, initialVariant);
+        syncUrl(initialTheme, initialVariant);
+        updateActiveButton(themeButtons, initialTheme);
+        updateActiveButton(variantButtons, initialVariant);
+
+        function createGroup(labelText) {
+          const el = document.createElement('div');
+          el.className = 'group';
+          const label = document.createElement('span');
+          label.className = 'label';
+          label.textContent = labelText;
+          const buttonsEl = document.createElement('div');
+          buttonsEl.className = 'buttons';
+          el.appendChild(label);
+          el.appendChild(buttonsEl);
+          return { el, buttonsEl };
+        }
+
+        function createButton(value, text, onClick) {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.dataset.value = value;
+          btn.textContent = text;
+          btn.addEventListener('click', onClick);
+          return btn;
+        }
+
+        function updateActiveButton(buttons, activeValue) {
+          buttons.forEach((btn) => {
+            btn.dataset.active = btn.dataset.value === activeValue ? 'true' : 'false';
+          });
+        }
+
+        function setTheme(theme) {
+          applyTheme(theme);
+          localStorage.setItem(THEME_KEY, theme);
+          updateActiveButton(themeButtons, theme);
+          syncUrl(theme, localStorage.getItem(VARIANT_KEY));
+        }
+
+        function applyTheme(theme) {
+          document.documentElement.setAttribute('data-theme', theme);
+        }
+
+        function setVariant(variant) {
+          applyVariant(variant);
+          localStorage.setItem(VARIANT_KEY, variant);
+          updateActiveButton(variantButtons, variant);
+          syncUrl(localStorage.getItem(THEME_KEY), variant);
+        }
+
+        function syncUrl(theme, variant) {
+          const next = new URL(window.location.href);
+          next.searchParams.set(THEME_PARAM, theme);
+          next.searchParams.set(VARIANT_PARAM, variant);
+          window.history.replaceState(null, '', next.toString());
+        }
+
+        function applyVariant(variant) {
+          const existing = document.getElementById('copy-variant-style');
+          const css = `[data-copy-variant]:not([data-copy-variant="${variant}"]){display:none!important}`;
+          if (existing) {
+            existing.textContent = css;
+            return;
+          }
+          const styleEl = document.createElement('style');
+          styleEl.id = 'copy-variant-style';
+          styleEl.textContent = css;
+          document.head.appendChild(styleEl);
+        }
+      })();
+    </script>
