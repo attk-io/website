@@ -41,9 +41,13 @@ After reading the ATTK website, the ideal prospect should feel:
 
 ## Variations
 
+Tone descriptors are listed in order of dominance — the first is the primary voice quality, the rest are supporting. The **Lead with** directive is the single most important instruction when drafting copy for a variant: when in doubt, follow it.
+
 ### 1. Quiet Confidence
 
-**Tone:** Understated, assured, descriptive
+**Tone:** Assured, understated, descriptive
+
+**Lead with:** Restraint — let the track record do the convincing. When in doubt, say less.
 
 Lets the work speak for itself. Calm, fluid prose that paints a clear picture without overselling. Authority comes from restraint and track record, not from assertion. Descriptive enough to feel warm and grounded, restrained enough to never feel like a pitch. This variant trusts the reader to recognize quality — it doesn't point at itself. The excitement it generates is quiet: the reader finishes and thinks "this is clearly the real thing."
 
@@ -61,7 +65,9 @@ Lets the work speak for itself. Calm, fluid prose that paints a clear picture wi
 
 ### 2. Straight Talk
 
-**Tone:** Conversational, direct, plainspoken
+**Tone:** Direct, plainspoken, conversational
+
+**Lead with:** Clarity — every sentence should make the reader feel like the fog just lifted.
 
 Says exactly what it means with zero filler. Short sentences, clear claims, no hedging. This is the variant that feels most like an actual conversation — the way Christian would explain what he does over coffee. It builds trust through radical transparency: here's what I do, here's what it costs, here's what you get. The excitement comes from clarity itself — the founder finally encounters someone who speaks their language instead of hiding behind jargon or process.
 
@@ -79,7 +85,9 @@ Says exactly what it means with zero filler. Short sentences, clear claims, no h
 
 ### 3. Warm Authority
 
-**Tone:** Personal, knowledgeable, reassuring
+**Tone:** Knowledgeable, reassuring, personal
+
+**Lead with:** Expertise — the reader should feel they're in experienced hands, not emotionally held.
 
 Leads with empathy and backs it with expertise. This variant names what the founder is feeling — the anxiety of choosing the wrong builder, the frustration of not being able to evaluate technical quality — and then calmly addresses it. It reads like a letter from someone who has helped many founders through this exact moment and knows exactly what they need to hear. Trust is the primary emotion; excitement follows from feeling genuinely understood.
 
@@ -97,7 +105,9 @@ Leads with empathy and backs it with expertise. This variant names what the foun
 
 ### 4. Builder's Pride
 
-**Tone:** Craft-forward, grounded, passionate
+**Tone:** Craft-forward, passionate, grounded
+
+**Lead with:** Care for the work — the reader should sense someone who builds things to last, not someone selling themselves.
 
 Centers the love of building and the quality of what gets made. This variant cares deeply about the work itself — the architecture, the durability, the details that most people never see. It speaks to founders who want to know their product is built by someone who takes genuine pride in their craft, not just someone fulfilling a contract. The excitement comes from sensing that this person _loves_ what they do; trust comes from the obvious depth of care.
 
@@ -115,7 +125,9 @@ Centers the love of building and the quality of what gets made. This variant car
 
 ### 5. Founder's Ally
 
-**Tone:** Empathetic, protective, partnership-oriented
+**Tone:** Protective, partnership-oriented, empathetic
+
+**Lead with:** Protection — the reader should feel shielded from risk, not emotionally held.
 
 Frames everything from the founder's perspective. This variant sees the engagement through the founder's eyes — their risks, their stakes, their fears about choosing wrong. It positions ATTK not as a vendor or even an expert, but as someone who is genuinely on the founder's side. The protective quality is distinct: this voice will tell you when to cut scope, when to say no, when to ship. Trust is built by making the founder feel like ATTK's success is inseparable from theirs; excitement comes from the sense of having a real ally.
 
@@ -137,7 +149,9 @@ These variants push beyond the voice center's calm & understated energy. They sh
 
 ### 6. Punchy Partnership
 
-**Tone:** Direct, punchy, forward-leaning
+**Tone:** Punchy, direct, forward-leaning
+
+**Lead with:** Momentum — the reader should feel like things are already moving.
 
 **Source:** [strategic-partnership-punchy-direct.md](../strategic-partnership-punchy-direct.md)
 
@@ -157,7 +171,9 @@ A higher-energy take on the Founder's Ally direction. Blends partnership framing
 
 ### 7. Challenger
 
-**Tone:** Confrontational, direct, provocative
+**Tone:** Confrontational, provocative, direct
+
+**Lead with:** Contrast — name what's broken first, then present the alternative.
 
 **Source:** [challenger-confrontational-direct.md](../challenger-confrontational-direct.md)
 
