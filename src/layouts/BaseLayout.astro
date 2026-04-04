@@ -61,6 +61,7 @@ const {
     <title>{title}</title>
     <meta name="author" content="Christian Naths" />
     <meta name="description" content={description} />
+    {variantMode && <meta name="robots" content="noindex, nofollow" />}
     <link
       rel="shortcut icon"
       type="image/png"
