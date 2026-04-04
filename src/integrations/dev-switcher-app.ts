@@ -6,8 +6,51 @@ const THEMES = ['default', 'ocean'] as const;
 const THEME_KEY = 'attk-theme';
 const VARIANT_KEY = 'attk-copy-variant';
 
+function getToolbarShadowRoot() {
+  const toolbar = document.querySelector('astro-dev-toolbar');
+  return toolbar?.shadowRoot ?? null;
+}
+
+function hideInspectIfNoIslands() {
+  const hasIslands = document.querySelectorAll('astro-island').length > 0;
+  if (hasIslands) return;
+
+  const shadow = getToolbarShadowRoot();
+  if (!shadow) return;
+
+  const inspectBtn = shadow.querySelector('[data-app-id="astro:xray"]');
+  if (inspectBtn) {
+    (inspectBtn as HTMLElement).style.display = 'none';
+  }
+}
+
+function disableAutoHide() {
+  const shadow = getToolbarShadowRoot();
+  if (!shadow) return;
+
+  const root = shadow.getElementById('dev-toolbar-root');
+  if (!root) return;
+
+  root.removeAttribute('data-hidden');
+
+  const observer = new MutationObserver((mutations) => {
+    for (const mutation of mutations) {
+      if (
+        mutation.type === 'attributes' &&
+        mutation.attributeName === 'data-hidden'
+      ) {
+        root.removeAttribute('data-hidden');
+      }
+    }
+  });
+
+  observer.observe(root, { attributes: true });
+}
+
 export default defineToolbarApp({
   init(canvas) {
+    hideInspectIfNoIslands();
+    disableAutoHide();
     const window = document.createElement('astro-dev-toolbar-window');
 
     window.innerHTML = `
