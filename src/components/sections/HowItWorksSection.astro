@@ -1,0 +1,23 @@
+---
+import { marked } from 'marked';
+
+type Props = {
+  content: string;
+};
+
+const { content } = Astro.props;
+const html = await marked(content);
+---
+
+<section class="py-16 px-6">
+  <div
+    class:list={[
+      'max-w-3xl mx-auto',
+      '[&>h2]:font-serif [&>h2]:text-3xl [&>h2]:font-bold [&>h2]:mb-12',
+      '[&>h2+p]:text-lg [&>h2+p]:text-muted [&>h2+p]:leading-relaxed [&>h2+p]:mb-12 [&>h2+p]:-mt-8',
+      '[&>h3]:font-serif [&>h3]:text-xl [&>h3]:font-bold [&>h3]:mb-2 [&>h3]:mt-10 [&>h3:first-of-type]:mt-0',
+      '[&>p]:text-muted [&>p]:mb-4 [&>p:last-child]:mb-0',
+    ]}
+    set:html={html}
+  />
+</section>

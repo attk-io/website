@@ -1,42 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CopyVariantSection from '../components/CopyVariantSection.astro';
-import HeroV1 from '../components/copy-variants/Hero/v1.astro';
-import HeroV2 from '../components/copy-variants/Hero/v2.astro';
-import WhoThisIsForV1 from '../components/copy-variants/WhoThisIsFor/v1.astro';
-import WhoThisIsForV2 from '../components/copy-variants/WhoThisIsFor/v2.astro';
-import FrameworkTimelineV1 from '../components/copy-variants/FrameworkTimeline/v1.astro';
-import AboutV1 from '../components/copy-variants/About/v1.astro';
-import PricingV1 from '../components/copy-variants/Pricing/v1.astro';
-import FAQV1 from '../components/copy-variants/FAQ/v1.astro';
-import FinalCTAV1 from '../components/copy-variants/FinalCTA/v1.astro';
+import V1 from '../components/copy-variants/v1.astro';
+import V2 from '../components/copy-variants/v2.astro';
+import V3 from '../components/copy-variants/v3.astro';
+import V4 from '../components/copy-variants/v4.astro';
 import Footer from '../components/Footer.astro';
 ---
 
 <BaseLayout title="ATTK Software">
   <div class="font-sans text-primary bg-page">
-    <CopyVariantSection section="Hero">
-      <HeroV1 slot="v1" />
-      <HeroV2 slot="v2" />
-    </CopyVariantSection>
-    <CopyVariantSection section="WhoThisIsFor">
-      <WhoThisIsForV1 slot="v1" />
-      <WhoThisIsForV2 slot="v2" />
-    </CopyVariantSection>
-    <CopyVariantSection section="FrameworkTimeline">
-      <FrameworkTimelineV1 slot="v1" />
-    </CopyVariantSection>
-    <CopyVariantSection section="About">
-      <AboutV1 slot="v1" />
-    </CopyVariantSection>
-    <CopyVariantSection section="Pricing">
-      <PricingV1 slot="v1" />
-    </CopyVariantSection>
-    <CopyVariantSection section="FAQ">
-      <FAQV1 slot="v1" />
-    </CopyVariantSection>
-    <CopyVariantSection section="FinalCTA">
-      <FinalCTAV1 slot="v1" />
+    <CopyVariantSection>
+      <V1 slot="v1" />
+      <V2 slot="v2" />
+      <V3 slot="v3" />
+      <V4 slot="v4" />
     </CopyVariantSection>
     <Footer />
   </div>

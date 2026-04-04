@@ -7,8 +7,20 @@ export const variants = [
   },
   {
     id: 'v2',
-    label: 'Challenger; confrontational, direct',
-    direction: 'challenger',
-    tone: 'confrontational',
+    label: "Founder's ally; protective, partnership-oriented",
+    direction: 'founders-ally',
+    tone: 'protective',
+  },
+  {
+    id: 'v3',
+    label: 'Quiet confidence; understated, assured',
+    direction: 'quiet-confidence',
+    tone: 'understated',
+  },
+  {
+    id: 'v4',
+    label: 'Warm authority; knowledgeable, reassuring',
+    direction: 'warm-authority',
+    tone: 'reassuring',
   },
 ] as const;
