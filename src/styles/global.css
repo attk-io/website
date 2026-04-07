@@ -1,8 +1,5 @@
 @import 'tailwindcss';
 @import './themes/tokens.css';
-@import './themes/default.css';
-@import './themes/ocean.css';
-@import './themes/quiet.css';
 @plugin '@tailwindcss/typography';
 
 @theme {

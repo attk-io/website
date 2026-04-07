@@ -1,0 +1,25 @@
+---
+import VariantLayout from '../../layouts/VariantLayout.astro';
+import CopyVariantSection from '../../components/CopyVariantSection.astro';
+import V1 from '../../components/variants/calm/copy-variants/v1.astro';
+import V2 from '../../components/variants/calm/copy-variants/v2.astro';
+import V3 from '../../components/variants/calm/copy-variants/v3.astro';
+import V4 from '../../components/variants/calm/copy-variants/v4.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<VariantLayout title="ATTK Software — Calm" variant="calm">
+  <main class="font-sans text-primary bg-page">
+    <CopyVariantSection>
+      <V1 slot="v1" />
+      <V2 slot="v2" />
+      <V3 slot="v3" />
+      <V4 slot="v4" />
+    </CopyVariantSection>
+    <Footer />
+  </main>
+</VariantLayout>
+
+<style is:global>
+  @import '../../styles/variants/calm.css';
+</style>

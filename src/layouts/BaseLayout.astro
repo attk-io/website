@@ -1,37 +1,24 @@
 ---
 import ReviewToolbar from '../components/ReviewToolbar.astro';
 
-interface Props {
+type Props = {
   title: string;
   description?: string;
   variantMode?: boolean;
-}
+  variant?: string;
+};
 
 const {
   title,
   description = 'Custom cloud software and automation consulting',
   variantMode = false,
+  variant,
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" data-theme="default">
+<html lang="en">
   <head>
-    {
-      variantMode && (
-        <script is:inline>
-          (function () {
-            var params = new URLSearchParams(window.location.search);
-            var urlTheme = params.get('theme');
-            var validThemes = ['default', 'ocean', 'quiet'];
-            var t =
-              (urlTheme && validThemes.indexOf(urlTheme) !== -1 && urlTheme) ||
-              localStorage.getItem('attk-theme');
-            if (t) document.documentElement.setAttribute('data-theme', t);
-          })();
-        </script>
-      )
-    }
     {
       variantMode && (
         <script is:inline>
@@ -73,7 +60,7 @@ const {
     />
   </head>
   <body>
-    {variantMode && <ReviewToolbar />}
+    {variantMode && <ReviewToolbar currentVariant={variant} />}
     <slot />
   </body>
 </html>

@@ -1,10 +1,10 @@
-[data-theme='quiet'] {
-  /* ─── Custom sage + bronze palette ───
-     Inspired by Salvia officinalis leaves — dusty silver-green with real presence.
-     Higher chroma than Radix "sage" so backgrounds read unmistakably as sage.
-     Hue 140° leans yellow-green for the earthy, dried-leaf quality of real sage.
-     Bronze at hue 50° for warm terracotta-amber accents. */
+/* ─── Custom sage + bronze palette ───
+   Inspired by Salvia officinalis leaves — dusty silver-green with real presence.
+   Higher chroma than Radix "sage" so backgrounds read unmistakably as sage.
+   Hue 140° leans yellow-green for the earthy, dried-leaf quality of real sage.
+   Bronze at hue 50° for warm terracotta-amber accents. */
 
+:root {
   /* Backgrounds */
   --color-page: oklch(97% 0.025 140);
   --color-surface: oklch(91% 0.042 140);

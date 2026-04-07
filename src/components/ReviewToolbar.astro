@@ -1,11 +1,21 @@
 ---
-import { variants } from './copy-variants/manifest';
+import { variants as copyVariants } from './copy-variants/manifest';
+import { designVariants } from './variants/manifest';
 
-const themes = ['default', 'ocean', 'quiet'] as const;
+type Props = {
+  currentVariant?: string;
+};
+
+const { currentVariant } = Astro.props;
 
 const toolbarData = {
-  themes,
-  variants: variants.map((v) => ({ id: v.id, label: v.label, tone: v.tone })),
+  designVariants: designVariants.map((v) => ({
+    id: v.id,
+    label: v.label,
+    slug: v.slug,
+  })),
+  copyVariants: copyVariants.map((v) => ({ id: v.id, label: v.label, tone: v.tone })),
+  currentVariant: currentVariant ?? designVariants[0].slug,
 };
 ---
 
@@ -22,13 +32,10 @@ const toolbarData = {
         if (!host) return;
 
         const data = JSON.parse(host.dataset.toolbar);
-        const THEME_KEY = 'attk-theme';
         const VARIANT_KEY = 'attk-copy-variant';
-        const THEME_PARAM = 'theme';
         const VARIANT_PARAM = 'variant';
         const TOOLBAR_HEIGHT = 56;
-        const validThemes = data.themes;
-        const validVariants = data.variants.map((v) => v.id);
+        const validCopyVariants = data.copyVariants.map(function (v) { return v.id; });
 
         const shadow = host.attachShadow({ mode: 'open' });
 
@@ -78,11 +85,11 @@ const toolbarData = {
             letter-spacing: 0.05em;
             font-size: 10px;
           }
-          .buttons {
+          .items {
             display: flex;
             gap: 0.25rem;
           }
-          button {
+          button, a.nav-link {
             background: transparent;
             color: #c5c5d6;
             border: 1px solid #2a2a40;
@@ -92,13 +99,16 @@ const toolbarData = {
             font-family: inherit;
             cursor: pointer;
             transition: background 0.1s, border-color 0.1s, color 0.1s;
+            text-decoration: none;
+            display: inline-block;
+            line-height: 1.2;
           }
-          button:hover {
+          button:hover, a.nav-link:hover {
             background: #1a1a2e;
             border-color: #3a3a55;
             color: #fff;
           }
-          button[data-active='true'] {
+          button[data-active='true'], a.nav-link[data-active='true'] {
             background: #a78bfa;
             border-color: #a78bfa;
             color: #0f0f1a;
@@ -115,46 +125,46 @@ const toolbarData = {
         brand.textContent = 'Review';
         bar.appendChild(brand);
 
-        const themeGroup = createGroup('Theme');
-        const themeButtons = data.themes.map((theme) =>
-          createButton(theme, theme, () => setTheme(theme))
-        );
-        themeButtons.forEach((btn) => themeGroup.buttonsEl.appendChild(btn));
-        bar.appendChild(themeGroup.el);
+        // Design variant navigation
+        const designGroup = createGroup('Design');
+        data.designVariants.forEach(function (variant) {
+          const link = document.createElement('a');
+          link.className = 'nav-link';
+          link.textContent = variant.label;
+          link.href = '/variants/' + variant.slug;
+          link.dataset.value = variant.slug;
+          link.dataset.active = variant.slug === data.currentVariant ? 'true' : 'false';
+          designGroup.itemsEl.appendChild(link);
+        });
+        bar.appendChild(designGroup.el);
 
-        const variantGroup = createGroup('Copy');
-        const variantButtons = data.variants.map((variant) =>
-          createButton(variant.id, `${variant.id} · ${variant.tone}`, () =>
-            setVariant(variant.id)
-          )
-        );
-        variantButtons.forEach((btn) => variantGroup.buttonsEl.appendChild(btn));
-        bar.appendChild(variantGroup.el);
+        // Copy variant buttons
+        const copyGroup = createGroup('Copy');
+        const copyButtons = data.copyVariants.map(function (variant) {
+          return createButton(variant.id, variant.id + ' \u00b7 ' + variant.tone, function () {
+            setCopyVariant(variant.id);
+          });
+        });
+        copyButtons.forEach(function (btn) { copyGroup.itemsEl.appendChild(btn); });
+        bar.appendChild(copyGroup.el);
 
         shadow.appendChild(bar);
 
         const bodyPadStyle = document.createElement('style');
-        bodyPadStyle.textContent = `body { padding-top: ${TOOLBAR_HEIGHT}px !important; }`;
+        bodyPadStyle.textContent = 'body { padding-top: ' + TOOLBAR_HEIGHT + 'px !important; }';
         document.head.appendChild(bodyPadStyle);
 
+        // Initialize copy variant
         const url = new URL(window.location.href);
-        const urlTheme = url.searchParams.get(THEME_PARAM);
         const urlVariant = url.searchParams.get(VARIANT_PARAM);
-        const initialTheme =
-          (urlTheme && validThemes.includes(urlTheme) && urlTheme) ||
-          localStorage.getItem(THEME_KEY) ||
-          'default';
         const initialVariant =
-          (urlVariant && validVariants.includes(urlVariant) && urlVariant) ||
+          (urlVariant && validCopyVariants.indexOf(urlVariant) !== -1 && urlVariant) ||
           localStorage.getItem(VARIANT_KEY) ||
           'v1';
-        applyTheme(initialTheme);
-        applyVariant(initialVariant);
-        localStorage.setItem(THEME_KEY, initialTheme);
+        applyCopyVariant(initialVariant);
         localStorage.setItem(VARIANT_KEY, initialVariant);
-        syncUrl(initialTheme, initialVariant);
-        updateActiveButton(themeButtons, initialTheme);
-        updateActiveButton(variantButtons, initialVariant);
+        syncUrl(initialVariant);
+        updateActiveButton(copyButtons, initialVariant);
 
         function createGroup(labelText) {
           const el = document.createElement('div');
@@ -162,11 +172,11 @@ const toolbarData = {
           const label = document.createElement('span');
           label.className = 'label';
           label.textContent = labelText;
-          const buttonsEl = document.createElement('div');
-          buttonsEl.className = 'buttons';
+          const itemsEl = document.createElement('div');
+          itemsEl.className = 'items';
           el.appendChild(label);
-          el.appendChild(buttonsEl);
-          return { el, buttonsEl };
+          el.appendChild(itemsEl);
+          return { el, itemsEl };
         }
 
         function createButton(value, text, onClick) {
@@ -179,39 +189,27 @@ const toolbarData = {
         }
 
         function updateActiveButton(buttons, activeValue) {
-          buttons.forEach((btn) => {
+          buttons.forEach(function (btn) {
             btn.dataset.active = btn.dataset.value === activeValue ? 'true' : 'false';
           });
         }
 
-        function setTheme(theme) {
-          applyTheme(theme);
-          localStorage.setItem(THEME_KEY, theme);
-          updateActiveButton(themeButtons, theme);
-          syncUrl(theme, localStorage.getItem(VARIANT_KEY));
-        }
-
-        function applyTheme(theme) {
-          document.documentElement.setAttribute('data-theme', theme);
-        }
-
-        function setVariant(variant) {
-          applyVariant(variant);
+        function setCopyVariant(variant) {
+          applyCopyVariant(variant);
           localStorage.setItem(VARIANT_KEY, variant);
-          updateActiveButton(variantButtons, variant);
-          syncUrl(localStorage.getItem(THEME_KEY), variant);
+          updateActiveButton(copyButtons, variant);
+          syncUrl(variant);
         }
 
-        function syncUrl(theme, variant) {
+        function syncUrl(variant) {
           const next = new URL(window.location.href);
-          next.searchParams.set(THEME_PARAM, theme);
           next.searchParams.set(VARIANT_PARAM, variant);
           window.history.replaceState(null, '', next.toString());
         }
 
-        function applyVariant(variant) {
+        function applyCopyVariant(variant) {
           const existing = document.getElementById('copy-variant-style');
-          const css = `[data-copy-variant]:not([data-copy-variant="${variant}"]){display:none!important}`;
+          const css = '[data-copy-variant]:not([data-copy-variant="' + variant + '"]){display:none!important}';
           if (existing) {
             existing.textContent = css;
             return;
