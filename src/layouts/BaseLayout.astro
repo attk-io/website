@@ -23,7 +23,7 @@ const {
           (function () {
             var params = new URLSearchParams(window.location.search);
             var urlTheme = params.get('theme');
-            var validThemes = ['default', 'ocean'];
+            var validThemes = ['default', 'ocean', 'quiet'];
             var t =
               (urlTheme && validThemes.indexOf(urlTheme) !== -1 && urlTheme) ||
               localStorage.getItem('attk-theme');

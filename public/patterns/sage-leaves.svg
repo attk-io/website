@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="280" viewBox="0 0 280 280">
+  <!--
+    Tiled sage leaf pattern — delicate botanical line art.
+    Lines use a very light sage green on transparent background.
+    Designed to tile seamlessly with leaves crossing edges.
+  -->
+  <style>
+    .leaf { fill: none; stroke: #99b094; stroke-width: 0.8; stroke-linecap: round; stroke-linejoin: round; opacity: 0.4; }
+    .vein { fill: none; stroke: #99b094; stroke-width: 0.5; stroke-linecap: round; opacity: 0.3; }
+  </style>
+
+  <!-- Leaf cluster 1 — upper left, angled down-right -->
+  <g transform="translate(35, 45) rotate(-25)">
+    <path class="leaf" d="M0,0 C8,-22 28,-36 48,-38 C28,-30 14,-14 0,0Z"/>
+    <path class="vein" d="M4,-3 C14,-18 26,-30 44,-36"/>
+    <path class="vein" d="M10,-6 L18,-20"/>
+    <path class="vein" d="M18,-10 L28,-26"/>
+    <!-- second leaf -->
+    <path class="leaf" d="M6,2 C18,-14 36,-22 52,-20 C34,-16 20,-6 6,2Z" transform="translate(4,4) rotate(15)"/>
+    <path class="vein" d="M10,4 C22,-8 36,-16 50,-18" transform="translate(4,4) rotate(15)"/>
+  </g>
+
+  <!-- Leaf cluster 2 — center right -->
+  <g transform="translate(200, 120) rotate(10)">
+    <path class="leaf" d="M0,0 C-6,-24 -22,-40 -44,-44 C-24,-34 -10,-16 0,0Z"/>
+    <path class="vein" d="M-3,-3 C-12,-20 -24,-34 -40,-42"/>
+    <path class="vein" d="M-8,-8 L-16,-22"/>
+    <path class="vein" d="M-14,-14 L-24,-30"/>
+    <!-- paired leaf -->
+    <path class="leaf" d="M0,0 C-10,-20 -28,-32 -46,-30 C-26,-26 -12,-10 0,0Z" transform="translate(-2,6) rotate(-20)"/>
+    <path class="vein" d="M-3,4 C-14,-10 -28,-22 -42,-28" transform="translate(-2,6) rotate(-20)"/>
+  </g>
+
+  <!-- Single leaf — bottom left, for rhythm -->
+  <g transform="translate(80, 210) rotate(35)">
+    <path class="leaf" d="M0,0 C6,-20 22,-34 40,-36 C24,-28 12,-12 0,0Z"/>
+    <path class="vein" d="M3,-2 C12,-16 22,-28 36,-34"/>
+    <path class="vein" d="M8,-5 L14,-18"/>
+    <path class="vein" d="M14,-9 L22,-24"/>
+  </g>
+
+  <!-- Leaf cluster 3 — lower right, wraps to tile -->
+  <g transform="translate(230, 230) rotate(-15)">
+    <path class="leaf" d="M0,0 C8,-22 26,-38 46,-42 C28,-32 14,-14 0,0Z"/>
+    <path class="vein" d="M4,-3 C14,-18 26,-32 42,-40"/>
+    <path class="vein" d="M10,-7 L18,-22"/>
+    <!-- matching leaf at tile origin for seamless wrap -->
+  </g>
+
+  <!-- Small accent leaf — top right edge (wraps with bottom) -->
+  <g transform="translate(160, 15) rotate(20)">
+    <path class="leaf" d="M0,0 C-5,-18 -18,-30 -34,-32 C-20,-24 -8,-10 0,0Z"/>
+    <path class="vein" d="M-2,-2 C-10,-14 -20,-26 -30,-30"/>
+  </g>
+
+  <!-- Small stem fragment — mid left for organic feel -->
+  <g transform="translate(15, 140) rotate(-5)">
+    <path class="leaf" d="M0,0 C5,-16 16,-28 30,-30 C18,-22 8,-10 0,0Z"/>
+    <path class="vein" d="M2,-2 C8,-12 16,-22 26,-28"/>
+  </g>
+</svg>

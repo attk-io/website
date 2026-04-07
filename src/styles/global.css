@@ -2,6 +2,7 @@
 @import './themes/tokens.css';
 @import './themes/default.css';
 @import './themes/ocean.css';
+@import './themes/quiet.css';
 @plugin '@tailwindcss/typography';
 
 @theme {
@@ -17,4 +18,6 @@
   --color-on-accent: var(--color-on-accent);
   --color-separator: var(--color-separator);
   --color-outline: var(--color-outline);
+  --color-surface-emphasis: var(--color-surface-emphasis);
+  --color-accent-muted: var(--color-accent-muted);
 }

@@ -1,6 +1,3 @@
-@import '@radix-ui/colors/blue.css';
-@import '@radix-ui/colors/amber.css';
-
 [data-theme='ocean'] {
   --color-page: var(--blue-1);
   --color-surface: var(--blue-2);

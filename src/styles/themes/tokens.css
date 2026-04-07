@@ -1,5 +1,10 @@
 @import '@radix-ui/colors/slate.css';
 @import '@radix-ui/colors/yellow.css';
+@import '@radix-ui/colors/blue.css';
+@import '@radix-ui/colors/amber.css';
+@import '@radix-ui/colors/sand.css';
+@import '@radix-ui/colors/bronze.css';
+@import '@radix-ui/colors/sage.css';
 
 :root {
   --color-page: var(--slate-1);
@@ -11,4 +16,6 @@
   --color-on-accent: var(--slate-12);
   --color-separator: var(--slate-6);
   --color-outline: var(--slate-12);
+  --color-surface-emphasis: var(--slate-3);
+  --color-accent-muted: var(--slate-11);
 }

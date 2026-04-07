@@ -9,13 +9,16 @@ const { content } = Astro.props;
 const html = await marked(content);
 ---
 
-<section class="py-24 px-6 text-center">
+<section
+  class="pt-24 pb-20 md:pt-32 md:pb-28 px-6 text-center"
+  style="background-color: white; background-image: url('/patterns/dot-grid.svg'); background-repeat: repeat; background-size: 32px 32px;"
+>
   <div
     class:list={[
       'max-w-3xl mx-auto',
-      '[&>h1]:font-serif [&>h1]:text-4xl [&>h1]:md:text-5xl [&>h1]:font-bold [&>h1]:leading-tight [&>h1]:mb-6',
-      '[&>h3]:text-lg [&>h3]:md:text-xl [&>h3]:text-muted [&>h3]:mb-10 [&>h3]:max-w-2xl [&>h3]:mx-auto [&>h3]:font-normal',
-      '[&>p>a]:inline-block [&>p>a]:bg-accent [&>p>a]:text-on-accent [&>p>a]:font-semibold [&>p>a]:px-8 [&>p>a]:py-3 [&>p>a]:text-lg [&>p>a]:hover:opacity-90',
+      '[&>h1]:font-serif [&>h1]:text-4xl [&>h1]:md:text-5xl [&>h1]:lg:text-[3.5rem] [&>h1]:font-bold [&>h1]:leading-tight [&>h1]:mb-8',
+      '[&>h3]:text-lg [&>h3]:md:text-xl [&>h3]:text-muted [&>h3]:mb-12 [&>h3]:max-w-2xl [&>h3]:mx-auto [&>h3]:font-normal [&>h3]:leading-relaxed',
+      '[&>p>a]:inline-block [&>p>a]:bg-accent [&>p>a]:text-on-accent [&>p>a]:font-semibold [&>p>a]:px-10 [&>p>a]:py-3.5 [&>p>a]:text-base [&>p>a]:tracking-wide [&>p>a]:transition-all [&>p>a]:duration-200 [&>p>a]:hover:brightness-110 [&>p>a]:active:brightness-95',
     ]}
     set:html={html}
   />

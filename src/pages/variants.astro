@@ -9,7 +9,7 @@ import Footer from '../components/Footer.astro';
 ---
 
 <BaseLayout title="ATTK Software — Variants" variantMode>
-  <div class="font-sans text-primary bg-page">
+  <main class="font-sans text-primary bg-page">
     <CopyVariantSection>
       <V1 slot="v1" />
       <V2 slot="v2" />
@@ -17,5 +17,5 @@ import Footer from '../components/Footer.astro';
       <V4 slot="v4" />
     </CopyVariantSection>
     <Footer />
-  </div>
+  </main>
 </BaseLayout>
