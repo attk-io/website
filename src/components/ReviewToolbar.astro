@@ -131,7 +131,7 @@ const toolbarData = {
           const link = document.createElement('a');
           link.className = 'nav-link';
           link.textContent = variant.label;
-          link.href = '/variants/' + variant.slug;
+          link.href = '/variants/' + variant.slug + '/';
           link.dataset.value = variant.slug;
           link.dataset.active = variant.slug === data.currentVariant ? 'true' : 'false';
           designGroup.itemsEl.appendChild(link);

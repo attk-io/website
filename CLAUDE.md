@@ -22,20 +22,27 @@ Bootstrapped, non-technical solo founders who've been referred by a trusted cont
 
 ### Aesthetic Direction
 
-**Hand-drawn notebook / pen-and-paper sketch aesthetic.** The site should feel like opening the notebook of a meticulous builder — dot-grid background, hand-drawn typography, sketchy borders, illustrated icons, dashed lines, margin annotations. Think: an engineer's field notebook, not a casual doodle. The aesthetic is fully committed to the hand-drawn look, not a hybrid with conventional web typography.
+**Authored confidence — warm, direct, and spacious.** The site should feel like it was made by a specific person with a clear point of view. The communication is plain, simple, and direct. Authority comes from restraint, generous whitespace, and letting strong copy do the work — not from visual complexity.
 
-- **Theme:** Light mode only — cream/white paper feel
-- **Typography:** Hand-drawn / hand-lettered style fonts throughout (headings and body)
-- **Color:** Bold single-accent color (like the green ink in the reference) on a light notebook background. Monochromatic ink-on-paper palette.
-- **Layout:** Card-based sections evoking notebook pages or grid blocks. Dashed/sketchy borders. Visible dot-grid texture.
-- **Icons & illustration:** Hand-sketched style — simple, bold, illustrative. Not polished vector icons.
-- **Reference:** Chris Donnelly's hand-drawn productivity sheets — bold hand-lettered headings, sketchy icons, dot-grid/notebook paper, single ink color, card-based layout.
-- **Anti-references:** Generic SaaS marketing sites, polished corporate design, stock photography, glass-office aesthetics, startup-bro visual language.
+- **Theme:** Light mode only — warm cream/off-white backgrounds, paper-like warmth. Not stark white.
+- **Typography:** Serif headings for authority and character, clean sans-serif for body text. Large headline sizes that communicate confidence. Strong hierarchy through scale and weight.
+- **Color:** Monochromatic base with a single bold accent color. Tint neutrals toward the brand hue. No multi-color palettes, no gradients. Restraint is the principle.
+- **Layout:** Narrow content columns with wide margins. Generous vertical spacing between sections — nothing cramped. Editorial pacing, not dashboard density. Content-first, not chrome-first.
+- **Illustration:** Subtle touches only — highlighted phrases, simple line accents, small decorative marks. No stock photography, no complex illustrations. The words and spacing do the primary work.
+- **References:** upsideams.com (warm B2B, teal accent, numbered sections), searchingforbirds.visualcinnamon.com (editorial pacing, cream backgrounds, narrow columns), rh.design (bold typography, monochromatic, generous whitespace), swapsmore.com (warm palette, subtle hand-drawn touches), basecamp.com (opinionated copy, hand-highlighted labels), once.com/campfire (bold single-color, long-form sales letter, conversational copy).
+- **Anti-references:** Generic SaaS marketing sites, glassmorphism, dark-mode-with-glowing-accents, stock photography, mega-menus, complex UI chrome, startup-bro visual language.
 
 ### Design Principles
 
-1. **Builder's notebook** — Every element should feel like it was drawn by hand into a dot-grid notebook. Consistency comes from the human touch, not from pixel-perfection.
-2. **Ink, not pixels** — Treat color like ink: one bold accent color on paper. Resist the urge to add gradients, shadows, or multi-color palettes. The constraint is the aesthetic.
-3. **Confident marks** — Hand-drawn doesn't mean tentative. Lines should be bold and deliberate, like someone drawing with conviction. Sketchy, not shaky.
-4. **Readable above all** — Hand-drawn aesthetic must not compromise legibility. WCAG AA contrast ratios are required. Hand-drawn fonts must be chosen for readability at body text sizes.
-5. **One person made this** — The site should feel authored, personal, and singular. It reinforces the core value proposition: one person, full ownership, visible craft.
+1. **Say it plain** — No fluff, no filler, no jargon. Every element earns its place. If the copy is strong enough, the design can be simple.
+2. **One accent, full commitment** — Pick one bold color and use it with discipline. The constraint creates cohesion. Everything else is warm neutrals.
+3. **Space is confidence** — Generous whitespace signals "we're not desperate for your attention." Let sections breathe. Tight groupings for related content, wide separations between ideas.
+4. **Authored, not templated** — The site should feel like one person made it with intention. Asymmetry over rigid grids. Editorial pacing over dashboard layouts. Personality through typography and copy, not decoration.
+5. **Readable above all** — WCAG AA contrast ratios required. Typography choices must prioritize legibility. Accessibility is not optional.
+
+### Accessibility
+
+- WCAG AA minimum for all contrast ratios
+- Keyboard navigation support
+- Screen reader compatibility
+- Semantic HTML structure
