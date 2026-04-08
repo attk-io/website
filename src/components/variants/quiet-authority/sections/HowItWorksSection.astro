@@ -35,8 +35,9 @@ const html = rawHtml.replace(/<h3>(?:Phase )?\d+[.:]\s*/g, '<h3>');
   }
 
   .how :global(h3) {
-    font-size: 1.15rem;
-    font-weight: 600;
+    font-family: 'DM Mono', monospace;
+    font-size: 1rem;
+    font-weight: 500;
     color: #b84c2a;
     margin: 3rem 0 0.75rem;
     letter-spacing: 0;
@@ -47,7 +48,7 @@ const html = rawHtml.replace(/<h3>(?:Phase )?\d+[.:]\s*/g, '<h3>');
   .how :global(h3::before) {
     content: counter(phase, decimal-leading-zero) ".";
     display: block;
-    font-family: 'Fraunces', serif;
+    font-family: 'EB Garamond', serif;
     font-size: 2.5rem;
     font-weight: 300;
     color: #c9bfb2;
