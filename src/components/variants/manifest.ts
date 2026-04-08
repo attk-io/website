@@ -1,5 +1,5 @@
 export const designVariants = [
-  { id: 'calm', label: 'Calm', slug: 'calm' },
+  { id: 'template', label: 'Template', slug: 'template' },
 ] as const;
 
 export type DesignVariantId = (typeof designVariants)[number]['id'];

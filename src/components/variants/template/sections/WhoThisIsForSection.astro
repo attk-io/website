@@ -1,0 +1,12 @@
+---
+import { marked } from 'marked';
+
+type Props = {
+  content: string;
+};
+
+const { content } = Astro.props;
+const html = await marked(content);
+---
+
+<section set:html={html} />
