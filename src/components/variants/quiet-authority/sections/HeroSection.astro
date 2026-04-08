@@ -1,0 +1,66 @@
+---
+import { marked } from 'marked';
+
+type Props = {
+  content: string;
+};
+
+const { content } = Astro.props;
+const html = await marked(content);
+---
+
+<section class="hero">
+  <div class="hero-inner" set:html={html} />
+</section>
+
+<style>
+  .hero {
+    padding: clamp(5rem, 14vh, 9rem) 1.5rem clamp(3.5rem, 10vh, 6rem);
+    text-align: center;
+    border-bottom: 1px solid #ddd5cb;
+  }
+
+  .hero-inner {
+    max-width: 38rem;
+    margin: 0 auto;
+  }
+
+  .hero :global(h1) {
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    color: #2c2622;
+    margin: 0 0 1.75rem;
+  }
+
+  .hero :global(h3) {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+    font-weight: 400;
+    line-height: 1.65;
+    color: #736a60;
+    margin: 0 auto 2.5rem;
+    max-width: 30rem;
+    letter-spacing: 0;
+  }
+
+  .hero :global(p) {
+    margin: 0;
+  }
+
+  .hero :global(a) {
+    color: #b84c2a;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+    text-decoration-color: #b84c2a66;
+    font-size: 1.05rem;
+    font-weight: 500;
+    transition: text-decoration-color 0.2s ease;
+  }
+
+  .hero :global(a:hover) {
+    text-decoration-color: #b84c2a;
+  }
+</style>

@@ -1,0 +1,36 @@
+---
+// Quiet Authority — variant wrapper
+// Loads fonts and sets base styles for the editorial design direction
+---
+
+<div class="qa">
+  <slot />
+</div>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+  rel="stylesheet"
+/>
+
+<style>
+  .qa {
+    font-family: 'DM Sans', sans-serif;
+    color: #2c2622;
+    background: #faf7f2;
+    font-size: 1.125rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .qa :global(h1),
+  .qa :global(h2),
+  .qa :global(h3),
+  .qa :global(h4) {
+    font-family: 'Fraunces', serif;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+  }
+</style>

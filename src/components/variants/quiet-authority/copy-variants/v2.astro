@@ -1,0 +1,28 @@
+---
+import Layout from '../Layout.astro';
+import HeroSection from '../sections/HeroSection.astro';
+import WhoThisIsForSection from '../sections/WhoThisIsForSection.astro';
+import HowItWorksSection from '../sections/HowItWorksSection.astro';
+import AboutSection from '../sections/AboutSection.astro';
+import PricingSection from '../sections/PricingSection.astro';
+import FAQSection from '../sections/FAQSection.astro';
+import FinalCTASection from '../sections/FinalCTASection.astro';
+
+import heroContent from '../../../../content/variants/founders-ally-protective/hero.md?raw';
+import whoThisIsForContent from '../../../../content/variants/founders-ally-protective/who-this-is-for.md?raw';
+import howItWorksContent from '../../../../content/variants/founders-ally-protective/how-it-works.md?raw';
+import aboutContent from '../../../../content/variants/founders-ally-protective/about.md?raw';
+import pricingContent from '../../../../content/variants/founders-ally-protective/pricing.md?raw';
+import faqContent from '../../../../content/variants/founders-ally-protective/faq.md?raw';
+import finalCtaContent from '../../../../content/variants/founders-ally-protective/final-cta.md?raw';
+---
+
+<Layout>
+  <HeroSection content={heroContent} />
+  <WhoThisIsForSection content={whoThisIsForContent} />
+  <HowItWorksSection content={howItWorksContent} />
+  <AboutSection content={aboutContent} />
+  <PricingSection content={pricingContent} />
+  <FAQSection content={faqContent} />
+  <FinalCTASection content={finalCtaContent} />
+</Layout>

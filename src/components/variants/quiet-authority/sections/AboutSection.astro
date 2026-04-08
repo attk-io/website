@@ -1,0 +1,55 @@
+---
+import { marked } from 'marked';
+
+type Props = {
+  content: string;
+};
+
+const { content } = Astro.props;
+const html = await marked(content);
+---
+
+<section class="about">
+  <div class="about-inner" set:html={html} />
+</section>
+
+<style>
+  .about {
+    padding: clamp(3.5rem, 8vh, 6rem) 1.5rem;
+    background: #f4ede4;
+  }
+
+  .about-inner {
+    max-width: 36rem;
+    margin: 0 auto;
+  }
+
+  .about :global(h2) {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 500;
+    color: #2c2622;
+    margin: 0 0 1.75rem;
+  }
+
+  .about :global(p) {
+    color: #3d3530;
+    margin: 0 0 1.25rem;
+  }
+
+  .about :global(p:last-child) {
+    margin-bottom: 0;
+  }
+
+  .about :global(a) {
+    color: #b84c2a;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    text-decoration-color: #b84c2a66;
+    font-weight: 500;
+  }
+
+  .about :global(a:hover) {
+    text-decoration-color: #b84c2a;
+  }
+</style>

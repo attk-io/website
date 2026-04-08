@@ -1,0 +1,57 @@
+---
+import { marked } from 'marked';
+
+type Props = {
+  content: string;
+};
+
+const { content } = Astro.props;
+const html = await marked(content);
+---
+
+<section class="faq">
+  <div class="faq-inner" set:html={html} />
+</section>
+
+<style>
+  .faq {
+    padding: clamp(3.5rem, 8vh, 6rem) 1.5rem;
+    border-top: 1px solid #ddd5cb;
+  }
+
+  .faq-inner {
+    max-width: 36rem;
+    margin: 0 auto;
+  }
+
+  .faq :global(h2) {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 500;
+    color: #2c2622;
+    margin: 0 0 2.5rem;
+    text-align: center;
+  }
+
+  .faq :global(p) {
+    color: #3d3530;
+    margin: 0 0 1.75rem;
+    padding-bottom: 1.75rem;
+    border-bottom: 1px solid #ebe4da;
+  }
+
+  .faq :global(p:last-child) {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .faq :global(strong) {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.05rem;
+    color: #2c2622;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+  }
+</style>
