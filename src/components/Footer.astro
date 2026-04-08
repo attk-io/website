@@ -1,18 +1,55 @@
-<footer class="border-t border-slate-300">
-  <div
-    class="max-w-3xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-400"
-  >
+<footer class="site-footer">
+  <div class="site-footer-inner">
     <p>&copy; 2026 Attk Software Inc.</p>
-    <nav class="flex gap-4">
-      <a href="/privacy-policy/" class="hover:text-slate-900 hover:underline">
-        Privacy Policy
-      </a>
-      <a
-        href="/terms-of-service/"
-        class="hover:text-slate-900 hover:underline"
-      >
-        Terms of Service
-      </a>
+    <nav>
+      <a href="/privacy-policy/">Privacy Policy</a>
+      <a href="/terms-of-service/">Terms of Service</a>
     </nav>
   </div>
 </footer>
+
+<style>
+  .site-footer {
+    background: #b84c2a;
+    border-top: 1px solid #c9684d;
+  }
+
+  .site-footer-inner {
+    max-width: 48rem;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 0.875rem;
+    color: #e8c4b8;
+  }
+
+  @media (min-width: 640px) {
+    .site-footer-inner {
+      flex-direction: row;
+    }
+  }
+
+  .site-footer-inner p {
+    margin: 0;
+  }
+
+  .site-footer nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .site-footer a {
+    color: #e8c4b8;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .site-footer a:hover {
+    color: #faf7f2;
+    text-decoration: underline;
+  }
+</style>

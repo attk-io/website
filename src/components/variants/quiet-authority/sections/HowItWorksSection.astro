@@ -6,7 +6,8 @@ type Props = {
 };
 
 const { content } = Astro.props;
-const html = await marked(content);
+const rawHtml = await marked(content);
+const html = rawHtml.replace(/<h3>(?:Phase )?\d+[.:]\s*/g, '<h3>');
 ---
 
 <section class="how">
@@ -16,12 +17,13 @@ const html = await marked(content);
 <style>
   .how {
     padding: clamp(3.5rem, 8vh, 6rem) 1.5rem;
-    border-top: 1px solid #ddd5cb;
+    border-top: 2px solid #c9bfb2;
   }
 
   .how-inner {
     max-width: 36rem;
     margin: 0 auto;
+    counter-reset: phase;
   }
 
   .how :global(h2) {
@@ -36,9 +38,22 @@ const html = await marked(content);
     font-size: 1.15rem;
     font-weight: 600;
     color: #b84c2a;
-    margin: 2.5rem 0 0.75rem;
+    margin: 3rem 0 0.75rem;
     letter-spacing: 0;
     line-height: 1.3;
+    counter-increment: phase;
+  }
+
+  .how :global(h3::before) {
+    content: counter(phase, decimal-leading-zero) ".";
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: #c9bfb2;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
   }
 
   .how :global(h3:first-of-type) {

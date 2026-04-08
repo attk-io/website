@@ -15,9 +15,9 @@ const html = await marked(content);
 
 <style>
   .hero {
-    padding: clamp(5rem, 14vh, 9rem) 1.5rem clamp(3.5rem, 10vh, 6rem);
+    padding: clamp(6rem, 18vh, 12rem) 1.5rem clamp(4rem, 12vh, 7rem);
     text-align: center;
-    border-bottom: 1px solid #ddd5cb;
+    border-bottom: 2px solid #c9bfb2;
   }
 
   .hero-inner {
@@ -26,10 +26,10 @@ const html = await marked(content);
   }
 
   .hero :global(h1) {
-    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
     font-weight: 500;
-    line-height: 1.08;
-    letter-spacing: -0.025em;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
     color: #2c2622;
     margin: 0 0 1.75rem;
   }
@@ -39,7 +39,7 @@ const html = await marked(content);
     font-size: clamp(1.05rem, 1.8vw, 1.2rem);
     font-weight: 400;
     line-height: 1.65;
-    color: #736a60;
+    color: #5a5148;
     margin: 0 auto 2.5rem;
     max-width: 30rem;
     letter-spacing: 0;
@@ -50,17 +50,18 @@ const html = await marked(content);
   }
 
   .hero :global(a) {
-    color: #b84c2a;
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    text-decoration-thickness: 1px;
-    text-decoration-color: #b84c2a66;
+    display: inline-block;
+    background: #b84c2a;
+    color: #faf7f2;
+    text-decoration: none;
     font-size: 1.05rem;
     font-weight: 500;
-    transition: text-decoration-color 0.2s ease;
+    padding: 0.85rem 2.25rem;
+    border-radius: 3px;
+    transition: background 0.2s ease;
   }
 
   .hero :global(a:hover) {
-    text-decoration-color: #b84c2a;
+    background: #a34122;
   }
 </style>

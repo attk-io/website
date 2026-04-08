@@ -114,6 +114,21 @@ const toolbarData = {
             color: #0f0f1a;
             font-weight: 600;
           }
+          .close-btn {
+            margin-left: auto;
+            background: transparent;
+            color: #8a8aa3;
+            border: none;
+            padding: 0.375rem;
+            border-radius: 4px;
+            font-size: 16px;
+            line-height: 1;
+            cursor: pointer;
+          }
+          .close-btn:hover {
+            color: #fff;
+            background: #1a1a2e;
+          }
         `;
         shadow.appendChild(style);
 
@@ -147,6 +162,18 @@ const toolbarData = {
         });
         copyButtons.forEach(function (btn) { copyGroup.itemsEl.appendChild(btn); });
         bar.appendChild(copyGroup.el);
+
+        // Close button
+        const closeBtn = document.createElement('button');
+        closeBtn.className = 'close-btn';
+        closeBtn.type = 'button';
+        closeBtn.textContent = '\u00d7';
+        closeBtn.title = 'Close toolbar (refresh to restore)';
+        closeBtn.addEventListener('click', function () {
+          bar.remove();
+          if (bodyPadStyle) bodyPadStyle.remove();
+        });
+        bar.appendChild(closeBtn);
 
         shadow.appendChild(bar);
 
