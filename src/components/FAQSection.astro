@@ -1,61 +1,19 @@
 ---
-import { marked } from 'marked';
+import { renderMarkdown } from '../lib/markdown';
 
 type Props = {
   content: string;
 };
 
 const { content } = Astro.props;
-const html = await marked(content);
+
+const html = renderMarkdown(content, {
+  h2: 'font-display text-[clamp(1.5rem,3vw,2rem)] font-medium text-sand-12 mb-10 pl-5 border-l-4 border-copper-9 leading-tight',
+  p: 'text-sand-11 mb-7 pb-7 border-b border-sand-5 last:mb-0 last:pb-0 last:border-b-0',
+  strong: 'block font-mono font-medium text-[0.95rem] text-copper-9 mb-2 pl-4 border-l-[3px] border-copper-9',
+});
 ---
 
-<section class="faq">
-  <div class="faq-inner" set:html={html} />
+<section class="px-6 py-[clamp(3.5rem,8vh,6rem)] border-t-2 border-sand-7">
+  <div class="mx-auto max-w-[36rem]" set:html={html} />
 </section>
-
-<style>
-  .faq {
-    padding: clamp(3.5rem, 8vh, 6rem) 1.5rem;
-    border-top: 2px solid #c9bfb2;
-  }
-
-  .faq-inner {
-    max-width: 36rem;
-    margin: 0 auto;
-  }
-
-  .faq :global(h2) {
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    font-weight: 500;
-    color: #2c2622;
-    margin: 0 0 2.5rem;
-    padding-left: 1.25rem;
-    border-left: 4px solid #b84c2a;
-    line-height: 1.25;
-  }
-
-  .faq :global(p) {
-    color: #3d3530;
-    margin: 0 0 1.75rem;
-    padding-bottom: 1.75rem;
-    border-bottom: 1px solid #ebe4da;
-  }
-
-  .faq :global(p:last-child) {
-    margin-bottom: 0;
-    padding-bottom: 0;
-    border-bottom: none;
-  }
-
-  .faq :global(strong) {
-    display: block;
-    font-family: 'DM Mono', monospace;
-    font-weight: 500;
-    font-size: 0.95rem;
-    color: #b84c2a;
-    margin-bottom: 0.5rem;
-    letter-spacing: 0;
-    padding-left: 1rem;
-    border-left: 3px solid #b84c2a;
-  }
-</style>

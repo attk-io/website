@@ -1,74 +1,20 @@
 ---
 import LegalLayout from '../layouts/LegalLayout.astro';
+import { renderMarkdown } from '../lib/markdown';
+import content from '../content/legal/privacy-policy.md?raw';
+
+const html = renderMarkdown(content, {
+  h1: 'font-display text-4xl md:text-5xl font-medium text-sand-12 leading-tight mb-4',
+  h2: 'font-display text-2xl font-medium text-sand-12 leading-tight mt-12 mb-4',
+  p: 'text-sand-11 mb-6 last:mb-0',
+  ul: 'list-disc pl-6 mb-6 space-y-1 text-sand-11',
+  ol: 'list-decimal pl-6 mb-6 space-y-1 text-sand-11',
+  li: 'text-sand-11',
+  a: 'text-copper-9 underline underline-offset-[3px] decoration-1 decoration-copper-9/40 hover:decoration-copper-9',
+  strong: 'font-semibold text-sand-12',
+});
 ---
 
 <LegalLayout title="Privacy Policy">
-  <h1>Privacy Policy</h1>
-  <p>Last updated: 2025-01-28</p>
-
-  <h2>1. Introduction</h2>
-  <p>
-    This Privacy Policy describes how we collect, use, and handle your personal
-    information when you use our services.
-  </p>
-
-  <h2>2. Information Collection</h2>
-  <p>
-    We collect only the minimum information necessary to provide our services,
-    including:
-  </p>
-  <ul>
-    <li>Name and contact information</li>
-    <li>Billing and payment information</li>
-    <li>Transaction history</li>
-  </ul>
-
-  <h2>3. Use of Information</h2>
-  <p>We use the collected information solely for:</p>
-  <ul>
-    <li>Processing payments and invoicing for services rendered</li>
-    <li>Communicating with you about your services</li>
-    <li>Fulfilling our legal and regulatory obligations</li>
-  </ul>
-
-  <h2>4. Data Protection</h2>
-  <p>
-    We implement appropriate security measures to protect your personal
-    information. Your data is stored securely and accessed only by authorized
-    personnel for the purposes specified in this policy.
-  </p>
-
-  <h2>5. Third-Party Sharing</h2>
-  <p>
-    We do not sell, trade, or otherwise transfer your personal information to
-    third parties. The only exception is our payment processor (Stripe), which is
-    necessary for processing payments and is bound by strict privacy and security
-    standards.
-  </p>
-
-  <h2>6. Data Retention</h2>
-  <p>
-    We retain your personal information only for as long as necessary to provide
-    our services and comply with legal obligations.
-  </p>
-
-  <h2>7. Your Rights</h2>
-  <p>You have the right to:</p>
-  <ul>
-    <li>Access your personal information</li>
-    <li>Request correction of inaccurate information</li>
-    <li>Request deletion of your information (subject to legal requirements)</li>
-  </ul>
-
-  <h2>8. Contact Us</h2>
-  <p>
-    If you have any questions about this Privacy Policy, please contact us at
-    christian@attk.io.
-  </p>
-
-  <h2>9. Changes to This Policy</h2>
-  <p>
-    We may update this Privacy Policy from time to time. Any changes will be
-    posted on this page.
-  </p>
+  <div set:html={html} />
 </LegalLayout>

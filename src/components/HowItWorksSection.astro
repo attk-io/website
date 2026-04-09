@@ -1,86 +1,31 @@
 ---
-import { marked } from 'marked';
+import { renderMarkdown } from '../lib/markdown';
 
 type Props = {
   content: string;
 };
 
 const { content } = Astro.props;
-const rawHtml = await marked(content);
-const html = rawHtml.replace(/<h3>(?:Phase )?\d+[.:]\s*/g, '<h3>');
+
+let html = renderMarkdown(content, {
+  h2: 'font-display text-[clamp(1.5rem,3vw,2rem)] font-medium text-sand-12 mb-10 pl-5 border-l-4 border-copper-9 leading-tight',
+  h3: 'font-mono text-base font-medium text-copper-9 mt-12 mb-3 leading-snug [&:first-of-type]:mt-0',
+  p: 'text-sand-11 mb-2 last:mb-0',
+  a: 'text-copper-9 underline underline-offset-[3px] decoration-1 decoration-copper-9/40 hover:decoration-copper-9',
+});
+
+// Strip any "Phase N." or "N." prefix from the markdown text inside h3 tags,
+// then inject a numbered <span> with the auto-incremented phase number.
+html = html.replace(/(<h3[^>]*>)(?:Phase )?\d+[.:]\s*/g, '$1');
+
+let phaseCount = 0;
+html = html.replace(/<h3([^>]*)>/g, (_match, attrs) => {
+  phaseCount += 1;
+  const num = String(phaseCount).padStart(2, '0');
+  return `<h3${attrs}><span class="block font-display text-4xl font-light leading-none tracking-tight text-sand-7 mb-2">${num}.</span>`;
+});
 ---
 
-<section class="how">
-  <div class="how-inner" set:html={html} />
+<section class="px-6 py-[clamp(3.5rem,8vh,6rem)] border-t-2 border-sand-7">
+  <div class="mx-auto max-w-[36rem]" set:html={html} />
 </section>
-
-<style>
-  .how {
-    padding: clamp(3.5rem, 8vh, 6rem) 1.5rem;
-    border-top: 2px solid #c9bfb2;
-  }
-
-  .how-inner {
-    max-width: 36rem;
-    margin: 0 auto;
-    counter-reset: phase;
-  }
-
-  .how :global(h2) {
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    font-weight: 500;
-    color: #2c2622;
-    margin: 0 0 2.5rem;
-    padding-left: 1.25rem;
-    border-left: 4px solid #b84c2a;
-    line-height: 1.25;
-  }
-
-  .how :global(h3) {
-    font-family: 'DM Mono', monospace;
-    font-size: 1rem;
-    font-weight: 500;
-    color: #b84c2a;
-    margin: 3rem 0 0.75rem;
-    letter-spacing: 0;
-    line-height: 1.3;
-    counter-increment: phase;
-  }
-
-  .how :global(h3::before) {
-    content: counter(phase, decimal-leading-zero) ".";
-    display: block;
-    font-family: 'EB Garamond', serif;
-    font-size: 2.5rem;
-    font-weight: 300;
-    color: #c9bfb2;
-    line-height: 1;
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.02em;
-  }
-
-  .how :global(h3:first-of-type) {
-    margin-top: 0;
-  }
-
-  .how :global(p) {
-    color: #3d3530;
-    margin: 0 0 0.5rem;
-  }
-
-  .how :global(p:last-child) {
-    margin-bottom: 0;
-  }
-
-  .how :global(a) {
-    color: #b84c2a;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    text-decoration-thickness: 1px;
-    text-decoration-color: #b84c2a66;
-  }
-
-  .how :global(a:hover) {
-    text-decoration-color: #b84c2a;
-  }
-</style>

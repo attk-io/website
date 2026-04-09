@@ -17,7 +17,6 @@
     "astro": "^5"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4",
     "firebase-tools": "^13.29.2",
     "husky": "^9.1.7",
@@ -25,6 +24,7 @@
     "marked": "^17.0.5",
     "prettier": "^3.4.2",
     "prettier-plugin-astro": "^0.14",
+    "radix-theme-generator": "^0.1.1",
     "tailwindcss": "^4"
   },
   "lint-staged": {

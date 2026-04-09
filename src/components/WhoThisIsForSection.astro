@@ -1,56 +1,19 @@
 ---
-import { marked } from 'marked';
+import { renderMarkdown } from '../lib/markdown';
 
 type Props = {
   content: string;
 };
 
 const { content } = Astro.props;
-const html = await marked(content);
+
+const html = renderMarkdown(content, {
+  h2: 'font-display text-[clamp(1.5rem,3vw,2rem)] font-medium text-sand-12 mb-8 pl-5 border-l-4 border-copper-9 leading-tight',
+  p: 'text-sand-11 mb-5 last:mb-0',
+  a: 'text-copper-9 underline underline-offset-[3px] decoration-1 decoration-copper-9/40 hover:decoration-copper-9',
+});
 ---
 
-<section class="who">
-  <div class="who-inner" set:html={html} />
+<section class="px-6 py-[clamp(3.5rem,8vh,6rem)]">
+  <div class="mx-auto max-w-[36rem]" set:html={html} />
 </section>
-
-<style>
-  .who {
-    padding: clamp(3.5rem, 8vh, 6rem) 1.5rem;
-  }
-
-  .who-inner {
-    max-width: 36rem;
-    margin: 0 auto;
-  }
-
-  .who :global(h2) {
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    font-weight: 500;
-    color: #2c2622;
-    margin: 0 0 2rem;
-    padding-left: 1.25rem;
-    border-left: 4px solid #b84c2a;
-    line-height: 1.25;
-  }
-
-  .who :global(p) {
-    color: #3d3530;
-    margin: 0 0 1.25rem;
-  }
-
-  .who :global(p:last-child) {
-    margin-bottom: 0;
-  }
-
-  .who :global(a) {
-    color: #b84c2a;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    text-decoration-thickness: 1px;
-    text-decoration-color: #b84c2a66;
-  }
-
-  .who :global(a:hover) {
-    text-decoration-color: #b84c2a;
-  }
-</style>
