@@ -24,7 +24,6 @@
     "marked": "^17.0.5",
     "prettier": "^3.4.2",
     "prettier-plugin-astro": "^0.14",
-    "radix-theme-generator": "^0.1.1",
     "tailwindcss": "^4"
   },
   "lint-staged": {
