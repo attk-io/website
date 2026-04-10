@@ -1,13 +1,41 @@
 ---
 import { renderMarkdown } from '../lib/markdown';
+import { TYPOGRAPHY_BASELINE } from '../lib/typography';
 
 type Props = {
   content: string;
+  eyebrow?: string;
 };
 
-const { content } = Astro.props;
+const { content, eyebrow } = Astro.props;
 
-const html = renderMarkdown(content);
+const classes = {
+  ...TYPOGRAPHY_BASELINE,
+  // On the sun-9 sunshine color block: dark text on bright yellow, with ink-9
+  // (the complementary cool blue-violet) carrying the focal CTA link.
+  // Closing-statement H2 a touch larger than standard section H2s.
+  h2: 'max-w-[16ch] text-[clamp(2.25rem,4vw+0.5rem,3.5rem)] font-semibold leading-[1.0] tracking-[-0.03em] text-sand-12',
+  p: 'mt-10 max-w-[58ch] text-[1.0625rem] leading-[1.6] text-sand-11',
+  a: 'text-[1.0625rem] font-medium text-ink-9 underline decoration-ink-9 decoration-[2px] underline-offset-[6px] hover:decoration-ink-12 transition-colors duration-150',
+};
+
+const html = renderMarkdown(content, classes);
 ---
 
-<section set:html={html} />
+<section class="bg-sun-9 px-6 pt-24 pb-32 sm:px-10 sm:pt-32 sm:pb-44">
+  <div class="mx-auto grid max-w-[120rem] grid-cols-[1fr_minmax(0,44rem)_3fr]">
+    <div class="col-start-2">
+      {
+        eyebrow && (
+          <div class="mb-12 flex items-baseline gap-6">
+            <span class="text-[0.75rem] font-medium tracking-[0.14em] text-sand-11 uppercase">
+              {eyebrow}
+            </span>
+            <span aria-hidden="true" class="h-px flex-1 bg-sand-11" />
+          </div>
+        )
+      }
+      <div set:html={html} />
+    </div>
+  </div>
+</section>

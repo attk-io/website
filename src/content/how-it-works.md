@@ -1,4 +1,4 @@
-## How It Works
+## Every engagement follows the same five phases, designed to make sure we're building the right thing — then build it well.
 
 ### 1. Discovery
 

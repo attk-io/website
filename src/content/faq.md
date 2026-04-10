@@ -1,4 +1,4 @@
-## FAQ
+## Honest answers to the questions founders ask most before we talk.
 
 **What if the project doesn't work out?**
 That's what discovery is designed to prevent. By the time we commit to a full build, we've both had a thorough look at what we're building, why it matters, and whether the partnership makes sense. I don't take on projects I don't believe in, and I'd rather tell you that up front than let you find out the hard way.

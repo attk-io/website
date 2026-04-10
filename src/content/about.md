@@ -1,4 +1,4 @@
-## About
+## My name is Christian Naths and I've spent the last decade building products for founders
 
 My name is Christian Naths. I'm a senior software engineer based in Canada, and I've spent the last decade building products for founders who needed someone to take full ownership of the technical side of their business.
 
