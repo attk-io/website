@@ -1,1 +1,117 @@
+/*
+ * ATTK website — global styles
+ *
+ * Foundations only:
+ *   - Single-family Swiss typography: Hanken Grotesk (everything; hierarchy via weight + size)
+ *   - OKLCH color scales, Radix-style 1..12: sand (warm neutral) + ink/sun/teal (highlights)
+ *   - Minimal @layer base for element-level details (selection, focus-visible, text rendering, default font)
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap');
+
 @import 'tailwindcss';
+
+@theme {
+  /* ─── Typography ────────────────────────────────────────────────── */
+  --font-hanken:
+    'Hanken Grotesk', ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
+    sans-serif;
+
+  /*
+   * Preserved reference — Spectral was the original serif display pairing before
+   * we pivoted to single-family Swiss. Not currently loaded from Google Fonts.
+   * To revive: add Spectral and Spectral SC to the @import url() at the top of
+   * this file, then use `font-spectral` / `font-spectral-sc` utilities.
+   */
+  --font-spectral:
+    'Spectral', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  --font-spectral-sc:
+    'Spectral SC', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+
+  /* ─── sand — cool neutral ramp ──────────────────────────────────── */
+  /* Hue tinted toward ink (252) for subconscious cohesion with the highlight. */
+  /* Chroma stays low (0.004–0.014) so it reads as neutral, never blue. */
+  --color-sand-1: oklch(0.994 0.004 252);
+  --color-sand-2: oklch(0.982 0.005 252);
+  --color-sand-3: oklch(0.966 0.006 252);
+  --color-sand-4: oklch(0.948 0.007 252);
+  --color-sand-5: oklch(0.928 0.008 252);
+  --color-sand-6: oklch(0.905 0.009 252);
+  --color-sand-7: oklch(0.872 0.01 252);
+  --color-sand-8: oklch(0.82 0.011 252);
+  --color-sand-9: oklch(0.625 0.012 252);
+  --color-sand-10: oklch(0.578 0.012 252);
+  --color-sand-11: oklch(0.438 0.013 252);
+  --color-sand-12: oklch(0.205 0.014 252);
+
+  /* ─── ink — dark fountain-pen blue-violet (primary highlight) ───── */
+  --color-ink-1: oklch(0.992 0.005 252);
+  --color-ink-2: oklch(0.979 0.012 252);
+  --color-ink-3: oklch(0.958 0.02 252);
+  --color-ink-4: oklch(0.932 0.03 252);
+  --color-ink-5: oklch(0.902 0.042 252);
+  --color-ink-6: oklch(0.862 0.055 252);
+  --color-ink-7: oklch(0.808 0.068 252);
+  --color-ink-8: oklch(0.718 0.085 252);
+  --color-ink-9: oklch(0.305 0.102 252);
+  --color-ink-10: oklch(0.268 0.095 252);
+  --color-ink-11: oklch(0.355 0.098 252);
+  --color-ink-12: oklch(0.188 0.062 252);
+
+  /* ─── sun — sunshine yellow (secondary, available for use) ──────── */
+  /* Steps 9/10 peak at high L per Radix yellow convention; 11/12 shift hue toward amber for AA readability. */
+  --color-sun-1: oklch(0.995 0.007 92);
+  --color-sun-2: oklch(0.983 0.02 92);
+  --color-sun-3: oklch(0.962 0.038 92);
+  --color-sun-4: oklch(0.938 0.062 92);
+  --color-sun-5: oklch(0.908 0.088 92);
+  --color-sun-6: oklch(0.875 0.108 92);
+  --color-sun-7: oklch(0.832 0.128 92);
+  --color-sun-8: oklch(0.782 0.148 92);
+  --color-sun-9: oklch(0.87 0.175 92);
+  --color-sun-10: oklch(0.832 0.17 92);
+  --color-sun-11: oklch(0.442 0.108 78);
+  --color-sun-12: oklch(0.268 0.068 68);
+
+  /* ─── teal — petrol peacock (secondary, available for use) ──────── */
+  --color-teal-1: oklch(0.992 0.005 200);
+  --color-teal-2: oklch(0.98 0.013 200);
+  --color-teal-3: oklch(0.958 0.024 200);
+  --color-teal-4: oklch(0.932 0.038 200);
+  --color-teal-5: oklch(0.902 0.05 200);
+  --color-teal-6: oklch(0.86 0.062 200);
+  --color-teal-7: oklch(0.808 0.078 200);
+  --color-teal-8: oklch(0.728 0.095 200);
+  --color-teal-9: oklch(0.462 0.115 200);
+  --color-teal-10: oklch(0.425 0.108 200);
+  --color-teal-11: oklch(0.432 0.092 200);
+  --color-teal-12: oklch(0.238 0.058 200);
+}
+
+@layer base {
+  html {
+    font-family: var(--font-hanken);
+    text-rendering: optimizeLegibility;
+    font-feature-settings:
+      'kern' 1,
+      'liga' 1,
+      'calt' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: var(--color-sand-4);
+    color: var(--color-sand-12);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-sand-12);
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
+
+  html {
+    accent-color: var(--color-sand-12);
+  }
+}

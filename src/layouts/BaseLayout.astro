@@ -17,13 +17,15 @@ const { title, description = 'Custom cloud software and automation consulting' }
     <title>{title}</title>
     <meta name="author" content="Christian Naths" />
     <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="shortcut icon"
       type="image/png"
       href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAABFJJREFUWAmtl1toXFUUhv+5p0naaPSiNW2lfRBFsVWsteCDD0UUtVZbBYsXfCgIIoiI9cWI+NaCFxRR8U2kPiiKJYWUUlpBLAj6IKLYSi2tFFssCMVKm2acdH3rZE4yWXMmM4nDhM2cs/c61///r3X2OTM5KuabqW51ifVqlbrUoQX9fVMz+sd0Wp/qpEOacP5LR0xpVOPTd+jN+f5Dr/GVcbS/rmkb0NFuf22vWGNIWtLPyumYDmtaJ32+pSX7LbVYU3RuE56vtUM/qUMjGtKQNuvvmsmwhrSPkURUjWRJV+ozdQGyttlFtnxXlHwUzv5PxMMCe1ChhbRyAYP4JOOfRRRZmt2v0Wu+OBO2gLiFsGCajAPkluayrEZyt8Nk0TQ4yo4uUI4i0J2pdrwwj7G62pDlpCsoXt9V6dXbvrFV1wLkFSuMBbYhXp8/asBXeIRtw+yoqHk5HBMfn4r+mmOQctitCnpphcbzoosA2BvthCPqIu+GSAR7lIpZSmyQu+OG5IoOBM5Hsg4tgELlqjcW4n/jcPtPalRHVXZS2/p2x+xHWRjvBmjMNOyo/Vbcf+Gj2qN1udDiv1ZVnvKLvqrJ4ndaBy4zMeEgSnIEkNIuZNmEQzh6MLqwprtbpgEcHfCTb4qb9cv+XDxLBxq7YObkn4WUF2OihaH/Cc0BiC6BIH1lAakTlnKHTdGfd7vlnP+iz/AzylLWkB10sJa8CFCeF1Zoyk6V9XL6QENILQwJV29jK4Ku/U7/oxjz2Hk31Lr4yJyhEFRRdgHHL6oIaq6DfmHdAvcL+tNOiwk5Y9NBO7bz+sB+QGlEF/OAB+HOZqNX/qhrYgMSjhSIjrQ7w4LBnP+oqqqYqZNRC/cOTd+jJWG6oXYaQVoVqHYW+swYZRMd1IYE0UExHC5vIkNMaclNqf9nQ4n6ujYwOq6Dt4d4M5nXsq3zaRmAJ6ZFBkE+pnv4lL+yYePoCfYCD6ZPXf5FF9GpRP0iLsUwmppoHTH/0w3mlmiWWUMJxJWCGkDqgzigUyCAFPa+ypa2qVo9HqKPK99ZEfO4t3yqqFCyV2RchfKrGTZeJ2ChFC6IOBeQbUvkOdPpKtbCt0qcm1KzQAJEEK5UF3CSEOgthoeFb4/yQemVRY/0idqfZX+FIqd2oJyk5+sYphSnv+EWv10TUGLkijMv00xPPkvJ8MXLBzVUXIvybnQp+Whef3o2bXpQ2YPtl+SGOh9RgN/zpJNhNwNGI0ouw8b66BeUGNytR/UjhlvU+9+YAR1UjKuF+lkWEYEDrXLMv+Mfh7Vdb1AYJV3/oKt6tQ2ckUtpvILMSQOOBuHBPcVyhnuWmAVzXRm9VbLtV2YcU85ZoUuVEyTjrG7p9X1RUS6Fjzn/anqnWG7/hsXhZ3GxX94PqKJa1hKOXxfFn3mJlu5rUW0zbi7LXiv0zXyTcdOfauiBD2soqvB3qd1IDKtJVsHO3l/m/IjiHlGdzU3iLlmf9LU3UY/Si8cRkkHPxnHYy5lXC+0ZH0R56WpEz8jSwPB+lTXM0MiGvL2WaHrzYvU9Pv0AlnPO5AAAAASUVORK5CYII="
     />
   </head>
-  <body>
+  <body class="bg-sand-1 text-sand-12 antialiased">
     <slot />
   </body>
 </html>

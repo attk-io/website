@@ -81,3 +81,6 @@ tmp/
 
 # Playwright MCP
 .playwright-mcp/
+
+# Local design inspiration / reference images (not tracked)
+docs/inspiration/
