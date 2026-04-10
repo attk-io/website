@@ -7,25 +7,7 @@ type Props = {
 
 const { content } = Astro.props;
 
-let html = renderMarkdown(content, {
-  h2: 'font-display text-[clamp(1.5rem,3vw,2rem)] font-medium text-sand-12 mb-10 pl-5 border-l-4 border-copper-9 leading-tight',
-  h3: 'font-mono text-base font-medium text-copper-9 mt-12 mb-3 leading-snug [&:first-of-type]:mt-0',
-  p: 'text-sand-11 mb-2 last:mb-0',
-  a: 'text-copper-9 underline underline-offset-[3px] decoration-1 decoration-copper-9/40 hover:decoration-copper-9',
-});
-
-// Strip any "Phase N." or "N." prefix from the markdown text inside h3 tags,
-// then inject a numbered <span> with the auto-incremented phase number.
-html = html.replace(/(<h3[^>]*>)(?:Phase )?\d+[.:]\s*/g, '$1');
-
-let phaseCount = 0;
-html = html.replace(/<h3([^>]*)>/g, (_match, attrs) => {
-  phaseCount += 1;
-  const num = String(phaseCount).padStart(2, '0');
-  return `<h3${attrs}><span class="block font-display text-4xl font-light leading-none tracking-tight text-sand-7 mb-2">${num}.</span>`;
-});
+const html = renderMarkdown(content);
 ---
 
-<section class="px-6 py-[clamp(3.5rem,8vh,6rem)] border-t-2 border-sand-7">
-  <div class="mx-auto max-w-[36rem]" set:html={html} />
-</section>
+<section set:html={html} />

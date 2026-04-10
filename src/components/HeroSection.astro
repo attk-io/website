@@ -7,14 +7,7 @@ type Props = {
 
 const { content } = Astro.props;
 
-const html = renderMarkdown(content, {
-  h1: 'font-display text-[clamp(2.5rem,6vw,4.5rem)] font-medium leading-[1.05] tracking-[-0.03em] text-sand-12 mb-7',
-  h3: 'font-mono text-[clamp(0.95rem,1.6vw,1.1rem)] font-normal leading-[1.75] text-sand-10 mx-auto mb-10 max-w-[30rem] tracking-normal',
-  p: 'm-0',
-  a: 'inline-block bg-copper-9 text-sand-1 no-underline font-mono text-base font-medium px-9 py-[0.85rem] rounded-[3px] transition-colors hover:bg-copper-10',
-});
+const html = renderMarkdown(content);
 ---
 
-<section class="px-6 pt-[clamp(6rem,18vh,12rem)] pb-[clamp(4rem,12vh,7rem)] text-center border-b-2 border-sand-7">
-  <div class="mx-auto max-w-[38rem]" set:html={html} />
-</section>
+<section set:html={html} />

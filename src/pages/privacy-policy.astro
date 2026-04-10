@@ -3,16 +3,7 @@ import LegalLayout from '../layouts/LegalLayout.astro';
 import { renderMarkdown } from '../lib/markdown';
 import content from '../content/legal/privacy-policy.md?raw';
 
-const html = renderMarkdown(content, {
-  h1: 'font-display text-4xl md:text-5xl font-medium text-sand-12 leading-tight mb-4',
-  h2: 'font-display text-2xl font-medium text-sand-12 leading-tight mt-12 mb-4',
-  p: 'text-sand-11 mb-6 last:mb-0',
-  ul: 'list-disc pl-6 mb-6 space-y-1 text-sand-11',
-  ol: 'list-decimal pl-6 mb-6 space-y-1 text-sand-11',
-  li: 'text-sand-11',
-  a: 'text-copper-9 underline underline-offset-[3px] decoration-1 decoration-copper-9/40 hover:decoration-copper-9',
-  strong: 'font-semibold text-sand-12',
-});
+const html = renderMarkdown(content);
 ---
 
 <LegalLayout title="Privacy Policy">
