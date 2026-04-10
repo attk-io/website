@@ -7,7 +7,7 @@
  *   - Minimal @layer base for element-level details (selection, focus-visible, text rendering, default font)
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 @import 'tailwindcss';
 
@@ -15,6 +15,11 @@
   /* ─── Typography ────────────────────────────────────────────────── */
   --font-hanken:
     'Hanken Grotesk', ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
+    sans-serif;
+
+  /* ─── Wordmark display face ─────────────────────────────────────── */
+  --font-space-grotesk:
+    'Space Grotesk', ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
     sans-serif;
 
   /*
