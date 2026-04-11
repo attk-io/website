@@ -96,6 +96,38 @@
   --color-teal-10: oklch(0.425 0.108 200);
   --color-teal-11: oklch(0.432 0.092 200);
   --color-teal-12: oklch(0.238 0.058 200);
+
+  /* ─── ocean — electric cyan-blue (the alive thread) ──────────────── */
+  /* Hue 218, more saturated than teal. Owns body links, eyebrow numerals,
+   * the mid-page reversal block, and the hero mark. The page's pulse. */
+  --color-ocean-1: oklch(0.992 0.005 218);
+  --color-ocean-2: oklch(0.98 0.014 218);
+  --color-ocean-3: oklch(0.955 0.028 218);
+  --color-ocean-4: oklch(0.928 0.044 218);
+  --color-ocean-5: oklch(0.895 0.062 218);
+  --color-ocean-6: oklch(0.852 0.082 218);
+  --color-ocean-7: oklch(0.795 0.105 218);
+  --color-ocean-8: oklch(0.715 0.135 218);
+  --color-ocean-9: oklch(0.522 0.168 218);
+  --color-ocean-10: oklch(0.475 0.158 218);
+  --color-ocean-11: oklch(0.432 0.148 218);
+  --color-ocean-12: oklch(0.235 0.078 218);
+
+  /* ─── plum — deep aubergine (commercial signature) ──────────────── */
+  /* Hue 340. Reserved for pricing accents and the final CTA call link.
+   * Reads as fountain-pen wax-seal — bookish, considered, never cheap. */
+  --color-plum-1: oklch(0.992 0.005 340);
+  --color-plum-2: oklch(0.979 0.012 340);
+  --color-plum-3: oklch(0.958 0.022 340);
+  --color-plum-4: oklch(0.932 0.034 340);
+  --color-plum-5: oklch(0.902 0.048 340);
+  --color-plum-6: oklch(0.862 0.062 340);
+  --color-plum-7: oklch(0.808 0.078 340);
+  --color-plum-8: oklch(0.718 0.098 340);
+  --color-plum-9: oklch(0.345 0.115 340);
+  --color-plum-10: oklch(0.305 0.108 340);
+  --color-plum-11: oklch(0.395 0.112 340);
+  --color-plum-12: oklch(0.215 0.072 340);
 }
 
 @layer base {
@@ -113,6 +145,15 @@
   ::selection {
     background-color: var(--color-sand-4);
     color: var(--color-sand-12);
+  }
+
+  mark {
+    background-color: var(--color-ocean-3);
+    color: var(--color-ocean-12);
+    padding: 0.05em 0.3em;
+    border-radius: 1px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
   }
 
   :focus-visible {

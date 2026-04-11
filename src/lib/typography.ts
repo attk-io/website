@@ -18,7 +18,7 @@ export const TYPOGRAPHY_BASELINE: ClassMap = {
   h3: 'mt-14 text-[1.1875rem] font-semibold leading-[1.4] tracking-[-0.012em] text-sand-12',
   h4: 'mt-8 text-[1.25rem] font-medium leading-[1.3] tracking-[-0.012em] text-sand-12',
   p: 'mt-5 max-w-[68ch] text-[1.0625rem] leading-[1.65] text-sand-12',
-  a: 'text-sun-11 underline decoration-sun-7 decoration-[1.5px] underline-offset-[3px] hover:decoration-sun-11 transition-colors duration-150',
+  a: 'text-ocean-11 underline decoration-ocean-7 decoration-[1.5px] underline-offset-[3px] hover:decoration-ocean-11 transition-colors duration-150',
   strong: 'font-semibold text-sand-12',
   em: 'italic',
   ul: 'mt-5 max-w-[68ch] space-y-2 list-disc list-outside pl-5',

@@ -15,6 +15,10 @@ const classes = {
   ...TYPOGRAPHY_BASELINE,
   // Long declarative H2 — same tighter wrap treatment as WhoThisIsFor.
   h2: 'max-w-[28ch] text-[clamp(2rem,3vw+0.75rem,2.875rem)] font-semibold leading-[1.05] tracking-[-0.028em] text-sand-12',
+  // H3 carries the tier name + price. Plum tints the commercial moment —
+  // the reader's eye lands on "Discovery — $1,500" and registers "this is
+  // where the money is discussed."
+  h3: 'mt-14 text-[1.1875rem] font-semibold leading-[1.4] tracking-[-0.012em] text-plum-11',
   p: 'mt-5 max-w-[68ch] text-[1.0625rem] leading-[1.65] text-sand-12',
 };
 
@@ -24,7 +28,7 @@ const html = renderMarkdown(content, classes);
 <section class="px-6 py-24 sm:px-10 sm:py-32">
   <div class="mx-auto grid max-w-[120rem] grid-cols-[1fr_minmax(0,44rem)_3fr]">
     <div class="col-start-2">
-      {label && <SectionEyebrow number={number} label={label} />}
+      {label && <SectionEyebrow number={number} label={label} accent="plum" />}
       <div set:html={html} />
     </div>
   </div>
