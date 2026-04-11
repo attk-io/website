@@ -1,13 +1,15 @@
 ---
 import { renderMarkdown } from '../lib/markdown';
 import { TYPOGRAPHY_BASELINE } from '../lib/typography';
+import SectionEyebrow from './SectionEyebrow.astro';
 
 type Props = {
   content: string;
-  eyebrow?: string;
+  number?: string;
+  label?: string;
 };
 
-const { content, eyebrow } = Astro.props;
+const { content, number, label } = Astro.props;
 
 const classes = {
   ...TYPOGRAPHY_BASELINE,
@@ -22,16 +24,7 @@ const html = renderMarkdown(content, classes);
 <section class="px-6 py-24 sm:px-10 sm:py-32">
   <div class="mx-auto grid max-w-[120rem] grid-cols-[1fr_minmax(0,44rem)_3fr]">
     <div class="col-start-2">
-      {
-        eyebrow && (
-          <div class="mb-12 flex items-baseline gap-6">
-            <span class="text-[0.75rem] font-medium tracking-[0.14em] text-sand-11 uppercase">
-              {eyebrow}
-            </span>
-            <span aria-hidden="true" class="h-px flex-1 bg-sand-7" />
-          </div>
-        )
-      }
+      {label && <SectionEyebrow number={number} label={label} />}
       <div set:html={html} />
     </div>
   </div>

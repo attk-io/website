@@ -1,0 +1,19 @@
+---
+type Props = {
+  number?: string;
+  label: string;
+};
+
+const { number, label } = Astro.props;
+
+const text = number ? `${number} · ${label}` : label;
+---
+
+<div class="mb-12 flex items-baseline gap-6">
+  <span
+    class="text-[0.75rem] font-medium tracking-[0.14em] uppercase text-sand-11"
+  >
+    {text}
+  </span>
+  <span aria-hidden="true" class="h-px flex-1 bg-sand-7"></span>
+</div>
