@@ -84,3 +84,6 @@ tmp/
 
 # Local design inspiration / reference images (not tracked)
 docs/inspiration/
+
+# Personal Claude Code settings (permissions, etc.)
+.claude/settings.local.json

@@ -25,6 +25,16 @@ export default [
     files: ['**/*.astro'],
     plugins: { 'better-tailwindcss': betterTailwindcss },
     settings: tailwindSettings,
-    rules: tailwindRules,
+    rules: {
+      ...tailwindRules,
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector: "JSXElement[openingElement.name.name='style']",
+          message:
+            '<style> tags are not allowed in .astro files. Use Tailwind utility classes (including arbitrary variants like has-[...]:, [&:selector]:) instead.',
+        },
+      ],
+    },
   },
 ];
