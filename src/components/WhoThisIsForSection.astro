@@ -1,6 +1,6 @@
 ---
 import { renderMarkdown } from '../lib/markdown';
-import { TYPOGRAPHY_BASELINE } from '../lib/typography';
+import { TYPOGRAPHY_BASELINE, SECTION_QUOTE_H2 } from '../lib/typography';
 import SectionEyebrow from './SectionEyebrow.astro';
 
 type Props = {
@@ -13,9 +13,9 @@ const { content, number, label } = Astro.props;
 
 const classes = {
   ...TYPOGRAPHY_BASELINE,
-  // Long declarative H2 acts as a sub-hero — give it a max-width so it
-  // wraps with intent and slightly tighter tracking for the larger size.
-  h2: 'max-w-[24ch] text-[clamp(2rem,3vw+0.75rem,2.875rem)] font-semibold leading-[1.05] tracking-[-0.028em] text-sand-12',
+  // Long declarative H2 acts as a sub-hero — use the shared quote-style
+  // treatment (Alegreya italic + hanging ") with a narrow wrap.
+  h2: `${SECTION_QUOTE_H2} max-w-[24ch]`,
   p: 'mt-8 max-w-[68ch] text-[1.0625rem] leading-[1.65] text-sand-12',
 };
 

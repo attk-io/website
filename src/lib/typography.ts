@@ -27,3 +27,10 @@ export const TYPOGRAPHY_BASELINE: ClassMap = {
   blockquote: 'mt-6 max-w-[64ch] pl-6 italic text-sand-11',
   hr: 'mt-12 h-px border-0 bg-sand-7',
 };
+
+// Quote-style H2 used by every content section (excluding Hero and FinalCTA).
+// Alegreya italic reads as a spoken line; a hanging opening curly quote
+// (sand-7, rendered via ::before) frames the headline as a pulled quotation.
+// Each section composes this with its own max-width for wrap discipline.
+export const SECTION_QUOTE_H2 =
+  "relative font-spectral italic font-normal text-[clamp(2.25rem,3.25vw+0.75rem,3.25rem)] leading-[1.15] tracking-[-0.005em] text-sand-8 before:content-['“'] before:absolute before:font-spectral before:italic before:font-normal before:text-[1.6em] before:leading-none before:text-sand-7 before:top-[-0.05em] before:-left-5 md:before:-left-10 before:pointer-events-none before:select-none";

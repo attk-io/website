@@ -1,6 +1,6 @@
 ---
 import { renderMarkdown } from '../lib/markdown';
-import { TYPOGRAPHY_BASELINE } from '../lib/typography';
+import { TYPOGRAPHY_BASELINE, SECTION_QUOTE_H2 } from '../lib/typography';
 import SectionEyebrow from './SectionEyebrow.astro';
 
 type Props = {
@@ -15,7 +15,7 @@ const classes = {
   ...TYPOGRAPHY_BASELINE,
   // White-paper section with an ocean dot-grid backdrop. Text reverts to the
   // sand-ink reading scale; links use ocean to echo the dots.
-  h2: 'max-w-[24ch] text-[clamp(2rem,3vw+0.75rem,2.875rem)] font-semibold leading-[1.05] tracking-[-0.028em] text-sand-12',
+  h2: `${SECTION_QUOTE_H2} max-w-[24ch]`,
   p: 'mt-5 max-w-[68ch] text-[1.0625rem] leading-[1.65] text-sand-11',
   strong: 'font-semibold text-sand-12',
   a: 'text-ocean-11 underline decoration-ocean-7 decoration-[1.5px] underline-offset-[3px] hover:decoration-ocean-11 transition-colors duration-150',

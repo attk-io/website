@@ -7,7 +7,7 @@
  *   - Minimal @layer base for element-level details (selection, focus-visible, text rendering, default font)
  */
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@400;500;600;700&family=Spectral:ital,wght@1,400;1,500&display=swap');
 
 @import 'tailwindcss';
 
@@ -28,10 +28,9 @@
     'Liberation Mono', 'Courier New', monospace;
 
   /*
-   * Preserved reference — Spectral was the original serif display pairing before
-   * we pivoted to single-family Swiss. Not currently loaded from Google Fonts.
-   * To revive: add Spectral and Spectral SC to the @import url() at the top of
-   * this file, then use `font-spectral` / `font-spectral-sc` utilities.
+   * Spectral italic is loaded for section-H2 quote treatment (see
+   * SECTION_QUOTE_H2 in src/lib/typography.ts). Spectral SC is not loaded;
+   * add to the @import above if small-caps become needed.
    */
   --font-spectral:
     'Spectral', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;

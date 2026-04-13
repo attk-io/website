@@ -1,6 +1,6 @@
 ---
 import { renderMarkdown } from '../lib/markdown';
-import { TYPOGRAPHY_BASELINE } from '../lib/typography';
+import { TYPOGRAPHY_BASELINE, SECTION_QUOTE_H2 } from '../lib/typography';
 import SectionEyebrow from './SectionEyebrow.astro';
 
 type Props = {
@@ -14,7 +14,7 @@ const { content, number, label } = Astro.props;
 const classes = {
   ...TYPOGRAPHY_BASELINE,
   // Long declarative H2 intro — wrap with intent at ~26ch.
-  h2: 'max-w-[26ch] text-[clamp(2rem,3vw+0.75rem,2.875rem)] font-semibold leading-[1.05] tracking-[-0.028em] text-sand-12',
+  h2: `${SECTION_QUOTE_H2} max-w-[26ch]`,
   // The trailing email link sits in its own paragraph as a soft signature.
   p: 'mt-6 max-w-[68ch] text-[1.0625rem] leading-[1.65] text-sand-12',
 };
