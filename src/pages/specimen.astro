@@ -1,4 +1,6 @@
 ---
+import fs from 'node:fs';
+import path from 'node:path';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 type Hue = 'sand' | 'ink' | 'sun' | 'teal' | 'ocean' | 'plum';
@@ -8,95 +10,30 @@ type Swatch = {
   oklch: string;
 };
 
-const sandSwatches: Swatch[] = [
-  { step: 1, oklch: 'oklch(0.994 0.004 252)' },
-  { step: 2, oklch: 'oklch(0.982 0.005 252)' },
-  { step: 3, oklch: 'oklch(0.966 0.006 252)' },
-  { step: 4, oklch: 'oklch(0.948 0.007 252)' },
-  { step: 5, oklch: 'oklch(0.928 0.008 252)' },
-  { step: 6, oklch: 'oklch(0.905 0.009 252)' },
-  { step: 7, oklch: 'oklch(0.872 0.010 252)' },
-  { step: 8, oklch: 'oklch(0.820 0.011 252)' },
-  { step: 9, oklch: 'oklch(0.625 0.012 252)' },
-  { step: 10, oklch: 'oklch(0.578 0.012 252)' },
-  { step: 11, oklch: 'oklch(0.438 0.013 252)' },
-  { step: 12, oklch: 'oklch(0.205 0.014 252)' },
-];
+// Parse OKLCH values from global.css so the specimen always documents the
+// live token values. Regex matches `--color-{hue}-{step}: oklch(...);`.
+const cssPath = path.resolve('src/styles/global.css');
+const cssSource = fs.readFileSync(cssPath, 'utf8');
+const tokenPattern =
+  /--color-(sand|ink|sun|teal|ocean|plum)-(\d+):\s*(oklch\([^)]+\))/g;
 
-const inkSwatches: Swatch[] = [
-  { step: 1, oklch: 'oklch(0.992 0.005 252)' },
-  { step: 2, oklch: 'oklch(0.979 0.012 252)' },
-  { step: 3, oklch: 'oklch(0.958 0.020 252)' },
-  { step: 4, oklch: 'oklch(0.932 0.030 252)' },
-  { step: 5, oklch: 'oklch(0.902 0.042 252)' },
-  { step: 6, oklch: 'oklch(0.862 0.055 252)' },
-  { step: 7, oklch: 'oklch(0.808 0.068 252)' },
-  { step: 8, oklch: 'oklch(0.718 0.085 252)' },
-  { step: 9, oklch: 'oklch(0.305 0.102 252)' },
-  { step: 10, oklch: 'oklch(0.268 0.095 252)' },
-  { step: 11, oklch: 'oklch(0.355 0.098 252)' },
-  { step: 12, oklch: 'oklch(0.188 0.062 252)' },
-];
+const swatchesByHue: Record<Hue, Swatch[]> = {
+  sand: [],
+  ink: [],
+  sun: [],
+  teal: [],
+  ocean: [],
+  plum: [],
+};
 
-const sunSwatches: Swatch[] = [
-  { step: 1, oklch: 'oklch(0.995 0.007 92)' },
-  { step: 2, oklch: 'oklch(0.983 0.020 92)' },
-  { step: 3, oklch: 'oklch(0.962 0.038 92)' },
-  { step: 4, oklch: 'oklch(0.938 0.062 92)' },
-  { step: 5, oklch: 'oklch(0.908 0.088 92)' },
-  { step: 6, oklch: 'oklch(0.875 0.108 92)' },
-  { step: 7, oklch: 'oklch(0.832 0.128 92)' },
-  { step: 8, oklch: 'oklch(0.782 0.148 92)' },
-  { step: 9, oklch: 'oklch(0.870 0.175 92)' },
-  { step: 10, oklch: 'oklch(0.832 0.170 92)' },
-  { step: 11, oklch: 'oklch(0.442 0.108 78)' },
-  { step: 12, oklch: 'oklch(0.268 0.068 68)' },
-];
+for (const match of cssSource.matchAll(tokenPattern)) {
+  const [, hue, step, oklch] = match;
+  swatchesByHue[hue as Hue].push({ step: Number(step), oklch });
+}
 
-const oceanSwatches: Swatch[] = [
-  { step: 1, oklch: 'oklch(0.992 0.005 218)' },
-  { step: 2, oklch: 'oklch(0.980 0.014 218)' },
-  { step: 3, oklch: 'oklch(0.955 0.028 218)' },
-  { step: 4, oklch: 'oklch(0.928 0.044 218)' },
-  { step: 5, oklch: 'oklch(0.895 0.062 218)' },
-  { step: 6, oklch: 'oklch(0.852 0.082 218)' },
-  { step: 7, oklch: 'oklch(0.795 0.105 218)' },
-  { step: 8, oklch: 'oklch(0.715 0.135 218)' },
-  { step: 9, oklch: 'oklch(0.522 0.168 218)' },
-  { step: 10, oklch: 'oklch(0.475 0.158 218)' },
-  { step: 11, oklch: 'oklch(0.432 0.148 218)' },
-  { step: 12, oklch: 'oklch(0.235 0.078 218)' },
-];
-
-const plumSwatches: Swatch[] = [
-  { step: 1, oklch: 'oklch(0.992 0.005 340)' },
-  { step: 2, oklch: 'oklch(0.979 0.012 340)' },
-  { step: 3, oklch: 'oklch(0.958 0.022 340)' },
-  { step: 4, oklch: 'oklch(0.932 0.034 340)' },
-  { step: 5, oklch: 'oklch(0.902 0.048 340)' },
-  { step: 6, oklch: 'oklch(0.862 0.062 340)' },
-  { step: 7, oklch: 'oklch(0.808 0.078 340)' },
-  { step: 8, oklch: 'oklch(0.718 0.098 340)' },
-  { step: 9, oklch: 'oklch(0.345 0.115 340)' },
-  { step: 10, oklch: 'oklch(0.305 0.108 340)' },
-  { step: 11, oklch: 'oklch(0.395 0.112 340)' },
-  { step: 12, oklch: 'oklch(0.215 0.072 340)' },
-];
-
-const tealSwatches: Swatch[] = [
-  { step: 1, oklch: 'oklch(0.992 0.005 200)' },
-  { step: 2, oklch: 'oklch(0.980 0.013 200)' },
-  { step: 3, oklch: 'oklch(0.958 0.024 200)' },
-  { step: 4, oklch: 'oklch(0.932 0.038 200)' },
-  { step: 5, oklch: 'oklch(0.902 0.050 200)' },
-  { step: 6, oklch: 'oklch(0.860 0.062 200)' },
-  { step: 7, oklch: 'oklch(0.808 0.078 200)' },
-  { step: 8, oklch: 'oklch(0.728 0.095 200)' },
-  { step: 9, oklch: 'oklch(0.462 0.115 200)' },
-  { step: 10, oklch: 'oklch(0.425 0.108 200)' },
-  { step: 11, oklch: 'oklch(0.432 0.092 200)' },
-  { step: 12, oklch: 'oklch(0.238 0.058 200)' },
-];
+for (const hue of Object.keys(swatchesByHue) as Hue[]) {
+  swatchesByHue[hue].sort((a, b) => a.step - b.step);
+}
 
 const scales: {
   name: Hue;
@@ -108,37 +45,37 @@ const scales: {
     name: 'sand',
     label: 'Sand',
     description: 'Cool neutral ramp — tinted toward ink for cohesion',
-    swatches: sandSwatches,
+    swatches: swatchesByHue.sand,
   },
   {
     name: 'ink',
     label: 'Ink',
     description: 'Dark fountain-pen blue-violet — deep, literary',
-    swatches: inkSwatches,
+    swatches: swatchesByHue.ink,
   },
   {
     name: 'sun',
     label: 'Sun',
     description: 'Sunshine yellow — bright, warm, joyful',
-    swatches: sunSwatches,
+    swatches: swatchesByHue.sun,
   },
   {
     name: 'teal',
     label: 'Teal',
     description: 'Petrol peacock — cool, modern, restrained',
-    swatches: tealSwatches,
+    swatches: swatchesByHue.teal,
   },
   {
     name: 'ocean',
     label: 'Ocean',
     description: 'Electric cyan-blue — the alive thread',
-    swatches: oceanSwatches,
+    swatches: swatchesByHue.ocean,
   },
   {
     name: 'plum',
     label: 'Plum',
     description: 'Deep aubergine — commercial signature',
-    swatches: plumSwatches,
+    swatches: swatchesByHue.plum,
   },
 ];
 ---
@@ -299,12 +236,15 @@ const scales: {
                 {scale.swatches.map((swatch) => {
                   const textClass =
                     swatch.step >= 9 ? 'text-sand-1' : 'text-sand-12';
-                  const bgStyle = `background-color: var(--color-${scale.name}-${swatch.step})`;
+                  const bgStyle = `background-color: ${swatch.oklch}`;
                   return (
-                    <div
+                    <button
+                      type="button"
                       style={bgStyle}
+                      data-swatch
+                      data-token={`${scale.name}-${swatch.step}`}
                       class:list={[
-                        'flex aspect-square flex-col justify-between p-2',
+                        'group relative flex aspect-square flex-col justify-between p-2 text-left transition-opacity hover:opacity-95 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-sand-12',
                         textClass,
                       ]}
                     >
@@ -314,7 +254,15 @@ const scales: {
                       <span class="text-[1rem] leading-none">
                         {swatch.step}
                       </span>
-                    </div>
+                      <span
+                        data-swatch-feedback
+                        class="pointer-events-none absolute inset-0 flex items-center justify-center bg-current/0 font-dm-mono text-[0.6875rem] tracking-[0.02em] opacity-0 transition-opacity"
+                      >
+                        <span class="rounded-[1px] bg-sand-12 px-2 py-1 text-sand-1">
+                          Copied
+                        </span>
+                      </span>
+                    </button>
                   );
                 })}
               </div>
@@ -638,3 +586,49 @@ const scales: {
     </footer>
   </main>
 </BaseLayout>
+
+<script>
+  const toHex = (channel: number) =>
+    Math.round(channel).toString(16).padStart(2, '0');
+
+  // Round-trip the color through a canvas so the browser converts any
+  // valid CSS color (oklch, rgb, hex, named) to an 8-bit sRGB pixel.
+  const canvas = document.createElement('canvas');
+  canvas.width = 1;
+  canvas.height = 1;
+  const ctx = canvas.getContext('2d');
+
+  const toHexColor = (color: string): string | null => {
+    if (!ctx) return null;
+    ctx.clearRect(0, 0, 1, 1);
+    ctx.fillStyle = '#000';
+    ctx.fillStyle = color;
+    ctx.fillRect(0, 0, 1, 1);
+    const [r, g, b] = ctx.getImageData(0, 0, 1, 1).data;
+    return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+  };
+
+  const swatches =
+    document.querySelectorAll<HTMLButtonElement>('[data-swatch]');
+
+  for (const swatch of swatches) {
+    swatch.addEventListener('click', async () => {
+      const computed = getComputedStyle(swatch).backgroundColor;
+      const hex = toHexColor(computed);
+      if (!hex) return;
+      try {
+        await navigator.clipboard.writeText(hex);
+      } catch {
+        return;
+      }
+      const feedback = swatch.querySelector<HTMLElement>(
+        '[data-swatch-feedback]'
+      );
+      if (!feedback) return;
+      feedback.style.opacity = '1';
+      window.setTimeout(() => {
+        feedback.style.opacity = '0';
+      }, 900);
+    });
+  }
+</script>
