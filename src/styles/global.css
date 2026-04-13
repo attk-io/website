@@ -166,3 +166,15 @@
     accent-color: var(--color-sand-12);
   }
 }
+
+/* ─── Utilities ───────────────────────────────────────────────────── */
+/* Repeating ocean dot-grid used behind "paper" sections. Dots are ink-5
+ * so they read as graph-paper rather than pure decoration. */
+@utility dot-grid {
+  background-image: radial-gradient(
+    var(--color-ink-5) 1.25px,
+    transparent 1.25px
+  );
+  background-size: 24px 24px;
+  background-position: 0 0;
+}

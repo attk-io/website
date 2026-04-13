@@ -13,33 +13,26 @@ const { content, number, label } = Astro.props;
 
 const classes = {
   ...TYPOGRAPHY_BASELINE,
-  // Full-bleed ocean reversal block — the single boldest moment on the page.
-  // Sand-1 text on ocean-9 background; links flip to sun so they remain legible
-  // against the saturated cyan-blue.
-  h2: 'max-w-[24ch] text-[clamp(2rem,3vw+0.75rem,2.875rem)] font-semibold leading-[1.05] tracking-[-0.028em] text-sand-1',
-  p: 'mt-5 max-w-[68ch] text-[1.0625rem] leading-[1.65] text-sand-2',
-  strong: 'font-semibold text-sand-1',
-  a: 'text-sun-9 underline decoration-sun-7 decoration-[1.5px] underline-offset-[3px] hover:decoration-sun-11 transition-colors duration-150',
+  // White-paper section with an ocean dot-grid backdrop. Text reverts to the
+  // sand-ink reading scale; links use ocean to echo the dots.
+  h2: 'max-w-[24ch] text-[clamp(2rem,3vw+0.75rem,2.875rem)] font-semibold leading-[1.05] tracking-[-0.028em] text-sand-12',
+  p: 'mt-5 max-w-[68ch] text-[1.0625rem] leading-[1.65] text-sand-11',
+  strong: 'font-semibold text-sand-12',
+  a: 'text-ocean-11 underline decoration-ocean-7 decoration-[1.5px] underline-offset-[3px] hover:decoration-ocean-11 transition-colors duration-150',
 };
 
 const html = renderMarkdown(content, classes);
 ---
 
-<section class="bg-ocean-9 px-6 py-24 sm:px-10 sm:py-32">
-  <div class="mx-auto grid max-w-[120rem] grid-cols-[1fr_minmax(0,44rem)_3fr]">
+<section
+  class="relative border-y border-ink-3 bg-sand-1 dot-grid px-6 py-24 sm:px-10 sm:py-32"
+>
+  <div
+    class="relative mx-auto grid max-w-480 grid-cols-[1fr_minmax(0,44rem)_3fr]"
+  >
     <div class="col-start-2">
-      {label && <SectionEyebrow number={number} label={label} accent="sun" onDark />}
+      {label && <SectionEyebrow number={number} label={label} accent="ocean" />}
       <div set:html={html} />
     </div>
   </div>
 </section>
-
-<style>
-  section :global(mark) {
-    background-color: var(--color-sun-9);
-    color: var(--color-sand-12);
-  }
-  section :global(:focus-visible) {
-    outline-color: var(--color-sand-1);
-  }
-</style>
