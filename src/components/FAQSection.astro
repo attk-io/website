@@ -19,7 +19,8 @@ const classes = {
   // the answer text on the next line. Promote strong to a block so the
   // question sits on its own line above the answer; give p a generous
   // top-margin so Q&A pairs are clearly separated.
-  strong: 'mb-3 block text-[1.1875rem] font-semibold tracking-[-0.012em] text-sand-12',
+  strong:
+    'mb-3 block text-[1.1875rem] font-semibold tracking-[-0.012em] text-sand-12',
   p: 'mt-12 max-w-[68ch] text-[1.0625rem] leading-[1.65] text-sand-11',
 };
 
@@ -27,7 +28,7 @@ const html = renderMarkdown(content, classes);
 ---
 
 <section class="px-6 py-24 sm:px-10 sm:py-32">
-  <div class="mx-auto grid max-w-[120rem] grid-cols-[1fr_minmax(0,44rem)_3fr]">
+  <div class="mx-auto grid max-w-480 grid-cols-[1fr_minmax(0,44rem)_3fr]">
     <div class="col-start-2">
       {label && <SectionEyebrow number={number} label={label} />}
       <div set:html={html} />
