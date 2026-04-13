@@ -14,8 +14,10 @@ const { content, number, label } = Astro.props;
 const heroClasses = {
   ...TYPOGRAPHY_BASELINE,
   h1: 'max-w-[14ch] text-[clamp(2.875rem,6vw+0.5rem,5.25rem)] font-semibold leading-[0.96] tracking-[-0.035em] text-sand-12',
-  h3: 'mt-8 max-w-[52ch] font-dm-mono text-[clamp(0.9375rem,0.5vw+0.75rem,1.0625rem)] font-normal leading-[1.7] tracking-[0] text-sand-11',
-  p: 'mt-12 text-[1.0625rem] leading-[1.6] text-sand-12',
+  // Default <p> is the mono lede descriptor. The CTA paragraph — a <p>
+  // whose direct child is an <a> — is reset via has-[>a]: variants so it
+  // reads as a standalone call-to-action rather than inheriting the lede.
+  p: 'mt-8 max-w-[52ch] font-dm-mono text-[clamp(0.9375rem,0.5vw+0.75rem,1.0625rem)] font-normal leading-[1.7] tracking-[0] text-sand-11 has-[>a]:mt-12 has-[>a]:max-w-none has-[>a]:font-hanken has-[>a]:text-[1.0625rem] has-[>a]:leading-[1.6] has-[>a]:tracking-normal has-[>a]:text-sand-12',
   a: 'text-[1.0625rem] font-medium text-ocean-11 underline decoration-ocean-7 decoration-[2px] underline-offset-[6px] hover:decoration-ocean-11 transition-colors duration-150',
 };
 

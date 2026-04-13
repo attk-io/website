@@ -15,13 +15,9 @@ const classes = {
   ...TYPOGRAPHY_BASELINE,
   // Long declarative H2 intro — wrap with intent at ~26ch.
   h2: 'max-w-[26ch] text-[clamp(2rem,3vw+0.75rem,2.875rem)] font-semibold leading-[1.05] tracking-[-0.028em] text-sand-12',
-  // Each FAQ entry is a single paragraph in markdown: bold question, then
-  // the answer text on the next line. Promote strong to a block so the
-  // question sits on its own line above the answer; give p a generous
-  // top-margin so Q&A pairs are clearly separated.
-  strong:
-    'mb-3 block text-[1.1875rem] font-semibold tracking-[-0.012em] text-sand-12',
-  p: 'mt-12 max-w-[68ch] text-[1.0625rem] leading-[1.65] text-sand-11',
+  // Answers follow their question h3 tightly; sand-11 keeps them quieter
+  // than the plum question above.
+  p: 'mt-3 max-w-[68ch] text-[1.0625rem] leading-[1.65] text-sand-11',
 };
 
 const html = renderMarkdown(content, classes);

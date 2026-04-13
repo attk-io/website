@@ -31,7 +31,7 @@ const html = renderMarkdown(content, classes);
     class="relative mx-auto grid max-w-480 grid-cols-[1fr_minmax(0,44rem)_3fr]"
   >
     <div class="col-start-2">
-      {label && <SectionEyebrow number={number} label={label} accent="ocean" />}
+      {label && <SectionEyebrow number={number} label={label} />}
       <div set:html={html} />
     </div>
   </div>
