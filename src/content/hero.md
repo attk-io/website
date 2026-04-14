@@ -2,4 +2,4 @@
 
 A decade of experience shipping products that last. One person who <mark>takes full ownership of the technical side</mark> — so you can focus on building the business.
 
-[Let's talk](https://example.com)
+[Let's have a 30 minute call](https://calendar.app.google/XZUxivgqNw9pme3B7)
