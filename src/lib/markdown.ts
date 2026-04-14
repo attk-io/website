@@ -85,8 +85,118 @@ export function renderMarkdown(
   content: string,
   classes: ClassMap = {}
 ): string {
-  return marked.parse(content, {
+  const html = marked.parse(content, {
     renderer: new TailwindRenderer(classes),
     async: false,
   }) as string;
+  return preventWidows(smartenQuotes(html));
+}
+
+const BLOCK_TAGS = new Set([
+  'p',
+  'h1',
+  'h2',
+  'h3',
+  'h4',
+  'h5',
+  'h6',
+  'li',
+  'blockquote',
+  'figcaption',
+]);
+
+function smartenQuotes(html: string): string {
+  return replaceText(html, (text) => {
+    const decoded = text.replace(/&#39;/g, "'").replace(/&quot;/g, '"');
+    return decoded
+      .replace(/(^|[\s([{—–\-])"/g, '$1\u201C')
+      .replace(/"/g, '\u201D')
+      .replace(/(^|[\s([{—–\-])'/g, '$1\u2018')
+      .replace(/'/g, '\u2019');
+  });
+}
+
+function preventWidows(html: string): string {
+  const tokens = tokenize(html);
+  const openStack: number[] = [];
+  for (let i = 0; i < tokens.length; i++) {
+    const token = tokens[i];
+    if (token.kind !== 'tag') continue;
+    const info = parseTag(token.value);
+    if (!info) continue;
+    if (BLOCK_TAGS.has(info.name)) {
+      if (info.closing) {
+        const openIndex = openStack.pop();
+        if (openIndex === undefined) continue;
+        const lastText = findLastText(tokens, openIndex + 1, i);
+        if (lastText === -1) continue;
+        tokens[lastText] = {
+          kind: 'text',
+          value: tokens[lastText].value.replace(/(\s)(\S+\s*)$/, '\u00A0$2'),
+        };
+      } else if (!info.selfClosing) {
+        openStack.push(i);
+      }
+    }
+  }
+  return tokens.map((t) => t.value).join('');
+}
+
+type Token = { kind: 'tag' | 'text'; value: string };
+
+function tokenize(html: string): Token[] {
+  const tokens: Token[] = [];
+  let i = 0;
+  while (i < html.length) {
+    if (html[i] === '<') {
+      let j = i + 1;
+      while (j < html.length) {
+        const c = html[j];
+        if (c === '"' || c === "'") {
+          const end = html.indexOf(c, j + 1);
+          j = end === -1 ? html.length : end + 1;
+          continue;
+        }
+        if (c === '>') {
+          j++;
+          break;
+        }
+        j++;
+      }
+      tokens.push({ kind: 'tag', value: html.slice(i, j) });
+      i = j;
+      continue;
+    }
+    const next = html.indexOf('<', i);
+    const end = next === -1 ? html.length : next;
+    tokens.push({ kind: 'text', value: html.slice(i, end) });
+    i = end;
+  }
+  return tokens;
+}
+
+function parseTag(
+  tag: string
+): { name: string; closing: boolean; selfClosing: boolean } | null {
+  const match = tag.match(/^<(\/?)([a-zA-Z][a-zA-Z0-9]*)/);
+  if (!match) return null;
+  return {
+    name: match[2].toLowerCase(),
+    closing: match[1] === '/',
+    selfClosing: tag.endsWith('/>'),
+  };
+}
+
+function findLastText(tokens: Token[], start: number, end: number): number {
+  for (let k = end - 1; k >= start; k--) {
+    if (tokens[k].kind === 'text' && /\S/.test(tokens[k].value)) return k;
+  }
+  return -1;
+}
+
+function replaceText(html: string, fn: (text: string) => string): string {
+  return tokenize(html)
+    .map((t) => (t.kind === 'text' ? { ...t, value: fn(t.value) } : t))
+    .map((t) => t.value)
+    .join('');
 }
