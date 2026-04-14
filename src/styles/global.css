@@ -171,6 +171,36 @@
 /* Blueprint-style grid paper used behind "paper" sections. Fine minor
  * lines every 24px with a heavier major line every 120px (5 squares),
  * both in ocean to evoke classic engineering grid paper. */
+/* How-It-Works phase numerals. Auto-numbers each h3 inside the marked
+ * container and hangs the numeral in the left margin — an oversized,
+ * Spectral-italic counter that echoes the SECTION_QUOTE_H2 quotation mark
+ * but scaled up to become the section's dominant visual rhythm. */
+@utility how-phases {
+  counter-reset: phase;
+  & h3 {
+    counter-increment: phase;
+    position: relative;
+  }
+  & h3::before {
+    content: counter(phase);
+    position: absolute;
+    right: 100%;
+    top: -0.15em;
+    padding-right: 0.15em;
+    font-family: var(--font-spectral);
+    font-style: italic;
+    font-weight: 200;
+    /*font-size: clamp(6rem, 12vw, 11rem);*/
+    font-size: clamp(4.5rem, 9vw, 8.25rem);
+    /*font-size: clamp(3rem, 6vw, 5.5rem);*/
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--color-sand-7);
+    pointer-events: none;
+    user-select: none;
+  }
+}
+
 @utility grid-paper {
   background-image:
     linear-gradient(to right, var(--color-ocean-5) 1px, transparent 1px),
