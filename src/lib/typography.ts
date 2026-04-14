@@ -15,7 +15,7 @@ import type { ClassMap } from './markdown';
 export const TYPOGRAPHY_BASELINE: ClassMap = {
   h1: 'text-[clamp(2.5rem,4vw+1rem,3.75rem)] font-semibold leading-[1.0] tracking-[-0.028em] text-sand-12',
   h2: 'text-[clamp(2rem,3vw+0.75rem,2.875rem)] font-semibold leading-[1.02] tracking-[-0.025em] text-sand-12',
-  h3: 'mt-14 text-[1.1875rem] font-semibold leading-[1.4] tracking-[-0.012em] text-plum-11',
+  h3: "isolate mt-14 text-[1.1875rem] font-semibold leading-[1.4] tracking-[-0.012em] text-ink-12 after:content-[''] after:relative after:-z-10 after:inline-block after:size-[0.75ex] after:bg-sun-9 after:align-baseline after:-ml-[0.25em]",
   h4: 'mt-8 text-[1.25rem] font-medium leading-[1.3] tracking-[-0.012em] text-sand-12',
   p: 'mt-5 max-w-[68ch] text-[1.0625rem] leading-[1.65] text-sand-12',
   a: 'text-ocean-11 underline decoration-ocean-7 decoration-[1.5px] underline-offset-[3px] hover:decoration-ocean-11 transition-colors duration-150',
