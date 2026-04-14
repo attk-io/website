@@ -24,10 +24,20 @@ const {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <script is:inline>
       try {
-        if (!localStorage.getItem('attkSeenIntro')) {
+        const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const small = matchMedia('(max-width: 639px)').matches;
+        if (!localStorage.getItem('attkSeenIntro') && !reduce && !small) {
           window.__attkIntroPending = true;
+          if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+          }
           const sheet = document.createElement('style');
-          sheet.textContent = 'body{zoom:0.1}';
+          sheet.textContent =
+            '#attk-stage{transform:scale(0.05);transform-origin:0 0;will-change:transform;visibility:hidden}' +
+            '[data-intro-fade]{opacity:0;will-change:opacity}' +
+            '#attk-stage :where(section,main){overflow:visible!important}' +
+            'html.attk-intro-active,html.attk-intro-active body{overflow:hidden!important;height:100%}';
+          document.documentElement.classList.add('attk-intro-active');
           document.head.appendChild(sheet);
           window.__attkIntroSheet = sheet;
         }
@@ -40,59 +50,9 @@ const {
     />
   </head>
   <body class="bg-sand-1 text-sand-12 antialiased">
-    <slot />
-    <script is:inline>
-      (() => {
-        if (!window.__attkIntroPending) return;
-        const body = document.body;
-        const startZoom = 0.1;
-        const endZoom = 1;
-        const delay = 4000;
-        const duration = 2000;
-        const easeIn = (t) => t * t * t * t * t;
-        const easeInOut = (t) =>
-          t < 0.5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2;
-
-        const pinBottom = () => {
-          window.scrollTo(0, document.documentElement.scrollHeight);
-        };
-
-        if (window.__attkIntroSheet) window.__attkIntroSheet.remove();
-        body.style.zoom = String(startZoom);
-        pinBottom();
-
-        const scrollToTop = () => {
-          const startY = window.scrollY;
-          const scrollDuration = 3000;
-          const t0 = performance.now();
-          const tick = (now) => {
-            const p = Math.min((now - t0) / scrollDuration, 1);
-            window.scrollTo(0, startY * (1 - easeInOut(p)));
-            if (p < 1) requestAnimationFrame(tick);
-          };
-          requestAnimationFrame(tick);
-        };
-
-        setTimeout(() => {
-          const t0 = performance.now();
-          const tick = (now) => {
-            const p = Math.min((now - t0) / duration, 1);
-            body.style.zoom = String(
-              startZoom + (endZoom - startZoom) * easeIn(p)
-            );
-            pinBottom();
-            if (p < 1) requestAnimationFrame(tick);
-            else {
-              body.style.zoom = '';
-              try {
-                localStorage.setItem('attkSeenIntro', '1');
-              } catch (e) {}
-              setTimeout(scrollToTop, 500);
-            }
-          };
-          requestAnimationFrame(tick);
-        }, delay);
-      })();
+    <div id="attk-stage"><slot /></div>
+    <script>
+      import '../scripts/intro-animation';
     </script>
   </body>
 </html>

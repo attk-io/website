@@ -20,23 +20,33 @@ import finalCtaContent from '../content/final-cta.md?raw';
 ---
 
 <BaseLayout title="ATTK Software">
-  <HeaderSection />
+  <div data-intro-fade><HeaderSection /></div>
   <main class="overflow-clip">
-    <HeroSection content={heroContent} />
-    <WhoThisIsForSection
-      content={whoThisIsForContent}
-      number="01"
-      label="Who This Is For"
-    />
-    <AboutSection content={aboutContent} number="02" label="About" />
-    <HowItWorksSection
-      content={howItWorksContent}
-      number="03"
-      label="How It Works"
-    />
-    <PricingSection content={pricingContent} number="04" label="Pricing" />
-    <FAQSection content={faqContent} number="05" label="FAQ" />
+    <div data-intro-fade><HeroSection content={heroContent} /></div>
+    <div data-intro-fade>
+      <WhoThisIsForSection
+        content={whoThisIsForContent}
+        number="01"
+        label="Who This Is For"
+      />
+    </div>
+    <div data-intro-fade>
+      <AboutSection content={aboutContent} number="02" label="About" />
+    </div>
+    <div data-intro-fade>
+      <HowItWorksSection
+        content={howItWorksContent}
+        number="03"
+        label="How It Works"
+      />
+    </div>
+    <div data-intro-fade>
+      <PricingSection content={pricingContent} number="04" label="Pricing" />
+    </div>
+    <div data-intro-fade>
+      <FAQSection content={faqContent} number="05" label="FAQ" />
+    </div>
     <FinalCTASection content={finalCtaContent} />
   </main>
-  <Footer />
+  <div data-intro-fade><Footer /></div>
 </BaseLayout>
