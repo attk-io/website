@@ -4,4 +4,4 @@ The first step is a conversation. No commitment, no pressure — just an honest 
 
 [Book a short introduction call](https://calendar.app.google/XZUxivgqNw9pme3B7)
 
-[Or send me an email](mailto://christian@attk.io)
+[Or send me an email](mailto:christian@attk.io)
