@@ -33,16 +33,7 @@ function splitHeading(source: string): [string, string] {
     <div class="col-start-2">
       {label && <SectionEyebrow number={number} label={label} />}
       <div set:html={headingHtml} />
-      <div class="mt-6">
-        <img
-          src="/IMG_5046.jpg"
-          alt="Portrait of Christian Naths"
-          class="float-right mt-2 mb-6 ml-8 aspect-4/5 w-56 max-w-[45%] rounded-sm border border-ink-3 bg-sand-2 object-cover"
-          loading="lazy"
-          decoding="async"
-        />
-        <div set:html={bodyHtml} />
-      </div>
+      <div class="mt-6" set:html={bodyHtml} />
     </div>
   </div>
 </section>
