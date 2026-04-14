@@ -13,20 +13,36 @@ const { content, number, label } = Astro.props;
 
 const classes = {
   ...TYPOGRAPHY_BASELINE,
-  // Long declarative H2 intro — wrap with intent at ~26ch.
   h2: `${SECTION_QUOTE_H2} max-w-[26ch]`,
-  // The trailing email link sits in its own paragraph as a soft signature.
-  p: 'mt-6 max-w-[68ch] text-[1.0625rem] leading-[1.65] text-sand-12',
+  p: 'mt-6 text-[1.0625rem] leading-[1.65] text-sand-12',
 };
 
-const html = renderMarkdown(content, classes);
+const [headingSource, bodySource] = splitHeading(content);
+const headingHtml = renderMarkdown(headingSource, classes);
+const bodyHtml = renderMarkdown(bodySource, classes);
+
+function splitHeading(source: string): [string, string] {
+  const match = source.match(/^(##\s[^\n]*)\n+([\s\S]*)$/);
+  if (!match) return [source, ''];
+  return [match[1], match[2]];
+}
 ---
 
 <section class="px-6 py-24 sm:px-10 sm:py-32">
   <div class="mx-auto grid max-w-480 grid-cols-[1fr_minmax(0,44rem)_3fr]">
     <div class="col-start-2">
       {label && <SectionEyebrow number={number} label={label} />}
-      <div set:html={html} />
+      <div set:html={headingHtml} />
+      <div class="mt-6">
+        <img
+          src="/IMG_5046.jpg"
+          alt="Portrait of Christian Naths"
+          class="float-right mt-2 mb-6 ml-8 aspect-4/5 w-56 max-w-[45%] rounded-sm border border-ink-3 bg-sand-2 object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+        <div set:html={bodyHtml} />
+      </div>
     </div>
   </div>
 </section>

@@ -167,13 +167,19 @@
 }
 
 /* ─── Utilities ───────────────────────────────────────────────────── */
-/* Repeating ocean dot-grid used behind "paper" sections. Dots are ink-5
- * so they read as graph-paper rather than pure decoration. */
-@utility dot-grid {
-  background-image: radial-gradient(
-    var(--color-ink-5) 1.25px,
-    transparent 1.25px
-  );
-  background-size: 24px 24px;
+/* Blueprint-style grid paper used behind "paper" sections. Fine minor
+ * lines every 24px with a heavier major line every 120px (5 squares),
+ * both in ocean to evoke classic engineering grid paper. */
+@utility grid-paper {
+  background-image:
+    linear-gradient(to right, var(--color-ocean-5) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-ocean-5) 1px, transparent 1px),
+    linear-gradient(to right, var(--color-ocean-4) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-ocean-4) 1px, transparent 1px);
+  background-size:
+    120px 120px,
+    120px 120px,
+    24px 24px,
+    24px 24px;
   background-position: 0 0;
 }
