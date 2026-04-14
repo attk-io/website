@@ -1,6 +1,7 @@
 ---
 import { renderMarkdown } from '../lib/markdown';
 import { TYPOGRAPHY_BASELINE } from '../lib/typography';
+import Logo from './Logo.astro';
 
 type Props = {
   content: string;
@@ -23,36 +24,34 @@ const html = renderMarkdown(content, classes);
 ---
 
 <section class="relative overflow-x-clip px-6 pt-24 sm:px-10 sm:pt-32">
-  <div
-    class="pointer-events-none absolute inset-x-0 bottom-0 mx-auto grid max-w-480 grid-cols-[1fr_minmax(0,44rem)_3fr] px-6 sm:px-10"
-  >
-    <span
-      aria-hidden="true"
-      class="col-start-1 col-end-2 inline-block -translate-x-[2.6875ch] justify-self-end font-space-grotesk text-[2208px] leading-[0.6913] font-semibold whitespace-nowrap text-sand-12"
-    >
-      Attk
-    </span>
-  </div>
-  <div
-    class="relative mx-auto grid max-w-480 grid-cols-[1fr_minmax(0,44rem)_3fr]"
-  >
-    <div
-      class="relative z-10 col-start-2 bg-sun-9 px-8 py-16 sm:px-12 sm:py-20"
-    >
-      {
-        eyebrow && (
-          <div class="mb-12 flex items-baseline gap-6">
-            <span class="text-[0.75rem] font-medium tracking-[0.14em] text-ink-12 uppercase">
-              {eyebrow}
-            </span>
-            <span aria-hidden="true" class="h-px flex-1 bg-ink-12" />
-          </div>
-        )
-      }
-      <div
-        class="[&>p:last-of-type_a]:mt-0 [&>p:last-of-type_a]:bg-transparent [&>p:last-of-type_a]:py-0 [&>p:last-of-type_a]:text-ink-12 [&>p:last-of-type_a]:decoration-ink-12 [&>p:last-of-type_a]:underline-offset-4 [&>p:last-of-type_a]:hover:bg-transparent [&>p:last-of-type_a]:hover:decoration-ink-11"
-        set:html={html}
+  <div class="mx-auto grid max-w-480 grid-cols-[1fr_minmax(0,44rem)_3fr]">
+    <div class="relative">
+      <Logo
+        className="absolute right-0 bottom-0 h-350 translate-x-[42em] [&_rect]:hidden"
       />
+    </div>
+
+    <div
+      class="relative mx-auto grid max-w-480 grid-cols-[1fr_minmax(0,44rem)_3fr]"
+    >
+      <div
+        class="relative z-10 col-start-2 bg-sun-9 px-8 py-16 sm:px-12 sm:py-20"
+      >
+        {
+          eyebrow && (
+            <div class="mb-12 flex items-baseline gap-6">
+              <span class="text-[0.75rem] font-medium tracking-[0.14em] text-ink-12 uppercase">
+                {eyebrow}
+              </span>
+              <span aria-hidden="true" class="h-px flex-1 bg-ink-12" />
+            </div>
+          )
+        }
+        <div
+          class="[&>p:last-of-type_a]:mt-0 [&>p:last-of-type_a]:bg-transparent [&>p:last-of-type_a]:py-0 [&>p:last-of-type_a]:text-ink-12 [&>p:last-of-type_a]:decoration-ink-12 [&>p:last-of-type_a]:underline-offset-4 [&>p:last-of-type_a]:hover:bg-transparent [&>p:last-of-type_a]:hover:decoration-ink-11"
+          set:html={html}
+        />
+      </div>
     </div>
   </div>
 </section>

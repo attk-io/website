@@ -1,24 +1,11 @@
 ---
-
+import Logo from './Logo.astro';
 ---
 
 <header class="px-6 pt-10 sm:px-10 sm:pt-12">
   <div class="mx-auto grid max-w-480 grid-cols-[1fr_minmax(0,44rem)_3fr]">
-    <div class="col-start-2 flex items-center">
-      <a
-        href="/"
-        aria-label="Attk"
-        class="text-sand-12 transition-opacity hover:opacity-70"
-      >
-        <span
-          class="isolate inline-block font-space-grotesk text-[1.125rem] leading-none font-semibold"
-        >
-          Attk<span
-            aria-hidden="true"
-            class="relative -z-10 -ml-[0.12em] inline-block size-[0.25em] bg-sun-9 align-baseline"
-          ></span>
-        </span>
-      </a>
+    <div class="col-start-2">
+      <Logo className="h-4" />
     </div>
   </div>
 </header>
