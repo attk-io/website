@@ -20,7 +20,9 @@ const STORAGE_KEY = 'attkSeenIntro';
 const HOLD_MS = 4000;
 const ZOOM_MS = 2000;
 const FADE_SCROLL_MS = 2500;
-const START_SCALE = 0.05;
+const MIN_START_SCALE = 0.02;
+const MAX_START_SCALE = 0.25;
+const FALLBACK_START_SCALE = 0.05;
 
 const easeInOut = (t: number): number =>
   t < 0.5 ? 16 * t ** 5 : 1 - Math.pow(-2 * t + 2, 5) / 2;
@@ -54,17 +56,38 @@ const measureAnchor = (anchor: HTMLElement): { x: number; y: number } => {
   return { x, y: y + anchor.offsetHeight / 2 };
 };
 
+const computeStartScale = (stage: HTMLElement, originX: number): number => {
+  const svg = stage.querySelector<SVGSVGElement>(
+    'section:has([data-intro-anchor]) svg'
+  );
+  if (!svg) return FALLBACK_START_SCALE;
+  const prev = stage.style.transform;
+  stage.style.transform = 'none';
+  const rect = svg.getBoundingClientRect();
+  stage.style.transform = prev;
+  const svgLeft = rect.left + window.scrollX;
+  const svgRight = rect.right + window.scrollX;
+  const vw = window.innerWidth;
+  const leftCap = svgLeft < originX ? originX / (originX - svgLeft) : Infinity;
+  const rightCap =
+    svgRight > originX ? (vw - originX) / (svgRight - originX) : Infinity;
+  const fit = Math.min(leftCap, rightCap) * 0.8;
+  return Math.max(MIN_START_SCALE, Math.min(MAX_START_SCALE, fit));
+};
+
 const runIntro = async (
   stage: HTMLElement,
   anchor: HTMLElement,
   fades: NodeListOf<HTMLElement>
 ): Promise<void> => {
   let offsetY = 0;
+  let startScale = FALLBACK_START_SCALE;
 
   const applyAnchor = () => {
     const { x, y } = measureAnchor(anchor);
     stage.style.transformOrigin = `${x}px ${y}px`;
     offsetY = Math.max(0, y - window.innerHeight / 2);
+    startScale = computeStartScale(stage, x);
   };
 
   const setTransform = (scale: number, ty: number) => {
@@ -79,13 +102,13 @@ const runIntro = async (
 
   await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
   applyAnchor();
-  setTransform(START_SCALE, offsetY);
+  setTransform(startScale, offsetY);
   stage.style.visibility = 'visible';
 
   await wait(HOLD_MS);
 
   await animate(ZOOM_MS, (p) => {
-    const s = START_SCALE + (1 - START_SCALE) * easeInOut(p);
+    const s = startScale + (1 - startScale) * easeInOut(p);
     setTransform(s, offsetY);
   });
 
