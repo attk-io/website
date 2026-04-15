@@ -187,12 +187,13 @@
     right: 100%;
     top: -0.15em;
     padding-right: 0.15em;
-    font-family: var(--font-spectral);
-    font-style: italic;
-    font-weight: 200;
+    font-family: var(--font-hanken);
+    font-style: normal;
+    font-weight: 300;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    /*font-size: clamp(4.5rem, 9vw, 8.25rem);*/
+    /*font-size: clamp(5.625rem, 11.25vw, 10.3125rem);*/
     /*font-size: clamp(6rem, 12vw, 11rem);*/
-    font-size: clamp(4.5rem, 9vw, 8.25rem);
-    /*font-size: clamp(3rem, 6vw, 5.5rem);*/
     line-height: 1;
     letter-spacing: -0.02em;
     color: var(--color-sand-7);
