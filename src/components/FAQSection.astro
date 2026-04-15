@@ -1,6 +1,11 @@
 ---
 import { renderMarkdown } from '../lib/markdown';
-import { TYPOGRAPHY_BASELINE, SECTION_QUOTE_H2 } from '../lib/typography';
+import {
+  TYPOGRAPHY_BASELINE,
+  SECTION_QUOTE_H2,
+  SECTION_BODY_P,
+} from '../lib/typography';
+import Section from './Section.astro';
 import SectionEyebrow from './SectionEyebrow.astro';
 
 type Props = {
@@ -15,19 +20,14 @@ const classes = {
   ...TYPOGRAPHY_BASELINE,
   // Long declarative H2 intro — wrap with intent at ~26ch.
   h2: `${SECTION_QUOTE_H2} max-w-[26ch]`,
-  p: 'mt-3 max-w-[68ch] text-[1.0625rem] leading-[1.65] text-sand-11',
+  // Tighter top margin: answers sit directly beneath their question.
+  p: `mt-3 ${SECTION_BODY_P}`,
 };
 
 const html = renderMarkdown(content, classes);
 ---
 
-<section class="px-6 py-24 sm:px-10 sm:py-32">
-  <div class="mx-auto grid max-w-480 grid-cols-[1fr_minmax(0,44rem)_3fr]">
-    <div
-      class="relative z-10 col-start-2 -m-8 bg-sand-1/80 p-8 sm:-m-12 sm:p-12"
-    >
-      {label && <SectionEyebrow number={number} label={label} />}
-      <div set:html={html} />
-    </div>
-  </div>
-</section>
+<Section innerClass="relative z-10 -m-8 bg-sand-1/80 p-8 sm:-m-12 sm:p-12">
+  {label && <SectionEyebrow number={number} label={label} />}
+  <div set:html={html} />
+</Section>

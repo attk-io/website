@@ -1,6 +1,7 @@
 ---
 import { renderMarkdown } from '../lib/markdown';
 import { TYPOGRAPHY_BASELINE, SECTION_QUOTE_H2 } from '../lib/typography';
+import Section from './Section.astro';
 import SectionEyebrow from './SectionEyebrow.astro';
 
 type Props = {
@@ -13,24 +14,13 @@ const { content, number, label } = Astro.props;
 
 const classes = {
   ...TYPOGRAPHY_BASELINE,
-  // White-paper section with an ocean dot-grid backdrop. Text reverts to the
-  // sand-ink reading scale; links use ocean to echo the dots.
   h2: `${SECTION_QUOTE_H2} max-w-[24ch]`,
-  p: 'mt-5 max-w-[68ch] text-[1.0625rem] leading-[1.65] text-sand-11',
-  strong: 'font-semibold text-sand-12',
-  a: 'text-ocean-11 underline decoration-ocean-7 decoration-[1.5px] underline-offset-[3px] hover:decoration-ocean-11 transition-colors duration-150',
 };
 
 const html = renderMarkdown(content, classes);
 ---
 
-<section class="relative px-6 py-24 sm:px-10 sm:py-32">
-  <div
-    class="relative mx-auto grid max-w-480 grid-cols-[1fr_minmax(0,44rem)_3fr]"
-  >
-    <div class="col-start-2">
-      {label && <SectionEyebrow number={number} label={label} />}
-      <div class="how-phases" set:html={html} />
-    </div>
-  </div>
-</section>
+<Section class="relative" gridClass="relative">
+  {label && <SectionEyebrow number={number} label={label} />}
+  <div class="how-phases" set:html={html} />
+</Section>

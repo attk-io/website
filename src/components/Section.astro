@@ -1,0 +1,29 @@
+---
+// Shared outer shell for marketing sections: section padding, centered
+// max-width grid, and the middle content column. Consumers slot their body
+// directly — the component handles the three levels of wrapper.
+//
+// Hero and FinalCTA keep bespoke wrappers (different vertical padding,
+// overflow, and background treatments), so they do not use this.
+
+type Props = {
+  class?: string;
+  gridClass?: string;
+  innerClass?: string;
+};
+
+const { class: className, gridClass, innerClass } = Astro.props;
+---
+
+<section class:list={['px-6 py-24 sm:px-10 sm:py-32', className]}>
+  <div
+    class:list={[
+      'mx-auto grid max-w-480 grid-cols-[1fr_minmax(0,44rem)_3fr]',
+      gridClass,
+    ]}
+  >
+    <div class:list={['col-start-2', innerClass]}>
+      <slot />
+    </div>
+  </div>
+</section>
