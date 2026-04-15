@@ -21,6 +21,6 @@ const html = renderMarkdown(content, classes);
 ---
 
 <Section class="relative" gridClass="relative">
-  {label && <SectionEyebrow number={number} label={label} />}
+  {label && <SectionEyebrow number={number} label={'How I work'} />}
   <div class="how-phases" set:html={html} />
 </Section>
