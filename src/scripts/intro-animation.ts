@@ -17,14 +17,14 @@ declare global {
 }
 
 const STORAGE_KEY = 'attkSeenIntro';
-const HOLD_MS = 4000;
-const ZOOM_MS = 2000;
+const HOLD_MS = 0;
+const ZOOM_MS = 6000;
 const FADE_SCROLL_MS = 2500;
 const MIN_START_SCALE = 0.02;
 const MAX_START_SCALE = 0.25;
 const FALLBACK_START_SCALE = 0.05;
 
-const easeInOut = (t: number): number =>
+const easeInOutQuint = (t: number): number =>
   t < 0.5 ? 16 * t ** 5 : 1 - Math.pow(-2 * t + 2, 5) / 2;
 
 const wait = (ms: number): Promise<void> =>
@@ -108,12 +108,14 @@ const runIntro = async (
   await wait(HOLD_MS);
 
   await animate(ZOOM_MS, (p) => {
-    const s = startScale + (1 - startScale) * easeInOut(p);
+    const s = Math.pow(startScale, 1 - easeInOutQuint(p));
     setTransform(s, offsetY);
   });
 
+  await wait(200);
+
   await animate(FADE_SCROLL_MS, (p) => {
-    const e = easeInOut(p);
+    const e = easeInOutQuint(p);
     setTransform(1, offsetY * (1 - e));
     fades.forEach((el) => {
       el.style.opacity = String(e);
