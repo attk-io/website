@@ -24,27 +24,31 @@ Describe the ideal client's situation: what they already have (vision, domain ex
 
 ## Process / How It Works
 
-Walk the reader through the engagement from first conversation to ongoing partnership. Each phase should set expectations for what happens, who does what, and what the client gets out of it.
+Walk the reader through the engagement using the same three components named on the Pricing page (Discovery, Base Platform, Custom Work), then describe two moments that punctuate the rhythm (Launch isn't a finish line, Stepping back). The job of this section is to give the reader confidence in a sound, efficient method where every step earns its place toward their goal — and to make clear that the rhythm continues through and past launch, rather than ending at a single milestone.
 
-### Phase 1: Discovery / Alignment
+### Discovery
 
-Mutual evaluation. Both sides figure out if there's a fit. Emphasize honesty and directness — no sales process, just a real conversation.
+A 2-3 day paid working session that produces an honest fit assessment, an MVP scope decision, and a clear technical picture the client keeps regardless of whether the engagement continues.
 
-### Phase 2: Planning / Strategy
+### Base Platform
 
-Translate the client's vision into a concrete, readable plan. Emphasize clarity — plain language, clear priorities, transparent trade-offs. The client should understand where their money goes.
+The pre-built foundation (auth, billing, hosting, monitoring) that ships in ~2 weeks at fixed cost. The methodological point: time isn't spent rebuilding what doesn't differentiate the client.
 
-### Phase 3: Execution / Build
+### Custom Work
 
-The actual development work. Emphasize short cycles, visible progress, and clear communication. The client stays informed without needing to manage the technical work.
+The differentiated heart of the engagement. Each meaningful piece of functionality is planned into a digestible set with its own short loop — focused build, client QA, ship. Course corrections happen early while changing direction is still cheap.
 
-### Phase 4: Launch / Delivery
+### Launch isn't a finish line
 
-Ship a real, production-ready product — not a demo or prototype. Emphasize that this includes the unglamorous but critical work: infrastructure, deployment, monitoring.
+A brief reframing beat. Real users start supplying the evidence that previously came from the client and from Christian's experience. The loop doesn't change — the inputs do. Counters the misconception that the work ends at launch.
 
-### Phase 5: Iteration / Ongoing Support
+### Stepping back
 
-Use real-world data and feedback to decide what comes next. Emphasize the collaborative dynamic — ATTK advises on what's technically possible, the client decides what matters for the business.
+Closing beat. Christian's involvement is heaviest at the start (architecture, foundational decisions) and tapers as the foundation settles. Many engagements end with a deliberate hand-down to a more junior developer plus an ongoing advisory role. Distinctive: the model is built to step back when Christian's value naturally diminishes.
+
+## Working Together (planned section — not yet drafted)
+
+Companion to How It Works. Where How It Works covers the _method_ (the north-star navigation principles), this section covers _what working with Christian feels like week-to-week_ — cadence, communication, what the client decides vs. what Christian decides, how progress is surfaced, what to expect inside a typical week. Captures the lived-experience side of the engagement that the method-focused page doesn't.
 
 ## About / Credentials
 

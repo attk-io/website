@@ -39,6 +39,14 @@ After reading the ATTK website, the ideal prospect should feel:
 
 ---
 
+## Selected Variant
+
+For ATTK website copy, **Quiet Confidence** is the primary voice. When in doubt, write toward restraint: let the work and the structure do the convincing, and trust the reader to recognize quality without being told.
+
+The other variants below remain useful as counterpoints during copy exploration, or for specific surfaces that call for a different lean (e.g., a higher-energy CTA, or a section that needs to name the founder's anxiety directly). But the default — and the voice the rest of the site should harmonize with — is Quiet Confidence.
+
+---
+
 ## Variations
 
 Tone descriptors are listed in order of dominance — the first is the primary voice quality, the rest are supporting. The **Lead with** directive is the single most important instruction when drafting copy for a variant: when in doubt, follow it.
