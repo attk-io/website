@@ -55,8 +55,9 @@ build/Release
 # Dependency directories
 node_modules/
 
-# Optional npm cache directory
+# npm (we're using bun)
 .npm
+package-lock.json
 
 # Optional eslint cache
 .eslintcache
