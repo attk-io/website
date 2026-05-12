@@ -1,19 +1,40 @@
 {
   "name": "@attk/website",
   "version": "0.0.1",
-  "main": "index.js",
+  "type": "module",
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "start": "yarn serve & browser-sync start --proxy \"localhost:5000\" --files \"dist/\"",
-    "serve": "serve dist",
-    "deploy": "firebase deploy"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "deploy": "firebase deploy",
+    "prepare": "husky",
+    "fmt": "prettier --write --ignore-unknown .",
+    "lint": "eslint 'src/**/*.astro'"
+  },
+  "dependencies": {
+    "@radix-ui/colors": "3",
+    "astro": "^5"
   },
   "devDependencies": {
-    "browser-sync": "^3.0.3",
+    "@tailwindcss/vite": "^4",
+    "@typescript-eslint/parser": "^8.58.1",
+    "astro-eslint-parser": "^1.4.0",
+    "eslint": "^10.2.0",
+    "eslint-plugin-astro": "^1.7.0",
+    "eslint-plugin-better-tailwindcss": "^4.4.1",
     "firebase-tools": "^13.29.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "marked": "^17.0.5",
     "prettier": "^3.4.2",
-    "serve": "^14.2.4"
+    "prettier-plugin-astro": "^0.14",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "tailwindcss": "^4",
+    "typescript-eslint": "^8.58.1"
   },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  "lint-staged": {
+    "*": "prettier --write --ignore-unknown"
+  }
 }

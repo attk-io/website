@@ -1,0 +1,11 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { renderMarkdown } from '../lib/markdown';
+import content from '../content/legal/privacy-policy.md?raw';
+
+const html = renderMarkdown(content);
+---
+
+<LegalLayout title="Privacy Policy">
+  <div set:html={html} />
+</LegalLayout>

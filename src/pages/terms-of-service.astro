@@ -1,0 +1,11 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { renderMarkdown } from '../lib/markdown';
+import content from '../content/legal/terms-of-service.md?raw';
+
+const html = renderMarkdown(content);
+---
+
+<LegalLayout title="Terms of Service - ATTK Software Inc">
+  <div set:html={html} />
+</LegalLayout>

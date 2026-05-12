@@ -1,0 +1,217 @@
+/*
+ * ATTK website — global styles
+ *
+ * Foundations only:
+ *   - Single-family Swiss typography: Hanken Grotesk (everything; hierarchy via weight + size)
+ *   - OKLCH color scales, Radix-style 1..12: sand (warm neutral) + ink/sun/teal (highlights)
+ *   - Minimal @layer base for element-level details (selection, focus-visible, text rendering, default font)
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@400;500;600;700&family=Spectral:ital,wght@1,400;1,500&display=swap');
+
+@import 'tailwindcss';
+
+@theme {
+  /* ─── Typography ────────────────────────────────────────────────── */
+  --font-hanken:
+    'Hanken Grotesk', ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
+    sans-serif;
+
+  /* ─── Wordmark display face ─────────────────────────────────────── */
+  --font-space-grotesk:
+    'Space Grotesk', ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
+    sans-serif;
+
+  /* ─── Monospace accent face ─────────────────────────────────────── */
+  --font-dm-mono:
+    'DM Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+
+  /*
+   * Spectral italic is loaded for section-H2 quote treatment (see
+   * SECTION_QUOTE_H2 in src/lib/typography.ts). Spectral SC is not loaded;
+   * add to the @import above if small-caps become needed.
+   */
+  --font-spectral:
+    'Spectral', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  --font-spectral-sc:
+    'Spectral SC', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+
+  /* ─── sand — cool neutral ramp ──────────────────────────────────── */
+  /* Hue tinted toward ink (252) for subconscious cohesion with the highlight. */
+  /* Chroma stays low (0.004–0.014) so it reads as neutral, never blue. */
+  --color-sand-1: oklch(0.994 0.004 252);
+  --color-sand-2: oklch(0.982 0.005 252);
+  --color-sand-3: oklch(0.966 0.006 252);
+  --color-sand-4: oklch(0.948 0.007 252);
+  --color-sand-5: oklch(0.928 0.008 252);
+  --color-sand-6: oklch(0.905 0.009 252);
+  --color-sand-7: oklch(0.872 0.01 252);
+  --color-sand-8: oklch(0.82 0.011 252);
+  --color-sand-9: oklch(0.625 0.012 252);
+  --color-sand-10: oklch(0.578 0.012 252);
+  --color-sand-11: oklch(0.438 0.013 252);
+  --color-sand-12: oklch(0.205 0.014 252);
+
+  /* ─── ink — dark fountain-pen blue-violet (primary highlight) ───── */
+  --color-ink-1: oklch(0.992 0.005 252);
+  --color-ink-2: oklch(0.979 0.012 252);
+  --color-ink-3: oklch(0.958 0.02 252);
+  --color-ink-4: oklch(0.932 0.03 252);
+  --color-ink-5: oklch(0.902 0.042 252);
+  --color-ink-6: oklch(0.862 0.055 252);
+  --color-ink-7: oklch(0.808 0.068 252);
+  --color-ink-8: oklch(0.718 0.085 252);
+  --color-ink-9: oklch(0.305 0.102 252);
+  --color-ink-10: oklch(0.268 0.095 252);
+  --color-ink-11: oklch(0.355 0.098 252);
+  --color-ink-12: oklch(0.188 0.062 252);
+
+  /* ─── sun — sunshine yellow (secondary, available for use) ──────── */
+  /* Steps 9/10 peak at high L per Radix yellow convention; 11/12 shift hue toward amber for AA readability. */
+  --color-sun-1: oklch(0.995 0.007 92);
+  --color-sun-2: oklch(0.983 0.02 92);
+  --color-sun-3: oklch(0.962 0.038 92);
+  --color-sun-4: oklch(0.938 0.062 92);
+  --color-sun-5: oklch(0.908 0.088 92);
+  --color-sun-6: oklch(0.875 0.108 92);
+  --color-sun-7: oklch(0.832 0.128 92);
+  --color-sun-8: oklch(0.782 0.148 92);
+  --color-sun-9: oklch(0.87 0.175 92);
+  --color-sun-10: oklch(0.832 0.17 92);
+  --color-sun-11: oklch(0.442 0.108 78);
+  --color-sun-12: oklch(0.268 0.068 68);
+
+  /* ─── teal — petrol peacock (secondary, available for use) ──────── */
+  --color-teal-1: oklch(0.992 0.005 200);
+  --color-teal-2: oklch(0.98 0.013 200);
+  --color-teal-3: oklch(0.958 0.024 200);
+  --color-teal-4: oklch(0.932 0.038 200);
+  --color-teal-5: oklch(0.902 0.05 200);
+  --color-teal-6: oklch(0.86 0.062 200);
+  --color-teal-7: oklch(0.808 0.078 200);
+  --color-teal-8: oklch(0.728 0.095 200);
+  --color-teal-9: oklch(0.462 0.115 200);
+  --color-teal-10: oklch(0.425 0.108 200);
+  --color-teal-11: oklch(0.432 0.092 200);
+  --color-teal-12: oklch(0.238 0.058 200);
+
+  /* ─── ocean — electric cyan-blue (the alive thread) ──────────────── */
+  /* Hue 218, more saturated than teal. Owns body links, eyebrow numerals,
+   * the mid-page reversal block, and the hero mark. The page's pulse. */
+  --color-ocean-1: oklch(0.992 0.005 218);
+  --color-ocean-2: oklch(0.98 0.014 218);
+  --color-ocean-3: oklch(0.955 0.028 218);
+  --color-ocean-4: oklch(0.928 0.044 218);
+  --color-ocean-5: oklch(0.895 0.062 218);
+  --color-ocean-6: oklch(0.852 0.082 218);
+  --color-ocean-7: oklch(0.795 0.105 218);
+  --color-ocean-8: oklch(0.715 0.135 218);
+  --color-ocean-9: oklch(0.522 0.168 218);
+  --color-ocean-10: oklch(0.475 0.158 218);
+  --color-ocean-11: oklch(0.432 0.148 218);
+  --color-ocean-12: oklch(0.235 0.078 218);
+
+  /* ─── plum — deep aubergine (commercial signature) ──────────────── */
+  /* Hue 340. Reserved for pricing accents and the final CTA call link.
+   * Reads as fountain-pen wax-seal — bookish, considered, never cheap. */
+  --color-plum-1: oklch(0.992 0.005 340);
+  --color-plum-2: oklch(0.979 0.012 340);
+  --color-plum-3: oklch(0.958 0.022 340);
+  --color-plum-4: oklch(0.932 0.034 340);
+  --color-plum-5: oklch(0.902 0.048 340);
+  --color-plum-6: oklch(0.862 0.062 340);
+  --color-plum-7: oklch(0.808 0.078 340);
+  --color-plum-8: oklch(0.718 0.098 340);
+  --color-plum-9: oklch(0.345 0.115 340);
+  --color-plum-10: oklch(0.305 0.108 340);
+  --color-plum-11: oklch(0.395 0.112 340);
+  --color-plum-12: oklch(0.215 0.072 340);
+}
+
+@layer base {
+  html {
+    font-family: var(--font-hanken);
+    text-rendering: optimizeLegibility;
+    font-feature-settings:
+      'kern' 1,
+      'liga' 1,
+      'calt' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scrollbar-gutter: stable;
+  }
+
+  ::selection {
+    background-color: var(--color-sand-4);
+    color: var(--color-sand-12);
+  }
+
+  mark {
+    background-color: var(--color-ocean-3);
+    color: var(--color-ocean-12);
+    padding: 0.05em 0.3em;
+    border-radius: 1px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-sand-12);
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
+
+  html {
+    accent-color: var(--color-sand-12);
+  }
+}
+
+/* ─── Utilities ───────────────────────────────────────────────────── */
+/* Blueprint-style grid paper used behind "paper" sections. Fine minor
+ * lines every 24px with a heavier major line every 120px (5 squares),
+ * both in ocean to evoke classic engineering grid paper. */
+/* How-It-Works phase numerals. Auto-numbers each h3 inside the marked
+ * container and hangs the numeral in the left margin — an oversized,
+ * Spectral-italic counter that echoes the SECTION_QUOTE_H2 quotation mark
+ * but scaled up to become the section's dominant visual rhythm. */
+@utility how-phases {
+  counter-reset: phase;
+  & h3 {
+    counter-increment: phase;
+    position: relative;
+  }
+  & h3::before {
+    content: counter(phase);
+    position: absolute;
+    right: 100%;
+    top: -0.15em;
+    padding-right: 0.15em;
+    font-family: var(--font-hanken);
+    font-style: normal;
+    font-weight: 300;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    /*font-size: clamp(4.5rem, 9vw, 8.25rem);*/
+    /*font-size: clamp(5.625rem, 11.25vw, 10.3125rem);*/
+    /*font-size: clamp(6rem, 12vw, 11rem);*/
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--color-sand-7);
+    pointer-events: none;
+    user-select: none;
+  }
+}
+
+@utility grid-paper {
+  background-image:
+    linear-gradient(to right, var(--color-ocean-5) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-ocean-5) 1px, transparent 1px),
+    linear-gradient(to right, var(--color-ocean-4) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-ocean-4) 1px, transparent 1px);
+  background-size:
+    120px 120px,
+    120px 120px,
+    24px 24px,
+    24px 24px;
+  background-position: 0 0;
+}

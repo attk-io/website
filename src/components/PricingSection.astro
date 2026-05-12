@@ -1,0 +1,27 @@
+---
+import { renderMarkdown } from '../lib/markdown';
+import { TYPOGRAPHY_BASELINE, SECTION_QUOTE_H2 } from '../lib/typography';
+import Section from './Section.astro';
+import SectionEyebrow from './SectionEyebrow.astro';
+
+type Props = {
+  content: string;
+  number?: string;
+  label?: string;
+};
+
+const { content, number, label } = Astro.props;
+
+const classes = {
+  ...TYPOGRAPHY_BASELINE,
+  // Long declarative H2 — same tighter wrap treatment as WhoThisIsFor.
+  h2: `${SECTION_QUOTE_H2} max-w-[28ch]`,
+};
+
+const html = renderMarkdown(content, classes);
+---
+
+<Section>
+  {label && <SectionEyebrow number={number} label={'What it costs'} />}
+  <div set:html={html} />
+</Section>

@@ -1,0 +1,26 @@
+---
+import { renderMarkdown } from '../lib/markdown';
+import { TYPOGRAPHY_BASELINE, SECTION_QUOTE_H2 } from '../lib/typography';
+import Section from './Section.astro';
+import SectionEyebrow from './SectionEyebrow.astro';
+
+type Props = {
+  content: string;
+  number?: string;
+  label?: string;
+};
+
+const { content, number, label } = Astro.props;
+
+const classes = {
+  ...TYPOGRAPHY_BASELINE,
+  h2: `${SECTION_QUOTE_H2} max-w-[24ch]`,
+};
+
+const html = renderMarkdown(content, classes);
+---
+
+<Section class="relative" gridClass="relative">
+  {label && <SectionEyebrow number={number} label={'How I work'} />}
+  <div class="how-phases" set:html={html} />
+</Section>

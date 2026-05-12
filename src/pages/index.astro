@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeaderSection from '../components/HeaderSection.astro';
+import HeroSection from '../components/HeroSection.astro';
+import WhoThisIsForSection from '../components/WhoThisIsForSection.astro';
+import HowItWorksSection from '../components/HowItWorksSection.astro';
+import AboutSection from '../components/AboutSection.astro';
+import PricingSection from '../components/PricingSection.astro';
+import FAQSection from '../components/FAQSection.astro';
+import FinalCTASection from '../components/FinalCTASection.astro';
+import Footer from '../components/Footer.astro';
+
+import heroContent from '../content/hero.md?raw';
+import whoThisIsForContent from '../content/who-this-is-for.md?raw';
+import howItWorksContent from '../content/how-it-works.md?raw';
+import aboutContent from '../content/about.md?raw';
+import pricingContent from '../content/pricing.md?raw';
+import faqContent from '../content/faq.md?raw';
+import finalCtaContent from '../content/final-cta.md?raw';
+---
+
+<BaseLayout title="ATTK Software">
+  <div data-intro-fade><HeaderSection /></div>
+  <main class="overflow-clip">
+    <div data-intro-fade><HeroSection content={heroContent} /></div>
+    <div data-intro-fade>
+      <WhoThisIsForSection
+        content={whoThisIsForContent}
+        number="01"
+        label="Who This Is For"
+      />
+    </div>
+    <div data-intro-fade>
+      <AboutSection content={aboutContent} number="02" label="About" />
+    </div>
+    <div data-intro-fade>
+      <HowItWorksSection
+        content={howItWorksContent}
+        number="03"
+        label="How It Works"
+      />
+    </div>
+    <div data-intro-fade>
+      <PricingSection content={pricingContent} number="04" label="Pricing" />
+    </div>
+    <div data-intro-fade>
+      <FAQSection content={faqContent} number="05" label="FAQ" />
+    </div>
+    <FinalCTASection content={finalCtaContent} />
+  </main>
+  <div data-intro-fade><Footer /></div>
+</BaseLayout>

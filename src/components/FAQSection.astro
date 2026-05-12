@@ -1,0 +1,33 @@
+---
+import { renderMarkdown } from '../lib/markdown';
+import {
+  TYPOGRAPHY_BASELINE,
+  SECTION_QUOTE_H2,
+  SECTION_BODY_P,
+} from '../lib/typography';
+import Section from './Section.astro';
+import SectionEyebrow from './SectionEyebrow.astro';
+
+type Props = {
+  content: string;
+  number?: string;
+  label?: string;
+};
+
+const { content, number, label } = Astro.props;
+
+const classes = {
+  ...TYPOGRAPHY_BASELINE,
+  // Long declarative H2 intro — wrap with intent at ~26ch.
+  h2: `${SECTION_QUOTE_H2} max-w-[26ch]`,
+  // Tighter top margin: answers sit directly beneath their question.
+  p: `mt-3 ${SECTION_BODY_P}`,
+};
+
+const html = renderMarkdown(content, classes);
+---
+
+<Section innerClass="relative z-10 -m-8 bg-sand-1/80 p-8 sm:-m-12 sm:p-12">
+  {label && <SectionEyebrow number={number} label={label} />}
+  <div set:html={html} />
+</Section>

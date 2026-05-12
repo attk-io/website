@@ -1,0 +1,68 @@
+---
+import { renderMarkdown } from '../lib/markdown';
+import { TYPOGRAPHY_BASELINE, SECTION_QUOTE_H2 } from '../lib/typography';
+import SectionEyebrow from './SectionEyebrow.astro';
+
+type Props = {
+  content: string;
+  number?: string;
+  label?: string;
+};
+
+const { content, number, label } = Astro.props;
+
+const classes = {
+  ...TYPOGRAPHY_BASELINE,
+  h2: `${SECTION_QUOTE_H2} max-w-[26ch]`,
+  p: 'mt-5 text-[1.0625rem] leading-[1.65] text-sand-12',
+};
+
+const emailClasses = {
+  ...classes,
+  p: 'mt-4 text-[1.0625rem] leading-[1.65] text-sand-12',
+};
+
+const [headingSource, bodySource] = splitHeading(content);
+const [mainBody, emailSource] = splitTrailingEmail(bodySource);
+const headingHtml = renderMarkdown(headingSource, classes);
+const bodyHtml = renderMarkdown(mainBody, classes);
+const emailHtml = emailSource ? renderMarkdown(emailSource, emailClasses) : '';
+
+function splitHeading(source: string): [string, string] {
+  const match = source.match(/^(##\s[^\n]*)\n+([\s\S]*)$/);
+  if (!match) return [source, ''];
+  return [match[1], match[2]];
+}
+
+function splitTrailingEmail(source: string): [string, string] {
+  const match = source.match(/^([\s\S]*?)\n\n(\[[^\]]+\]\(mailto:[^)]+\))\s*$/);
+  if (!match) return [source, ''];
+  return [match[1], match[2]];
+}
+---
+
+<section class="px-6 py-24 sm:px-10 sm:py-32">
+  <div class="mx-auto grid max-w-480 grid-cols-[1fr_minmax(0,44rem)_3fr]">
+    <div
+      class="col-span-2 col-start-2 grid max-w-[1140px] grid-cols-1 gap-x-12 gap-y-6 min-[780px]:grid-cols-[2fr_minmax(280px,1fr)]"
+    >
+      {
+        label && (
+          <div class="min-[780px]:col-span-2">
+            <SectionEyebrow number={number} label={'Who I am'} />
+          </div>
+        )
+      }
+      <div set:html={headingHtml} />
+      <div
+        class="max-w-[360px] min-[780px]:col-start-2 min-[780px]:row-span-2 min-[780px]:row-start-2 min-[780px]:max-w-none"
+      >
+        <img src="/portrait.jpg" alt="" class="w-full" />
+      </div>
+      <div class="min-[780px]:col-start-1 min-[780px]:row-start-3">
+        {bodyHtml && <div set:html={bodyHtml} />}
+        {emailHtml && <div set:html={emailHtml} />}
+      </div>
+    </div>
+  </div>
+</section>
