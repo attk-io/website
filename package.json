@@ -11,13 +11,15 @@
     "deploy": "firebase deploy",
     "prepare": "husky",
     "fmt": "prettier --write --ignore-unknown .",
-    "lint": "eslint 'src/**/*.astro'"
+    "lint": "eslint 'src/**/*.astro'",
+    "typecheck": "astro check"
   },
   "dependencies": {
     "@radix-ui/colors": "3",
     "astro": "^5"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.9",
     "@tailwindcss/vite": "^4",
     "@typescript-eslint/parser": "^8.58.1",
     "astro-eslint-parser": "^1.4.0",
@@ -32,6 +34,7 @@
     "prettier-plugin-astro": "^0.14",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "tailwindcss": "^4",
+    "typescript": "^6.0.3",
     "typescript-eslint": "^8.58.1"
   },
   "lint-staged": {
