@@ -1,21 +1,21 @@
-## Every engagement follows the same five phases, designed to make sure we're building the right thing — then build it well.
+## Every successful build needs a clear method behind it. Here's mine — from the first conversation to long after launch.
 
 ### Discovery
 
-Every engagement starts with a real conversation. You walk me through what you're building, the market you're entering, and what's at stake. I listen carefully, ask the questions that matter, and give you an honest assessment — what it would take, what the risks are, and whether I'm the right person for this particular build. There's no obligation and no sales process. Just two people figuring out if there's a fit.
+Two or three working days at the start of every engagement. You walk me through the vision, the market, and the constraints. I ask the questions that matter and give you an honest read — what the build will take, what the risks are, and whether I'm the right person for this particular product. Together we agree on the shortest path to a working MVP: which features make the first cut, which ones wait, and which ones should be cut entirely. By the end, you have a clear technical picture of what it would take to bring your product to market — regardless of whether we keep working together.
 
-### Plan
+### Base Platform
 
-If we decide to move forward, I translate your vision into a technical strategy written in plain language. We map out what gets built first, what can wait, and what should be cut entirely. Every trade-off is made visible. Every priority is explained. By the end of this phase, you'll have a clear picture of where your investment goes and why each decision was made.
+Every product needs a working foundation — authentication, billing, hosting, monitoring, the parts that aren't unique to your business but are essential for it to function. Because most of this is pre-built and battle-tested, it ships in about two weeks for a fixed cost. The time you save here gets reinvested where it actually differentiates your product: in the custom work that follows.
 
-### Build
+### Custom Work
 
-Development happens in short, focused cycles. Each week, you'll see tangible progress and receive updates that describe what was completed, what comes next, and whether anything has shifted. The updates are written for you, not for engineers — clear, concise, and free of jargon. You stay informed and involved in the decisions that matter to your business, while I handle the technical execution.
+This is where most of the engagement lives. The features that make your product specifically yours are scoped during discovery, then planned into digestible sets — each one a self-contained piece of functionality with a tangible outcome you can see and use. Within each set, the same short loop repeats: a focused build, a QA pass where you review the working feature in your hands, then ship. Every loop produces something real you can react to, which means course corrections happen early — while the cost of changing direction is still small.
 
-### Launch
+### Launch isn't a finish line
 
-The goal is a production-ready product in real users' hands — not a demo, not a prototype. This includes the work that doesn't make the highlight reel but keeps everything running: infrastructure, deployment pipelines, monitoring, and the quiet operational details that separate a launched product from a proof of concept.
+At some point the work in flight becomes the work in production. Real users start supplying the evidence that, until now, has come from you and from my experience with similar products. The loop doesn't change — same scope, same build, same QA, same ship — but the inputs do. What seemed important in theory gets tested against what's actually important in practice. The next set of features gets shaped by what real usage reveals.
 
-### Iterate
+### Stepping back
 
-Once the product is live, real usage replaces assumptions. We look at what's working, what isn't, and where the strongest opportunities are. I advise on what's technically feasible and what would take the product further. You decide what matters most for the business. Together, we plan the next cycle of work — grounded in evidence, not guesswork.
+The earliest months are where my involvement matters most: architecture, foundational decisions, the calls that are expensive to undo later. As those settle, my role naturally shifts. Many engagements end with me transitioning out of day-to-day development as a more junior developer takes over, while I stay on in an advisory capacity — there to protect the technical foundation without billing for work that no longer needs me. The model is built to step back when it should.
