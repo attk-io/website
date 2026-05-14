@@ -257,3 +257,44 @@ The earliest months are where my involvement matters most: architecture, foundat
 
 - Day-to-day development handed off to a more junior developer working under the established structure.
 - An advisory arrangement in place — protecting the technical foundation, available for senior-judgment calls, but not billing for work that no longer needs me.
+
+### What the advisory arrangement actually is
+
+Once the handoff is complete, the engagement continues in a different shape. The advisory arrangement isn't a smaller version of the build engagement — it's a different mode of work, with its own cadence, scope, and pricing.
+
+**Scope of advisory work.**
+
+- Architecture and technical-direction calls — anything that's expensive to undo later, anything where senior judgment changes the outcome.
+- Code review on changes that touch the foundation, the data model, security-sensitive surfaces, or anything load-bearing.
+- Pairing or unblocking on novel work the junior developer hasn't seen before — a new integration, a tricky migration, a performance problem they don't have the pattern for.
+- Strategic technical input — hiring the next engineer, evaluating a vendor, sizing a v3 initiative, deciding whether to rebuild or extend.
+- Incident support when the system is degraded or down in ways the day-to-day developer can't resolve alone.
+
+**Not in scope:**
+
+- Day-to-day feature development. That's the junior developer's role; pulling me back into it defeats the purpose of having stepped back.
+- Routine code review on non-foundational work. The junior developer owns their own pull requests with appropriate review from peers or seniors hired into the team over time.
+- Operational toil — backups, rotations, routine deploys, support escalations that aren't system-level.
+
+**Cadence.**
+
+- A standing monthly or twice-monthly check-in — typically 30–60 minutes — to review what's shipped, what's coming, and what calls are on the horizon. _TODO: confirm the default cadence once a few advisory arrangements have run long enough to surface the right rhythm._
+- Async availability through the same channel the build engagement used — questions get raised, answers get written, the record survives.
+- Ad-hoc calls for the things that genuinely need them — usually a handful per month, sometimes none.
+
+**Response times.**
+
+- **Non-urgent advisory questions:** within two business days. Async-first; not everything needs a call.
+- **Code-review requests on foundational changes:** within one business day during normal weeks.
+- **Production incidents the team can't resolve alone:** same business day during business hours; best-effort outside hours, with the understanding that the day-to-day developer is the first line of defence and I'm the escalation, not the on-call. _TODO: decide whether a paid on-call tier exists for products where business-hours-only escalation isn't acceptable._
+
+**Rate model.**
+
+The default shape is a small monthly retainer covering the standing check-in, async availability, and a baseline of advisory hours, with senior hourly billing for anything substantive beyond that baseline.
+
+- **Monthly retainer** covering the standing check-in, async availability, and a baseline of advisory hours per month. _TODO: set the retainer figure and the included hours once enough engagements have reached this stage to calibrate; align with the pricing & contracts doc._
+- **Senior hourly rate** for work beyond the retainer baseline — deeper code review, pairing, incident response, strategic projects. _TODO: set the hourly figure; align with the pricing & contracts doc._
+- **Project-priced engagements** for advisory work with a clear shape — a v3 scoping pass, a hiring search, an architecture review — quoted as a one-off rather than billed against the retainer.
+- Either side can end the arrangement with reasonable notice. The whole point of stepping back is that the business shouldn't depend on me indefinitely; the advisory arrangement should taper naturally as the team matures.
+
+Pricing specifics for the advisory tier are covered in the pricing & contracts doc _[planned — see issue #27]_.
