@@ -38,17 +38,17 @@ Discovery flags the riskiest assumptions up front; the v0 → v1-beta → v1 rel
 
 Past context should remain available for future decisions.
 
-Current state, roadmap, release history, decisions, trade-offs, deferred work, changed assumptions, and user learnings should be easy to look back on. The goal is to make future choices with context, not to reconstruct the past from memory.
+“How we got here” should be factual and easy to look up. The goal is to make future choices with documented context so we can avoid trying to reconstruct the past from memory.
 
-A weekly written summary keeps the running record, and material decisions — scope agreements, deferrals, trade-offs, disagreements and their resolutions — land in the system of record rather than getting buried in chat.
+In practice, project memory comes from lightweight documentation close to the work: decision records, weekly issue recaps, and release manifests.
 
-## Current State Makes the Project Steerable
+## Situational Awareness Grounds Priority
 
-The current state should be easy to see.
+The current state should be knowable on demand.
 
-A useful project view shows shipped features, active blockers, active work streams, what's on deck, audience signals, and product health signals like performance, reliability, and error rates. Knowing where the project actually stands lets the client compare the plan against changing conditions, adjust priorities, and keep the next work pointed at the business goal.
+A useful snapshot shows what has shipped, what is in progress, what is blocked, what is on deck, and what signals are coming back from users and the product itself. That awareness lets the client and team compare the plan against market, timing, financial, and operational conditions, then prioritize the next work from where the project actually stands.
 
-The working environment, the live roadmap, the async channel, and the weekly summary together act as always-on progress surfaces — readable at any moment without anyone preparing a report, and backed by production observability once the product is live.
+In practice, this is a current-state snapshot that can be checked on demand: shipped features, active blockers, active work streams, on-deck work, audience signals, and product health signals like performance, reliability, and error rates.
 
 ## Roadmaps Turn Goals Into Actions
 
@@ -64,13 +64,13 @@ The product should remain adaptable.
 
 Readable code, stable architecture, useful tests, reliable deployment, and low technical debt keep things moving. Maintainability matters because it lets the business change direction and keep learning without every adjustment being weighed down because the codebase is resistant to change.
 
-The Base Platform sets the maintainability baseline at the start of the build, and every cycle carries tests, types, observability, and reversible deploys as part of the work itself — not as a separate cleanup phase the client has to commission.
+The Base Platform sets the maintainability baseline at the start of the build, and every cycle carries tests, types, observability, and continuous releases as part of the work itself — not as separate phases requiring special scheduling.
 
-## Releases Create Feedback Loops
+## Releases Turn Work Into Evidence
 
 Releases put work in front of the right audience.
 
-A release exposes a specific version of the product to the people who can teach us something: public visitors, internal stakeholders, private-beta users, or paying users. Frequent, incremental releases create tighter feedback loops, collect data sooner, keep the codebase production-ready, and make reactions easier to connect to specific changes.
+A release exposes a specific version of the product to the people who can teach us something: public visitors, internal stakeholders, private-beta users, or paying users. Frequent, incremental releases collect data sooner, keep the codebase production-ready, and make reactions easier to connect to specific changes.
 
 Public software rarely has a final state; it improves through repeated contact with users and business goals.
 
@@ -82,4 +82,4 @@ My role should evolve with the product.
 
 My role should provide the highest-value version of my involvement at each stage. Early work benefits most from senior judgment; mature products benefit from stable architecture, operational routines, developer tooling, oversight, training, and support that let more people contribute well.
 
-The project arc is staged so my involvement shifts deliberately — heavy hands-on build through v1, then architecture, tooling, oversight, and training during the Stepping Back milestone — leaving the client owning a product they can keep evolving without me being the bottleneck.
+The project arc is staged so my involvement shifts deliberately — heavy hands-on build through to the first public product launch, then architecture, tooling, oversight, and training during a transitionary phase — leaving the client owning a product they can keep evolving without me becoming a bottleneck.
