@@ -1,21 +1,38 @@
-## Every successful build needs a clear method behind it. Here's mine — from the first conversation to long after launch.
+## Good software projects feel surprisingly calm.
 
-### Discovery
+Not because the work is easy, but because uncertainty gets surfaced early. The product becomes more real every week. The direction stays understandable. Small problems get corrected before they become expensive ones.
 
-Two or three working days at the start of every engagement. You walk me through the vision, the market, and the constraints. I ask the questions that matter and give you an honest read — what the build will take, what the risks are, and whether I'm the right person for this particular product. Together we agree on the shortest path to a working MVP: which features make the first cut, which ones wait, and which ones should be cut entirely. By the end, you have a clear technical picture of what it would take to bring your product to market — regardless of whether we keep working together.
+Most failed software projects drift off course gradually.  
+I work very differently from that.
 
-### Base Platform
+### 1. You always have a compass
 
-Every product needs a working foundation — authentication, billing, hosting, monitoring, the parts that aren't unique to your business but are essential for it to function. Because most of this is pre-built and battle-tested, it ships in about two weeks for a fixed cost. The time you save here gets reinvested where it actually differentiates your product: in the custom work that follows.
+The project should never feel imaginary.
 
-### Custom Work
+From early in the engagement, there’s a real working environment you can open and interact with. Not screenshots. Not demos prepared for meetings. The product itself. That visibility keeps feedback loops short and prevents months of misunderstanding from quietly accumulating underneath the build.
 
-This is where most of the engagement lives. The features that make your product specifically yours are scoped during discovery, then planned into digestible sets — each one a self-contained piece of functionality with a tangible outcome you can see and use. Within each set, the same short loop repeats: a focused build, a QA pass where you review the working feature in your hands, then ship. Every loop produces something real you can react to, which means course corrections happen early — while the cost of changing direction is still small.
+### 2. You always have a map
 
-### Launch isn't a finish line
+Software projects become stressful when the future turns foggy.
 
-At some point the work in flight becomes the work in production. Real users start supplying the evidence that, until now, has come from you and from my experience with similar products. The loop doesn't change — same scope, same build, same QA, same ship — but the inputs do. What seemed important in theory gets tested against what's actually important in practice. The next set of features gets shaped by what real usage reveals.
+What’s being built next? What changed? Are we still on track? I try very hard to keep those answers clear. The roadmap evolves continuously as the product becomes more real, but changes happen explicitly. Scope stays visible, trade-offs get surfaced, and decisions don’t quietly disappear into implementation.
 
-### Stepping back
+### 3. You’re not a hostage
 
-The earliest months are where my involvement matters most: architecture, foundational decisions, the calls that are expensive to undo later. As those settle, my role naturally shifts. Many engagements end with me transitioning out of day-to-day development as a more junior developer takes over, while I stay on in an advisory capacity — there to protect the technical foundation without billing for work that no longer needs me. The model is built to step back when it should.
+### Development Cycles
+
+Every meaningful feature moves through the same rhythm: scope, build, review, ship, repeat.
+
+The loops stay intentionally small so we can react early while changing direction is still cheap. The goal isn’t activity or the appearance of momentum. It’s validated progress.
+
+### Releases
+
+Early in the project, we’re working mostly from assumptions, market understanding, and experience.
+
+As releases reach progressively wider groups of users, the product starts generating evidence of its own — where onboarding breaks down, which features matter, where the roadmap was wrong. Each release makes the next set of decisions clearer. Releases are not treated like finish lines. They’re how the project becomes more informed over time.
+
+### My role changes over time
+
+My involvement is intentionally heaviest at the beginning, when architectural decisions are still expensive to undo.
+
+As the product matures, many engagements naturally transition toward a more junior developer handling day-to-day development, with me staying involved for architecture and strategic technical decisions. The goal is not to make your business depend on me forever. The goal is to help you build something durable enough that it eventually shouldn’t.
