@@ -2,7 +2,7 @@
 
 This document captures what the Base Platform actually is — the pre-built foundation that ships before Custom Work begins, and what drives the price variance referenced on the public pricing page. Plain wording — no brand voice applied. Internal planning doc.
 
-The Base Platform is everything a software product needs that isn't unique to the product. It's the substrate Custom Work runs on. Building it from scratch on every engagement would waste weeks of founder budget on solved problems; instead it's assembled from battle-tested patterns and components, configured to the specifics of the product, and shipped fast.
+The Base Platform is everything a software product needs that isn't unique to the product. It's the substrate Custom Work runs on. Building it from scratch on every engagement would waste weeks of client budget on solved problems; instead it's assembled from battle-tested patterns and components, configured to the specifics of the product, and shipped fast.
 
 ## What the Base Platform is — and isn't
 
@@ -14,7 +14,7 @@ The Base Platform is everything a software product needs that isn't unique to th
 
 **It isn't:**
 
-- A reusable codebase the founder is licensing. The Base Platform is configured into the founder's own repository; everything in it is theirs to own, modify, and walk away with.
+- A reusable codebase the client is licensing. The Base Platform is configured into the client's own repository; everything in it is theirs to own, modify, and walk away with.
 - Custom Work. Anything specific to the product's business logic, workflows, or differentiated features is Custom Work, billed and scoped separately (see `development-cycle.md`).
 - A constraint on the product's stack. The components are chosen for fit, not for reuse. If a product needs something the default stack doesn't cover, the inventory is adjusted during Discovery.
 
@@ -47,7 +47,7 @@ Discovery (see `discovery.md`) determines which of these are included and how ea
 - Monitoring and alerting on the production stack — uptime, latency, error rates.
 - Error tracking with stack traces, release tagging, and notification routing.
 - Application logs aggregated and searchable.
-- Basic admin tooling — enough for the founder (or me) to find a user, inspect their state, and unblock them without writing one-off scripts.
+- Basic admin tooling — enough for the client (or me) to find a user, inspect their state, and unblock them without writing one-off scripts.
 
 **Communications.**
 
@@ -57,7 +57,7 @@ Discovery (see `discovery.md`) determines which of these are included and how ea
 
 **Content surfaces.**
 
-- A content layer for whatever the product needs to publish that isn't application data — help pages, terms, marketing pages co-located with the product, founder-editable copy on key surfaces.
+- A content layer for whatever the product needs to publish that isn't application data — help pages, terms, marketing pages co-located with the product, client-editable copy on key surfaces.
 
 **Analytics and telemetry.**
 
@@ -85,15 +85,15 @@ The $15k–$35k range on the public pricing page reflects two distinct axes: **w
 - Multi-channel notifications (email + push + SMS + in-app) with routing rules per event.
 - Regulated-data handling (HIPAA, SOC 2 posture, regional data residency).
 - Heavier admin tooling — support seats, audit logs, impersonation, bulk operations.
-- Integrations with the founder's existing stack (CRM, data warehouse, analytics destination) wired in as part of the foundation.
+- Integrations with the client's existing stack (CRM, data warehouse, analytics destination) wired in as part of the foundation.
 
-The quote is a single fixed number, not a per-component itemization — the founder commits once, and the work ships against that number regardless of which day-of-build surprises emerge inside each component.
+The quote is a single fixed number, not a per-component itemization — the client commits once, and the work ships against that number regardless of which day-of-build surprises emerge inside each component.
 
 ## Workload and timeline
 
 - About two weeks of focused build time, in parallel with early Custom Work where it makes sense. The components are mostly pre-built; the work is configuration, wiring, and the project-specific glue.
 - Shipped to staging during build, then to production at the v1-beta cut (or the v0 cut if marketing-site components are part of the foundation).
-- Founder involvement during Base Platform build is light by design — most of the calls were made during Discovery. Decisions that do surface get raised the same way Custom Work decisions are (see `development-cycle.md`).
+- Client involvement during Base Platform build is light by design — most of the calls were made during Discovery. Decisions that do surface get raised the same way Custom Work decisions are (see `development-cycle.md`).
 
 ## Deliverables
 
