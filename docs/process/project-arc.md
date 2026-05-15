@@ -20,7 +20,7 @@ The three release milestones (v0, v1-beta, v1) share a common shape: prep before
 
 ### Fit Check (free)
 
-- Founder reaches out.
+- Client reaches out.
 - Short call (or async exchange) to understand what they're building, what stage they're at, and what they think they need.
 - Two-way fit check: is this a product I can do good work on, and am I the right person for it?
 - We discuss goals (perhaps setting some explicitly), the high-level shape of the project, and the rough constraints.
@@ -55,7 +55,7 @@ The first paid engagement. Produces the artifacts that everything that follows d
 **Workload:**
 
 - Two to three working days at the start of every engagement.
-- Founder walks me through the vision, market, and constraints in depth.
+- Client walks me through the vision, market, and constraints in depth.
 - I ask the questions that matter and give an honest read: what the build will take, what the risks are, where the assumptions are weakest.
 - Roadmap work, separating what's easy (known solutions, off-the-shelf patterns) from what's hard or unique to this product. High-level estimates produced for the known work first; the unique work called out for closer inspection.
 - Scope developed in two passes: a **broad** pass that maps the territory, then a **granular** pass that defines each feature set in enough detail to commit to.
@@ -65,7 +65,7 @@ The first paid engagement. Produces the artifacts that everything that follows d
 - A granular **v1 scope document** — defines the MVP.
 - A contract.
 
-The founder owns these regardless of whether we keep working together. All work from here on out is paid against this contract.
+The client owns these regardless of whether we keep working together. All work from here on out is paid against this contract.
 
 ---
 
@@ -102,7 +102,7 @@ Optional. A public marketing presence goes live before the product itself is usa
 
 **After the milestone:**
 
-- Outreach surfaces the page to its intended audience — founder's network, target communities, content, ads, partnerships.
+- Outreach surfaces the page to its intended audience — client's network, target communities, content, ads, partnerships.
 - Audience growth and engagement get tracked.
 - Conversations sparked by v0 feed straight into product discovery; interest signals shape what gets built first.
 
@@ -115,7 +115,7 @@ Optional. The product (or a meaningful first slice of it) is real and deployed t
 **Dependencies:**
 
 - Discovery (granular v1 scope, Custom Work feature breakdown).
-- v0 if shipped (the audience built during v0 as one source of warm-channel users). If v0 was skipped: direct outreach lists from the founder.
+- v0 if shipped (the audience built during v0 as one source of warm-channel users). If v0 was skipped: direct outreach lists from the client.
 
 **Planning:**
 
@@ -127,7 +127,7 @@ Optional. The product (or a meaningful first slice of it) is real and deployed t
 **Workload:**
 
 - **Base Platform** — the foundation every product needs: authentication, hosting, deploys, monitoring, error tracking, basic admin tooling, plus whatever transaction or exchange plumbing the model requires. Mostly pre-built and battle-tested. Ships fast (about two weeks) for a fixed cost. Deployed to staging during build.
-- **Custom Work** — the features that make the product specifically itself, built one set at a time through the development cycle. Deployed to staging during build.
+- **Custom Work** — the features that make the product specifically itself, built cycle by cycle through the development cycle. Deployed to staging during build.
 - **Release prep** — feature flags wired in, telemetry tuned for production, support channel stood up, smoke tests written, production environment baselined.
 
 **Deliverables:**
@@ -143,14 +143,14 @@ Optional. The product (or a meaningful first slice of it) is real and deployed t
 - Recruit and vet users from warm channels — small group on purpose, large enough to surface real issues, small enough to talk to each one.
 - Structured feedback collection: regular check-ins (calls, surveys, or both) plus passive signal from telemetry.
 - Tight iteration loop — findings feed directly into the next development cycle.
-- Operational rehearsal: founder and I learn what running this product in production actually demands while the stakes are still low.
+- Operational rehearsal: client and I learn what running this product in production actually demands while the stakes are still low.
 
 **Exit criteria for moving to v1:**
 
 - Core flows are stable under real usage (not just internal testing).
 - Known critical bugs are fixed.
 - Onboarding works for users who weren't hand-held in.
-- Founder is confident in the support load and has a plan for it.
+- Client is confident in the support load and has a plan for it.
 - Billing / payment flow (or its non-SaaS equivalent) is tested.
 - Marketing assets for v1 are ready.
 
@@ -163,7 +163,7 @@ Public release of the MVP. Access is opened to anyone in the target audience and
 **Dependencies:**
 
 - Discovery (v1 scope).
-- v1-beta if shipped (real gated-usage signal — priorities, defects, product fit). If v1-beta was skipped: internal feedback, founder testing, and user interviews stand in.
+- v1-beta if shipped (real gated-usage signal — priorities, defects, product fit). If v1-beta was skipped: internal feedback, client testing, and user interviews stand in.
 - v0 if shipped (the v0 audience to reach at launch).
 
 **Planning:**
@@ -215,7 +215,7 @@ The next major version of the product is released to all users. Planning for v2 
 
 **Workload:**
 
-- Development cycle running against the evolving v2 scope, set by set.
+- Development cycle running against the evolving v2 scope, cycle by cycle.
 - Feature flags continue to gate risky or in-progress work.
 - v2 features may roll out gradually behind flags before the v2 release itself, so the v2 milestone is often more of a _declaration_ (we're calling this the v2 release) than a hard cutover.
 

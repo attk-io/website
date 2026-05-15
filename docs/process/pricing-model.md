@@ -4,17 +4,17 @@ This document captures how pricing and billing work across the engagement. Plain
 
 The pricing model needs to do two things at once:
 
-- Give the founder cost visibility early enough to make real decisions.
+- Give the client cost visibility early enough to make real decisions.
 - Avoid pretending a custom software product can be priced accurately before the work has been scoped feature by feature.
 
 The model is therefore a hybrid: fixed-fee thinking work up front, fixed-price Base Platform modules where the work is pre-built, quoted Custom Work once features have been scoped, and hourly billing for re-scoping, advisory work, and other open-ended senior judgement.
 
 ## Pricing principles
 
-- **The founder should know what they are committing to before build work begins.** No feature starts from a vague "we'll see what it takes" understanding.
+- **The client should know what they are committing to before build work begins.** No feature starts from a vague "we'll see what it takes" understanding.
 - **Scoping is paid work.** Turning an idea into something buildable is part of the value, not a free prelude to the value.
 - **Known work can be priced directly.** Base Platform modules are pre-built and menu-priced.
-- **Custom work is quoted after scope is known.** The internal basis is expected hours at the senior hourly rate, but the founder sees a feature quote tied to a written scope.
+- **Custom work is quoted after scope is known.** The internal basis is expected hours at the senior hourly rate, but the client sees a feature quote tied to a written scope.
 - **Changed direction gets re-scoped before it gets built.** If a new requirement changes the work, the new work is estimated before build continues.
 
 ## Engagement entry
@@ -27,14 +27,14 @@ See `fit-check.md`.
 
 ### Feature Discovery
 
-Feature Discovery is the first paid step. It is a high-level conversation where the founder and I name the features the product appears to need.
+Feature Discovery is the first paid step. It is a high-level conversation where the client and I name the features the product appears to need.
 
 - Fixed price: **$500**.
-- Optional only if the founder already has equivalent output.
+- Optional only if the client already has equivalent output.
 - Required input for detailed feature scoping.
 - Output: a high-level feature inventory, grouped well enough to decide what needs detailed scoping next.
 
-Feature Discovery is standalone. If the founder stops here, they keep the output.
+Feature Discovery is standalone. If the client stops here, they keep the output.
 
 ### Detailed Feature Scoping
 
@@ -46,7 +46,7 @@ Detailed Feature Scoping turns one named feature from the inventory into a build
   - **Base Platform feature:** fixed menu price and, where useful, a demo of the pre-built module.
   - **Custom feature:** wireframes or flow sketches where needed, written scope, and a feature quote.
 
-Detailed scoping is the bridge between early product thinking and build commitment. It gives the founder the information needed to decide what to buy, defer, cut, or change before build work starts.
+Detailed scoping is the bridge between early product thinking and build commitment. It gives the client the information needed to decide what to buy, defer, cut, or change before build work starts.
 
 ## Base Platform pricing
 
@@ -57,7 +57,7 @@ The Base Platform is fixed-price because it is built from pre-built modules.
 - The full Base Platform price is set from the selected inventory.
 - The range currently communicated publicly is **$15,000–$35,000**.
 
-The Base Platform price is not an hourly estimate. The work is known, pre-built, and configured for the founder's product. If a major platform need is discovered after the initial inventory is set, it is re-scoped before work begins and handled as either:
+The Base Platform price is not an hourly estimate. The work is known, pre-built, and configured for the client's product. If a major platform need is discovered after the initial inventory is set, it is re-scoped before work begins and handled as either:
 
 - another Base Platform add-on, priced from the menu, or
 - Custom Work, if the need is product-specific rather than platform foundation.
@@ -76,7 +76,7 @@ Custom Work is quoted per scoped feature.
 - If my estimate is wrong and the agreed scope takes longer than expected, I absorb that difference.
 - If the scope changes, the changed work is not absorbed silently; it is re-scoped before build continues.
 
-This keeps pricing legible for the founder without turning the engagement into open-ended hourly work. The founder commits to a scoped feature and a price. I keep the hourly rate as the internal basis for estimating and as the rate for work that genuinely cannot be quoted as a bounded feature.
+This keeps pricing legible for the client without turning the engagement into open-ended hourly work. The client commits to a scoped feature and a price. I keep the hourly rate as the internal basis for estimating and as the rate for work that genuinely cannot be quoted as a bounded feature.
 
 ## Scope changes and re-scoping
 
@@ -90,7 +90,7 @@ When a requested change affects the agreed scope:
   - a Base Platform add-on price, if the change maps to a pre-built module, or
   - a revised or new Custom Work quote, if the change is product-specific.
 
-The important boundary is not legal ceremony; it is clarity before work starts. The founder should always know when a request is part of the current scope, when it changes the scope, and what the changed work will cost.
+The important boundary is not legal ceremony; it is clarity before work starts. The client should always know when a request is part of the current scope, when it changes the scope, and what the changed work will cost.
 
 ## Invoicing and payment
 
@@ -104,7 +104,7 @@ Invoices are net 30.
 - Work pauses on day 31 if payment has not arrived.
 - Work resumes once the overdue invoice is paid.
 
-There is no minimum commitment. The founder can stop at any time. Work completed to that point is already delivered through source control as it happens, so stopping does not create a handoff gap.
+There is no minimum commitment. The client can stop at any time. Work completed to that point is already delivered through source control as it happens, so stopping does not create a handoff gap.
 
 ## Third-party costs and ownership
 
