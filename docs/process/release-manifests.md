@@ -1,14 +1,14 @@
-# Release Snapshots
+# Release Manifests
 
-This document defines the release snapshot pattern: a lightweight record of what the product contains at a given release. Plain wording. Internal planning doc.
+This document defines the release manifest pattern: a lightweight record of what the product contains at a given release. Plain wording. Internal planning doc.
 
-A release snapshot is not a changelog. A changelog answers, "What changed?" A release snapshot answers, "What does the app include at this release?"
+A release manifest is not a changelog. A changelog answers, "What changed?" A release manifest answers, "What does the app include at this release?"
 
 The goal is to preserve a versioned picture of the product's current state so future roadmap, scope, and product decisions can be made with context.
 
 ## When to Write One
 
-Write a release snapshot for each named release milestone or meaningful audience change:
+Write a release manifest for each named release milestone or meaningful audience change:
 
 - v0 public marketing release
 - v1-beta private or gated release
@@ -18,7 +18,7 @@ Write a release snapshot for each named release milestone or meaningful audience
 
 ## What It Should Capture
 
-Each snapshot should be short, factual, and easy to scan.
+Each manifest should be short, factual, and easy to scan.
 
 Suggested fields:
 
@@ -106,6 +106,6 @@ Purpose: validate onboarding and first activation
 
 ## How This Fits the Process
 
-Release snapshots support the principle that the past should inform progress. They make it possible to look back and understand what the product actually contained at a given moment, who it was exposed to, what was known to be missing, and how that release shaped the next work.
+Release manifests support the principle that the past should inform progress. They make it possible to look back and understand what the product actually contained at a given moment, who it was exposed to, what was known to be missing, and how that release shaped the next work.
 
 They can live in the project `docs/` folder, alongside decision records and other process memory.
