@@ -51,4 +51,4 @@ Example access boundaries:
 ## Footnotes
 
 - This document defines the reusable release model. [The full project arc](../wip/process/project-arc.md) describes project milestones, some of which are Releases.
-- Release manifest specifications live in [Recording History](../wip/process/recording-history.md).
+- Release manifest specifications live in [Recording History](./recording-history.md).
