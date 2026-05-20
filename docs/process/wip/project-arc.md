@@ -41,7 +41,7 @@ The three release milestones (v0, v1-beta, v1) share a common shape: prep before
 
 ## Milestone 1: Discovery (paid)
 
-The first paid engagement. Produces the artifacts that everything that follows depends on.
+The first paid engagement. Establishes the goals, principles, and feature scope that everything downstream depends on.
 
 **Dependencies:**
 
@@ -57,19 +57,49 @@ The first paid engagement. Produces the artifacts that everything that follows d
 - Two to three working days at the start of every engagement.
 - Client walks me through the vision, market, and constraints in depth.
 - I ask the questions that matter and give an honest read: what the build will take, what the risks are, where the assumptions are weakest.
+- Extract the core principles and business goals that should shape every subsequent decision.
 - Roadmap work, separating what's easy (known solutions, off-the-shelf patterns) from what's hard or unique to this product. High-level estimates produced for the known work first; the unique work called out for closer inspection.
-- Scope developed in two passes: a **broad** pass that maps the territory, then a **granular** pass that defines each feature set in enough detail to commit to.
+- Scope developed in a **broad pass** that maps the territory and defines the full feature set at the product level — what the product does, not yet how each feature works in detail.
 
 **Deliverables:**
 
-- A granular **v1 scope document** — defines the MVP.
+- A **v1 scope document** — the full feature set of the MVP, at the product level.
 - A contract.
 
 The client owns these regardless of whether we keep working together. All work from here on out is paid against this contract.
 
 ---
 
-## Milestone 2: v0 Release (if needed)
+## Milestone 2: Planning & Design (paid)
+
+The second paid engagement. Takes the v1 scope from Discovery and works it into the full detail needed to build: granular feature breakdowns, UI/UX decisions, and a complete issue backlog ready for development.
+
+**Dependencies:**
+
+- Discovery (v1 scope document, contract).
+
+**Planning:**
+
+- Review the v1 scope; identify which flows carry the most design risk or ambiguity and prioritize those for wireframing.
+- Establish UI direction and constraints — design system approach, branding inputs, platform targets.
+- Decide which features are standard enough to go straight to issues and which need wireframes first.
+
+**Workload:**
+
+- Granular breakdown of each feature set from the v1 scope — the details of how each feature works, edge cases, states, and constraints.
+- Wireframes covering the key user flows, with enough fidelity to resolve layout and navigation questions before build begins.
+- Hi-fi UI examples — representative screens that establish the visual design direction; not necessarily every screen, but enough to anchor the system.
+- GitHub issues written for all planned v1 work and organized into a GitHub Project, structured so development can begin without further translation.
+
+**Deliverables:**
+
+- Wireframes for key user flows.
+- Hi-fi UI examples establishing the visual design direction.
+- A GitHub Project populated with issues covering the full v1 scope, ready for development.
+
+---
+
+## Milestone 3: v0 Release (if needed)
 
 Optional. A public marketing presence goes live before the product itself is usable. "v0" refers to the version of the deployed _system_ at this point — there's real code in production (marketing site, email capture, analytics, telemetry pipeline) but none of the product features exist yet.
 
@@ -108,18 +138,18 @@ Optional. A public marketing presence goes live before the product itself is usa
 
 ---
 
-## Milestone 3: v1-beta Release (if needed)
+## Milestone 4: v1-beta Release (if needed)
 
 Optional. The product (or a meaningful first slice of it) is real and deployed to production, with access gated to vetted users. "Beta" reflects that v1 hasn't been declared yet — what's deployed is a candidate that needs real-world validation before it's called complete. The deployment runs on the same production stack v1 will run on, so operational rehearsal counts.
 
 **Dependencies:**
 
-- Discovery (granular v1 scope, Custom Work feature breakdown).
+- Planning & Design (granular feature breakdown, GitHub Project).
 - v0 if shipped (the audience built during v0 as one source of warm-channel users). If v0 was skipped: direct outreach lists from the client.
 
 **Planning:**
 
-- Granular v1 scope from Discovery drives the Custom Work breakdown into feature sets.
+- The GitHub Project from Planning & Design drives the Custom Work breakdown into development cycles.
 - Identify the Base Platform components needed for this product — auth, hosting, monitoring, error tracking, admin tooling, plus whatever transaction or exchange plumbing the model requires.
 - Pick the gating mechanism (invite codes, allowlist, manual approval) and identify warm-channel sources for first users.
 - Define the release-prep checklist: feature flags, telemetry, support channel, smoke tests, production baseline.
@@ -156,13 +186,13 @@ Optional. The product (or a meaningful first slice of it) is real and deployed t
 
 ---
 
-## Milestone 4: v1 Release
+## Milestone 5: v1 Release
 
 Public release of the MVP. Access is opened to anyone in the target audience and the product accepts payments — or, depending on the business model, the equivalent exchange of time, attention, or contribution.
 
 **Dependencies:**
 
-- Discovery (v1 scope).
+- Planning & Design (granular feature breakdown, GitHub Project).
 - v1-beta if shipped (real gated-usage signal — priorities, defects, product fit). If v1-beta was skipped: internal feedback, client testing, and user interviews stand in.
 - v0 if shipped (the v0 audience to reach at launch).
 
@@ -198,7 +228,7 @@ Public release of the MVP. Access is opened to anyone in the target audience and
 
 ---
 
-## Milestone 5: v2
+## Milestone 6: v2
 
 The next major version of the product is released to all users. Planning for v2 happens naturally between milestones, fed by real-user signal accumulated since v1.
 
@@ -228,7 +258,7 @@ The same pattern continues past v2: each subsequent major version is planned bet
 
 ---
 
-## Milestone 6: Stepping Back
+## Milestone 7: Stepping Back
 
 A transitional milestone, not an exit. Overlaps with continued release cycles rather than following them cleanly.
 
