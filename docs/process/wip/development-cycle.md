@@ -13,13 +13,13 @@ The cycle runs across every work period in the macro arc — building toward eac
 - Define acceptance criteria — what does "done" actually look like, observable from the client's side.
 - Surface unknowns: anything where I need a decision from the client, a clarification from a user, or a spike before committing to an approach.
 - Estimate effort and confirm this is still the right next thing to build (priorities may have shifted since the original roadmap).
-- Output: a short, written scope shared with the client before any code is written.
+- Output: a short, written scope in the form of a Github issue, shared with the client before any code is written.
 
 ## 2. Implementation
 
-- Focused build against the agreed scope.
-- Internal milestones are small and frequent — the working state of the system should be demonstrable at any point.
-- Decisions that affect the scope get raised back to the client rather than absorbed silently.
+- Plan the build in a set of discrete steps: small, verifiable chunks of meaninful work which can be completed in under 30 minutes
+- Large features should be broken down into smaller phases with each phase assigned it’s own sub-issue.
+- New insights or decisions that affect the scope get raised back to the client rather than absorbed silently.
 - Tests, types, and observability are written alongside the feature, not bolted on after.
 
 ## 3. QA / review
@@ -27,25 +27,25 @@ The cycle runs across every work period in the macro arc — building toward eac
 - The client reviews the working feature in their hands, in an environment that mirrors production.
 - This is not a demo — it's the client using the thing the way a real user would.
 - Issues, friction, and "actually, can it do X instead" get captured.
-- Small fixes happen immediately. Anything that materially changes scope gets re-scoped explicitly rather than smuggled into the build.
+- Small fixes happen immediately. Anything that materially changes scope gets re-scoped explicitly.
 
 ## 4. Ship
 
 - Once the QA pass is clear and any issues raised during review are resolved, the build ships to production.
-- Deploys are routine and reversible — shipping is not a ceremony.
+- Deploys are routine and reversible — shipping is not a ceremony, it’s a development step.
 - Monitoring catches anything the QA pass missed; rollback is available if needed.
 - The build is now real. The client, and once the product is released, real users, start producing evidence about it.
 
 ## 5. Reflect → next cycle
 
 - Brief check before starting the next loop: did anything in this cycle change our view of what should come next?
-- If yes, the roadmap is updated before the next scoping step.
-- If no, pull the next cycle and start again.
+  - If yes, the roadmap is updated before the next scoping step.
+  - If no, pull the next cycle and start again.
 
 ## Key properties of the development cycle
 
 - **One loop, repeated** — the same four phases regardless of whether the product is pre-release or in production. Only the inputs change.
-- **Every loop produces something real** — not a slide, not a demo, a working feature the client can react to.
+- **Every cycle releases something real** — not a slide, not a demo, a working feature the client can react to.
 - **Course corrections happen early, while they're cheap** — small cycles and frequent client review mean we find out we're going the wrong way after one cycle, not after six.
 - **Scope changes are explicit** — anything that grows the scope is re-scoped, not silently absorbed. The client always knows what they're paying for.
-- **No assumptions** — scope is shared in writing before the build starts, and the client reviews the working feature before it ships.
+- **No assumptions** — scope is shared before the build starts, and the client reviews the working feature before it ships.
