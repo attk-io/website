@@ -2,19 +2,19 @@
 
 This document captures the shape of a complete engagement, from first conversation to long-term handoff. Plain wording — no brand voice applied. Internal planning doc; marketing-facing names will be developed during the brand-voice pass.
 
-The arc is organized around **milestones** — concrete checkpoints that exist or have happened. Engineering work happens _between_ milestones, shaped by the development cycle (see `development-cycle.md`). The work between milestones is categorized by what's being built (marketing assets, Base Platform, Custom Work, release prep), not by phase.
+The arc is organized around **milestones** — concrete checkpoints that mark project progression and reflect project goals. A milestone can be a release, but can also mark other forms of progress such as Discovery, Planning & Design, or handoff. Engineering work happens _between_ milestones, shaped by the development cycle (see `development-cycle.md`). The work between milestones is categorized by what's being built (marketing assets, Base Platform, Custom Work, release prep), not by phase.
 
-Releases use semantic version naming (`v0`, `v1-beta`, `v1`, `v2`, etc.) to reflect the technical reality of what each release is.
+Release Target names are uncovered during Discovery. Semantic-style names (`v0`, `v1-beta`, `v1`, `v2`, etc.) are common examples, but the actual names should reflect the project's audience and access-boundary progression.
 
-## How releases work
+## How Releases fit the arc
 
-The three release milestones (v0, v1-beta, v1) share a common shape: prep before the cut, a small cut event, and follow-through after. Most of the work lives in prep and post — the cut itself is often as small as pointing a domain or flipping an access flag.
+The general release model is defined in [Product Releases](../../process/product-releases.md). The milestones below apply that model to the engagement arc.
 
-**Continuous deployment is the baseline.** From the day there's anything in production, code reaches it in small, frequent, reversible increments. The release milestones widen audience and surface area; they don't change deployment cadence.
+The release-shaped milestones (v0, v1-beta, v1) share a common shape: prep before the cut, a small cut event, and follow-through after. Most of the work lives in prep and post — the cut itself is often as small as pointing a domain or flipping an access flag.
 
 **Business model framing.** The milestones below are framed in SaaS terms because that's the most prevalent shape. "Paying customer" at v1 means money changes hands; for other models, the analog is whatever the user gives up to participate — time, attention, data, content, social capital. The structure stays the same; the thing exchanged at v1 varies.
 
-**Each release has a job.** v0 validates interest and builds an audience; v1-beta confirms the product works and rehearses operations; v1 earns revenue (or its analog) and opens the doors.
+**Milestone jobs.** v0 validates interest and builds an audience; v1-beta confirms the product works and rehearses operations; v1 earns revenue (or its analog) and opens the doors.
 
 ## Entry point
 
