@@ -6,7 +6,7 @@ One self-contained piece of functionality with a tangible outcome the client can
 
 ## Checkpoint
 
-A named point in the Project Arc that marks project progression and reflects a project goal. A Checkpoint can be a Release, but can also mark other forms of progress such as Discovery, Planning & Design, or Development Transition.
+A named point in the Project Arc that marks project progression and reflects a project goal. A Checkpoint can be a Release, but can also mark other forms of progress such as Discovery, Planning & Design, or Development Hardening.
 
 ## Parent issue
 

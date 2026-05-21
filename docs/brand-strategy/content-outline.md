@@ -24,7 +24,7 @@ Describe the ideal client's situation: what they already have (vision, domain ex
 
 ## Process / How It Works
 
-Walk the reader through the engagement using the same three components named on the Pricing page (Discovery, Base Platform, Custom Work), then describe two moments that punctuate the rhythm (Launch isn't a finish line, Development transition). The job of this section is to give the reader confidence in a sound, efficient method where every step earns its place toward their goal — and to make clear that the rhythm continues through and past launch, rather than ending at a single checkpoint.
+Walk the reader through the engagement using the same three components named on the Pricing page (Discovery, Base Platform, Custom Work), then describe two moments that punctuate the rhythm (Launch isn't a finish line, Development hardening). The job of this section is to give the reader confidence in a sound, efficient method where every step earns its place toward their goal — and to make clear that the rhythm continues through and past launch, rather than ending at a single checkpoint.
 
 ### Discovery
 
@@ -42,9 +42,9 @@ The differentiated heart of the engagement. Each meaningful piece of functionali
 
 A brief reframing beat. Real users start supplying the evidence that previously came from the client and from Christian's experience. The loop doesn't change — the inputs do. Counters the misconception that the work ends at launch.
 
-### Development transition
+### Development hardening
 
-Closing beat. Christian's involvement is heaviest at the start: architecture, foundational decisions, and building the first development system. As the product matures, the work shifts toward hardening practices, tooling, and documentation so a new or internal developer can take over the development process with confidence.
+Closing beat. After the MVP is public, the work shifts toward hardening the practices, tooling, release routines, and documentation that continued development will depend on. The goal is a product and development system future developers can understand, change, review, and release safely.
 
 ## Working Together (planned section — not yet drafted)
 
