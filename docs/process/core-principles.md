@@ -8,7 +8,7 @@ The relationship should fit the need.
 
 A strong fit happens when the client brings the vision, business context, and problem knowledge, and I bring the missing technical shape: product translation, architectural judgment, build leadership, and a dependable path from idea to working software. The relationship works best when those strengths complement each other rather than overlap.
 
-The Fit Check stage exists to make this call before money changes hands: a short, free conversation that ends in a clear go / no-go, and points elsewhere when the answer is no.
+The [Fit Check](./fit-check.md) stage exists to make this call before the engagement deepens: a short conversation that ends in a clear next step, and points elsewhere when the answer is no.
 
 ## Business Goals Anchor the Work
 

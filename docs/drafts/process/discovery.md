@@ -88,5 +88,5 @@ Pricing of Discovery itself, and the structure of how Custom Work is billed afte
 
 ## Dependencies and what follows
 
-- **Depends on:** the Fit Check (see `fit-check.md`) — a "go" decision, an agreed time budget, two-way fit confirmation, and a broad sense of the project.
+- **Depends on:** the Fit Check (see [Fit Check](../../process/fit-check.md)) — a "go" decision, an agreed time budget, two-way fit confirmation, and a broad sense of the project.
 - **Feeds into:** every checkpoint after this point. The v1 scope shapes the v0 marketing site (what we say the product is), the Base Platform inventory (what the foundation needs to support), the v1-beta Custom Work breakdown, and the v1 release scope. The contract governs the whole engagement from here forward.
