@@ -44,3 +44,11 @@ A high-level feature list that names the major capabilities the product appears 
 **Release targets:**
 
 The Release Targets that make sense for the product. Each Release Target names the Audience Profile and Access Boundary for a meaningful released state.
+
+**Planning & Design scope:**
+
+An agreement on the concrete artifacts that Planning & Design will produce. Included here so the scope and expectations for that engagement are clear before it begins. Common examples:
+
+- Wireframes of key user flows
+- Hi fidelity examples of component UI
+- A product branding guide
