@@ -23,7 +23,7 @@ The model is therefore a hybrid: fixed-fee thinking work up front, fixed-price B
 
 The Fit Check is free. It decides whether there is enough two-way fit to start paid discovery work. It does not produce a full scope, a quote, or a commitment to build.
 
-See `fit-check.md`.
+See [Fit Check](../../process/fit-check.md).
 
 ### Feature Discovery
 

@@ -8,6 +8,14 @@ One self-contained piece of functionality with a tangible outcome the client can
 
 A named point in the Project Arc that marks project progression and reflects a project goal. A Checkpoint can be a Release, but can also mark other forms of progress such as Discovery, Planning & Design, or Development Hardening.
 
+## Fit Check
+
+The entry-point Checkpoint that helps the client decide whether to continue into Discovery, discuss a different working relationship, or end the engagement. The Fit Check informs the client about how the working relationship would function; it does not produce Discovery work.
+
+## Discovery
+
+The Checkpoint after a successful Fit Check. Discovery turns broad project understanding into scoped work and a commercial commitment.
+
 ## Parent issue
 
 The GitHub issue representing a full feature from the client's perspective. Closed when all sub-issues are done and the client has cleared QA. Follows the full development cycle once all sub-issues are shipped.
