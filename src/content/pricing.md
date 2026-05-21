@@ -1,4 +1,7 @@
-## I believe in being straightforward about costs. There are three components to an engagement, and each one is clearly defined.
+---
+quote: 'I believe in being straightforward about costs. There are three components to an engagement, and each one is clearly defined.'
+section_label: What it costs
+---
 
 ### Discovery
 

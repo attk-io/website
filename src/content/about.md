@@ -1,4 +1,7 @@
-## My name is Christian Bosque and I've spent the last decade building products for founders
+---
+quote: "My name is Christian Bosque and I've spent the last decade building products for founders"
+section_label: Who I am
+---
 
 I'm an independent software engineer from Canada, and in 2016 I refocused my career on working exclusively with startup founders who needed someone to take full ownership of the technical side of their business.
 

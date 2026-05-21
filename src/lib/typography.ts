@@ -2,8 +2,8 @@
 //
 // Each section component imports `TYPOGRAPHY_BASELINE`, spreads it into its
 // own ClassMap, and overrides individual keys for section-specific needs
-// (e.g., HeroSection uses a much larger h1, FAQ uses heavier strong styling
-// for bold question lines, Pricing uses h3 as a tier-name treatment).
+// (e.g., the hero uses a much larger h1, FAQ uses heavier strong styling for
+// bold question lines, Pricing uses h3 as a tier-name treatment).
 //
 // Values are pure Tailwind utility strings — no semantic class names. The
 // scale matches the foundation verified on /specimen: Hanken Grotesk only,
@@ -18,6 +18,10 @@ import type { ClassMap } from './markdown';
 export const SECTION_BODY_P =
   'max-w-[68ch] text-[1.0625rem] leading-[1.65] text-sand-12';
 
+// Pull quote treatment used by top-level marketing sections.
+export const SECTION_QUOTE =
+  "relative font-spectral italic font-normal text-[clamp(2.25rem,3.25vw+0.75rem,3.25rem)] leading-[1.15] tracking-[-0.005em] text-sand-8 before:content-['“'] before:absolute before:font-spectral before:italic before:font-normal before:text-[1.6em] before:leading-none before:text-sand-7 before:top-[-0.05em] before:-left-5 md:before:-left-10 before:pointer-events-none before:select-none";
+
 export const TYPOGRAPHY_BASELINE: ClassMap = {
   h1: 'text-[clamp(2.5rem,4vw+1rem,3.75rem)] font-semibold leading-[1.0] tracking-[-0.028em] text-sand-12',
   h2: 'text-[clamp(2rem,3vw+0.75rem,2.875rem)] font-semibold leading-[1.02] tracking-[-0.025em] text-sand-12',
@@ -30,13 +34,6 @@ export const TYPOGRAPHY_BASELINE: ClassMap = {
   ul: 'mt-5 max-w-[68ch] space-y-2 list-disc list-outside pl-5',
   ol: 'mt-5 max-w-[68ch] space-y-2 list-decimal list-outside pl-5',
   li: 'text-[1.0625rem] leading-[1.65] text-sand-12 pl-1',
-  blockquote: 'mt-6 max-w-[64ch] pl-6 italic text-sand-12',
+  blockquote: `${SECTION_QUOTE} max-w-[26ch]`,
   hr: 'mt-12 h-px border-0 bg-sand-7',
 };
-
-// Quote-style H2 used by every content section (excluding Hero and FinalCTA).
-// Alegreya italic reads as a spoken line; a hanging opening curly quote
-// (sand-7, rendered via ::before) frames the headline as a pulled quotation.
-// Each section composes this with its own max-width for wrap discipline.
-export const SECTION_QUOTE_H2 =
-  "relative font-spectral italic font-normal text-[clamp(2.25rem,3.25vw+0.75rem,3.25rem)] leading-[1.15] tracking-[-0.005em] text-sand-8 before:content-['“'] before:absolute before:font-spectral before:italic before:font-normal before:text-[1.6em] before:leading-none before:text-sand-7 before:top-[-0.05em] before:-left-5 md:before:-left-10 before:pointer-events-none before:select-none";
