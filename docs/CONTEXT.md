@@ -14,7 +14,7 @@ The entry-point Checkpoint that helps the client decide whether to continue into
 
 ## Discovery
 
-The Checkpoint after a successful Fit Check. Discovery turns broad project understanding into scoped work and a commercial commitment.
+The Checkpoint after a successful Fit Check. Discovery clarifies the business goals and uncovers how a custom software product could serve those goals.
 
 ## Parent issue
 
@@ -39,6 +39,14 @@ The intentional step that makes code in the production Deployment Environment ac
 ## Release Target
 
 A named target for a Release, uncovered during Discovery and established before the Release happens. A Release Target has a name, exactly one Audience Profile, and one Access Boundary; material changes to the Audience Profile or Access Boundary usually create a new Release Target.
+
+## Product Audience
+
+A type of person or organization the product is meant to serve. A Product Audience is distinct from an Audience Profile; it describes product fit, not release exposure.
+
+## Product Type
+
+The kind of software product being considered, such as a marketplace, workflow tool, booking system, membership platform, or internal operations tool. Product Type describes the product's basic shape before its specific feature list is defined.
 
 ## Audience Profile
 
