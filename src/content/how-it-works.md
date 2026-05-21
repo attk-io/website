@@ -1,38 +1,34 @@
-## Good software projects feel surprisingly calm.
+---
+quote: 'The path from idea to product should make the next step clearer.'
+section_label: How I work
+---
 
-Not because the work is easy, but because uncertainty gets surfaced early. The product becomes more real every week. The direction stays understandable. Small problems get corrected before they become expensive ones.
+A good software project gives you the same confidence as a good navigation system: you know where you are, you know where you're trying to go, you can see the shape of the surrounding terrain, and the next direction is specific enough to act on.
 
-Most failed software projects drift off course gradually.  
-I work very differently from that.
+That is what the work is designed to create. Not a perfect plan frozen at the beginning, but a living sense of direction that stays grounded as the product becomes real.
 
-### 1. You always have a compass
+### Discovery
 
-The project should never feel imaginary.
+We talk through the business goal, the people the product needs to serve, the kind of software it is becoming, the major feature areas, and the first useful release targets. The point is not to invent certainty. It's to name what we know, what we don't, and what would make the first version worth building.
 
-From early in the engagement, there’s a real working environment you can open and interact with. Not screenshots. Not demos prepared for meetings. The product itself. That visibility keeps feedback loops short and prevents months of misunderstanding from quietly accumulating underneath the build.
+By the end, the product has a clearer destination and enough shape to decide what Planning & Design needs to resolve.
 
-### 2. You always have a map
+### Planning & Design
 
-Software projects become stressful when the future turns foggy.
+I break feature areas into concrete behavior, edge cases, states, and constraints. The work becomes a Project Arc, a prioritized backlog, and any agreed design artifacts such as wireframes, flow sketches, or representative UI examples.
 
-What’s being built next? What changed? Are we still on track? I try very hard to keep those answers clear. The roadmap evolves continuously as the product becomes more real, but changes happen explicitly. Scope stays visible, trade-offs get surfaced, and decisions don’t quietly disappear into implementation.
+This is where the map starts to become useful. We can see the meaningful checkpoints, the likely route between them, and the areas where the terrain still needs closer inspection before we commit.
 
-### 3. You’re not a hostage
+### Base Platform
 
-### Development Cycles
+Before custom feature work begins, the common foundation gets configured and shipped: hosting, deployment environments, authentication, email, observability, monitoring, and the other baseline pieces the product depends on.
 
-Every meaningful feature moves through the same rhythm: scope, build, review, ship, repeat.
+That foundation matters because it keeps custom development focused on what differentiates your business. We are not rebuilding standard infrastructure every time we need to learn something from the product.
 
-The loops stay intentionally small so we can react early while changing direction is still cheap. The goal isn’t activity or the appearance of momentum. It’s validated progress.
+### Custom Development Cycles
 
-### Releases
+At the start of each cycle, we check our current location: what has shipped, what changed, what is blocked, what new information came in, and whether the roadmap still points at the right next piece of work. The business goal acts as the compass. The Project Arc and backlog act as the map. The scoped issue for the cycle becomes the turn-by-turn direction.
 
-Early in the project, we’re working mostly from assumptions, market understanding, and experience.
+Then the loop runs: plan, build, deploy to staging, review, release, reflect. You are not reviewing an abstract progress report. You are using the working product, seeing what changed, and deciding from a clearer position than the one we had before.
 
-As releases reach progressively wider groups of users, the product starts generating evidence of its own — where onboarding breaks down, which features matter, where the roadmap was wrong. Each release makes the next set of decisions clearer. Releases are not treated like finish lines. They’re how the project becomes more informed over time.
-
-### My role changes over time
-
-My involvement is intentionally heaviest at the beginning, when architectural decisions are still expensive to undo.
-
-As the product matures, many engagements naturally transition toward a more junior developer handling day-to-day development, with me staying involved for architecture and strategic technical decisions. The goal is not to make your business depend on me forever. The goal is to help you build something durable enough that it eventually shouldn’t.
+Each cycle should leave us more familiar with the landscape: the product, the users, the technical constraints, the business trade-offs, and the path ahead. The goal is not just motion, it's informed progress.

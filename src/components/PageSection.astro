@@ -1,0 +1,57 @@
+---
+// Shared outer shell for marketing sections: section padding, centered
+// max-width grid, and the middle content column. Consumers slot their body
+// directly — the component handles the wrapper levels.
+//
+// FinalCTA keeps a bespoke wrapper for its overflow and background treatment.
+
+import { TYPOGRAPHY_BASELINE } from '../lib/typography';
+import SectionEyebrow from './SectionEyebrow.astro';
+
+type Props = {
+  class?: string;
+  spacingClass?: string;
+  gridClass?: string;
+  innerClass?: string;
+  eyebrowClass?: string;
+  number?: string;
+  label?: string;
+  quote?: string;
+};
+
+const {
+  class: className,
+  spacingClass = 'px-6 py-24 sm:px-10 sm:py-32',
+  gridClass,
+  innerClass,
+  eyebrowClass,
+  number,
+  label,
+  quote,
+} = Astro.props;
+---
+
+<section class:list={[spacingClass, className]}>
+  <div
+    class:list={[
+      'mx-auto grid max-w-480 grid-cols-[1fr_minmax(0,44rem)_3fr]',
+      gridClass,
+    ]}
+  >
+    <div class:list={['col-start-2', innerClass]}>
+      {
+        label && (
+          <SectionEyebrow class={eyebrowClass} number={number} label={label} />
+        )
+      }
+      {
+        quote && (
+          <blockquote class={TYPOGRAPHY_BASELINE.blockquote}>
+            {quote}
+          </blockquote>
+        )
+      }
+      <slot />
+    </div>
+  </div>
+</section>

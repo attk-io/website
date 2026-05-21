@@ -28,8 +28,8 @@
     'Liberation Mono', 'Courier New', monospace;
 
   /*
-   * Spectral italic is loaded for section-H2 quote treatment (see
-   * SECTION_QUOTE_H2 in src/lib/typography.ts). Spectral SC is not loaded;
+   * Spectral italic is loaded for section quote treatment (see
+   * SECTION_QUOTE in src/lib/typography.ts). Spectral SC is not loaded;
    * add to the @import above if small-caps become needed.
    */
   --font-spectral:
@@ -173,7 +173,7 @@
  * both in ocean to evoke classic engineering grid paper. */
 /* How-It-Works phase numerals. Auto-numbers each h3 inside the marked
  * container and hangs the numeral in the left margin — an oversized,
- * Spectral-italic counter that echoes the SECTION_QUOTE_H2 quotation mark
+ * Spectral-italic counter that echoes the SECTION_QUOTE quotation mark
  * but scaled up to become the section's dominant visual rhythm. */
 @utility how-phases {
   counter-reset: phase;

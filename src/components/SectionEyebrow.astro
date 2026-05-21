@@ -1,13 +1,14 @@
 ---
 type Props = {
+  class?: string;
   number?: string;
   label: string;
 };
 
-const { number, label } = Astro.props;
+const { class: className, number, label } = Astro.props;
 ---
 
-<div class="mb-12 flex items-baseline gap-6">
+<div class:list={['mb-12 flex items-baseline gap-6', className]}>
   <span
     class="text-[0.75rem] font-medium tracking-[0.14em] text-teal-11 uppercase"
   >
