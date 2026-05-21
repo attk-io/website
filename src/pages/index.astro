@@ -79,85 +79,69 @@ function splitTrailingEmail(source: string): [string, string] {
 ---
 
 <BaseLayout title="ATTK Software">
-  <div data-intro-fade><PageHeader /></div>
+  <PageHeader />
   <main class="overflow-clip">
-    <div data-intro-fade>
-      <PageSection spacingClass="px-6 pt-32 pb-24 sm:px-10 sm:pt-44 sm:pb-32">
-        <div set:html={hero.body} />
-      </PageSection>
-    </div>
-    <div data-intro-fade>
-      <PageSection
-        number="01"
-        label={whoThisIsFor.label}
-        quote={whoThisIsFor.quote}
+    <PageSection spacingClass="px-6 pt-32 pb-24 sm:px-10 sm:pt-44 sm:pb-32">
+      <div set:html={hero.body} />
+    </PageSection>
+    <PageSection
+      number="01"
+      label={whoThisIsFor.label}
+      quote={whoThisIsFor.quote}
+    >
+      <div set:html={whoThisIsFor.body} />
+    </PageSection>
+    <PageSection
+      class="relative"
+      gridClass="relative"
+      number="02"
+      label={howItWorks.label}
+      quote={howItWorks.quote}
+    >
+      <div class="how-phases" set:html={howItWorks.body} />
+    </PageSection>
+    <PageSection
+      number="03"
+      label={whyThisWorks.label}
+      quote={whyThisWorks.quote}
+    >
+      {whyThisWorks.body && <div set:html={whyThisWorks.body} />}
+    </PageSection>
+    <PageSection
+      number="04"
+      label={workingTogether.label}
+      quote={workingTogether.quote}
+    >
+      {workingTogether.body && <div set:html={workingTogether.body} />}
+    </PageSection>
+    <PageSection
+      number="05"
+      label={about.label}
+      quote={about.quote}
+      eyebrowClass="min-[780px]:col-span-2"
+      innerClass="col-span-2 grid max-w-[1140px] grid-cols-1 gap-x-12 gap-y-6 min-[780px]:grid-cols-[2fr_minmax(280px,1fr)]"
+    >
+      <div
+        class="max-w-[360px] min-[780px]:col-start-2 min-[780px]:row-span-2 min-[780px]:row-start-2 min-[780px]:max-w-none"
       >
-        <div set:html={whoThisIsFor.body} />
-      </PageSection>
-    </div>
-    <div data-intro-fade>
-      <PageSection
-        class="relative"
-        gridClass="relative"
-        number="02"
-        label={howItWorks.label}
-        quote={howItWorks.quote}
-      >
-        <div class="how-phases" set:html={howItWorks.body} />
-      </PageSection>
-    </div>
-    <div data-intro-fade>
-      <PageSection
-        number="03"
-        label={whyThisWorks.label}
-        quote={whyThisWorks.quote}
-      >
-        {whyThisWorks.body && <div set:html={whyThisWorks.body} />}
-      </PageSection>
-    </div>
-    <div data-intro-fade>
-      <PageSection
-        number="04"
-        label={workingTogether.label}
-        quote={workingTogether.quote}
-      >
-        {workingTogether.body && <div set:html={workingTogether.body} />}
-      </PageSection>
-    </div>
-    <div data-intro-fade>
-      <PageSection
-        number="05"
-        label={about.label}
-        quote={about.quote}
-        eyebrowClass="min-[780px]:col-span-2"
-        innerClass="col-span-2 grid max-w-[1140px] grid-cols-1 gap-x-12 gap-y-6 min-[780px]:grid-cols-[2fr_minmax(280px,1fr)]"
-      >
-        <div
-          class="max-w-[360px] min-[780px]:col-start-2 min-[780px]:row-span-2 min-[780px]:row-start-2 min-[780px]:max-w-none"
-        >
-          <img src="/portrait.jpg" alt="" class="w-full" />
-        </div>
-        <div class="min-[780px]:col-start-1 min-[780px]:row-start-3">
-          {aboutBodyHtml && <div set:html={aboutBodyHtml} />}
-          {aboutEmailHtml && <div set:html={aboutEmailHtml} />}
-        </div>
-      </PageSection>
-    </div>
-    <div data-intro-fade>
-      <PageSection number="06" label={pricing.label} quote={pricing.quote}>
-        <div set:html={pricing.body} />
-      </PageSection>
-    </div>
-    <div data-intro-fade>
-      <PageSection
-        innerClass="relative z-10 -m-8 bg-sand-1/80 p-8 sm:-m-12 sm:p-12"
-        number="07"
-        label={faq.label}
-        quote={faq.quote}
-      >
-        <div set:html={faq.body} />
-      </PageSection>
-    </div>
+        <img src="/portrait.jpg" alt="" class="w-full" />
+      </div>
+      <div class="min-[780px]:col-start-1 min-[780px]:row-start-3">
+        {aboutBodyHtml && <div set:html={aboutBodyHtml} />}
+        {aboutEmailHtml && <div set:html={aboutEmailHtml} />}
+      </div>
+    </PageSection>
+    <PageSection number="06" label={pricing.label} quote={pricing.quote}>
+      <div set:html={pricing.body} />
+    </PageSection>
+    <PageSection
+      innerClass="relative z-10 -m-8 bg-sand-1/80 p-8 sm:-m-12 sm:p-12"
+      number="07"
+      label={faq.label}
+      quote={faq.quote}
+    >
+      <div set:html={faq.body} />
+    </PageSection>
     <section class="relative overflow-x-clip px-6 pt-24 sm:px-10 sm:pt-32">
       <div class="mx-auto grid max-w-480 grid-cols-[1fr_minmax(0,44rem)_3fr]">
         <div class="relative">
@@ -209,7 +193,6 @@ function splitTrailingEmail(source: string): [string, string] {
           class="relative mx-auto grid max-w-480 grid-cols-[1fr_minmax(0,44rem)_3fr]"
         >
           <div
-            data-intro-anchor
             class="relative z-10 col-start-2 flex aspect-square flex-col justify-center bg-sun-9 px-8 py-16 sm:px-12 sm:py-20"
           >
             {
@@ -238,5 +221,5 @@ function splitTrailingEmail(source: string): [string, string] {
       </div>
     </section>
   </main>
-  <div data-intro-fade><PageFooter /></div>
+  <PageFooter />
 </BaseLayout>
