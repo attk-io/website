@@ -25,7 +25,7 @@ The client doesn't need to have polished answers. The questions are meant to sur
 - **What stage are you at?** Idea, validated problem, paying pilots, existing product needing a rebuild, etc.
 - **Why now?** What's making this the right moment to start — funding, market window, personal runway, an event.
 - **Who is it for?** The client's current read on the target user and the problem being solved.
-- **What's the timeline you're working toward?** Hard deadlines (event, funding milestone, contract), soft targets, or "as fast as is sensible."
+- **What's the timeline you're working toward?** Hard deadlines (event, funding deadline, contract), soft targets, or "as fast as is sensible."
 - **What do you think you need from me right now?** v0? v1-beta? Discovery only? Advisory? Their framing is useful even when it turns out to be wrong.
 - **What's the rough budget shape?** Order of magnitude is enough — ten thousand, fifty thousand, six figures. Catches mismatches early. In practice many clients would rather hear my numbers than name their own; the working assumption is that I ask the question first, but I'm the one who frames the answer in order-of-magnitude terms and signals that I'm comfortable talking about money up front. _TODO: follow this draft up with research on how to handle the budget conversation in a first prospective-client call — when to ask, when to anchor with my own pricing, how to keep the client comfortable enough to be honest._
 - **What have you tried already?** Other developers, agencies, no-code, in-house attempts. What worked, what didn't, why we're talking.
@@ -66,4 +66,4 @@ The client doesn't need to have polished answers. The questions are meant to sur
 ## Dependencies and what follows
 
 - **Depends on:** nothing — this is the entry point.
-- **Feeds into:** the Discovery milestone (see `project-arc.md`). The Fit Check sets the time budget for Discovery, confirms two-way fit, and establishes the broad shape of the project that Discovery then makes granular.
+- **Feeds into:** the Discovery checkpoint (see `project-arc.md`). The Fit Check sets the time budget for Discovery, confirms two-way fit, and establishes the broad shape of the project that Discovery then makes granular.

@@ -2,7 +2,7 @@
 
 This document captures how the first paid engagement runs — the two-to-three working days that turn a "go" decision from the Fit Check into a granular v1 scope and a signed contract. Plain wording — no brand voice applied. Internal planning doc.
 
-Discovery is the only stage where the client and I do nothing but think and talk and write. No code is shipped, no platform is stood up. The output is the spine that every later milestone hangs from: a roadmap granular enough to commit money to, and a contract that names what we're agreeing to.
+Discovery is the only stage where the client and I do nothing but think and talk and write. No code is shipped, no platform is stood up. The output is the spine that every later checkpoint hangs from: a roadmap granular enough to commit money to, and a contract that names what we're agreeing to.
 
 ## Format
 
@@ -89,4 +89,4 @@ Pricing of Discovery itself, and the structure of how Custom Work is billed afte
 ## Dependencies and what follows
 
 - **Depends on:** the Fit Check (see `fit-check.md`) — a "go" decision, an agreed time budget, two-way fit confirmation, and a broad sense of the project.
-- **Feeds into:** every milestone after this point. The v1 scope shapes the v0 marketing site (what we say the product is), the Base Platform inventory (what the foundation needs to support), the v1-beta Custom Work breakdown, and the v1 release scope. The contract governs the whole engagement from here forward.
+- **Feeds into:** every checkpoint after this point. The v1 scope shapes the v0 marketing site (what we say the product is), the Base Platform inventory (what the foundation needs to support), the v1-beta Custom Work breakdown, and the v1 release scope. The contract governs the whole engagement from here forward.

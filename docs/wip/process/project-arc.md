@@ -1,330 +1,187 @@
-# The full project arc
+# Example project arc: greenfield SaaS
 
-This document captures the shape of a complete engagement, from first conversation to long-term handoff. Plain wording — no brand voice applied. Internal planning doc; marketing-facing names will be developed during the brand-voice pass.
+This document captures one common engagement shape: a typical greenfield SaaS project, from first conversation to long-term development ownership. Plain wording — no brand voice applied. Internal planning doc; marketing-facing names will be developed during the brand-voice pass.
 
-The arc is organized around **milestones** — concrete checkpoints that mark project progression and reflect project goals. A milestone can be a release, but can also mark other forms of progress such as Discovery, Planning & Design, or handoff. Engineering work happens _between_ milestones, shaped by the development cycle (see `development-cycle.md`). The work between milestones is categorized by what's being built (marketing assets, Base Platform, Custom Work, release prep), not by phase.
+This is an example, not the canonical shape every engagement must follow. Existing-product rebuilds, internal tools, marketplaces, service businesses, and non-SaaS products may skip, rename, rearrange, or add checkpoints. The reusable process pieces live in the other process docs; this file shows how those pieces often compose in one common case.
 
-Release Target names are uncovered during Discovery. Semantic-style names (`v0`, `v1-beta`, `v1`, `v2`, etc.) are common examples, but the actual names should reflect the project's audience and access-boundary progression.
+The example arc is organized around **checkpoints** — named points that mark project progression and reflect project goals. A checkpoint can be a release, but can also mark other forms of progress such as Discovery or Planning & Design. Engineering work happens _between_ checkpoints, shaped by the [development cycle](../../process/development-cycle.md).
 
-## How Releases fit the arc
+The typical greenfield SaaS arc:
 
-The general release model is defined in [Product Releases](../../process/product-releases.md). The milestones below apply that model to the engagement arc.
+- Fit Check
+- Discovery
+- Planning & Design
+- Early Marketing Release
+- Private Beta Release
+- Public MVP Release
+- Development Transition Phase
 
-The release-shaped milestones (v0, v1-beta, v1) share a common shape: prep before the cut, a small cut event, and follow-through after. Most of the work lives in prep and post — the cut itself is often as small as pointing a domain or flipping an access flag.
+The general release model is defined in [Product Releases](../../process/product-releases.md). Release Target names are uncovered during Discovery. Semantic-style names (`v0`, `v1-beta`, `v1`, etc.) are common examples, but the actual names should reflect the project's audience and access-boundary progression.
 
-**Business model framing.** The milestones below are framed in SaaS terms because that's the most prevalent shape. "Paying customer" at v1 means money changes hands; for other models, the analog is whatever the user gives up to participate — time, attention, data, content, social capital. The structure stays the same; the thing exchanged at v1 varies.
+## Fit Check (free)
 
-**Milestone jobs.** v0 validates interest and builds an audience; v1-beta confirms the product works and rehearses operations; v1 earns revenue (or its analog) and opens the doors.
-
-## Entry point
-
-### Fit Check (free)
-
-- Client reaches out.
-- Short call (or async exchange) to understand what they're building, what stage they're at, and what they think they need.
-- Two-way fit check: is this a product I can do good work on, and am I the right person for it?
-- We discuss goals (perhaps setting some explicitly), the high-level shape of the project, and the rough constraints.
-- If it's not a fit, I say so and try to point them somewhere useful.
-- If it might be a fit, we agree to a paid Discovery engagement.
-- No money changes hands. This is the only stage of the engagement that's free.
+The free entry point. Its job is to decide whether a paid Discovery engagement makes sense.
 
 **Dependencies:**
 
 - None — this is the entry point.
 
-**Deliverables:**
+**Workload:**
 
-- A clear go / no-go decision.
-- If go: agreement to begin a paid Discovery engagement.
+- Client shares the product idea, current stage, timeline, budget shape, and any existing materials.
+- Short call or async exchange tests project fit, client fit, and engagement-model fit.
+- I give a clear read on whether this is a good use of Discovery.
+
+**Objectives:**
+
+- Clear go / no-go decision.
+- If go: agreed Discovery start window and rough time budget.
+- If no-go: useful direction toward a better next step.
 
 ---
 
-## Milestone 1: Discovery (paid)
+## Discovery
 
-The first paid engagement. Establishes the goals, principles, and feature scope that everything downstream depends on.
+The first paid engagement. It turns the Fit Check into an MVP scope and a commercial commitment.
 
 **Dependencies:**
 
-- Fit Check (a "go" decision and agreement to begin a paid engagement).
-
-**Planning:**
-
-- Scope set by Fit Check — agreed time budget, two-way fit confirmation, broad shape of the project.
-- Identify the key unknowns to surface during the engagement.
+- Fit Check produced a go decision.
+- Client is available for the Discovery window.
+- Existing notes, decks, sketches, research, or prototypes are shared before the work starts.
 
 **Workload:**
 
-- Two to three working days at the start of every engagement.
-- Client walks me through the vision, market, and constraints in depth.
-- I ask the questions that matter and give an honest read: what the build will take, what the risks are, where the assumptions are weakest.
-- Extract the core principles and business goals that should shape every subsequent decision.
-- Roadmap work, separating what's easy (known solutions, off-the-shelf patterns) from what's hard or unique to this product. High-level estimates produced for the known work first; the unique work called out for closer inspection.
-- Scope developed in a **broad pass** that maps the territory and defines the full feature set at the product level — what the product does, not yet how each feature works in detail.
+- Map the vision, market, users, business goals, and constraints.
+- Identify the feature areas the MVP must cover and what can wait.
+- Separate known work from risky, novel, or assumption-heavy work.
+- Draft the MVP scope, estimates, named unknowns, and contract.
 
-**Deliverables:**
+**Objectives:**
 
-- A **v1 scope document** — the full feature set of the MVP, at the product level.
-- A contract.
-
-The client owns these regardless of whether we keep working together. All work from here on out is paid against this contract.
+- MVP scope is clear enough to price and commit to.
+- Business goals and core principles are captured.
+- Contract exists for the paid build engagement.
 
 ---
 
-## Milestone 2: Planning & Design (paid)
+## Planning & Design
 
-The second paid engagement. Takes the v1 scope from Discovery and works it into the full detail needed to build: granular feature breakdowns, UI/UX decisions, and a complete issue backlog ready for development.
+The second paid engagement. It turns the MVP scope into build-ready detail.
 
 **Dependencies:**
 
-- Discovery (v1 scope document, contract).
-
-**Planning:**
-
-- Review the v1 scope; identify which flows carry the most design risk or ambiguity and prioritize those for wireframing.
-- Establish UI direction and constraints — design system approach, branding inputs, platform targets.
-- Decide which features are standard enough to go straight to issues and which need wireframes first.
+- Discovery is complete.
+- MVP scope and contract are in place.
 
 **Workload:**
 
-- Granular breakdown of each feature set from the v1 scope — the details of how each feature works, edge cases, states, and constraints.
-- Wireframes covering the key user flows, with enough fidelity to resolve layout and navigation questions before build begins.
-- Hi-fi UI examples — representative screens that establish the visual design direction; not necessarily every screen, but enough to anchor the system.
-- GitHub issues written for all planned v1 work and organized into a GitHub Project, structured so development can begin without further translation.
+- Break feature areas into concrete behavior, edge cases, states, and constraints.
+- Wireframe the key user flows.
+- Create representative hi-fi UI examples.
+- Write GitHub issues and organize the project backlog.
 
-**Deliverables:**
+**Objectives:**
 
-- Wireframes for key user flows.
-- Hi-fi UI examples establishing the visual design direction.
-- A GitHub Project populated with issues covering the full v1 scope, ready for development.
+- Full MVP backlog is ready for development.
+- UI direction is anchored enough to build consistently.
+- Ambiguous flows are resolved before implementation.
 
 ---
 
-## Milestone 3: v0 Release (if needed)
+## Early Marketing Release
 
-Optional. A public marketing presence goes live before the product itself is usable. "v0" refers to the version of the deployed _system_ at this point — there's real code in production (marketing site, email capture, analytics, telemetry pipeline) but none of the product features exist yet.
+Optional. A public marketing presence goes live before the product itself is usable; in greenfield SaaS projects, this is often labeled `v0`.
 
 **Dependencies:**
 
-- Discovery (v1 scope shapes what we say the product is and roughly when it'll be ready).
-- Brand framing / messaging direction — derived from Discovery or developed alongside v0 work.
-
-**Planning:**
-
-- Define what the marketing site needs to communicate and roughly when the product will be ready.
-- Pick the tools for audience capture and analytics, and the domain name (mailing list provider, waitlist, application form — whatever fits the model).
-- Decide what to offer early signups, if anything — drip content, promotional pricing, founding-member status, early-access slots.
+- Discovery has clarified what the product is and who it is for.
+- Brand framing and messaging direction are good enough for an early public page.
 
 **Workload:**
 
-- Build the marketing site (one page or small).
-- Wire up interest capture into the chosen audience tool.
-- Implement whatever early-signup offering was scoped in.
+- Build a small marketing site.
+- Wire interest capture into the chosen audience tool.
 - Set up basic analytics.
-- Register the domain and configure DNS.
+- Publish any early signup offer that was scoped.
 
-**Deliverables:**
+**Objectives:**
 
-- Marketing site live on the final domain name.
-- Working interest capture into the audience tool.
-- Analytics reporting on real traffic.
-
-**Cut event:** point the final domain at the marketing site; confirm SSL, interest capture, and analytics work end-to-end.
-
-**After the milestone:**
-
-- Outreach surfaces the page to its intended audience — client's network, target communities, content, ads, partnerships.
-- Audience growth and engagement get tracked.
-- Conversations sparked by v0 feed straight into product discovery; interest signals shape what gets built first.
+- Product has a public surface for early interest.
+- Audience growth and engagement become measurable.
+- Early signup signals and conversations inform build priority.
 
 ---
 
-## Milestone 4: v1-beta Release (if needed)
+## Private Beta Release
 
-Optional. The product (or a meaningful first slice of it) is real and deployed to production, with access gated to vetted users. "Beta" reflects that v1 hasn't been declared yet — what's deployed is a candidate that needs real-world validation before it's called complete. The deployment runs on the same production stack v1 will run on, so operational rehearsal counts.
+Optional. The product, or a meaningful first slice of it, is deployed to production with access limited to vetted users; in greenfield SaaS projects, this is often labeled `v1-beta`.
 
 **Dependencies:**
 
-- Planning & Design (granular feature breakdown, GitHub Project).
-- v0 if shipped (the audience built during v0 as one source of warm-channel users). If v0 was skipped: direct outreach lists from the client.
-
-**Planning:**
-
-- The GitHub Project from Planning & Design drives the Custom Work breakdown into development cycles.
-- Identify the Base Platform components needed for this product — auth, hosting, monitoring, error tracking, admin tooling, plus whatever transaction or exchange plumbing the model requires.
-- Pick the gating mechanism (invite codes, allowlist, manual approval) and identify warm-channel sources for first users.
-- Define the release-prep checklist: feature flags, telemetry, support channel, smoke tests, production baseline.
+- Planning & Design is complete.
+- Enough Base Platform and Custom Work exists for real users to exercise core flows.
+- Warm-channel users are available through the Early Marketing Release or direct outreach.
 
 **Workload:**
 
-- **Base Platform** — the foundation every product needs: authentication, hosting, deploys, monitoring, error tracking, basic admin tooling, plus whatever transaction or exchange plumbing the model requires. Mostly pre-built and battle-tested. Ships fast (about two weeks) for a fixed cost. Deployed to staging during build.
-- **Custom Work** — the features that make the product specifically itself, built cycle by cycle through the development cycle. Deployed to staging during build.
-- **Release prep** — feature flags wired in, telemetry tuned for production, support channel stood up, smoke tests written, production environment baselined.
+- Ship the Base Platform and enough Custom Work for a meaningful beta.
+- Gate access with invite codes, allowlists, or manual approval.
+- Configure production monitoring, support, telemetry, and smoke tests.
+- Recruit a small group of vetted users.
 
-**Deliverables:**
+**Objectives:**
 
-- Product (or first slice) deployed to production with access gated via invite codes, allowlists, or a manual approval workflow.
-- First real users — recruited from warm channels (friends, family, advisors, the v0 audience, direct outreach to ideal-fit users) — vetted in.
-- Operational rehearsal underway: support channel, monitoring, smoke tests, on-call discipline.
-
-**Cut event:** deploy to production with access restricted; verify DNS / SSL / CDN; run smoke tests against the live URL; confirm monitoring is reporting real data.
-
-**After the milestone:**
-
-- Recruit and vet users from warm channels — small group on purpose, large enough to surface real issues, small enough to talk to each one.
-- Structured feedback collection: regular check-ins (calls, surveys, or both) plus passive signal from telemetry.
-- Tight iteration loop — findings feed directly into the next development cycle.
-- Operational rehearsal: client and I learn what running this product in production actually demands while the stakes are still low.
-
-**Exit criteria for moving to v1:**
-
-- Core flows are stable under real usage (not just internal testing).
-- Known critical bugs are fixed.
-- Onboarding works for users who weren't hand-held in.
-- Client is confident in the support load and has a plan for it.
-- Billing / payment flow (or its non-SaaS equivalent) is tested.
-- Marketing assets for v1 are ready.
+- Real users exercise core flows in production.
+- Critical issues and onboarding gaps surface before public launch.
+- Client and product team learn the operational load while stakes are low.
 
 ---
 
-## Milestone 5: v1 Release
+## Public MVP Release
 
-Public release of the MVP. Access is opened to anyone in the target audience and the product accepts payments — or, depending on the business model, the equivalent exchange of time, attention, or contribution.
+The product opens to its intended public audience and accepts payment, or the business model's equivalent exchange; in greenfield SaaS projects, this is often labeled `v1`.
 
 **Dependencies:**
 
-- Planning & Design (granular feature breakdown, GitHub Project).
-- v1-beta if shipped (real gated-usage signal — priorities, defects, product fit). If v1-beta was skipped: internal feedback, client testing, and user interviews stand in.
-- v0 if shipped (the v0 audience to reach at launch).
-
-**Planning:**
-
-- Review v1-beta learnings — what real gated usage revealed about priorities, defects, and product fit — and let them reshape the remaining Custom Work.
-- Build the public-readiness checklist: capacity and performance, monitoring at scale, the v1 transaction or exchange flow, legal / compliance, public help content, marketing assets.
-- Design the conversion path that moves v1-beta users onto the v1 footing, honouring any promises made earlier in the arc.
-- Plan launch announcement activity across the channels that fit — launch post, send to the v0 audience, social, pre-arranged community posts, partner amplification.
+- Planning & Design is complete.
+- Private beta signal exists, or internal testing and user interviews stand in.
+- Core flows, support plan, public exchange, and launch materials are ready.
 
 **Workload:**
 
-- Continued Custom Work shaped by v1-beta learnings.
-- Capacity and performance review, monitoring tuned for scale, the v1 transaction or exchange flow brought live, legal / compliance work, public help content, marketing assets.
-- Implement the conversion path for v1-beta users.
+- Finish launch-critical Custom Work and fixes.
+- Bring the payment, transaction, or equivalent exchange flow live.
+- Tune capacity, monitoring, legal content, help content, and marketing assets.
+- Move beta users onto the public MVP footing and announce the launch.
 
-**Deliverables:**
+**Objectives:**
 
-- Public access opened.
-- Primary domain pointing at the production server.
-- The v1 exchange running live.
-- Initial announcement activity (launch post, send to the v0 audience, social, any pre-arranged community posts).
-- v1-beta users moved onto the v1 footing.
-
-**Cut event:** flip the configuration that opens public access; point the primary domain at the production server if not already; final smoke tests under the public-facing configuration; heightened monitoring posture for the first hours and days.
-
-**After the milestone:**
-
-- v1 is not the end of the project — it's roughly the midpoint, and the start of the most valuable phase of the engagement (the v2+ cycles).
-- The development cycle continues, now fed by real-user signal — signups, conversions, churn, support tickets, telemetry from public traffic.
-- Sustained marketing rather than a single splash: ongoing content, SEO, partnerships, paid acquisition if it's part of the strategy.
-- Sustained operational rigour: public traffic is higher and less forgiving than gated; the on-call discipline established in v1-beta becomes routine.
+- Public access opens to the intended audience.
+- Revenue, or the equivalent exchange, is live.
+- Real production signal becomes the main input to the roadmap.
 
 ---
 
-## Milestone 6: v2
+## Development Transition Phase
 
-The next major version of the product is released to all users. Planning for v2 happens naturally between milestones, fed by real-user signal accumulated since v1.
-
-**Dependencies:**
-
-- v1 (real production signal: user behaviour, conversion data, churn, support tickets, telemetry from public traffic).
-- Enough time post-v1 for the signal to stabilize and patterns to become legible.
-
-**Planning:**
-
-- Reassess the v1 backlog against real production signal — user behaviour, conversion data, support tickets, telemetry — replacing pre-launch guesses with evidence.
-- Surface architecture considerations for v2 early so new modules fit the foundation rather than work around it.
-- Contract update if the engagement model calls for one.
-
-**Workload:**
-
-- Development cycle running against the evolving v2 scope, cycle by cycle.
-- Feature flags continue to gate risky or in-progress work.
-- v2 features may roll out gradually behind flags before the v2 release itself, so the v2 milestone is often more of a _declaration_ (we're calling this the v2 release) than a hard cutover.
-
-**Deliverables:**
-
-- v2 declared released, with marketing or comms (if appropriate) acknowledging the next major version.
-- Documentation, help content, and onboarding updated to reflect the new shape of the product.
-
-The same pattern continues past v2: each subsequent major version is planned between milestones and released the same way, for as long as I'm still day-to-day on the product.
-
----
-
-## Milestone 7: Stepping Back
-
-A transitional milestone, not an exit. Overlaps with continued release cycles rather than following them cleanly.
-
-The earliest months are where my involvement matters most: architecture, foundational decisions, the calls that are expensive to undo later. Once those decisions have settled and the codebase has matured through v1 and into v2+, my role naturally shifts. The model is designed to step back when it should — the business should not depend on me indefinitely.
+The final checkpoint in this example arc. My role shifts from primary builder to the person hardening the development process, tooling, and documentation so someone else can run day-to-day product development.
 
 **Dependencies:**
 
-- v2+ (architecture matured, foundational decisions settled, operational discipline routine).
-- A suitable junior developer available to take over day-to-day.
-- Documentation and conventions in good enough shape for someone else to work from.
-
-**Planning:**
-
-- Identify when foundational decisions have stabilized enough for the role to shift.
-- Source and vet the junior developer who'll take over day-to-day.
-- Define the scope and cadence of the ongoing advisory arrangement — what calls still need senior judgment, what doesn't.
+- Product has matured through later release cycles.
+- The core development cycle is working in practice.
+- The client is ready to bring in a new or internal developer.
 
 **Workload:**
 
-- Onboard the junior developer to the codebase, conventions, and operational discipline.
-- Document the structures, decisions, and constraints that need to stick.
-- Transition day-to-day responsibilities gradually rather than in a hard cutover.
-- Establish the advisory cadence in practice — review, escalation paths, response expectations.
+- Harden development practices, tooling, and release routines.
+- Document architecture, conventions, setup, operations, and decision history.
+- Source, vet, or prepare the developer who will own day-to-day work.
+- Pair on real work until the handoff path is proven.
 
-**Deliverables:**
+**Objectives:**
 
-- Day-to-day development handed off to a more junior developer working under the established structure.
-- An advisory arrangement in place — protecting the technical foundation, available for senior-judgment calls, but not billing for work that no longer needs me.
-
-### What the advisory arrangement actually is
-
-Once the handoff is complete, the engagement continues in a different shape. The advisory arrangement isn't a smaller version of the build engagement — it's a different mode of work, with its own cadence, scope, and pricing.
-
-**Scope of advisory work.**
-
-- Architecture and technical-direction calls — anything that's expensive to undo later, anything where senior judgment changes the outcome.
-- Code review on changes that touch the foundation, the data model, security-sensitive surfaces, or anything load-bearing.
-- Pairing or unblocking on novel work the junior developer hasn't seen before — a new integration, a tricky migration, a performance problem they don't have the pattern for.
-- Strategic technical input — hiring the next engineer, evaluating a vendor, sizing a v3 initiative, deciding whether to rebuild or extend.
-- Incident support when the system is degraded or down in ways the day-to-day developer can't resolve alone.
-
-**Not in scope:**
-
-- Day-to-day feature development. That's the junior developer's role; pulling me back into it defeats the purpose of having stepped back.
-- Routine code review on non-foundational work. The junior developer owns their own pull requests with appropriate review from peers or seniors hired into the team over time.
-- Operational toil — backups, rotations, routine deploys, support escalations that aren't system-level.
-
-**Cadence.**
-
-- A standing monthly or twice-monthly check-in — typically 30–60 minutes — to review what's shipped, what's coming, and what calls are on the horizon. _TODO: confirm the default cadence once a few advisory arrangements have run long enough to surface the right rhythm._
-- Async availability through the same channel the build engagement used — questions get raised, answers get written, the record survives.
-- Ad-hoc calls for the things that genuinely need them — usually a handful per month, sometimes none.
-
-**Response times.**
-
-- **Non-urgent advisory questions:** within two business days. Async-first; not everything needs a call.
-- **Code-review requests on foundational changes:** within one business day during normal weeks.
-- **Production incidents the team can't resolve alone:** same business day during business hours; best-effort outside hours, with the understanding that the day-to-day developer is the first line of defence and I'm the escalation, not the on-call. _TODO: decide whether a paid on-call tier exists for products where business-hours-only escalation isn't acceptable._
-
-**Rate model.**
-
-The default shape is a small monthly retainer covering the standing check-in, async availability, and a baseline of advisory hours, with senior hourly billing for anything substantive beyond that baseline.
-
-- **Monthly retainer** covering the standing check-in, async availability, and a baseline of advisory hours per month. _TODO: set the retainer figure and the included hours once enough engagements have reached this stage to calibrate; align with the pricing & contracts doc._
-- **Senior hourly rate** for work beyond the retainer baseline — deeper code review, pairing, incident response, strategic projects. _TODO: set the hourly figure; align with the pricing & contracts doc._
-- **Project-priced engagements** for advisory work with a clear shape — a v3 scoping pass, a hiring search, an architecture review — quoted as a one-off rather than billed against the retainer.
-- Either side can end the arrangement with reasonable notice. The whole point of stepping back is that the business shouldn't depend on me indefinitely; the advisory arrangement should taper naturally as the team matures.
-
-Pricing specifics for the advisory tier are covered in the pricing & contracts doc _[planned — see issue #27]_.
+- New or internal developers can run the development process without guessing.
+- The client has a durable operating model for continued product work.
+- My ongoing role, if any, is limited to review, escalation, and senior judgment calls.

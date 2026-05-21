@@ -6,7 +6,7 @@ This document captures what working together actually feels like week to week �
 
 ## Operating principles
 
-A few things hold across every week of the engagement, regardless of which milestone the work is building toward.
+A few things hold across every week of the engagement, regardless of which checkpoint the work is building toward.
 
 - **Writing beats talking.** Every commitment that matters — scope, decisions, deferrals — lands in writing. Calls and async chat are how we get there; the written record is what survives.
 - **Decisions get raised, not absorbed.** Anything that changes scope, anything that needs the client's judgement, surfaces explicitly. Silent absorption is how partnerships drift; explicit raising is how trust compounds.
@@ -15,7 +15,7 @@ A few things hold across every week of the engagement, regardless of which miles
 
 ## Communication cadence
 
-The cadence below is the default rhythm. Individual engagements adjust — a client who's heads-down on fundraising needs lighter sync time; a project at a critical milestone needs heavier. The shape stays consistent.
+The cadence below is the default rhythm. Individual engagements adjust — a client who's heads-down on fundraising needs lighter sync time; a project at a critical checkpoint needs heavier. The shape stays consistent.
 
 **Sync time.**
 
@@ -61,7 +61,7 @@ Most decisions are obvious to make — the client owns product, I own technical.
 
 - Scope of each cycle — I propose, we discuss at the boundaries until we're working from the same picture.
 - Roadmap sequencing — what comes next; I bring technical judgement on dependencies and risk, client brings priority.
-- Changes to the engagement model itself — adding a milestone, restructuring a phase, changing the cadence.
+- Changes to the engagement model itself — adding a checkpoint, restructuring a phase, changing the cadence.
 - Anything where the right call depends on both product priorities and technical constraints. These are usually the calls that benefit most from a short sync.
 
 **When we disagree.**
