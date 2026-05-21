@@ -8,7 +8,7 @@ Whenever product work is happening, the cycle is running — one loop, then the 
 
 ## 1. Planning
 
-Planning is not a full scoping session — that work happens during [Discovery](./discovery.md) and [Planning & Design](./project-arc.md). This step is about reviewing the upcoming work, making any adjustments in light of recent context, and confirming the scope is clear before the build starts.
+Planning is not a full scoping session — that work happens during [Discovery](./discovery.md) and [Planning & Design](../examples/saas-project-arc.md). This step is about reviewing the upcoming work, making any adjustments in light of recent context, and confirming the scope is clear before the build starts.
 
 For simple, well-understood work this can take as little as 15 minutes. For more complex features, or when there have been significant contextual changes — new client direction, unexpected discoveries in the last cycle, shifted priorities — it can take up to half a day or more.
 
