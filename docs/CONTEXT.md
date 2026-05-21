@@ -4,9 +4,9 @@
 
 One self-contained piece of functionality with a tangible outcome the client can see and use. Runs the full six-step loop (Planning -> Implementation -> Staging Deployment -> QA / Review -> Release -> Reflect) once, then repeats. Development Cycles are not time-boxed; duration is determined by the scope of the work.
 
-## Milestone
+## Checkpoint
 
-A named checkpoint in the Project Arc that marks project progression and reflects a project goal. A Milestone can be a Release, but can also mark other forms of progress such as Discovery, Planning & Design, or handoff.
+A named point in the Project Arc that marks project progression and reflects a project goal. A Checkpoint can be a Release, but can also mark other forms of progress such as Discovery, Planning & Design, or Development Transition.
 
 ## Parent issue
 

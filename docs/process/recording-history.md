@@ -6,7 +6,7 @@ This document defines the artifacts recorded during Reflect. Plain wording. Inte
 
 A release manifest is a lightweight record of what the product contains at a given release.
 
-Write a release manifest for each named release milestone or meaningful audience change:
+Write a release manifest for each named release checkpoint or meaningful audience change:
 
 - v0 public marketing release
 - v1-beta private or gated release

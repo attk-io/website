@@ -96,7 +96,7 @@ The important boundary is not legal ceremony; it is clarity before work starts. 
 
 Discovery and detailed scoping fees are payable up front.
 
-Build work is invoiced monthly based on what was delivered that month. For Custom Work, quoted features are invoiced against completed work. If a feature spans more than one month, partial milestone billing can be used so the invoice reflects meaningful delivered progress rather than waiting for the entire feature to close.
+Build work is invoiced monthly based on what was delivered that month. For Custom Work, quoted features are invoiced against completed work. If a feature spans more than one month, partial progress billing can be used so the invoice reflects meaningful delivered progress rather than waiting for the entire feature to close.
 
 Invoices are net 30.
 
