@@ -105,14 +105,14 @@ function splitTrailingEmail(source: string): [string, string] {
       label={whyThisWorks.label}
       quote={whyThisWorks.quote}
     >
-      {whyThisWorks.body && <div set:html={whyThisWorks.body} />}
+      <div set:html={whyThisWorks.body} />
     </PageSection>
     <PageSection
       number="04"
       label={workingTogether.label}
       quote={workingTogether.quote}
     >
-      {workingTogether.body && <div set:html={workingTogether.body} />}
+      <div set:html={workingTogether.body} />
     </PageSection>
     <PageSection
       number="05"
@@ -127,8 +127,8 @@ function splitTrailingEmail(source: string): [string, string] {
         <img src="/portrait.jpg" alt="" class="w-full" />
       </div>
       <div class="min-[780px]:col-start-1 min-[780px]:row-start-3">
-        {aboutBodyHtml && <div set:html={aboutBodyHtml} />}
-        {aboutEmailHtml && <div set:html={aboutEmailHtml} />}
+        <div set:html={aboutBodyHtml} />
+        <div set:html={aboutEmailHtml} />
       </div>
     </PageSection>
     <PageSection number="06" label={pricing.label} quote={pricing.quote}>
