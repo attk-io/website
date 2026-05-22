@@ -9,9 +9,7 @@ const { class: className, number, label } = Astro.props;
 ---
 
 <div class:list={['mb-12 flex items-baseline gap-6', className]}>
-  <span
-    class="text-[0.75rem] font-medium tracking-[0.14em] text-teal-11 uppercase"
-  >
+  <span class="text-small font-medium tracking-[0.14em] text-teal-11 uppercase">
     {number && <span>{number}</span>}
     {number && <span> · </span>}
     <span>{label}</span>

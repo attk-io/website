@@ -37,6 +37,43 @@
   --font-spectral-sc:
     'Spectral SC', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
 
+  /* ─── Type scale — Perfect Fourth (1.333) ───────────────────────── */
+  /* Nine steps anchored at body = 17px (1.0625rem). Each token carries
+   * its own line-height; the five heading steps also carry letter-spacing,
+   * so section components set only weight and color. Heading steps are
+   * fluid (clamp); text steps are fixed. Documented on /specimen. */
+  --text-display: clamp(3.5rem, 5vw + 1.25rem, 5.9375rem);
+  --text-display--line-height: 1;
+  --text-display--letter-spacing: -0.03em;
+
+  --text-title: clamp(2.75rem, 4vw + 1rem, 4.5rem);
+  --text-title--line-height: 1.03;
+  --text-title--letter-spacing: -0.028em;
+
+  --text-heading: clamp(2.125rem, 3vw + 0.75rem, 3.375rem);
+  --text-heading--line-height: 1.05;
+  --text-heading--letter-spacing: -0.025em;
+
+  --text-subhead: clamp(1.75rem, 1.5vw + 1rem, 2.5rem);
+  --text-subhead--line-height: 1.1;
+  --text-subhead--letter-spacing: -0.02em;
+
+  --text-large: clamp(1.5rem, 0.6vw + 1.25rem, 1.875rem);
+  --text-large--line-height: 1.2;
+  --text-large--letter-spacing: -0.015em;
+
+  --text-lead: 1.4375rem;
+  --text-lead--line-height: 1.5;
+
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.65;
+
+  --text-small: 0.8125rem;
+  --text-small--line-height: 1.5;
+
+  --text-caption: 0.625rem;
+  --text-caption--line-height: 1.4;
+
   /* ─── sand — cool neutral ramp ──────────────────────────────────── */
   /* Hue tinted toward ink (252) for subconscious cohesion with the highlight. */
   /* Chroma stays low (0.004–0.014) so it reads as neutral, never blue. */
