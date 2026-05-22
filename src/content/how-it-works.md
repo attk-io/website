@@ -1,29 +1,26 @@
 ---
-quote: 'The path from idea to product should make the next step clearer.'
-section_label: How I work
+section_label: From concept to V1
 ---
 
 A good software project gives you the same confidence as a good navigation system: you know where you are, you know where you're trying to go, you can see the shape of the surrounding terrain, and the next direction is specific enough to act on.
 
-That is what the work is designed to create. Not a perfect plan frozen at the beginning, but a living sense of direction that stays grounded as the product becomes real.
+I've extracted this process from years of experience of trying to build the right thing well; aiming for products which not only look and perform great, but serve the goals of businesses still in the throws of discovering exactly what makes their customers love them.
 
 ### Discovery
 
-We talk through the business goal, the people the product needs to serve, the kind of software it is becoming, the major feature areas, and the first useful release targets. The point is not to invent certainty. It's to name what we know, what we don't, and what would make the first version worth building.
-
-By the end, the product has a clearer destination and enough shape to decide what Planning & Design needs to resolve.
+We talk through the business goals, the people the product needs to serve, the type of software you're envisioning, the major feature areas, and the most useful release targets. By the end of this excercise the product has a clearer destination and enough shape to decide which Planning & Design efforts will yield the most valuable outputs.
 
 ### Planning & Design
 
-I break feature areas into concrete behavior, edge cases, states, and constraints. The work becomes a Project Arc, a prioritized backlog, and any agreed design artifacts such as wireframes, flow sketches, or representative UI examples.
+I break feature areas into concrete behavior, edge cases, states, and constraints. The work becomes a Project Arc, a prioritized backlog, and other design artifacts such as wireframes, flow sketches, or representative UI examples we defined in the Discovery session.
 
-This is where the map starts to become useful. We can see the meaningful checkpoints, the likely route between them, and the areas where the terrain still needs closer inspection before we commit.
+The main output from this stage is the Product Roadmap, not just orientation towards the goal, but live turn-by-turn directions.
 
-### Base Platform
+### Base Platform Configuration
 
-Before custom feature work begins, the common foundation gets configured and shipped: hosting, deployment environments, authentication, email, observability, monitoring, and the other baseline pieces the product depends on.
+Before custom feature work begins, the common foundation gets configured and shipped: hosting, deployment environments, authentication, email, monitoring, and the other baseline pieces the product depends on.
 
-That foundation matters because it keeps custom development focused on what differentiates your business. We are not rebuilding standard infrastructure every time we need to learn something from the product.
+That foundation matters because it keeps custom development focused on what differentiates your business and makes sure no time is wasted rebuilding standard infrastructure just to get started.
 
 ### Custom Development Cycles
 
