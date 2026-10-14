@@ -1,68 +1,39 @@
 # Terms of Service
 
-Last updated: 2025-01-28
+Last updated: 2026-10-14
 
 ## 1. Agreement to Terms
 
-These Terms of Service ("Terms") constitute a legally binding agreement between you and ATTK Software Inc ("Company," "we," "us," or "our"), an Alberta corporation, regarding your use of our software consulting services and related materials. By engaging our services, you agree to be bound by these Terms.
+These Terms of Service ("Terms") govern your use of attk.io, a website operated by ATTK Software Inc ("we," "us," or "our"), an Alberta corporation. By using the site, you agree to these Terms.
 
-## 2. Services
+## 2. Information Only
 
-ATTK Software Inc provides software consulting services. The specific scope, deliverables, and terms of each engagement will be defined in separate service agreements or statements of work.
+The content on this site, including descriptions of our services and pricing, is provided for general information. It is not professional advice and is not an offer to provide services. Using the site, booking a call, or contacting us does not create a client relationship. Any engagement is governed solely by a separate written agreement between you and us.
 
-## 3. Professional Services and Limitation of Warranties
+## 3. Intellectual Property
 
-While we will provide our services in a professional and workmanlike manner, consistent with industry standards, you acknowledge and agree that:
+The text, design, logos, and images on this site are owned by or licensed to ATTK Software Inc. You're welcome to view the site and share links to it, but you may not copy or reuse its content without our written permission.
 
-- Software development and related services are inherently complex and may contain bugs, errors, or other issues;
-- We do not guarantee uninterrupted, error-free operation of any deliverables;
-- We are not liable for any system downtime, whether planned or unplanned;
-- We make no warranties, express or implied, regarding our services beyond those explicitly stated in individual service agreements.
+## 4. Third-Party Links
 
-## 4. Payment Terms
+The site links to services we don't control, such as the Google Calendar booking page. We aren't responsible for their content, availability, or privacy practices.
 
-Unless otherwise specified in a service agreement:
+## 5. No Warranty
 
-- Payment terms are net 30 days from invoice date;
-- All fees are for services rendered and are non-refundable;
-- We reserve the right to suspend services for non-payment;
-- Late payments may be subject to interest charges.
+The site is provided "as is." We work to keep it accurate and available, but we make no warranties, express or implied, about its content or operation.
 
-## 5. Data Collection and Privacy
+## 6. Limitation of Liability
 
-In the course of providing our services, we collect and process certain personal information, including:
+To the maximum extent permitted by law, ATTK Software Inc is not liable for any damages arising from your use of, or inability to use, this site.
 
-- Individual names and contact information (email addresses and phone numbers);
-- Business legal names and billing addresses;
-- Other relevant business information as required for service delivery.
+## 7. Changes to Terms
 
-We process this information in accordance with applicable privacy laws and use it solely for business purposes related to service delivery, billing, and communication.
+We may update these Terms at any time. Changes take effect when posted on this page with a new "Last updated" date.
 
-## 6. Intellectual Property
+## 8. Governing Law
 
-Unless otherwise agreed in writing, we retain all intellectual property rights in our pre-existing materials, tools, and methodologies. Deliverables created specifically for you will be assigned as specified in individual service agreements.
+These Terms are governed by the laws of the Province of Alberta, Canada, without regard to its conflict of law provisions. Any disputes shall be subject to the exclusive jurisdiction of the courts of Alberta, Canada.
 
-## 7. Confidentiality
+## 9. Contact Us
 
-We will maintain the confidentiality of any proprietary information shared during the course of our engagement and expect the same from our clients.
-
-## 8. Limitation of Liability
-
-To the maximum extent permitted by law:
-
-- ATTK Software Inc shall not be liable for any indirect, incidental, special, consequential, or punitive damages;
-- Our total liability for any claims arising from or related to our services shall not exceed the amount paid by you for the specific services giving rise to such claim;
-- We are not liable for any losses or damages resulting from software bugs, errors, or system downtime;
-- You agree to indemnify and hold us harmless from any claims arising from your use of our services.
-
-## 9. Changes to Terms
-
-We reserve the right to modify these Terms at any time. Changes will be effective upon posting to https://attk.io/terms-of-service. Your continued use of our services after such changes constitutes acceptance of the modified Terms.
-
-## 10. Governing Law
-
-These Terms shall be governed by and construed in accordance with the laws of the Province of Alberta, Canada, without regard to its conflict of law provisions. Any disputes shall be subject to the exclusive jurisdiction of the courts of Alberta, Canada.
-
-## 11. Contact Information
-
-For questions about these Terms, please contact ATTK Software Inc at christian@attk.io.
+If you have any questions about these Terms, contact us at christian@attk.io.

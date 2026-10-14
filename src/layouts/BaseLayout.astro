@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import GoogleAnalytics from '../components/GoogleAnalytics.astro';
 
 type Props = {
   title: string;
@@ -20,6 +21,7 @@ const {
     <title>{title}</title>
     <meta name="author" content="Christian Naths" />
     <meta name="description" content={description} />
+    {import.meta.env.PROD && <GoogleAnalytics />}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <script is:inline>
