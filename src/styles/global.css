@@ -7,33 +7,29 @@
  *   - Minimal @layer base for element-level details (selection, focus-visible, text rendering, default font)
  */
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@400;500;600;700&family=Spectral:ital,wght@1,400;1,500&display=swap');
-
 @import 'tailwindcss';
 
 @theme {
+  /*
+   * Webfonts are self-hosted via the `fonts` config in astro.config.mjs,
+   * which defines the --webfont-* variables (family + fallbacks).
+   */
+
   /* ─── Typography ────────────────────────────────────────────────── */
-  --font-hanken:
-    'Hanken Grotesk', ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
-    sans-serif;
+  --font-hanken: var(--webfont-hanken-grotesk);
 
   /* ─── Wordmark display face ─────────────────────────────────────── */
-  --font-space-grotesk:
-    'Space Grotesk', ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
-    sans-serif;
+  --font-space-grotesk: var(--webfont-space-grotesk);
 
   /* ─── Monospace accent face ─────────────────────────────────────── */
-  --font-dm-mono:
-    'DM Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    'Liberation Mono', 'Courier New', monospace;
+  --font-dm-mono: var(--webfont-dm-mono);
 
   /*
    * Spectral italic is loaded for section-H2 quote treatment (see
    * SECTION_QUOTE_H2 in src/lib/typography.ts). Spectral SC is not loaded;
-   * add to the @import above if small-caps become needed.
+   * add it to the fonts config in astro.config.mjs if small-caps become needed.
    */
-  --font-spectral:
-    'Spectral', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  --font-spectral: var(--webfont-spectral);
   --font-spectral-sc:
     'Spectral SC', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
 

@@ -1,6 +1,7 @@
 ---
+import { Font } from 'astro:assets';
 import '../styles/global.css';
-import GoogleAnalytics from '../components/GoogleAnalytics.astro';
+import CloudflareWebAnalytics from '../components/CloudflareWebAnalytics.astro';
 
 type Props = {
   title: string;
@@ -21,30 +22,14 @@ const {
     <title>{title}</title>
     <meta name="author" content="Christian Naths" />
     <meta name="description" content={description} />
-    {import.meta.env.PROD && <GoogleAnalytics />}
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <script is:inline>
-      try {
-        const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const small = matchMedia('(max-width: 639px)').matches;
-        if (!localStorage.getItem('attkSeenIntro') && !reduce && !small) {
-          window.__attkIntroPending = true;
-          if ('scrollRestoration' in history) {
-            history.scrollRestoration = 'manual';
-          }
-          const sheet = document.createElement('style');
-          sheet.textContent =
-            '#attk-stage{transform:scale(0.05);transform-origin:0 0;will-change:transform;visibility:hidden}' +
-            '[data-intro-fade]{opacity:0;will-change:opacity}' +
-            '#attk-stage :where(section,main){overflow:visible!important}' +
-            'html.attk-intro-active,html.attk-intro-active body{overflow:hidden!important;height:100%}';
-          document.documentElement.classList.add('attk-intro-active');
-          document.head.appendChild(sheet);
-          window.__attkIntroSheet = sheet;
-        }
-      } catch (e) {}
-    </script>
+    {import.meta.env.PROD && <CloudflareWebAnalytics />}
+    <Font
+      cssVariable="--webfont-hanken-grotesk"
+      preload={[{ style: 'normal' }]}
+    />
+    <Font cssVariable="--webfont-space-grotesk" />
+    <Font cssVariable="--webfont-dm-mono" />
+    <Font cssVariable="--webfont-spectral" />
     <link
       rel="shortcut icon"
       type="image/png"
@@ -52,9 +37,6 @@ const {
     />
   </head>
   <body class="bg-sand-1 text-sand-12 antialiased">
-    <div id="attk-stage"><slot /></div>
-    <script>
-      import '../scripts/intro-animation';
-    </script>
+    <slot />
   </body>
 </html>

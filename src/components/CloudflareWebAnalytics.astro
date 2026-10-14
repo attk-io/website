@@ -1,0 +1,13 @@
+---
+// Cookieless analytics: sets no cookies or local storage, so no consent
+// banner is needed. Token is public; find it under Web Analytics in the
+// Cloudflare dashboard.
+const token = '535984a5bc7f40fdbf124c8357fb2041';
+---
+
+<!-- Cloudflare Web Analytics -->
+<script
+  is:inline
+  type="module"
+  src="https://static.cloudflareinsights.com/beacon.min.js"
+  data-cf-beacon={JSON.stringify({ token })}></script>
