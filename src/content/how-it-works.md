@@ -2,13 +2,13 @@
 section_label: From concept to V1
 ---
 
-A good software project gives you the same confidence as a good navigation system: you know where you are, you know where you're trying to go, you can see the shape of the surrounding terrain, and the next direction is specific enough to act on.
+A well organized software project will give you a similar level of confidence as a good navigation system. Starting with a clear destination and your current location you need: a marker showing your current location as you go, a map outlining the terrain and possible routes, a set of pre-defined checkpoints along your chosen route, and turn by turn directions with just enough advanced notice to be effective but not noisy.
 
-I've extracted this process from years of experience of trying to build the right thing well; aiming for products which not only look and perform great, but serve the goals of businesses still in the throws of discovering exactly what makes their customers love them.
+I’ve distilled years of experience into a process specialized to create products which not only look and perform great, but serve the goals of businesses still in the throws of discovering exactly what makes their customers love them.
 
 ### Discovery
 
-_Timeline: **1 day**_
+_Timeline: **by day 3**_
 
 We talk through the business goals, the people the product needs to serve, the type of software you're envisioning, the major feature areas, and the most useful release targets. By the end of this excercise the product has a clearer destination and enough shape to decide which Planning & Design efforts will yield the most valuable outputs.
 
@@ -16,9 +16,7 @@ We talk through the business goals, the people the product needs to serve, the t
 
 _Timeline: **by week 4**_
 
-I break feature areas into concrete behavior, edge cases, states, and constraints. The work becomes a Project Arc, a prioritized backlog, and other design artifacts such as wireframes, flow sketches, or representative UI examples we defined in the Discovery session.
-
-The main output from this stage is the Product Roadmap, not just orientation towards the goal, but live turn-by-turn directions.
+I break feature areas into concrete behavior, edge cases, and constraints. By the end of this phase we’ll have a prioritized backlog of actionable items, complete with design artifacts such as wireframes, flow sketches, or representative UI examples we defined in the Discovery session.
 
 ### Base Platform Configuration
 

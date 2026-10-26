@@ -1,5 +1,5 @@
 ---
-quote: "You know what you need built and you're looking for the right person to develop it."
+quote: "You know what you need built and you're looking for the right person to bring it to life"
 section_label: Who This Is For
 ---
 

@@ -1,9 +1,8 @@
 ---
 quote: "Let's find out if there's a fit."
-section_label: Final Call-to-Action
 ---
 
-The first step is a conversation. No commitment, no pressure — just an honest look at what you're building and whether I'm the right person to help you build it.
+Book a quick, 15 to 30 minute chat about your project with no costs and no obligations. The goal is to simply find out if my services match your needs.
 
 [Book a short introduction call](https://calendar.app.google/XZUxivgqNw9pme3B7)
 
