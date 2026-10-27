@@ -14,6 +14,6 @@ When a document references another document by name or concept, link it using a 
 
 Use a `Footnotes` section for cross-document references that are helpful but not part of the main concept definition. Keep body sections focused on the document's own concept; use footnotes for "see also" pointers and artifact-location notes.
 
-## CONTEXT.md
+## Glossary
 
-`CONTEXT.md` is a glossary of domain terms. Keep it devoid of implementation details, conventions, and decisions — those belong here or in ADRs. Only add a term when its meaning has been explicitly resolved and agreed.
+[GLOSSARY.md](../GLOSSARY.md) is a glossary of domain terms. Keep it devoid of implementation details, conventions, and decisions — those belong here or in ADRs. Only add a term when its meaning has been explicitly resolved and agreed.
