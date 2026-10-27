@@ -39,6 +39,8 @@ jobs:
         run: bun run typecheck
 
       - name: Build
+        env:
+          COLOR_SWITCHER_ENABLED: 'true'
         run: bun run build
 
       - name: Upload PR preview website

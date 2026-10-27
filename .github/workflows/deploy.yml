@@ -39,6 +39,8 @@ jobs:
         run: bun run typecheck
 
       - name: Build
+        env:
+          COLOR_SWITCHER_ENABLED: 'false'
         run: bun run build
 
       - name: Deploy to Firebase Hosting
