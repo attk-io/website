@@ -1,0 +1,217 @@
+---
+import { PALETTES, CREAMS } from '../lib/color-experiment';
+---
+
+<aside id="color-variant-widget" aria-label="Theme controls">
+  <button
+    type="button"
+    id="color-widget-handle"
+    aria-label="Show color options"
+    aria-expanded="false"
+    aria-controls="color-widget-panel"
+  >
+    <span aria-hidden="true">Colors</span>
+  </button>
+  <form id="color-widget-panel" aria-label="Color variants" hidden>
+    <p class="widget-title">Color variants</p>
+    <fieldset>
+      <legend>Accent</legend>
+      {
+        Object.entries(PALETTES).map(([id, palette]) => (
+          <label>
+            <input
+              type="radio"
+              name="palette"
+              value={id}
+              checked={id === 'pop'}
+            />
+            <span
+              class="swatch"
+              style={`background-color: ${palette.accent}`}
+              aria-hidden="true"
+            />
+            <span>{palette.name}</span>
+          </label>
+        ))
+      }
+    </fieldset>
+    <fieldset>
+      <legend>Paper</legend>
+      {
+        Object.entries(CREAMS).map(([id, cream]) => (
+          <label>
+            <input
+              type="radio"
+              name="cream"
+              value={id}
+              checked={id === 'original'}
+            />
+            <span
+              class="swatch"
+              style={`background-color: ${cream.value}`}
+              aria-hidden="true"
+            />
+            <span>{cream.name}</span>
+          </label>
+        ))
+      }
+    </fieldset>
+    <p id="selection-summary" aria-live="polite"></p>
+  </form>
+</aside>
+
+<script>
+  import {
+    PALETTES,
+    CREAMS,
+    applyColorSelection,
+    type ColorSelection,
+  } from '../lib/color-experiment';
+  const widget = document.getElementById('color-variant-widget');
+  const handle = document.querySelector<HTMLButtonElement>(
+    '#color-widget-handle'
+  );
+  const panel = document.querySelector<HTMLFormElement>('#color-widget-panel');
+  const summary = document.getElementById('selection-summary');
+
+  if (widget && handle && panel && summary) {
+    const setOpen = (open: boolean) => {
+      panel.hidden = !open;
+      handle.setAttribute('aria-expanded', String(open));
+      handle.setAttribute(
+        'aria-label',
+        open ? 'Hide color options' : 'Show color options'
+      );
+    };
+    handle.addEventListener('click', () =>
+      setOpen(panel.hasAttribute('hidden'))
+    );
+    widget.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !panel.hidden) {
+        setOpen(false);
+        handle.focus();
+      }
+    });
+    const sync = () => {
+      const { palette, cream } = document.documentElement.dataset;
+      if (
+        !palette ||
+        !cream ||
+        !Object.hasOwn(PALETTES, palette) ||
+        !Object.hasOwn(CREAMS, cream)
+      )
+        return;
+      for (const choice of panel.querySelectorAll<HTMLInputElement>(
+        'input[type="radio"]'
+      )) {
+        choice.checked =
+          choice.value === (choice.name === 'palette' ? palette : cream);
+      }
+      summary.textContent = `${PALETTES[palette as keyof typeof PALETTES].name} · ${CREAMS[cream as keyof typeof CREAMS].name}`;
+    };
+    panel.addEventListener('submit', (event) => event.preventDefault());
+    panel.addEventListener('change', () => {
+      const values = new FormData(panel);
+      const selection: ColorSelection = {
+        palette: String(values.get('palette')) as ColorSelection['palette'],
+        cream: String(values.get('cream')) as ColorSelection['cream'],
+      };
+      applyColorSelection(selection);
+      const url = new URL(window.location.href);
+      url.searchParams.set('palette', selection.palette);
+      url.searchParams.set('cream', selection.cream);
+      window.history.replaceState(null, '', url);
+    });
+    window.addEventListener('attk:colors-changed', sync);
+    sync();
+  }
+</script>
+
+<style>
+  #color-variant-widget {
+    position: fixed;
+    z-index: 50;
+    top: 50%;
+    right: env(safe-area-inset-right, 0px);
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    color: var(--reading-ink);
+  }
+  #color-widget-handle {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    min-height: 104px;
+    padding: 0.75rem;
+    border: 1px solid var(--color-sand-6);
+    border-right: 0;
+    border-radius: 0.5rem 0 0 0.5rem;
+    background: var(--paper);
+    box-shadow: -4px 2px 16px
+      color-mix(in srgb, var(--reading-ink) 10%, transparent);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  #color-widget-handle span {
+    writing-mode: vertical-rl;
+  }
+  #color-widget-panel {
+    width: min(20rem, calc(100vw - 44px - env(safe-area-inset-right, 0px)));
+    max-height: calc(100dvh - 2rem);
+    overflow-y: auto;
+    display: grid;
+    gap: 1rem;
+    padding: 1.25rem;
+    border: 1px solid var(--color-sand-6);
+    border-right: 0;
+    border-radius: 0.5rem 0 0 0.5rem;
+    background: var(--paper);
+    box-shadow: -4px 2px 24px
+      color-mix(in srgb, var(--reading-ink) 12%, transparent);
+  }
+  #color-widget-panel[hidden] {
+    display: none;
+  }
+  .widget-title {
+    font-weight: 600;
+  }
+  fieldset {
+    min-width: 0;
+  }
+  legend {
+    margin-bottom: 0.5rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+  }
+  label {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    min-height: 44px;
+    padding: 0.375rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    cursor: pointer;
+  }
+  label:has(input:checked) {
+    background: var(--color-sand-2);
+  }
+  input {
+    accent-color: var(--reading-ink);
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+  }
+  .swatch {
+    width: 1.5rem;
+    height: 1.5rem;
+    flex-shrink: 0;
+    border: 1px solid color-mix(in srgb, var(--reading-ink) 25%, transparent);
+    border-radius: 0.25rem;
+  }
+  #selection-summary {
+    font-size: 0.8125rem;
+  }
+</style>

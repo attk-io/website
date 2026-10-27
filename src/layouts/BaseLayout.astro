@@ -2,26 +2,37 @@
 import { Font } from 'astro:assets';
 import '../styles/global.css';
 import CloudflareWebAnalytics from '../components/CloudflareWebAnalytics.astro';
+import ColorExperimentHead from '../components/ColorExperimentHead.astro';
+import ColorVariantWidget from '../components/ColorVariantWidget.astro';
+import { COLOR_TOKENS, DEFAULT_COLOR_STYLE } from '../lib/color-experiment';
 
 type Props = {
   title: string;
   description?: string;
+  colorExperiment?: boolean;
 };
 
 const {
   title,
   description = 'Custom cloud software and automation consulting',
+  colorExperiment = false,
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html
+  lang="en"
+  style={colorExperiment ? `${DEFAULT_COLOR_STYLE};${COLOR_TOKENS}` : undefined}
+  data-palette={colorExperiment ? 'pop' : undefined}
+  data-cream={colorExperiment ? 'original' : undefined}
+>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="author" content="Christian Naths" />
     <meta name="description" content={description} />
+    {colorExperiment && <ColorExperimentHead />}
     {import.meta.env.PROD && <CloudflareWebAnalytics />}
     <Font
       cssVariable="--webfont-hanken-grotesk"
@@ -38,5 +49,6 @@ const {
   </head>
   <body class="bg-sand-1 text-sand-12 antialiased">
     <slot />
+    {colorExperiment && <ColorVariantWidget />}
   </body>
 </html>
