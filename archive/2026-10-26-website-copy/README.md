@@ -9,7 +9,6 @@ Edit current website copy in [src/content](../../src/content/). The [homepage](.
 ## Archived material
 
 - [Consulting copy draft](docs/consulting-copy.md) and [writing outline](docs/consulting-copy-outline.md).
-- [Earlier structured content experiment](docs/_drafts/content.yml).
 - Unused section copy and voice variants under [src/content](src/content/), preserving their former paths.
 
 The [brand strategy](../../docs/brand-strategy/) and [process documents](../../docs/process/) remain active references. They explain positioning and working practices rather than duplicating the current website copy.

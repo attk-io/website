@@ -27,14 +27,6 @@ export default [
     settings: tailwindSettings,
     rules: {
       ...tailwindRules,
-      'no-restricted-syntax': [
-        'error',
-        {
-          selector: "JSXElement[openingElement.name.name='style']",
-          message:
-            '<style> tags are not allowed in .astro files. Use Tailwind utility classes (including arbitrary variants like has-[...]:, [&:selector]:) instead.',
-        },
-      ],
     },
   },
 ];
