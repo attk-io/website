@@ -49,3 +49,9 @@ The specimen preserves the original foundations page: its full type scale, twelv
 - Ask Christian to choose or refine the candidates after seeing them in context. Keep the color decision open until then.
 
 The sample headings, wording, and type shown in conversation were comparison aids, not approved copy or typography changes.
+
+## Build behavior
+
+The switcher is opt-in through `COLOR_SWITCHER_ENABLED=true`. Local development explicitly enables it in `.env.development`, and `build:preview` enables it for preview builds; PR CI uses `build:preview`. The normal `build` command leaves it off, and the production deployment explicitly sets the flag to `false`.
+
+Without the flag, both pages retain the shared default theme, but omit the switcher and do not apply browser-saved or URL-selected variants. To change the production colors, edit the shared defaults in [color-experiment.ts](../../src/lib/color-experiment.ts).

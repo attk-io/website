@@ -17,6 +17,8 @@ const {
   description = 'Custom cloud software and automation consulting',
   colorExperiment = false,
 } = Astro.props;
+const showColorSwitcher =
+  colorExperiment && import.meta.env.COLOR_SWITCHER_ENABLED === 'true';
 ---
 
 <!doctype html>
@@ -25,6 +27,7 @@ const {
   style={colorExperiment ? `${DEFAULT_COLOR_STYLE};${COLOR_TOKENS}` : undefined}
   data-palette={colorExperiment ? 'pop' : undefined}
   data-cream={colorExperiment ? 'original' : undefined}
+  data-color-switcher={showColorSwitcher ? 'enabled' : undefined}
 >
   <head>
     <meta charset="utf-8" />
@@ -32,7 +35,7 @@ const {
     <title>{title}</title>
     <meta name="author" content="Christian Naths" />
     <meta name="description" content={description} />
-    {colorExperiment && <ColorExperimentHead />}
+    {showColorSwitcher && <ColorExperimentHead />}
     {import.meta.env.PROD && <CloudflareWebAnalytics />}
     <Font
       cssVariable="--webfont-hanken-grotesk"
@@ -49,6 +52,6 @@ const {
   </head>
   <body class="bg-sand-1 text-sand-12 antialiased">
     <slot />
-    {colorExperiment && <ColorVariantWidget />}
+    {showColorSwitcher && <ColorVariantWidget />}
   </body>
 </html>

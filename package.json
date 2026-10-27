@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "build:preview": "COLOR_SWITCHER_ENABLED=true astro build",
     "preview": "astro preview",
     "deploy": "firebase deploy",
     "prepare": "husky",

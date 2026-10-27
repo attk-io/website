@@ -39,4 +39,13 @@ jobs:
         run: bun run typecheck
 
       - name: Build
-        run: bun run build
+        run: bun run build:preview
+
+      - name: Upload PR preview website
+        if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: preview-site
+          path: dist/
+          if-no-files-found: error
+          retention-days: 1

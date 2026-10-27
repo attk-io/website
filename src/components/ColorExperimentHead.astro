@@ -55,6 +55,7 @@ import { PALETTES, CREAMS, COLOR_STORAGE_KEY } from '../lib/color-experiment';
   } from '../lib/color-experiment';
   // A homepage open in another tab follows changes made in the specimen.
   window.addEventListener('storage', (event) => {
+    if (document.documentElement.dataset.colorSwitcher !== 'enabled') return;
     if (event.key !== COLOR_STORAGE_KEY || !event.newValue) return;
     try {
       const selection = JSON.parse(event.newValue);
