@@ -78,6 +78,91 @@ const scales: {
     swatches: swatchesByHue.plum,
   },
 ];
+
+// Perfect Fourth (1.333) type scale — see `--text-*` tokens in global.css.
+const typeScale: {
+  token: string;
+  px: string;
+  role: string;
+  weight: string;
+  weightClass: string;
+  sample: string;
+}[] = [
+  {
+    token: 'text-display',
+    px: '56–95 px · fluid',
+    role: 'Hero headline',
+    weight: 'Semibold 600',
+    weightClass: 'font-semibold',
+    sample: 'Software, done right.',
+  },
+  {
+    token: 'text-title',
+    px: '44–72 px · fluid',
+    role: 'Page heading · h1',
+    weight: 'Semibold 600',
+    weightClass: 'font-semibold',
+    sample: 'I build software for founders who need to get it right.',
+  },
+  {
+    token: 'text-heading',
+    px: '34–54 px · fluid',
+    role: 'Section heading · h2',
+    weight: 'Semibold 600',
+    weightClass: 'font-semibold',
+    sample: 'A decade of shipping products that last.',
+  },
+  {
+    token: 'text-subhead',
+    px: '28–40 px · fluid',
+    role: 'Reserve subheading',
+    weight: 'Semibold 600',
+    weightClass: 'font-semibold',
+    sample: 'Each engagement starts with a real conversation.',
+  },
+  {
+    token: 'text-large',
+    px: '24–30 px · fluid',
+    role: 'In-body heading · h3',
+    weight: 'Semibold 600',
+    weightClass: 'font-semibold',
+    sample: 'Short, focused build cycles.',
+  },
+  {
+    token: 'text-lead',
+    px: '23 px',
+    role: 'Lead paragraph · h4',
+    weight: 'Medium 500',
+    weightClass: 'font-medium',
+    sample:
+      'A lead paragraph introduces a section in a slightly larger, lighter voice.',
+  },
+  {
+    token: 'text-body',
+    px: '17 px',
+    role: 'Body copy',
+    weight: 'Regular 400',
+    weightClass: 'font-normal',
+    sample:
+      'Development happens in short, focused cycles. Each week you see tangible progress, written for you, not for engineers — clear, concise, and free of jargon.',
+  },
+  {
+    token: 'text-small',
+    px: '13 px',
+    role: 'Eyebrows, metadata, captions',
+    weight: 'Medium 500',
+    weightClass: 'font-medium',
+    sample: 'Ch. 03 · How it Works · Revised April 2026',
+  },
+  {
+    token: 'text-caption',
+    px: '10 px',
+    role: 'Micro-labels',
+    weight: 'Medium 500',
+    weightClass: 'font-medium',
+    sample: 'OKLCH · 12 steps · sand-1 paper',
+  },
+];
 ---
 
 <BaseLayout title="Specimen — ATTK Foundations">
@@ -85,17 +170,15 @@ const scales: {
     <!-- ─── Masthead ────────────────────────────────────────────────── -->
     <header class="mb-24 sm:mb-32">
       <p
-        class="font-hanken text-[0.8125rem] font-medium tracking-[0.12em] text-sand-11 uppercase"
+        class="font-hanken text-small font-medium tracking-[0.12em] text-sand-11 uppercase"
       >
         00 · Foundations
       </p>
-      <h1
-        class="mt-6 text-[clamp(2.75rem,5.5vw+1rem,4.75rem)] leading-[0.98] font-semibold tracking-[-0.03em] text-sand-12"
-      >
+      <h1 class="mt-6 text-title font-semibold text-sand-12">
         A specimen of the typographic system and color scales that all future
         sections will be built on.
       </h1>
-      <p class="mt-10 max-w-[58ch] text-[1.0625rem] leading-[1.6] text-sand-11">
+      <p class="mt-10 max-w-[58ch] text-body leading-[1.6] text-sand-11">
         Single-family Swiss discipline. One neo-grotesque — Hanken Grotesk —
         used across every level of hierarchy, with weight and size doing the
         work of differentiation. A warm neutral ramp, a single ink-dark
@@ -103,102 +186,56 @@ const scales: {
       </p>
     </header>
 
-    <!-- ─── Typography ─────────────────────────────────────────────── -->
+    <!-- ─── Type Scale ─────────────────────────────────────────────── -->
     <section class="mb-24 sm:mb-32">
       <div class="mb-12 flex items-baseline gap-6">
         <span
-          class="font-hanken text-[0.75rem] font-medium tracking-[0.14em] text-sand-11 uppercase"
+          class="font-hanken text-small font-medium tracking-[0.14em] text-sand-11 uppercase"
         >
-          01 · Typography
+          01 · Type Scale
         </span>
         <span aria-hidden="true" class="h-px flex-1 bg-sand-7"></span>
       </div>
 
-      <!-- Display scale -->
+      <p class="mb-14 max-w-[60ch] text-body text-sand-11">
+        Nine steps on a <strong class="font-semibold text-sand-12"
+          >Perfect Fourth</strong
+        > ratio (1.333), anchored at the 17px body. Each step is a <code
+          class="font-hanken text-sand-12">--text-*</code
+        > token carrying its own size and line-height; the five heading steps also
+        carry letter-spacing. Heading steps are fluid; text steps are fixed.
+      </p>
+
       <div class="space-y-12">
-        <div>
-          <p
-            class="mb-3 font-hanken text-[0.6875rem] font-medium tracking-[0.14em] text-sand-11 uppercase"
-          >
-            Display &nbsp;·&nbsp; Hanken Grotesk 600
-          </p>
-          <h2
-            class="text-[clamp(2.25rem,4.5vw+0.5rem,3.75rem)] leading-[0.98] font-semibold tracking-[-0.028em] text-sand-12"
-          >
-            I build software for founders who need to get it right.
-          </h2>
-        </div>
+        {
+          typeScale.map((step) => (
+            <div>
+              <p class="mb-3 font-hanken text-small font-medium tracking-[0.12em] text-sand-11 uppercase">
+                {step.token} · {step.px} · {step.role} · {step.weight}
+              </p>
+              <p class:list={[step.token, step.weightClass, 'text-sand-12']}>
+                {step.sample}
+              </p>
+            </div>
+          ))
+        }
 
         <div>
           <p
-            class="mb-3 font-hanken text-[0.6875rem] font-medium tracking-[0.14em] text-sand-11 uppercase"
+            class="mb-3 font-hanken text-small font-medium tracking-[0.12em] text-sand-11 uppercase"
           >
-            Heading &nbsp;·&nbsp; Hanken Grotesk 600
+            Inline · Link, strong, em
           </p>
-          <h3
-            class="text-[clamp(1.625rem,2.25vw+0.5rem,2.375rem)] leading-[1.05] font-semibold tracking-[-0.022em] text-sand-12"
-          >
-            A decade of shipping products that last.
-          </h3>
-        </div>
-
-        <div>
-          <p
-            class="mb-3 font-hanken text-[0.6875rem] font-medium tracking-[0.14em] text-sand-11 uppercase"
-          >
-            Subheading &nbsp;·&nbsp; Hanken Grotesk 500
-          </p>
-          <h4
-            class="text-[1.375rem] leading-tight font-medium tracking-[-0.012em] text-sand-12"
-          >
-            Each engagement starts with a real conversation.
-          </h4>
-        </div>
-
-        <div>
-          <p
-            class="mb-3 font-hanken text-[0.6875rem] font-medium tracking-[0.14em] text-sand-11 uppercase"
-          >
-            Body &nbsp;·&nbsp; Hanken Grotesk 400
-          </p>
-          <p class="max-w-[68ch] text-[1.0625rem] leading-[1.6] text-sand-12">
-            Development happens in short, focused cycles. Each week, you'll see
-            tangible progress and receive updates that describe what was
-            completed, what comes next, and whether anything has shifted. The
-            updates are written for you, not for engineers — clear, concise, and
-            free of jargon. You stay informed and involved in the decisions that
-            matter to your business, while I handle the technical execution.
-          </p>
-        </div>
-
-        <div>
-          <p
-            class="mb-3 font-hanken text-[0.6875rem] font-medium tracking-[0.14em] text-sand-11 uppercase"
-          >
-            Inline &nbsp;·&nbsp; Link, strong, em
-          </p>
-          <p class="max-w-[68ch] text-[1.0625rem] leading-[1.6] text-sand-12">
+          <p class="max-w-[68ch] text-body text-sand-12">
             The goal is <strong class="font-semibold text-sand-12"
               >a production-ready product</strong
             > in real users' hands — not a demo, not a prototype. This includes the
-            work that doesn't make the highlight reel but keeps everything running:
-            <em class="italic"
-              >infrastructure, deployment pipelines, monitoring</em
-            >, and the quiet operational details that separate a launched
-            product from a proof of concept.
-          </p>
-        </div>
-
-        <div>
-          <p
-            class="mb-3 font-hanken text-[0.6875rem] font-medium tracking-[0.14em] text-sand-11 uppercase"
-          >
-            Metadata &nbsp;·&nbsp; Hanken Grotesk 500 · uppercase + tracking
-          </p>
-          <p
-            class="font-hanken text-[0.875rem] font-medium tracking-[0.08em] text-sand-11 uppercase"
-          >
-            Ch. 03 &nbsp;·&nbsp; How it Works &nbsp;·&nbsp; Revised April 2026
+            <em class="italic">infrastructure, deployment, and monitoring</em> that
+            separate a launched product from a proof of concept. <a
+              href="#"
+              class="text-ocean-11 underline decoration-ocean-7 decoration-[1.5px] underline-offset-[3px] hover:decoration-ocean-11"
+              >Let's talk.</a
+            >
           </p>
         </div>
       </div>
@@ -208,7 +245,7 @@ const scales: {
     <section class="mb-24 sm:mb-32">
       <div class="mb-12 flex items-baseline gap-6">
         <span
-          class="font-hanken text-[0.75rem] font-medium tracking-[0.14em] text-sand-11 uppercase"
+          class="font-hanken text-small font-medium tracking-[0.14em] text-sand-11 uppercase"
         >
           02 · Color Scales
         </span>
@@ -221,14 +258,14 @@ const scales: {
             <div>
               <div class="mb-5 flex items-baseline justify-between">
                 <div>
-                  <p class="text-[1.125rem] font-semibold tracking-[-0.012em] text-sand-12">
+                  <p class="text-body font-semibold tracking-[-0.012em] text-sand-12">
                     {scale.label}
                   </p>
-                  <p class="mt-1 text-[0.8125rem] leading-[1.55] text-sand-11">
+                  <p class="mt-1 text-small leading-[1.55] text-sand-11">
                     {scale.description}
                   </p>
                 </div>
-                <p class="font-hanken text-[0.6875rem] font-medium tracking-[0.12em] text-sand-11 uppercase">
+                <p class="font-hanken text-caption font-medium tracking-[0.12em] text-sand-11 uppercase">
                   12 steps
                 </p>
               </div>
@@ -248,15 +285,13 @@ const scales: {
                         textClass,
                       ]}
                     >
-                      <span class="font-hanken text-[0.625rem] font-medium tracking-[0.08em] uppercase opacity-90">
+                      <span class="font-hanken text-caption font-medium tracking-[0.08em] uppercase opacity-90">
                         {scale.name}
                       </span>
-                      <span class="text-[1rem] leading-none">
-                        {swatch.step}
-                      </span>
+                      <span class="text-body leading-none">{swatch.step}</span>
                       <span
                         data-swatch-feedback
-                        class="pointer-events-none absolute inset-0 flex items-center justify-center bg-current/0 font-dm-mono text-[0.6875rem] tracking-[0.02em] opacity-0 transition-opacity"
+                        class="pointer-events-none absolute inset-0 flex items-center justify-center bg-current/0 font-dm-mono text-caption tracking-[0.02em] opacity-0 transition-opacity"
                       >
                         <span class="rounded-[1px] bg-sand-12 px-2 py-1 text-sand-1">
                           Copied
@@ -276,16 +311,14 @@ const scales: {
     <section class="mb-24 sm:mb-32">
       <div class="mb-12 flex items-baseline gap-6">
         <span
-          class="font-hanken text-[0.75rem] font-medium tracking-[0.14em] text-sand-11 uppercase"
+          class="font-hanken text-small font-medium tracking-[0.14em] text-sand-11 uppercase"
         >
           03 · Highlight in Context
         </span>
         <span aria-hidden="true" class="h-px flex-1 bg-sand-7"></span>
       </div>
 
-      <p
-        class="mb-10 max-w-[60ch] text-[1.0625rem] leading-[1.65] text-sand-11"
-      >
+      <p class="mb-10 max-w-[60ch] text-body leading-[1.65] text-sand-11">
         <strong class="font-semibold text-sand-12">Ink</strong> is the primary highlight
         and carries link color, emphasis marks, and the main CTA. <strong
           class="font-semibold text-sand-12">Sun</strong
@@ -298,11 +331,11 @@ const scales: {
         <!-- Ink sample -->
         <article>
           <p
-            class="mb-4 font-hanken text-[0.75rem] font-medium tracking-[0.14em] text-ink-11 uppercase"
+            class="mb-4 font-hanken text-small font-medium tracking-[0.14em] text-ink-11 uppercase"
           >
             Primary · Ink
           </p>
-          <p class="max-w-[68ch] text-[1.0625rem] leading-[1.6] text-sand-12">
+          <p class="max-w-[68ch] text-body leading-[1.6] text-sand-12">
             Every engagement starts with a real conversation. You walk me
             through what you're building, the market you're entering, and what's
             at stake. I listen carefully, ask the questions that matter, and
@@ -317,12 +350,12 @@ const scales: {
           </p>
           <div class="mt-6 flex items-center gap-4">
             <span
-              class="inline-flex items-center gap-2 bg-ink-9 px-5 py-2.5 font-hanken text-[0.75rem] font-medium tracking-[0.12em] text-sand-1 uppercase"
+              class="inline-flex items-center gap-2 bg-ink-9 px-5 py-2.5 font-hanken text-small font-medium tracking-[0.12em] text-sand-1 uppercase"
             >
               Primary mark
             </span>
             <span
-              class="font-hanken text-[0.6875rem] font-medium tracking-[0.12em] text-sand-11 uppercase"
+              class="font-hanken text-caption font-medium tracking-[0.12em] text-sand-11 uppercase"
             >
               ink-9 · ink-11 · ink-3
             </span>
@@ -332,11 +365,11 @@ const scales: {
         <!-- Sun sample -->
         <article>
           <p
-            class="mb-4 font-hanken text-[0.75rem] font-medium tracking-[0.14em] text-sun-11 uppercase"
+            class="mb-4 font-hanken text-small font-medium tracking-[0.14em] text-sun-11 uppercase"
           >
             Secondary · Sun
           </p>
-          <p class="max-w-[68ch] text-[1.0625rem] leading-[1.6] text-sand-12">
+          <p class="max-w-[68ch] text-body leading-[1.6] text-sand-12">
             Every engagement starts with a real conversation. You walk me
             through what you're building, the market you're entering, and what's
             at stake. I listen carefully, ask the questions that matter, and
@@ -351,12 +384,12 @@ const scales: {
           </p>
           <div class="mt-6 flex items-center gap-4">
             <span
-              class="inline-flex items-center gap-2 bg-sun-9 px-5 py-2.5 font-hanken text-[0.75rem] font-medium tracking-[0.12em] text-sun-12 uppercase"
+              class="inline-flex items-center gap-2 bg-sun-9 px-5 py-2.5 font-hanken text-small font-medium tracking-[0.12em] text-sun-12 uppercase"
             >
               Primary mark
             </span>
             <span
-              class="font-hanken text-[0.6875rem] font-medium tracking-[0.12em] text-sand-11 uppercase"
+              class="font-hanken text-caption font-medium tracking-[0.12em] text-sand-11 uppercase"
             >
               sun-9 · sun-11 · sun-4
             </span>
@@ -366,11 +399,11 @@ const scales: {
         <!-- Teal sample -->
         <article>
           <p
-            class="mb-4 font-hanken text-[0.75rem] font-medium tracking-[0.14em] text-teal-11 uppercase"
+            class="mb-4 font-hanken text-small font-medium tracking-[0.14em] text-teal-11 uppercase"
           >
             Secondary · Teal
           </p>
-          <p class="max-w-[68ch] text-[1.0625rem] leading-[1.6] text-sand-12">
+          <p class="max-w-[68ch] text-body leading-[1.6] text-sand-12">
             Every engagement starts with a real conversation. You walk me
             through what you're building, the market you're entering, and what's
             at stake. I listen carefully, ask the questions that matter, and
@@ -385,12 +418,12 @@ const scales: {
           </p>
           <div class="mt-6 flex items-center gap-4">
             <span
-              class="inline-flex items-center gap-2 bg-teal-9 px-5 py-2.5 font-hanken text-[0.75rem] font-medium tracking-[0.12em] text-sand-1 uppercase"
+              class="inline-flex items-center gap-2 bg-teal-9 px-5 py-2.5 font-hanken text-small font-medium tracking-[0.12em] text-sand-1 uppercase"
             >
               Primary mark
             </span>
             <span
-              class="font-hanken text-[0.6875rem] font-medium tracking-[0.12em] text-sand-11 uppercase"
+              class="font-hanken text-caption font-medium tracking-[0.12em] text-sand-11 uppercase"
             >
               teal-9 · teal-11 · teal-3
             </span>
@@ -403,17 +436,17 @@ const scales: {
     <section class="mb-16">
       <div class="mb-12 flex items-baseline gap-6">
         <span
-          class="font-hanken text-[0.75rem] font-medium tracking-[0.14em] text-sand-11 uppercase"
+          class="font-hanken text-small font-medium tracking-[0.14em] text-sand-11 uppercase"
         >
           04 · Contrast
         </span>
         <span aria-hidden="true" class="h-px flex-1 bg-sand-7"></span>
       </div>
 
-      <ul class="space-y-5 text-[0.9375rem] leading-[1.65] text-sand-11">
+      <ul class="space-y-5 text-small leading-[1.65] text-sand-11">
         <li class="flex items-baseline gap-4">
           <span
-            class="min-w-[14ch] font-hanken text-[0.6875rem] font-medium tracking-[0.12em] text-sand-11 uppercase"
+            class="min-w-[14ch] font-hanken text-caption font-medium tracking-[0.12em] text-sand-11 uppercase"
           >
             Body · sand-12
           </span>
@@ -423,7 +456,7 @@ const scales: {
         </li>
         <li class="flex items-baseline gap-4">
           <span
-            class="min-w-[14ch] font-hanken text-[0.6875rem] font-medium tracking-[0.12em] text-sand-11 uppercase"
+            class="min-w-[14ch] font-hanken text-caption font-medium tracking-[0.12em] text-sand-11 uppercase"
           >
             Low · sand-11
           </span>
@@ -434,7 +467,7 @@ const scales: {
         </li>
         <li class="flex items-baseline gap-4">
           <span
-            class="min-w-[14ch] font-hanken text-[0.6875rem] font-medium tracking-[0.12em] text-sand-11 uppercase"
+            class="min-w-[14ch] font-hanken text-caption font-medium tracking-[0.12em] text-sand-11 uppercase"
           >
             Links · –11
           </span>
@@ -446,7 +479,7 @@ const scales: {
         </li>
         <li class="flex items-baseline gap-4">
           <span
-            class="min-w-[14ch] font-hanken text-[0.6875rem] font-medium tracking-[0.12em] text-sand-11 uppercase"
+            class="min-w-[14ch] font-hanken text-caption font-medium tracking-[0.12em] text-sand-11 uppercase"
           >
             Focus
           </span>
@@ -462,16 +495,14 @@ const scales: {
     <section class="mb-24 sm:mb-32">
       <div class="mb-12 flex items-baseline gap-6">
         <span
-          class="font-hanken text-[0.75rem] font-medium tracking-[0.14em] text-sand-11 uppercase"
+          class="font-hanken text-small font-medium tracking-[0.14em] text-sand-11 uppercase"
         >
           05 · Wordmark
         </span>
         <span aria-hidden="true" class="h-px flex-1 bg-sand-7"></span>
       </div>
 
-      <p
-        class="mb-12 max-w-[60ch] text-[1.0625rem] leading-[1.65] text-sand-11"
-      >
+      <p class="mb-12 max-w-[60ch] text-body leading-[1.65] text-sand-11">
         Set in <strong class="font-semibold text-sand-12">Space Grotesk</strong> —
         mixed-case <strong class="font-semibold text-sand-12">"Attk"</strong> followed
         by a sunshine yellow square mark sitting on the baseline, layered behind the
@@ -483,18 +514,18 @@ const scales: {
       >
         <span aria-hidden="true"></span>
         <p
-          class="font-hanken text-[0.625rem] font-medium tracking-[0.14em] text-sand-11 uppercase"
+          class="font-hanken text-caption font-medium tracking-[0.14em] text-sand-11 uppercase"
         >
           Natural tracking
         </p>
         <p
-          class="font-hanken text-[0.625rem] font-medium tracking-[0.14em] text-sand-11 uppercase"
+          class="font-hanken text-caption font-medium tracking-[0.14em] text-sand-11 uppercase"
         >
           Tight · −0.03em
         </p>
 
         <p
-          class="font-hanken text-[0.625rem] font-medium tracking-[0.14em] text-sand-11 uppercase"
+          class="font-hanken text-caption font-medium tracking-[0.14em] text-sand-11 uppercase"
         >
           500
         </p>
@@ -521,7 +552,7 @@ const scales: {
         </p>
 
         <p
-          class="font-hanken text-[0.625rem] font-medium tracking-[0.14em] text-sand-11 uppercase"
+          class="font-hanken text-caption font-medium tracking-[0.14em] text-sand-11 uppercase"
         >
           600
         </p>
@@ -548,7 +579,7 @@ const scales: {
         </p>
 
         <p
-          class="font-hanken text-[0.625rem] font-medium tracking-[0.14em] text-sand-11 uppercase"
+          class="font-hanken text-caption font-medium tracking-[0.14em] text-sand-11 uppercase"
         >
           700
         </p>
@@ -579,7 +610,7 @@ const scales: {
     <!-- ─── Footer ─────────────────────────────────────────────────── -->
     <footer class="mt-24 border-t border-sand-6 pt-8">
       <p
-        class="font-hanken text-[0.6875rem] font-medium tracking-[0.12em] text-sand-11 uppercase"
+        class="font-hanken text-caption font-medium tracking-[0.12em] text-sand-11 uppercase"
       >
         ATTK · Foundations Specimen · Revised April 2026
       </p>

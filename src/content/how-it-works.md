@@ -1,21 +1,33 @@
-## Every successful build needs a clear method behind it. Here's mine — from the first conversation to long after launch.
+---
+section_label: The process
+---
+
+## How we’ll take your product from idea to launch
 
 ### Discovery
 
-Two or three working days at the start of every engagement. You walk me through the vision, the market, and the constraints. I ask the questions that matter and give you an honest read — what the build will take, what the risks are, and whether I'm the right person for this particular product. Together we agree on the shortest path to a working MVP: which features make the first cut, which ones wait, and which ones should be cut entirely. By the end, you have a clear technical picture of what it would take to bring your product to market — regardless of whether we keep working together.
+_Timeline: **<mark>Free • by the end of week 1</mark>**_
 
-### Base Platform
+We work through your business goals, who the product needs to serve, and what the first release should accomplish. I create an initial roadmap, giving us a shared understanding of what we’re building and why.
 
-Every product needs a working foundation — authentication, billing, hosting, monitoring, the parts that aren't unique to your business but are essential for it to function. Because most of this is pre-built and battle-tested, it ships in about two weeks for a fixed cost. The time you save here gets reinvested where it actually differentiates your product: in the custom work that follows.
+### Planning & Design
 
-### Custom Work
+_Timeline: **<mark>by week 4</mark>**_
 
-This is where most of the engagement lives. The features that make your product specifically yours are scoped during discovery, then planned into digestible sets — each one a self-contained piece of functionality with a tangible outcome you can see and use. Within each set, the same short loop repeats: a focused build, a QA pass where you review the working feature in your hands, then ship. Every loop produces something real you can react to, which means course corrections happen early — while the cost of changing direction is still small.
+I turn the roadmap into a prioritized plan, working through how the product should behave and resolving important questions before development begins. I document the decisions we make and the reasons behind them, so we can refer back to them as the product develops. Wireframes, flow sketches, and interface examples help you review the direction and make decisions before we commit time to building.
 
-### Launch isn't a finish line
+Planning & Design is a paid phase with its own agreed budget. By the end, you’ll have a defined scope and a build estimate, so you can decide how to proceed.
 
-At some point the work in flight becomes the work in production. Real users start supplying the evidence that, until now, has come from you and from my experience with similar products. The loop doesn't change — same scope, same build, same QA, same ship — but the inputs do. What seemed important in theory gets tested against what's actually important in practice. The next set of features gets shaped by what real usage reveals.
+### Base Platform Configuration
 
-### Stepping back
+_Timeline: **<mark>by week 6</mark>**_
 
-The earliest months are where my involvement matters most: architecture, foundational decisions, the calls that are expensive to undo later. As those settle, my role naturally shifts. Many engagements end with me transitioning out of day-to-day development as a more junior developer takes over, while I stay on in an advisory capacity — there to protect the technical foundation without billing for work that no longer needs me. The model is built to step back when it should.
+I configure and deploy the services your product needs, such as hosting, authentication, payments, email, and monitoring. We select these around your project’s requirements, with each setup item clearly priced in advance.
+
+### Custom Development Cycles
+
+_Timeline: **<mark>week 6 onward</mark>**_
+
+We work in repeating development cycles. Each starts with a review of the previous cycle and an agreement on what comes next. I plan and build the agreed work, then release it to a private environment for you to review.
+
+New ideas and requirements go onto the backlog for a future cycle, keeping the current work focused. Your feedback helps us decide what to tackle next.

@@ -1,10 +1,9 @@
 // Markdown rendering helper for ATTK website section components.
 //
-// Each section component imports `renderMarkdown(content, classMap)` and
-// passes a per-tag class map. The helper extends marked's Renderer so that
-// every generated HTML element carries Tailwind utility classes directly on
-// its class attribute — matching the standard Tailwind styling pattern shown
-// in the official docs.
+// Section components pass markdown plus a per-tag class map. The helper
+// extends marked's Renderer so every generated HTML element carries Tailwind
+// utility classes directly on its class attribute — matching the standard
+// Tailwind styling pattern shown in the official docs.
 
 import { marked, Renderer, type Tokens } from 'marked';
 
@@ -25,6 +24,18 @@ export type ClassMap = Partial<{
   blockquote: string;
   hr: string;
 }>;
+
+export type MarkdownDocument = {
+  body: string;
+  label: string | undefined;
+  quote: string | undefined;
+};
+
+export type RenderedSectionContent = {
+  body: string;
+  label: string | undefined;
+  quote: string | undefined;
+};
 
 class TailwindRenderer extends Renderer {
   classes: ClassMap;
@@ -92,6 +103,79 @@ export function renderMarkdown(
   return preventWidows(smartenQuotes(html));
 }
 
+export function renderSectionContent(
+  content: string,
+  classes: ClassMap = {}
+): RenderedSectionContent {
+  const document = parseMarkdownDocument(content);
+  return {
+    body: renderMarkdown(document.body, classes),
+    label: document.label,
+    quote: document.quote,
+  };
+}
+
+export function parseMarkdownDocument(content: string): MarkdownDocument {
+  const normalized = content.replace(/^\uFEFF/, '');
+  const match = normalized.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
+  if (!match) {
+    return {
+      body: content,
+      label: undefined,
+      quote: undefined,
+    };
+  }
+
+  const metadata = parseFrontmatter(match[1]);
+  return {
+    body: match[2],
+    label: metadata.section_label,
+    quote: metadata.quote,
+  };
+}
+
+type Frontmatter = {
+  quote: string | undefined;
+  section_label: string | undefined;
+};
+
+function parseFrontmatter(source: string): Frontmatter {
+  const frontmatter: Frontmatter = {
+    quote: undefined,
+    section_label: undefined,
+  };
+
+  for (const line of source.split(/\r?\n/)) {
+    const match = line.match(/^([A-Za-z_]+):\s*(.*)$/);
+    if (!match) continue;
+
+    if (match[1] === 'quote') {
+      frontmatter.quote = parseFrontmatterValue(match[2]);
+    }
+
+    if (match[1] === 'section_label') {
+      frontmatter.section_label = parseFrontmatterValue(match[2]);
+    }
+  }
+
+  return frontmatter;
+}
+
+function parseFrontmatterValue(value: string): string | undefined {
+  const trimmed = value.trim();
+  if (trimmed === '' || trimmed === 'undefined' || trimmed === 'null') {
+    return undefined;
+  }
+
+  const doubleQuoted = trimmed.match(/^"(.*)"$/);
+  if (doubleQuoted) return smartenText(doubleQuoted[1]);
+
+  const singleQuoted = trimmed.match(/^'(.*)'$/);
+  if (singleQuoted) return smartenText(singleQuoted[1]);
+
+  return smartenText(trimmed);
+}
+
 const BLOCK_TAGS = new Set([
   'p',
   'h1',
@@ -107,13 +191,17 @@ const BLOCK_TAGS = new Set([
 
 function smartenQuotes(html: string): string {
   return replaceText(html, (text) => {
-    const decoded = text.replace(/&#39;/g, "'").replace(/&quot;/g, '"');
-    return decoded
-      .replace(/(^|[\s([{—–\-])"/g, '$1\u201C')
-      .replace(/"/g, '\u201D')
-      .replace(/(^|[\s([{—–\-])'/g, '$1\u2018')
-      .replace(/'/g, '\u2019');
+    return smartenText(text);
   });
+}
+
+function smartenText(text: string): string {
+  const decoded = text.replace(/&#39;/g, "'").replace(/&quot;/g, '"');
+  return decoded
+    .replace(/(^|[\s([{—–\-])"/g, '$1\u201C')
+    .replace(/"/g, '\u201D')
+    .replace(/(^|[\s([{—–\-])'/g, '$1\u2018')
+    .replace(/'/g, '\u2019');
 }
 
 function preventWidows(html: string): string {

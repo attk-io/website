@@ -1,4 +1,7 @@
-## Honest answers to the questions founders ask most before we talk.
+---
+quote: 'Honest answers to the questions founders ask most before we talk.'
+section_label: FAQ
+---
 
 ### What if the project doesn't work out
 

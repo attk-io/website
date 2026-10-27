@@ -24,7 +24,7 @@ Describe the ideal client's situation: what they already have (vision, domain ex
 
 ## Process / How It Works
 
-Walk the reader through the engagement using the same three components named on the Pricing page (Discovery, Base Platform, Custom Work), then describe two moments that punctuate the rhythm (Launch isn't a finish line, Stepping back). The job of this section is to give the reader confidence in a sound, efficient method where every step earns its place toward their goal — and to make clear that the rhythm continues through and past launch, rather than ending at a single milestone.
+Walk the reader through the engagement using the same three components named on the Pricing page (Discovery, Base Platform, Custom Work), then describe two moments that punctuate the rhythm (Launch isn't a finish line, Development hardening). The job of this section is to give the reader confidence in a sound, efficient method where every step earns its place toward their goal — and to make clear that the rhythm continues through and past launch, rather than ending at a single checkpoint.
 
 ### Discovery
 
@@ -42,9 +42,9 @@ The differentiated heart of the engagement. Each meaningful piece of functionali
 
 A brief reframing beat. Real users start supplying the evidence that previously came from the client and from Christian's experience. The loop doesn't change — the inputs do. Counters the misconception that the work ends at launch.
 
-### Stepping back
+### Development hardening
 
-Closing beat. Christian's involvement is heaviest at the start (architecture, foundational decisions) and tapers as the foundation settles. Many engagements end with a deliberate hand-down to a more junior developer plus an ongoing advisory role. Distinctive: the model is built to step back when Christian's value naturally diminishes.
+Closing beat. After the MVP is public, the work shifts toward hardening the practices, tooling, release routines, and documentation that continued development will depend on. The goal is a product and development system future developers can understand, change, review, and release safely.
 
 ## Working Together (planned section — not yet drafted)
 

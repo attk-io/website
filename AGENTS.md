@@ -4,7 +4,9 @@ The marketing website for ATTK Software Inc. (Christian Naths) — a solo techni
 
 Built with Astro 5 and Tailwind 4. Each design variant is fully independent — no shared design tokens or semantic color system. Variants use standard Tailwind classes directly.
 
-Strategic reference documents live in `src/content/strategy/`:
+Website copy in `src/content/` is the source of truth. Edit the section files imported by `src/pages/index.astro` for homepage changes. Earlier writing drafts and unused copy are preserved in [the website copy archive](archive/2026-10-26-website-copy/README.md) and are no longer maintained.
+
+Strategic reference documents live in `docs/brand-strategy/`:
 
 - `brand-voice.md` — archetype, voice spectrums, tone variations
 - `target-audience.md` — JTBD + Value Proposition Canvas
