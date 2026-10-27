@@ -17,7 +17,7 @@ Christian supplied an inspiration image with creamy paper, brick red, deeper rus
 | --------------------------------------------- | --------------- | -------------------- | -------------------------- |
 | Original cream                                | `#F2E2C8`       | `#F2E2C8`            | `#F2E2C8`                  |
 | Supporting tone                               | `#DFC7A4` sand  | `#F0BE9A` peach tint | `#DFC7A4` sand             |
-| Accent                                        | `#B9472D` brick | `#CE582B` red-orange | `#FF4F24` vivid red-orange |
+| Accent                                        | `#B9472D` brick | `#CE582B` red-orange | `#EF572F` vivid red-orange |
 | Deeper supporting shade                       | `#7C3023`       | `#903B22`            | `#903B22`                  |
 | Original ink, superseded for next experiments | `#302820`       | `#302820`            | `#302820`                  |
 
@@ -40,7 +40,7 @@ The `/specimen` page and homepage use one shared theme defined in [color-experim
 
 Selections are saved in browser storage and restored across refreshes and navigation between the specimen and homepage. Valid URL choices take priority over saved choices, then defaults; copying the specimen URL preserves a comparison for sharing. Open tabs on the same origin also follow selection changes. Storage contains variant identifiers, so code changes to their colors still reach returning visitors. If storage is blocked, URL choices and the current page still work. Deep ink (`#191613`) is fixed across the variants.
 
-The specimen preserves the original foundations page: its full type scale, twelve-step color scales, inline formatting samples, highlight examples, contrast notes, and wordmark weight/tracking comparisons. The new palette and paper controls recolor that system and the homepage through the same theme. The ramps between candidate anchors are exploratory interpolations, not finalized production tokens. Bright red-orange is Christian’s selected accent direction and the default; the other candidates remain available for comparison. The cream choice is still open. The experiment lives on the `codex/warm-color-specimen` feature branch.
+The specimen preserves the original foundations page: its full type scale, twelve-step color scales, inline formatting samples, highlight examples, contrast notes, and wordmark weight/tracking comparisons. The new palette and paper controls recolor that system and the homepage through the same theme. The ramps between candidate anchors are exploratory interpolations, not finalized production tokens. Brick Red and Original Cream are the default variants on both pages, including production builds. Other variants remain available through the opt-in widget; valid saved or URL selections override the defaults when switching is enabled. The experiment lives on the `codex/warm-color-specimen` feature branch.
 
 - Apply the candidates to the actual website copy in a throwaway preview, holding typography and layout consistent to isolate color.
 - Compare both cream-and-ink pairings for each palette, including desktop and mobile.

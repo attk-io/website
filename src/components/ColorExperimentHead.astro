@@ -1,5 +1,10 @@
 ---
-import { PALETTES, CREAMS, COLOR_STORAGE_KEY } from '../lib/color-experiment';
+import {
+  PALETTES,
+  CREAMS,
+  COLOR_STORAGE_KEY,
+  DEFAULT_COLOR_SELECTION,
+} from '../lib/color-experiment';
 ---
 
 <!-- Apply the saved colors before the page paints. URL choices take priority. -->
@@ -9,6 +14,7 @@ import { PALETTES, CREAMS, COLOR_STORAGE_KEY } from '../lib/color-experiment';
     palettes: PALETTES,
     creams: CREAMS,
     storageKey: COLOR_STORAGE_KEY,
+    defaults: DEFAULT_COLOR_SELECTION,
   }}
 >
   // @ts-nocheck -- Astro injects the serialized theme values above at render time.
@@ -22,10 +28,10 @@ import { PALETTES, CREAMS, COLOR_STORAGE_KEY } from '../lib/color-experiment';
     /* Defaults and URL choices work without storage. */
   }
   const query = new URLSearchParams(location.search);
-  const palette = [query.get('palette'), saved.palette, 'pop'].find((key) =>
-    owns(palettes, key)
+  const palette = [query.get('palette'), saved.palette, defaults.palette].find(
+    (key) => owns(palettes, key)
   );
-  const cream = [query.get('cream'), saved.cream, 'original'].find((key) =>
+  const cream = [query.get('cream'), saved.cream, defaults.cream].find((key) =>
     owns(creams, key)
   );
   const root = document.documentElement;

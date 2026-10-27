@@ -4,7 +4,11 @@ import '../styles/global.css';
 import CloudflareWebAnalytics from '../components/CloudflareWebAnalytics.astro';
 import ColorExperimentHead from '../components/ColorExperimentHead.astro';
 import ColorVariantWidget from '../components/ColorVariantWidget.astro';
-import { COLOR_TOKENS, DEFAULT_COLOR_STYLE } from '../lib/color-experiment';
+import {
+  COLOR_TOKENS,
+  DEFAULT_COLOR_STYLE,
+  DEFAULT_COLOR_SELECTION,
+} from '../lib/color-experiment';
 
 type Props = {
   title: string;
@@ -25,8 +29,8 @@ const showColorSwitcher =
 <html
   lang="en"
   style={colorExperiment ? `${DEFAULT_COLOR_STYLE};${COLOR_TOKENS}` : undefined}
-  data-palette={colorExperiment ? 'pop' : undefined}
-  data-cream={colorExperiment ? 'original' : undefined}
+  data-palette={colorExperiment ? DEFAULT_COLOR_SELECTION.palette : undefined}
+  data-cream={colorExperiment ? DEFAULT_COLOR_SELECTION.cream : undefined}
   data-color-switcher={showColorSwitcher ? 'enabled' : undefined}
 >
   <head>

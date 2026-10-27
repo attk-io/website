@@ -17,7 +17,7 @@ export const PALETTES = {
   },
   pop: {
     name: 'Bright red-orange',
-    accent: '#FF4F24',
+    accent: '#EF572F',
     support: '#DFC7A4',
     shade: '#903B22',
     onAccent: READING_INK,
@@ -32,14 +32,18 @@ export type ColorSelection = {
   palette: keyof typeof PALETTES;
   cream: keyof typeof CREAMS;
 };
+export const DEFAULT_COLOR_SELECTION: ColorSelection = {
+  palette: 'brick',
+  cream: 'original',
+};
 export const COLOR_STORAGE_KEY = 'attk-color-experiment';
 export const DEFAULT_COLOR_STYLE = Object.entries({
-  paper: CREAMS.original.value,
+  paper: CREAMS[DEFAULT_COLOR_SELECTION.cream].value,
   'reading-ink': READING_INK,
-  accent: PALETTES.pop.accent,
-  support: PALETTES.pop.support,
-  shade: PALETTES.pop.shade,
-  'on-accent': PALETTES.pop.onAccent,
+  accent: PALETTES[DEFAULT_COLOR_SELECTION.palette].accent,
+  support: PALETTES[DEFAULT_COLOR_SELECTION.palette].support,
+  shade: PALETTES[DEFAULT_COLOR_SELECTION.palette].shade,
+  'on-accent': PALETTES[DEFAULT_COLOR_SELECTION.palette].onAccent,
 })
   .map(([name, value]) => `--${name}:${value}`)
   .join(';');

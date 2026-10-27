@@ -1,5 +1,9 @@
 ---
-import { PALETTES, CREAMS } from '../lib/color-experiment';
+import {
+  PALETTES,
+  CREAMS,
+  DEFAULT_COLOR_SELECTION,
+} from '../lib/color-experiment';
 ---
 
 <aside id="color-variant-widget" aria-label="Theme controls">
@@ -23,7 +27,7 @@ import { PALETTES, CREAMS } from '../lib/color-experiment';
               type="radio"
               name="palette"
               value={id}
-              checked={id === 'pop'}
+              checked={id === DEFAULT_COLOR_SELECTION.palette}
             />
             <span
               class="swatch"
@@ -44,7 +48,7 @@ import { PALETTES, CREAMS } from '../lib/color-experiment';
               type="radio"
               name="cream"
               value={id}
-              checked={id === 'original'}
+              checked={id === DEFAULT_COLOR_SELECTION.cream}
             />
             <span
               class="swatch"
