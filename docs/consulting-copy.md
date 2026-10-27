@@ -2,8 +2,6 @@
 
 From deciding what to build first to getting it into your customers’ hands, I take ownership of the technical side so you can focus on building your business.
 
-I’ve been doing this for over a decade.
-
 ## You have a clear vision. You need someone you can trust to build it
 
 You’ve done the groundwork and know custom software is the next step, but you need a clear path from your vision to a product customers can use. Your business depends on getting this built well, and hiring a developer can feel like a leap of faith when you’re relying on their technical judgement. Every week without a product delays your chance to reach customers and start earning revenue.
@@ -54,7 +52,7 @@ As your business grows, we’ll work out what technical support makes sense. Tha
 
 ### FundFilter
 
-I joined FundFilter in 2020 to help build a private fund data and analytics platform. In 2022, Altman and its core asset, FundFilter, were acquired by PEI Group. I stayed on to help transition the product into PEI’s systems.
+I joined FundFilter in 2020 to help build a private fund data and analytics platform. In 2022 FundFilter was acquired by PEI Group. I supported the aquisition by fulfilling the technical due dilligence requests and was contracted by PEI to help transition the product into their systems.
 
 ### Tap Bio
 

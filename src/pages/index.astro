@@ -8,15 +8,15 @@ import {
   renderMarkdown,
   renderSectionContent,
 } from '../lib/markdown';
-import { SECTION_BODY_P, TYPOGRAPHY_BASELINE } from '../lib/typography';
+import { TYPOGRAPHY_BASELINE } from '../lib/typography';
 
 import heroContent from '../content/hero.md?raw';
-import whoThisIsForContent from '../content/who-this-is-for.md?raw';
+import yourVisionContent from '../content/your-vision.md?raw';
+import theRightProductContent from '../content/the-right-product.md?raw';
 import howItWorksContent from '../content/how-it-works.md?raw';
-import workingTogetherContent from '../content/working-together.md?raw';
-import aboutContent from '../content/about.md?raw';
-import pricingContent from '../content/pricing.md?raw';
-import faqContent from '../content/faq.md?raw';
+import ongoingSupportContent from '../content/ongoing-support.md?raw';
+import experienceContent from '../content/experience.md?raw';
+import whoThisIsForContent from '../content/who-this-is-for.md?raw';
 import finalCtaContent from '../content/final-cta.md?raw';
 
 const hero = renderSectionContent(heroContent, {
@@ -29,33 +29,14 @@ const hero = renderSectionContent(heroContent, {
   a: 'mt-2 inline-block bg-ocean-9 px-4 py-1 text-body font-medium text-white no-underline hover:bg-ocean-12 transition-colors duration-150 underline underline-offset-4 decoration-white',
 });
 
-const whoThisIsFor = renderSectionContent(
+const sections = [
+  yourVisionContent,
+  theRightProductContent,
+  howItWorksContent,
+  ongoingSupportContent,
+  experienceContent,
   whoThisIsForContent,
-  TYPOGRAPHY_BASELINE
-);
-const howItWorks = renderSectionContent(howItWorksContent, TYPOGRAPHY_BASELINE);
-const workingTogether = renderSectionContent(
-  workingTogetherContent,
-  TYPOGRAPHY_BASELINE
-);
-const pricing = renderSectionContent(pricingContent, TYPOGRAPHY_BASELINE);
-const faq = renderSectionContent(faqContent, {
-  ...TYPOGRAPHY_BASELINE,
-  p: `mt-3 ${SECTION_BODY_P}`,
-});
-
-const about = parseMarkdownDocument(aboutContent);
-const [aboutMainBody, aboutEmailSource] = splitTrailingEmail(about.body);
-const aboutBodyHtml = renderMarkdown(aboutMainBody, {
-  ...TYPOGRAPHY_BASELINE,
-  p: 'mt-5 text-body text-sand-12',
-});
-const aboutEmailHtml = aboutEmailSource
-  ? renderMarkdown(aboutEmailSource, {
-      ...TYPOGRAPHY_BASELINE,
-      p: 'mt-4 text-body text-sand-12',
-    })
-  : '';
+].map((content) => renderSectionContent(content, TYPOGRAPHY_BASELINE));
 
 const finalCta = parseMarkdownDocument(finalCtaContent);
 const finalCtaHtml = renderMarkdown(finalCta.body, {
@@ -65,71 +46,39 @@ const finalCtaHtml = renderMarkdown(finalCta.body, {
   p: 'mt-10 max-w-[68ch] font-dm-mono text-body leading-[1.7] text-ink-12',
   a: 'mt-2 inline-block bg-ink-12 px-4 py-1 text-body font-medium text-white no-underline hover:bg-ink-11 transition-colors duration-150 underline underline-offset-4 decoration-white',
 });
-
-function splitTrailingEmail(source: string): [string, string] {
-  const match = source.match(/^([\s\S]*?)\n\n(\[[^\]]+\]\(mailto:[^)]+\))\s*$/);
-  if (!match) return [source, ''];
-  return [match[1], match[2]];
-}
 ---
 
-<BaseLayout title="ATTK Software">
+<BaseLayout
+  title="ATTK Software"
+  description="I help founders build and launch the right custom software. I take ownership of the technical side so you can focus on building your business."
+>
   <PageHeader />
   <main class="overflow-clip">
     <PageSection spacingClass="px-6 pt-32 pb-24 sm:px-10 sm:pt-44 sm:pb-32">
       <div set:html={hero.body} />
     </PageSection>
-    <!-- <PageSection
-      number="01"
-      label={whoThisIsFor.label}
-      quote={whoThisIsFor.quote}
-    >
-      <div set:html={whoThisIsFor.body} />
-    </PageSection> -->
-    <PageSection
-      class="relative"
-      gridClass="relative"
-      number="02"
-      label={howItWorks.label}
-      quote={howItWorks.quote}
-    >
-      <div class="how-phases" set:html={howItWorks.body} />
-    </PageSection>
-    <PageSection
-      number="03"
-      label={workingTogether.label}
-      quote={workingTogether.quote}
-    >
-      <div set:html={workingTogether.body} />
-    </PageSection>
-    <PageSection
-      number="04"
-      label={about.label}
-      quote={about.quote}
-      eyebrowClass="min-[780px]:col-span-2"
-      innerClass="col-span-2 grid max-w-[1140px] grid-cols-1 gap-x-12 gap-y-6 min-[780px]:grid-cols-[2fr_minmax(280px,1fr)]"
-    >
-      <div
-        class="max-w-[360px] min-[780px]:col-start-2 min-[780px]:row-span-2 min-[780px]:row-start-2 min-[780px]:max-w-none"
-      >
-        <img src="/portrait.jpg" alt="" class="w-full" />
-      </div>
-      <div class="min-[780px]:col-start-1 min-[780px]:row-start-3">
-        <div set:html={aboutBodyHtml} />
-        <div set:html={aboutEmailHtml} />
-      </div>
-    </PageSection>
-    <PageSection number="05" label={pricing.label} quote={pricing.quote}>
-      <div set:html={pricing.body} />
-    </PageSection>
-    <PageSection
-      innerClass="relative z-10 -m-8 bg-sand-1/80 p-8 sm:-m-12 sm:p-12"
-      number="06"
-      label={faq.label}
-      quote={faq.quote}
-    >
-      <div set:html={faq.body} />
-    </PageSection>
+    {
+      sections.map((section, index) => (
+        <PageSection
+          innerClass={
+            index === sections.length - 1
+              ? 'relative z-10 -m-8 bg-sand-1/80 p-8 sm:-m-12 sm:p-12'
+              : undefined
+          }
+          number={String(index + 1).padStart(2, '0')}
+          label={section.label}
+        >
+          <div
+            class:list={[
+              index === 2 && 'how-phases',
+              index === 4 &&
+                '[&_h3]:flex [&_h3]:items-center [&_h3]:gap-4 [&_h3_img]:h-[1em] [&_h3_img]:w-auto [&_h3_img]:max-w-[45%] [&_h3_img]:object-contain',
+            ]}
+            set:html={section.body}
+          />
+        </PageSection>
+      ))
+    }
     <section class="relative overflow-x-clip px-6 pt-24 sm:px-10 sm:pt-32">
       <div class="mx-auto grid max-w-480 grid-cols-[1fr_minmax(0,44rem)_3fr]">
         <div class="relative">

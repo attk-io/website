@@ -1,5 +1,5 @@
-# I build software for founders who need to get it right.
+# I help founders build and launch the&nbsp;right&nbsp; software
 
-And I’ve been doing it for over a decade. I'm someone who can take <mark>full ownership of the technical side</mark> so you can focus on building your business.
+From deciding what to build first to getting it into your customers’ hands, <mark>I take ownership</mark> of the technical side so you can focus on building your business.
 
-[Let's have a 30 minute call](https://calendar.app.google/XZUxivgqNw9pme3B7)
+[Let’s have a 30 minute call](https://calendar.app.google/XZUxivgqNw9pme3B7)

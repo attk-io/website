@@ -1,8 +1,11 @@
 ---
-quote: "You know what you need built and you're looking for the right person to bring it to life"
-section_label: Who This Is For
+section_label: The fit
 ---
 
-You've spent months — maybe years — working your product vision. You understand your market, you've done the groundwork, and you know that custom software is the next step. What you need now isn't a pitch or a proposal, it's a conversation with someone who can look at your vision and <mark>tell you, honestly, what it would take</mark> to make it real.
+## Who I work best with
 
-Someone in your network pointed you here. That's how most of my work begins — not through ads or cold outreach, but through a solid recommendation from someone who has worked with me before. This page is meant to give you a sense of what working together would look like.
+I work best directly with founders who have a clear business vision and are ready to commit time and money to bringing it to life. They want an <mark>experienced technical partner</mark> who helps make decisions and takes responsibility for the build.
+
+You’ll bring your knowledge of your customers and business and stay involved as we set priorities and review progress. I’ll own the technical work while you focus on reaching customers, generating sales, and running the business.
+
+For a new product built from scratch, plan on a budget of $50,000 USD or more. We’ll first discuss whether your goals and budget are a good fit, then define the scope and estimate the build cost through paid planning and design.
