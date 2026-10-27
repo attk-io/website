@@ -1,0 +1,60 @@
+name: PR Preview
+
+# workflow_run uses the workflow from the default branch, keeping PR code
+# out of the privileged publishing job.
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+
+concurrency:
+  group: preview-${{ github.event.workflow_run.head_branch }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Publish checked PR preview
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.head_repository.full_name == github.repository &&
+      github.event.workflow_run.pull_requests[0].number != null
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+      pull-requests: write
+    steps:
+      - name: Checkout trusted publishing configuration
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+
+      # Only static build output crosses from the PR build into this job.
+      - name: Download checked website
+        uses: actions/download-artifact@v4
+        with:
+          name: preview-site
+          path: dist/
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ github.event.workflow_run.id }}
+
+      - name: Deploy PR preview to Firebase Hosting
+        id: preview
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          projectId: attk-io
+          channelId: pr-${{ github.event.workflow_run.pull_requests[0].number }}
+          expires: 7d
+          disableComment: true
+
+      - name: Post preview link on the pull request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.workflow_run.pull_requests[0].number }}
+          PREVIEW_URL: ${{ steps.preview.outputs.details_url }}
+        run: |
+          gh pr comment "$PR_NUMBER" --body "Preview: $PREVIEW_URL (expires seven days after deployment)."
