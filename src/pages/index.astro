@@ -42,7 +42,7 @@ const sections = [
   const logos: Record<string, { mask: string; ratio: number }> = {
     'fundfilter.svg': { mask: 'fundfilter.svg', ratio: 61 / 59 },
     'tap-bio.svg': { mask: 'tap-bio-mask.svg', ratio: 1 },
-    'yardly.svg': { mask: 'yardly.svg', ratio: 14.3165 / 20 },
+    'yardly.svg': { mask: 'yardly.svg', ratio: 1 },
   };
   section.body = section.body.replace(
     /<img src="\/logos\/([^"]+)" alt="">/g,
@@ -59,9 +59,7 @@ const sections = [
 const finalCta = parseMarkdownDocument(finalCtaContent);
 const finalCtaHtml = renderMarkdown(finalCta.body, {
   ...TYPOGRAPHY_BASELINE,
-  // Use the shared foreground for the selected accent surface; the CTA itself
-  // retains its dark ink fill.
-  p: 'mt-10 max-w-[68ch] font-dm-mono text-body leading-[1.7] text-[var(--on-accent)]',
+  p: 'mt-10 max-w-[68ch] font-dm-mono text-body leading-[1.7] text-sand-12',
   a: 'mt-2 inline-block bg-ink-12 px-4 py-1 text-body font-medium text-white no-underline hover:bg-ink-11 transition-colors duration-150 underline underline-offset-4 decoration-white',
 });
 ---
@@ -80,9 +78,11 @@ const finalCtaHtml = renderMarkdown(finalCta.body, {
       sections.map((section, index) => (
         <PageSection
           innerClass={
-            index === sections.length - 1
-              ? 'relative z-10 -m-8 bg-sand-1/80 p-8 sm:-m-12 sm:p-12'
-              : undefined
+            index === 4
+              ? 'col-span-2 max-w-[1140px]'
+              : index === sections.length - 1
+                ? 'relative z-10 -m-8 bg-sand-1/80 p-8 sm:-m-12 sm:p-12'
+                : undefined
           }
           number={String(index + 1).padStart(2, '0')}
           label={section.label}
@@ -90,46 +90,56 @@ const finalCtaHtml = renderMarkdown(finalCta.body, {
           <div
             class:list={[
               index === 2 && 'how-phases',
-              index === 4 && '[&_h3]:flex [&_h3]:items-center [&_h3]:gap-4',
+              index === 4 &&
+                '[&_h3]:flex [&_h3]:items-center [&_h3]:gap-4 [&_p]:max-w-none',
             ]}
             set:html={section.body}
           />
         </PageSection>
       ))
     }
-    <section class="relative overflow-x-clip px-6 pt-24 sm:px-10 sm:pt-32">
+    <section
+      class="relative overflow-x-clip bg-sand-2 px-6 pt-24 sm:px-10 sm:pt-32"
+    >
       <div class="mx-auto grid max-w-480 grid-cols-[1fr_minmax(0,44rem)_3fr]">
         <div
-          class="relative col-start-2 mx-auto grid max-w-480 grid-cols-[1fr_minmax(0,44rem)_3fr]"
+          class="relative col-span-2 col-start-2 grid max-w-[1140px] items-center gap-10 lg:grid-cols-[minmax(0,16rem)_minmax(0,44rem)] lg:gap-12"
         >
           <div
-            class="relative z-10 col-start-2 flex aspect-square flex-col justify-center bg-sun-9 px-8 py-16 sm:px-12 sm:py-20"
+            class="relative z-10 flex aspect-square max-w-[44rem] flex-col justify-center px-8 py-16 sm:px-12 sm:py-20"
           >
             {
               finalCta.label && (
                 <div class="mb-12 flex items-baseline gap-6">
-                  <span class="text-small font-medium tracking-[0.14em] text-[var(--on-accent)] uppercase">
+                  <span class="text-small font-medium tracking-[0.14em] text-sand-12 uppercase">
                     {finalCta.label}
                   </span>
-                  <span
-                    aria-hidden="true"
-                    class="h-px flex-1 bg-[var(--on-accent)]"
-                  />
+                  <span aria-hidden="true" class="h-px flex-1 bg-sand-12" />
                 </div>
               )
             }
             {
               finalCta.quote && (
-                <h2 class="max-w-[16ch] text-heading font-semibold text-[var(--on-accent)]">
+                <h2 class="max-w-[16ch] text-heading font-semibold text-sand-12">
                   {finalCta.quote}
                 </h2>
               )
             }
             <div
-              class="[&>p:last-of-type_a]:mt-0 [&>p:last-of-type_a]:bg-transparent [&>p:last-of-type_a]:py-0 [&>p:last-of-type_a]:text-[var(--on-accent)] [&>p:last-of-type_a]:decoration-[var(--on-accent)] [&>p:last-of-type_a]:underline-offset-4 [&>p:last-of-type_a]:hover:bg-transparent [&>p:last-of-type_a]:hover:decoration-[var(--on-accent)]"
+              class="[&>p:last-of-type_a]:mt-0 [&>p:last-of-type_a]:bg-transparent [&>p:last-of-type_a]:py-0 [&>p:last-of-type_a]:text-sand-12 [&>p:last-of-type_a]:decoration-sand-12 [&>p:last-of-type_a]:underline-offset-4 [&>p:last-of-type_a]:hover:bg-transparent [&>p:last-of-type_a]:hover:decoration-sand-12"
               set:html={finalCtaHtml}
             />
           </div>
+          <figure class="order-first max-w-48 lg:max-w-64">
+            <img
+              src="/portrait.jpg"
+              alt="Christian Naths with his family"
+              width="512"
+              height="759"
+              loading="lazy"
+              class="h-auto w-full"
+            />
+          </figure>
         </div>
       </div>
     </section>
