@@ -52,6 +52,6 @@ The sample headings, wording, and type shown in conversation were comparison aid
 
 ## Build behavior
 
-The switcher is opt-in through `COLOR_SWITCHER_ENABLED=true`. Local development explicitly enables it in `.env.development`, and `build:preview` enables it for preview builds; PR CI uses `build:preview`. The normal `build` command leaves it off, and the production deployment explicitly sets the flag to `false`.
+The switcher is opt-in through `COLOR_SWITCHER_ENABLED=true`. Local development explicitly enables it in `.env.development`, and PR CI sets it on its build step. For a local preview build, run `COLOR_SWITCHER_ENABLED=true bun run build`. The normal `build` command leaves it off, and the production deployment explicitly sets the flag to `false`.
 
 Without the flag, both pages retain the shared default theme, but omit the switcher and do not apply browser-saved or URL-selected variants. To change the production colors, edit the shared defaults in [color-experiment.ts](../../src/lib/color-experiment.ts).

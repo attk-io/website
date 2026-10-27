@@ -39,7 +39,9 @@ jobs:
         run: bun run typecheck
 
       - name: Build
-        run: bun run build:preview
+        env:
+          COLOR_SWITCHER_ENABLED: 'true'
+        run: bun run build
 
       - name: Upload PR preview website
         if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository }}
