@@ -4,59 +4,39 @@ import {
   CREAMS,
   COLOR_STORAGE_KEY,
   DEFAULT_COLOR_SELECTION,
+  resolveColorSelection,
 } from '../lib/color-experiment';
 ---
 
-<!-- Apply the saved colors before the page paints. URL choices take priority. -->
+<!-- Apply saved colors before paint; retired choices fall back to the defaults. -->
 <script
   is:inline
-  define:vars={{
-    palettes: PALETTES,
-    creams: CREAMS,
-    storageKey: COLOR_STORAGE_KEY,
-    defaults: DEFAULT_COLOR_SELECTION,
-  }}
->
-  // @ts-nocheck -- Astro injects the serialized theme values above at render time.
-  const owns = (values, key) =>
-    Object.prototype.hasOwnProperty.call(values, key);
-  let saved = {};
-  try {
-    const parsed = JSON.parse(localStorage.getItem(storageKey) || '{}');
-    if (parsed && typeof parsed === 'object') saved = parsed;
-  } catch {
-    /* Defaults and URL choices work without storage. */
+  set:html={`
+  {
+    let saved = {};
+    try { saved = JSON.parse(localStorage.getItem(${JSON.stringify(COLOR_STORAGE_KEY)}) || '{}'); } catch {}
+    const selection = (${resolveColorSelection.toString()})(${JSON.stringify(PALETTES)}, ${JSON.stringify(CREAMS)}, saved, new URLSearchParams(location.search), ${JSON.stringify(DEFAULT_COLOR_SELECTION)});
+    const palettes = ${JSON.stringify(PALETTES)}, creams = ${JSON.stringify(CREAMS)};
+    const palette = palettes[selection.palette];
+    const root = document.documentElement;
+    root.dataset.palette = selection.palette;
+    root.dataset.cream = selection.cream;
+    for (const [name, value] of Object.entries({
+      paper: creams[selection.cream].value,
+      accent: palette.accent, support: palette.support, shade: palette.shade, 'on-accent': palette.onAccent,
+    })) root.style.setProperty('--' + name, value);
+    try { localStorage.setItem(${JSON.stringify(COLOR_STORAGE_KEY)}, JSON.stringify(selection)); } catch {}
   }
-  const query = new URLSearchParams(location.search);
-  const palette = [query.get('palette'), saved.palette, defaults.palette].find(
-    (key) => owns(palettes, key)
-  );
-  const cream = [query.get('cream'), saved.cream, defaults.cream].find((key) =>
-    owns(creams, key)
-  );
-  const root = document.documentElement;
-  root.dataset.palette = palette;
-  root.dataset.cream = cream;
-  for (const [name, value] of Object.entries({
-    paper: creams[cream].value,
-    accent: palettes[palette].accent,
-    support: palettes[palette].support,
-    shade: palettes[palette].shade,
-    'on-accent': palettes[palette].onAccent,
-  }))
-    root.style.setProperty(`--${name}`, value);
-  try {
-    localStorage.setItem(storageKey, JSON.stringify({ palette, cream }));
-  } catch {
-    /* Storage may be blocked. */
-  }
-</script>
+`}
+/>
 
 <script>
   import {
     PALETTES,
     CREAMS,
     COLOR_STORAGE_KEY,
+    DEFAULT_COLOR_SELECTION,
+    resolveColorSelection,
     applyColorSelection,
   } from '../lib/color-experiment';
   // A homepage open in another tab follows changes made in the specimen.
@@ -64,13 +44,13 @@ import {
     if (document.documentElement.dataset.colorSwitcher !== 'enabled') return;
     if (event.key !== COLOR_STORAGE_KEY || !event.newValue) return;
     try {
-      const selection = JSON.parse(event.newValue);
-      if (
-        !selection ||
-        !Object.hasOwn(PALETTES, selection.palette) ||
-        !Object.hasOwn(CREAMS, selection.cream)
-      )
-        return;
+      const selection = resolveColorSelection(
+        PALETTES,
+        CREAMS,
+        JSON.parse(event.newValue),
+        new URLSearchParams(),
+        DEFAULT_COLOR_SELECTION
+      );
       applyColorSelection(selection, false);
     } catch {
       /* Ignore invalid saved data. */

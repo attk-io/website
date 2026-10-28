@@ -1,0 +1,82 @@
+---
+import {
+  HEADLINE_FONTS,
+  BODY_FONTS,
+  FONT_STORAGE_KEY,
+  DEFAULT_FONT_CHOICES,
+  resolveFontSelection,
+} from '../lib/font-experiment';
+const bootstrap = `(${resolveFontSelection.toString()})`;
+---
+
+<!-- One resolver validates old saved values, per-font weights, and URL overrides. -->
+<script
+  is:inline
+  set:html={`
+  {
+    const selection = ${bootstrap}(${JSON.stringify(HEADLINE_FONTS)}, (() => {
+      try { return JSON.parse(localStorage.getItem(${JSON.stringify(FONT_STORAGE_KEY)}) || '{}'); } catch { return {}; }
+    })(), new URLSearchParams(location.search), ${JSON.stringify(BODY_FONTS)}, ${JSON.stringify(DEFAULT_FONT_CHOICES)});
+    const root = document.documentElement;
+    root.dataset.headlineFont = selection.headlines;
+    root.dataset.headlineWeights = JSON.stringify(selection.weights);
+    const weight = selection.weights[selection.headlines];
+    root.dataset.headlineWeight = String(weight);
+    root.style.setProperty('--experiment-headline-weight', String(weight));
+    root.dataset.bodyFont = selection.body;
+    root.dataset.bodyWeights = JSON.stringify(selection.bodyWeights);
+    root.style.setProperty('--experiment-body', ${JSON.stringify(BODY_FONTS)}[selection.body].family);
+    root.style.setProperty('--experiment-body-weight', String(selection.bodyWeights[selection.body]));
+    root.style.setProperty('--experiment-body-bold-weight', String(Math.max(...${JSON.stringify(BODY_FONTS)}[selection.body].weights)));
+    try { localStorage.setItem(${JSON.stringify(FONT_STORAGE_KEY)}, JSON.stringify(selection)); } catch {}
+  }
+`}
+/>
+<script>
+  import {
+    HEADLINE_FONTS,
+    BODY_FONTS,
+    FONT_STORAGE_KEY,
+    DEFAULT_FONT_CHOICES,
+    resolveFontSelection,
+    applyFontSelection,
+  } from '../lib/font-experiment';
+  window.addEventListener('storage', (event) => {
+    if (
+      document.documentElement.dataset.colorSwitcher !== 'enabled' ||
+      event.key !== FONT_STORAGE_KEY ||
+      !event.newValue
+    )
+      return;
+    try {
+      applyFontSelection(
+        resolveFontSelection(
+          HEADLINE_FONTS,
+          JSON.parse(event.newValue),
+          new URLSearchParams(),
+          BODY_FONTS,
+          DEFAULT_FONT_CHOICES
+        ),
+        false
+      );
+    } catch {
+      /* Ignore invalid data. */
+    }
+  });
+  window.addEventListener('popstate', () => {
+    if (document.documentElement.dataset.colorSwitcher !== 'enabled') return;
+    let saved = {};
+    try {
+      saved = JSON.parse(localStorage.getItem(FONT_STORAGE_KEY) || '{}');
+    } catch {}
+    applyFontSelection(
+      resolveFontSelection(
+        HEADLINE_FONTS,
+        saved,
+        new URLSearchParams(location.search),
+        BODY_FONTS,
+        DEFAULT_FONT_CHOICES
+      )
+    );
+  });
+</script>

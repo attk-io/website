@@ -1,0 +1,111 @@
+/* Every selected headline family follows the same explicit font/weight rules. */
+html[data-headline-font='hanken'] {
+  --experiment-headline: var(--webfont-hanken-grotesk);
+}
+html[data-headline-font='alice'] {
+  --experiment-headline: var(--webfont-alice);
+}
+html[data-headline-font='amiri'] {
+  --experiment-headline: var(--webfont-amiri);
+}
+html[data-headline-font='bona-nova'] {
+  --experiment-headline: var(--webfont-bona-nova);
+}
+html[data-headline-font]
+  main
+  :is(h1, h2, h3, h4, h5, h6, [data-headline-sample]) {
+  font-family: var(--experiment-headline);
+  font-synthesis: none;
+}
+html[data-headline-weight]
+  main
+  :is(h1, h2, h3, h4, h5, h6, [data-headline-sample]) {
+  font-weight: var(--experiment-headline-weight);
+  font-synthesis: none;
+}
+/* Actual reading paragraphs/list text only. Exclude headline specimens and
+     Spectral quotes; captions, wordmark samples, and the picker stay authored. */
+html[data-body-font]
+  main
+  :is(p.text-body, p.text-lead, li, dt, dd):not(
+    [data-headline-sample],
+    blockquote *,
+    .font-spectral,
+    .font-spectral *,
+    .text-small,
+    .text-caption,
+    [data-legal-document] > h1 + p
+  ) {
+  font-family: var(--experiment-body);
+  font-weight: var(--experiment-body-weight);
+  font-synthesis: none;
+}
+html[data-body-font]
+  main
+  :is(p.text-body, p.text-lead, li, dt, dd):not(
+    [data-headline-sample],
+    blockquote *,
+    .font-spectral,
+    .font-spectral *,
+    .text-small,
+    .text-caption,
+    [data-legal-document] > h1 + p
+  )
+  :is(a, span, strong, em):not(
+    .font-spectral,
+    .font-spectral *,
+    .text-small,
+    .text-small *,
+    .text-caption,
+    .text-caption *
+  ) {
+  font-family: inherit;
+  font-size: inherit;
+}
+html[data-body-font]
+  main
+  :is(p.text-body, p.text-lead, li, dt, dd):not(
+    [data-headline-sample],
+    blockquote *,
+    .font-spectral,
+    .font-spectral *,
+    .text-small,
+    .text-caption,
+    [data-legal-document] > h1 + p
+  )
+  strong:not(.text-small *, .text-caption *) {
+  font-weight: var(--experiment-body-bold-weight);
+}
+
+/* Source Sans 3 needs a larger reading size; other comparison faces keep the
+   existing scale. Lead samples, captions and headline samples retain theirs. */
+html[data-body-font='source-sans-3']
+  main
+  :is(p.text-body, li, dt, dd):not(
+    [data-headline-sample],
+    blockquote *,
+    .font-spectral,
+    .font-spectral *,
+    .text-small,
+    .text-caption,
+    [data-legal-document] > h1 + p
+  ) {
+  font-size: 19px;
+}
+html[data-body-font='source-sans-3']
+  main
+  :is(li, dt, dd):not(
+    .text-small,
+    .text-caption,
+    blockquote *,
+    .font-spectral *
+  ) {
+  line-height: 1.65;
+}
+
+/* Keep Alice's intentionally grouped hero phrases inside narrow screens. */
+@media (max-width: 639px) {
+  html[data-headline-font='alice'] main h1.text-display {
+    font-size: clamp(1.875rem, calc(10vw - 2px), 3.5rem);
+  }
+}

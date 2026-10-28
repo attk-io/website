@@ -20,6 +20,22 @@ export default defineConfig({
   },
   trailingSlash: 'ignore',
   fonts: [
+    ...['Open Sans', 'Source Sans 3', 'Lato'].map((name) => ({
+      provider: fontProviders.google(),
+      name,
+      cssVariable: `--webfont-${name.toLowerCase().replaceAll(' ', '-')}`,
+      weights: name === 'Lato' ? [400, 700] : [400, 500, 600, 700],
+      styles: ['normal', 'italic'],
+      fallbacks: sans,
+    })),
+    ...['Alice', 'Amiri', 'Bona Nova'].map((name) => ({
+      provider: fontProviders.google(),
+      name,
+      cssVariable: `--webfont-${name.toLowerCase().replaceAll(' ', '-')}`,
+      weights: ['Amiri', 'Bona Nova'].includes(name) ? [400, 700] : [400],
+      styles: ['normal'],
+      fallbacks: ['Georgia', 'serif'],
+    })),
     {
       provider: fontProviders.google(),
       name: 'Hanken Grotesk',
