@@ -60,7 +60,7 @@ const finalCta = parseMarkdownDocument(finalCtaContent);
 const finalCtaHtml = renderMarkdown(finalCta.body, {
   ...TYPOGRAPHY_BASELINE,
   p: 'mt-10 max-w-[68ch] font-dm-mono text-body leading-[1.7] text-sand-12',
-  a: 'mt-2 inline-block bg-ink-12 px-4 py-1 text-body font-medium text-white no-underline hover:bg-ink-11 transition-colors duration-150 underline underline-offset-4 decoration-white',
+  a: 'mt-2 inline-block bg-sun-9 px-4 py-1 text-body font-medium text-[var(--on-accent)] no-underline hover:bg-sun-12 hover:text-sand-1 transition-colors duration-150 underline underline-offset-4 decoration-[var(--on-accent)] hover:decoration-sand-1',
 });
 ---
 
@@ -70,7 +70,7 @@ const finalCtaHtml = renderMarkdown(finalCta.body, {
   description="I help founders build and launch the right custom software. I take ownership of the technical side so you can focus on building your business."
 >
   <PageHeader />
-  <main class="overflow-clip">
+  <main class="overflow-clip bg-sand-1">
     <PageSection spacingClass="px-6 pt-32 pb-24 sm:px-10 sm:pt-44 sm:pb-32">
       <div set:html={hero.body} />
     </PageSection>
@@ -103,10 +103,10 @@ const finalCtaHtml = renderMarkdown(finalCta.body, {
     >
       <div class="mx-auto grid max-w-480 grid-cols-[1fr_minmax(0,44rem)_3fr]">
         <div
-          class="relative col-span-2 col-start-2 grid max-w-[1140px] items-center gap-10 lg:grid-cols-[minmax(0,16rem)_minmax(0,44rem)] lg:gap-12"
+          class="relative col-span-2 col-start-2 grid max-w-[1140px] items-center px-8 py-16 min-[540px]:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] min-[540px]:gap-8 min-[540px]:p-0 lg:grid-cols-[minmax(0,16rem)_minmax(0,1fr)] lg:gap-12"
         >
           <div
-            class="relative z-10 flex aspect-square max-w-[44rem] flex-col justify-center px-8 py-16 sm:px-12 sm:py-20"
+            class="contents min-[540px]:relative min-[540px]:z-10 min-[540px]:flex min-[540px]:aspect-square min-[540px]:max-w-[44rem] min-[540px]:flex-col min-[540px]:justify-center min-[540px]:py-16 sm:py-20 lg:px-12"
           >
             {
               finalCta.label && (
@@ -126,11 +126,13 @@ const finalCtaHtml = renderMarkdown(finalCta.body, {
               )
             }
             <div
-              class="[&>p:last-of-type_a]:mt-0 [&>p:last-of-type_a]:bg-transparent [&>p:last-of-type_a]:py-0 [&>p:last-of-type_a]:text-sand-12 [&>p:last-of-type_a]:decoration-sand-12 [&>p:last-of-type_a]:underline-offset-4 [&>p:last-of-type_a]:hover:bg-transparent [&>p:last-of-type_a]:hover:decoration-sand-12"
+              class="contents min-[540px]:block [&>p]:order-3 [&>p:first-of-type]:order-1 [&>p:last-of-type_a]:mt-0 [&>p:last-of-type_a]:bg-transparent [&>p:last-of-type_a]:py-0 [&>p:last-of-type_a]:text-sand-12 [&>p:last-of-type_a]:decoration-sand-12 [&>p:last-of-type_a]:underline-offset-4 [&>p:last-of-type_a]:hover:bg-transparent [&>p:last-of-type_a]:hover:decoration-sand-12"
               set:html={finalCtaHtml}
             />
           </div>
-          <figure class="order-first max-w-48 lg:max-w-64">
+          <figure
+            class="order-2 mt-10 max-w-48 min-[540px]:order-first min-[540px]:mt-0 min-[540px]:max-w-64"
+          >
             <img
               src="/portrait.jpg"
               alt="Christian Naths with his family"

@@ -204,27 +204,45 @@ function smartenText(text: string): string {
     .replace(/'/g, '\u2019');
 }
 
+type WidowSettings = { words: number; offset: number };
+
+// Spans can choose a trailing word group with data-widow-offset (default 0)
+// and data-widow-words (default 2). "off", "false", and "1" disable joining.
 function preventWidows(html: string): string {
   const tokens = tokenize(html);
-  const openStack: number[] = [];
+  const openStack: { name: string; index: number; settings?: WidowSettings }[] =
+    [];
+  const handled = new Set<number>();
   for (let i = 0; i < tokens.length; i++) {
     const token = tokens[i];
     if (token.kind !== 'tag') continue;
     const info = parseTag(token.value);
     if (!info) continue;
-    if (BLOCK_TAGS.has(info.name)) {
-      if (info.closing) {
-        const openIndex = openStack.pop();
-        if (openIndex === undefined) continue;
-        const lastText = findLastText(tokens, openIndex + 1, i);
-        if (lastText === -1) continue;
-        tokens[lastText] = {
-          kind: 'text',
-          value: tokens[lastText].value.replace(/(\s)(\S+\s*)$/, '\u00A0$2'),
-        };
-      } else if (!info.selfClosing) {
-        openStack.push(i);
+    if (!BLOCK_TAGS.has(info.name) && info.name !== 'span') continue;
+    if (info.closing) {
+      if (openStack.at(-1)?.name !== info.name) continue;
+      const scope = openStack.pop()!;
+      if (!scope.settings && info.name === 'span') continue;
+      joinWidowWords(
+        tokens,
+        scope.index + 1,
+        i,
+        scope.settings ?? { words: 2, offset: 0 },
+        handled
+      );
+      // Explicit choices belong to the span, including opt-outs. An enclosing
+      // block or span must not rejoin words from that scope.
+      if (scope.settings) {
+        for (let k = scope.index + 1; k < i; k++) {
+          if (tokens[k].kind === 'text') handled.add(k);
+        }
       }
+    } else if (!info.selfClosing) {
+      openStack.push({
+        name: info.name,
+        index: i,
+        settings: readWidowSettings(token.value),
+      });
     }
   }
   return tokens.map((t) => t.value).join('');
@@ -275,11 +293,92 @@ function parseTag(
   };
 }
 
-function findLastText(tokens: Token[], start: number, end: number): number {
-  for (let k = end - 1; k >= start; k--) {
-    if (tokens[k].kind === 'text' && /\S/.test(tokens[k].value)) return k;
+function readWidowSettings(tag: string): WidowSettings | undefined {
+  const attributes = new Map<string, string>();
+  for (const match of tag.matchAll(
+    /\s+([^\s=/>]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s/>]+)))?/g
+  )) {
+    attributes.set(
+      match[1].toLowerCase(),
+      (match[2] ?? match[3] ?? match[4] ?? '').trim().toLowerCase()
+    );
   }
-  return -1;
+  const words = attributes.get('data-widow-words');
+  const offset = attributes.get('data-widow-offset');
+  if (words === undefined && offset === undefined) return;
+  const integer = (
+    value: string | undefined,
+    fallback: number,
+    min: number
+  ) => {
+    const parsed = Number(value);
+    return value !== undefined &&
+      /^\d+$/.test(value) &&
+      Number.isSafeInteger(parsed) &&
+      parsed >= min
+      ? parsed
+      : fallback;
+  };
+  return {
+    words: words === 'off' || words === 'false' ? 1 : integer(words, 2, 1),
+    offset: integer(offset, 0, 0),
+  };
+}
+
+function joinWidowWords(
+  tokens: Token[],
+  start: number,
+  end: number,
+  { words, offset }: WidowSettings,
+  handled: Set<number>
+): void {
+  if (words < 2) return;
+  let text = '';
+  const parts: { index: number; start: number; end: number }[] = [];
+  for (let i = start; i < end; i++) {
+    if (tokens[i].kind !== 'text') continue;
+    const start = text.length;
+    text += tokens[i].value;
+    parts.push({ index: i, start, end: text.length });
+  }
+
+  // Count visible words across inline tags, including manually joined words.
+  const spaces = [...text.matchAll(/(?:\s|&nbsp;|&#160;|&#x0*a0;)+/gi)].filter(
+    (match) => match.index > 0 && match.index + match[0].length < text.length
+  );
+  const wordEnd = spaces.length + 1 - offset;
+  const wordStart = Math.max(0, wordEnd - words);
+  if (wordEnd - wordStart < 2) return;
+  const selectionStart =
+    wordStart === 0
+      ? 0
+      : spaces[wordStart - 1].index + spaces[wordStart - 1][0].length;
+  const selectionEnd =
+    wordEnd > spaces.length ? text.length : spaces[wordEnd - 1].index;
+  if (
+    parts.some(
+      (part) =>
+        handled.has(part.index) &&
+        part.end > selectionStart &&
+        part.start < selectionEnd
+    )
+  )
+    return;
+
+  const selectedSpaces = spaces.slice(wordStart, wordEnd - 1);
+  for (const part of parts) {
+    tokens[part.index].value = tokens[part.index].value.replace(
+      /(?:\s|&nbsp;|&#160;|&#x0*a0;)+/gi,
+      (space, index: number) => {
+        const position = part.start + index;
+        const selected = selectedSpaces.find(
+          (match) =>
+            position >= match.index && position < match.index + match[0].length
+        );
+        return selected ? (position === selected.index ? '\u00A0' : '') : space;
+      }
+    );
+  }
 }
 
 function replaceText(html: string, fn: (text: string) => string): string {
