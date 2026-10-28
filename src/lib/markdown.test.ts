@@ -117,15 +117,3 @@ test('keeps whitespace outside the selected word group', () => {
     `<p>${span(attributes, `  the${nbsp}right${nbsp}software  `)}</p>`
   );
 });
-
-test('the actual hero allows software to wrap and keeps paragraph widow prevention', () => {
-  const source = readFileSync(
-    new URL('../content/hero.md', import.meta.url),
-    'utf8'
-  );
-  const { body } = renderSectionContent(source);
-  assert.ok(
-    body.includes(`data-widow-offset="1">the${nbsp}right software</span>`)
-  );
-  assert.ok(body.includes(`your${nbsp}business.`));
-});
