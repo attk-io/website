@@ -24,7 +24,7 @@ const scales: {
   {
     name: 'sun',
     label: 'Accent',
-    description: 'Selected red-orange — a small, deliberate pop',
+    description: 'Selected accent — a small, deliberate pop',
     swatches: [],
   },
   {
@@ -143,10 +143,9 @@ const typeScale: {
           sections will be built on.
         </h1>
         <p class="mt-10 max-w-[58ch] text-body leading-[1.6] text-sand-11">
-          Single-family Swiss discipline. One neo-grotesque — Hanken Grotesk —
-          used across every level of hierarchy, with weight and size doing the
-          work of differentiation. The original specimen system, now exploring
-          cream paper, deep ink, and red-orange accents.
+          The current defaults pair Alice 400 headlines with Source Sans 3
+          Regular reading text at 19px. The type-scale labels below describe the
+          original Hanken Grotesk tokens, which remain available for comparison.
         </p>
       </header>
 
@@ -177,7 +176,16 @@ const typeScale: {
                 <p class="mb-3 font-hanken text-small font-medium tracking-[0.12em] text-sand-11 uppercase">
                   {step.token} · {step.px} · {step.role} · {step.weight}
                 </p>
-                <p class:list={[step.token, step.weightClass, 'text-sand-12']}>
+                <p
+                  data-headline-sample={
+                    step.token.match(
+                      /^text-(display|title|heading|subhead|large)$/
+                    )
+                      ? ''
+                      : undefined
+                  }
+                  class:list={[step.token, step.weightClass, 'text-sand-12']}
+                >
                   {step.sample}
                 </p>
               </div>
@@ -346,7 +354,7 @@ const typeScale: {
             <p
               class="mb-4 font-hanken text-small font-medium tracking-[0.14em] text-sun-11 uppercase"
             >
-              Accent · Red-orange
+              Accent
             </p>
             <p class="max-w-[68ch] text-body leading-[1.6] text-sand-12">
               Every engagement starts with a real conversation. You walk me
@@ -684,10 +692,15 @@ const typeScale: {
       const ratio = (value: number) =>
         (Math.max(value, background) + 0.05) /
         (Math.min(value, background) + 0.05);
-      sample.style.color =
-        ratio(luminance(READING_INK)) >= ratio(luminance(paper))
-          ? READING_INK
-          : paper;
+      const onAccent = getComputedStyle(document.documentElement)
+        .getPropertyValue('--on-accent')
+        .trim();
+      sample.style.color = [READING_INK, paper, onAccent].reduce(
+        (best, candidate) =>
+          ratio(luminance(candidate)) > ratio(luminance(best))
+            ? candidate
+            : best
+      );
     }
   };
   window.addEventListener('attk:colors-changed', updateContrast);

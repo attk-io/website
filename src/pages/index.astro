@@ -1,4 +1,5 @@
 ---
+import { marked, type Token } from 'marked';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageFooter from '../components/PageFooter.astro';
 import PageHeader from '../components/PageHeader.astro';
@@ -60,11 +61,33 @@ const sections = [
 });
 
 const finalCta = parseMarkdownDocument(finalCtaContent);
-const finalCtaHtml = renderMarkdown(finalCta.body, {
-  ...TYPOGRAPHY_BASELINE,
-  p: 'mt-10 max-w-[68ch] font-dm-mono text-body leading-[1.7] text-sand-12',
-  a: 'mt-2 inline-block bg-sun-9 px-4 py-1 text-body font-medium text-[var(--on-accent)] no-underline hover:bg-sun-12 hover:text-sand-1 transition-colors duration-150 underline underline-offset-4 decoration-[var(--on-accent)] hover:decoration-sand-1',
-});
+// Group standalone contact links without changing the content source.
+const finalCtaTokens = marked.lexer(finalCta.body);
+const isContactAction = (token: Token) =>
+  token.type === 'paragraph' &&
+  token.tokens?.length === 1 &&
+  token.tokens[0].type === 'link';
+const finalCtaHtml = renderMarkdown(
+  finalCtaTokens
+    .filter((token) => !isContactAction(token))
+    .map((token) => token.raw)
+    .join(''),
+  {
+    ...TYPOGRAPHY_BASELINE,
+    p: 'mt-10 max-w-[68ch] font-dm-mono text-body leading-[1.7] text-sand-12',
+  }
+);
+const finalCtaActionsHtml = renderMarkdown(
+  finalCtaTokens
+    .filter(isContactAction)
+    .map((token) => token.raw.trim())
+    .join(' '),
+  {
+    ...TYPOGRAPHY_BASELINE,
+    p: 'mt-10 flex flex-wrap items-center gap-x-4 gap-y-3 font-dm-mono text-body leading-[1.7] text-sand-12',
+    a: 'inline-block bg-sun-9 px-4 py-1 text-body font-medium text-[var(--on-accent)] no-underline hover:bg-sun-12 hover:text-sand-1 transition-colors duration-150 underline underline-offset-4 decoration-[var(--on-accent)] hover:decoration-sand-1',
+  }
+);
 ---
 
 <BaseLayout
@@ -153,10 +176,14 @@ const finalCtaHtml = renderMarkdown(finalCta.body, {
                 </h2>
               )
             }
-            <div
-              class="contents min-[540px]:block [&>p]:order-3 [&>p:first-of-type]:order-1 [&>p:last-of-type_a]:mt-0 [&>p:last-of-type_a]:bg-transparent [&>p:last-of-type_a]:py-0 [&>p:last-of-type_a]:text-sand-12 [&>p:last-of-type_a]:decoration-sand-12 [&>p:last-of-type_a]:underline-offset-4 [&>p:last-of-type_a]:hover:bg-transparent [&>p:last-of-type_a]:hover:decoration-sand-12"
-              set:html={finalCtaHtml}
-            />
+            <div class="contents min-[540px]:block">
+              <div class="contents [&>p]:order-1" set:html={finalCtaHtml} />
+              <div
+                data-final-cta-actions
+                class="order-3 [&_a[href^=mailto]]:bg-transparent [&_a[href^=mailto]]:p-0 [&_a[href^=mailto]]:text-sand-12 [&_a[href^=mailto]]:decoration-sand-12 [&_a[href^=mailto]]:underline-offset-4 [&_a[href^=mailto]]:hover:bg-transparent [&_a[href^=mailto]]:hover:text-sand-12 [&_a[href^=mailto]]:hover:decoration-sand-12"
+                set:html={finalCtaActionsHtml}
+              />
+            </div>
           </div>
           <figure
             class="order-2 mt-10 max-w-48 min-[540px]:order-first min-[540px]:mt-0 min-[540px]:max-w-64"

@@ -12,7 +12,8 @@
     "prepare": "husky",
     "fmt": "prettier --write --ignore-unknown .",
     "lint": "eslint 'src/**/*.astro'",
-    "typecheck": "astro check"
+    "typecheck": "astro check",
+    "test": "node --test src/lib/*.test.ts"
   },
   "dependencies": {
     "@radix-ui/colors": "3",

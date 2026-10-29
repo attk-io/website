@@ -1,8 +1,15 @@
 ---
 import { Font } from 'astro:assets';
 import '../styles/global.css';
+import '../styles/font-selection.css';
+import {
+  DEFAULT_FONT_SELECTION,
+  DEFAULT_FONT_STYLE,
+} from '../lib/font-experiment';
 import CloudflareWebAnalytics from '../components/CloudflareWebAnalytics.astro';
 import ColorExperimentHead from '../components/ColorExperimentHead.astro';
+import FontPicker from '../components/FontPicker.astro';
+import FontExperimentHead from '../components/FontExperimentHead.astro';
 import ColorVariantWidget from '../components/ColorVariantWidget.astro';
 import {
   COLOR_TOKENS,
@@ -28,7 +35,12 @@ const showColorSwitcher =
 <!doctype html>
 <html
   lang="en"
-  style={colorExperiment ? `${DEFAULT_COLOR_STYLE};${COLOR_TOKENS}` : undefined}
+  style={`${DEFAULT_FONT_STYLE}${colorExperiment ? `;${DEFAULT_COLOR_STYLE};${COLOR_TOKENS}` : ''}`}
+  data-headline-font={DEFAULT_FONT_SELECTION.headlines}
+  data-headline-weight={DEFAULT_FONT_SELECTION.weights[
+    DEFAULT_FONT_SELECTION.headlines
+  ]}
+  data-body-font={DEFAULT_FONT_SELECTION.body}
   data-palette={colorExperiment ? DEFAULT_COLOR_SELECTION.palette : undefined}
   data-cream={colorExperiment ? DEFAULT_COLOR_SELECTION.cream : undefined}
   data-color-switcher={showColorSwitcher ? 'enabled' : undefined}
@@ -39,15 +51,34 @@ const showColorSwitcher =
     <title>{title}</title>
     <meta name="author" content="Christian Naths" />
     <meta name="description" content={description} />
-    {showColorSwitcher && <ColorExperimentHead />}
+    {
+      showColorSwitcher && (
+        <>
+          <ColorExperimentHead />
+          <FontExperimentHead />
+        </>
+      )
+    }
     {import.meta.env.PROD && <CloudflareWebAnalytics />}
+    <Font cssVariable="--webfont-hanken-grotesk" />
+    <Font cssVariable="--webfont-alice" preload={[{ style: 'normal' }]} />
     <Font
-      cssVariable="--webfont-hanken-grotesk"
+      cssVariable="--webfont-source-sans-3"
       preload={[{ style: 'normal' }]}
     />
     <Font cssVariable="--webfont-space-grotesk" />
     <Font cssVariable="--webfont-dm-mono" />
     <Font cssVariable="--webfont-spectral" />
+    {
+      showColorSwitcher && (
+        <>
+          <Font cssVariable="--webfont-amiri" />
+          <Font cssVariable="--webfont-bona-nova" />
+          <Font cssVariable="--webfont-open-sans" />
+          <Font cssVariable="--webfont-lato" />
+        </>
+      )
+    }
     <link
       rel="shortcut icon"
       type="image/png"
@@ -56,6 +87,38 @@ const showColorSwitcher =
   </head>
   <body class="bg-sand-2 text-sand-12 antialiased">
     <slot />
-    {showColorSwitcher && <ColorVariantWidget />}
+    {
+      showColorSwitcher && (
+        <div id="experiment-dock">
+          <ColorVariantWidget />
+          <FontPicker />
+        </div>
+      )
+    }
   </body>
 </html>
+
+<style>
+  #experiment-dock {
+    position: fixed;
+    z-index: 50;
+    top: 50%;
+    right: env(safe-area-inset-right, 0px);
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+    max-height: calc(100dvh - 2rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+</style>
+
+<style is:global>
+  @media (max-width: 639px) {
+    html[data-color-switcher='enabled'] body {
+      padding-right: calc(44px + env(safe-area-inset-right, 0px));
+    }
+  }
+</style>
