@@ -57,6 +57,14 @@ const sections = [
         : image;
     }
   );
+  if (content === experienceContent) {
+    // Keep each company heading and its copy together in a desktop column.
+    const entriesStart = section.body.indexOf('<h3');
+    const entries = section.body
+      .slice(entriesStart)
+      .replace(/(<h3[\s\S]*?)(?=<h3|$)/g, '<div>$1</div>');
+    section.body = `${section.body.slice(0, entriesStart)}<div class="experience-columns">${entries}</div>`;
+  }
   return section;
 });
 
@@ -205,6 +213,20 @@ const finalCtaActionsHtml = renderMarkdown(
 </BaseLayout>
 
 <style>
+  :global(.experience-columns) {
+    display: grid;
+    gap: 3rem;
+    margin-top: 3.5rem;
+  }
+  :global(.experience-columns h3) {
+    margin-top: 0;
+  }
+  @media (min-width: 1024px) {
+    :global(.experience-columns) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
   :global(.proof-logo) {
     display: inline-block;
     flex-shrink: 0;
