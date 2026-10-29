@@ -59,10 +59,10 @@
   --text-large--letter-spacing: -0.015em;
 
   --text-lead: 1.4375rem;
-  --text-lead--line-height: 1.5;
+  --text-lead--line-height: 1.444;
 
   --text-body: 1.0625rem;
-  --text-body--line-height: 1.65;
+  --text-body--line-height: 1.444;
 
   --text-small: 0.8125rem;
   --text-small--line-height: 1.5;

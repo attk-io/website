@@ -24,7 +24,7 @@ html[data-headline-weight]
 /* Third-level headings use the selected body family at their authored size. */
 html[data-body-font] main h3 {
   font-family: var(--experiment-body);
-  font-weight: var(--experiment-body-bold-weight);
+  font-weight: 500;
   font-synthesis: none;
 }
 /* Actual reading paragraphs/list text only. Exclude headline specimens and

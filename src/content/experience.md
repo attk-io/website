@@ -4,9 +4,11 @@ section_label: The experience
 
 ## Experience building, launching, and growing software businesses
 
+<div class="py-6"></div>
+
 ### FundFilter ![](/logos/fundfilter.svg)
 
-I joined FundFilter in 2020 to help build a private fund data and analytics platform. In 2022, Altman and its core asset, FundFilter, were acquired by PEI Group. I stayed on to help transition the product into PEI’s systems.
+I joined FundFilter in 2020 to help build a private fund data and analytics platform. In 2022 FundFilter was acquired by PEI Group. I supported the aquisition by fulfilling technical due dilligence requests and staying on to help transition the product into PEI’s systems.
 
 ### Tap Bio ![](/logos/tap-bio.svg)
 
