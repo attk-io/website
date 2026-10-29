@@ -11,6 +11,7 @@ import {
 import { TYPOGRAPHY_BASELINE } from '../lib/typography';
 
 import heroContent from '../content/hero.md?raw';
+import aboutContent from '../content/about.md?raw';
 import yourVisionContent from '../content/your-vision.md?raw';
 import theRightProductContent from '../content/the-right-product.md?raw';
 import howItWorksContent from '../content/how-it-works.md?raw';
@@ -28,6 +29,8 @@ const hero = renderSectionContent(heroContent, {
   p: 'mt-8 max-w-[52ch] font-dm-mono text-body font-normal leading-[1.7] tracking-[0] text-sand-11 has-[>a]:mt-12 has-[>a]:max-w-none has-[>a]:font-hanken has-[>a]:leading-[1.6] has-[>a]:tracking-normal has-[>a]:text-sand-12',
   a: 'mt-2 inline-block bg-ocean-9 px-4 py-1 text-body font-medium text-[var(--on-accent)] no-underline hover:bg-ocean-12 hover:text-sand-1 transition-colors duration-150 underline underline-offset-4 decoration-[var(--on-accent)] hover:decoration-sand-1',
 });
+
+const about = renderSectionContent(aboutContent, TYPOGRAPHY_BASELINE);
 
 const sections = [
   yourVisionContent,
@@ -76,26 +79,51 @@ const finalCtaHtml = renderMarkdown(finalCta.body, {
     </PageSection>
     {
       sections.map((section, index) => (
-        <PageSection
-          innerClass={
-            index === 4
-              ? 'col-span-2 max-w-[1140px]'
-              : index === sections.length - 1
-                ? 'relative z-10 -m-8 bg-sand-1/80 p-8 sm:-m-12 sm:p-12'
-                : undefined
-          }
-          number={String(index + 1).padStart(2, '0')}
-          label={section.label}
-        >
-          <div
-            class:list={[
-              index === 2 && 'how-phases',
-              index === 4 &&
-                '[&_h3]:flex [&_h3]:items-center [&_h3]:gap-4 [&_p]:max-w-none',
-            ]}
-            set:html={section.body}
-          />
-        </PageSection>
+        <>
+          <PageSection
+            innerClass={
+              index === 4
+                ? 'col-span-2 max-w-[1140px]'
+                : index === sections.length - 1
+                  ? 'relative z-10 -m-8 bg-sand-1/80 p-8 sm:-m-12 sm:p-12'
+                  : undefined
+            }
+            number={String(index === 0 ? 1 : index + 2).padStart(2, '0')}
+            label={section.label}
+          >
+            <div
+              class:list={[
+                index === 2 && 'how-phases',
+                index === 4 &&
+                  '[&_h3]:flex [&_h3]:items-center [&_h3]:gap-4 [&_p]:max-w-none',
+              ]}
+              set:html={section.body}
+            />
+          </PageSection>
+          {index === 0 && (
+            <PageSection
+              number="02"
+              label={about.label}
+              eyebrowClass="min-[780px]:col-span-2"
+              innerClass="col-span-2 grid max-w-[1140px] grid-cols-1 gap-x-12 gap-y-6 min-[780px]:grid-cols-[2fr_minmax(280px,1fr)]"
+            >
+              <div
+                class="min-[780px]:col-start-1 min-[780px]:row-start-2"
+                set:html={about.body}
+              />
+              <figure class="relative max-w-[360px] min-[780px]:col-start-2 min-[780px]:row-start-2 min-[780px]:max-w-none">
+                <img
+                  src="/portrait.jpg"
+                  alt="Christian Naths with his family"
+                  width="512"
+                  height="759"
+                  loading="lazy"
+                  class="aspect-square w-full object-cover object-top min-[780px]:absolute min-[780px]:inset-0 min-[780px]:aspect-auto min-[780px]:h-full"
+                />
+              </figure>
+            </PageSection>
+          )}
+        </>
       ))
     }
     <section
