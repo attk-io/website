@@ -2,6 +2,10 @@
 import { Font } from 'astro:assets';
 import '../styles/global.css';
 import '../styles/font-selection.css';
+import heroContent from '../content/hero.md?raw';
+import { site } from '../content/site';
+import { getShareHeadline } from '../lib/share-content';
+import { SHARE_IMAGE_WIDTH, SHARE_IMAGE_HEIGHT } from '../lib/share-image';
 import {
   DEFAULT_FONT_SELECTION,
   DEFAULT_FONT_STYLE,
@@ -21,13 +25,18 @@ type Props = {
   title: string;
   description?: string;
   colorExperiment?: boolean;
+  shareImage?: string;
 };
 
 const {
   title,
-  description = 'Custom cloud software and automation consulting',
+  description = site.description,
   colorExperiment = false,
+  shareImage = '/social/share-card.png',
 } = Astro.props;
+const canonicalUrl = new URL(Astro.url.pathname, site.origin);
+const shareImageUrl = new URL(shareImage, site.origin);
+const shareImageAlt = `${site.name}. ${getShareHeadline(heroContent)}. ${site.shareByline}.`;
 const showColorSwitcher =
   colorExperiment && import.meta.env.COLOR_SWITCHER_ENABLED === 'true';
 ---
@@ -51,6 +60,22 @@ const showColorSwitcher =
     <title>{title}</title>
     <meta name="author" content="Christian Naths" />
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={shareImageUrl} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content={String(SHARE_IMAGE_WIDTH)} />
+    <meta property="og:image:height" content={String(SHARE_IMAGE_HEIGHT)} />
+    <meta property="og:image:alt" content={shareImageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={shareImageUrl} />
+    <meta name="twitter:image:alt" content={shareImageAlt} />
     {
       showColorSwitcher && (
         <>
