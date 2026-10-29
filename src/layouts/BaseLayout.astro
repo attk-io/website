@@ -2,9 +2,7 @@
 import { Font } from 'astro:assets';
 import '../styles/global.css';
 import '../styles/font-selection.css';
-import heroContent from '../content/hero.md?raw';
 import { site } from '../content/site';
-import { getShareHeadline } from '../lib/share-content';
 import { SHARE_IMAGE_WIDTH, SHARE_IMAGE_HEIGHT } from '../lib/share-image';
 import {
   DEFAULT_FONT_SELECTION,
@@ -36,7 +34,7 @@ const {
 } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, site.origin);
 const shareImageUrl = new URL(shareImage, site.origin);
-const shareImageAlt = `${site.name}. ${getShareHeadline(heroContent)}. ${site.shareByline}.`;
+const shareImageAlt = `${site.name} logo. ${site.shareByline}.`;
 const showColorSwitcher =
   colorExperiment && import.meta.env.COLOR_SWITCHER_ENABLED === 'true';
 ---

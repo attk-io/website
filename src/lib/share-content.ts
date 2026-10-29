@@ -1,4 +1,4 @@
-import { Parser } from 'htmlparser2';
+import { DomUtils, Parser, parseDocument } from 'htmlparser2';
 import { marked } from 'marked';
 
 export type HeadlinePart = { text: string; accent: boolean };
@@ -48,4 +48,24 @@ export function getShareHeadline(markdown: string): string {
   return getShareHeadlineParts(markdown)
     .map((part) => part.text)
     .join('');
+}
+
+// The lede is the first paragraph after the H1; the later CTA stays out of
+// metadata. Decode entities and strip inline formatting for plain-text cards.
+export function getShareDescription(markdown: string): string {
+  const tokens = marked.lexer(markdown);
+  const heading = tokens.findIndex(
+    (token) => token.type === 'heading' && token.depth === 1
+  );
+  const paragraph = tokens
+    .slice(heading + 1)
+    .find((token) => token.type === 'paragraph');
+  if (heading < 0 || !paragraph || paragraph.type !== 'paragraph') {
+    throw new Error('The homepage needs a lede for its share description.');
+  }
+  return DomUtils.textContent(
+    parseDocument(marked.parseInline(paragraph.text, { async: false }))
+  )
+    .replace(/\s+/g, ' ')
+    .trim();
 }

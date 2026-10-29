@@ -16,7 +16,7 @@ import {
   HEADLINE_FONTS,
 } from '../../lib/font-experiment';
 import { getShareHeadlineParts } from '../../lib/share-content';
-import { renderShareImage } from '../../lib/share-image';
+import { renderBrandShareImage, renderShareImage } from '../../lib/share-image';
 
 // Astro prerenders this endpoint to a static PNG in dist/. In development the
 // same endpoint reads current content each time the preview requests the image.
@@ -67,7 +67,11 @@ export const GET: APIRoute = async ({ url }) => {
   const themedLogo = logo
     .replaceAll('fill="black"', `fill="${READING_INK}"`)
     .replaceAll('fill="#FDCF18"', `fill="${palette.accent}"`);
-  const image = await renderShareImage({
+  // Retain the headline treatment as a development-only comparison.
+  const useHeadline =
+    import.meta.env.DEV && url.searchParams.get('layout') === 'headline';
+  const render = useHeadline ? renderShareImage : renderBrandShareImage;
+  const image = await render({
     headline: getShareHeadlineParts(hero),
     byline: site.shareByline,
     domain: new URL(site.origin).hostname,

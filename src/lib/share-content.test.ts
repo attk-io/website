@@ -1,7 +1,11 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
-import { getShareHeadline, getShareHeadlineParts } from './share-content.ts';
+import {
+  getShareDescription,
+  getShareHeadline,
+  getShareHeadlineParts,
+} from './share-content.ts';
 
 test('reads an updated homepage H1 from its content file', () => {
   const hero = readFileSync(
@@ -61,4 +65,14 @@ test('preserves non-breaking spaces from HTML entities and literal text', () => 
       ]
     );
   }
+});
+
+test('uses the homepage lede for the description, excluding the CTA', () => {
+  assert.equal(
+    getShareDescription(
+      '# A headline\n\nFrom **planning** to <span>launch</span>, it’s yours &amp; ready.\n\n[Book a call](https://example.com)'
+    ),
+    'From planning to launch, it’s yours & ready.'
+  );
+  assert.throws(() => getShareDescription('# A headline'), /needs a lede/);
 });

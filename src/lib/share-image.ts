@@ -145,3 +145,58 @@ export async function renderShareImage(image: ShareImage): Promise<Uint8Array> {
     'The homepage headline is too long for the share image. Review the image layout.'
   );
 }
+
+// Keep the recognizable mark inside the central 630×630 area, so a square
+// center crop retains the complete identity instead of fragments of a headline.
+export async function renderBrandShareImage(
+  image: ShareImage
+): Promise<Uint8Array> {
+  const svg = await satori(
+    {
+      type: 'div',
+      props: {
+        style: {
+          display: 'flex',
+          width: SHARE_IMAGE_WIDTH,
+          height: SHARE_IMAGE_HEIGHT,
+          backgroundColor: image.paper,
+          color: image.ink,
+          fontFamily: image.headlineFont.name,
+          fontWeight: image.headlineFont.weight,
+        },
+        children: [
+          {
+            type: 'img',
+            props: {
+              src: image.logo,
+              width: 510,
+              height: 170,
+              style: { position: 'absolute', left: 345, top: 185 },
+            },
+          },
+          {
+            type: 'div',
+            props: {
+              style: {
+                display: 'flex',
+                position: 'absolute',
+                top: 403,
+                width: SHARE_IMAGE_WIDTH,
+                justifyContent: 'center',
+                fontSize: 36,
+                color: image.accent,
+              },
+              children: image.byline,
+            },
+          },
+        ],
+      },
+    },
+    {
+      width: SHARE_IMAGE_WIDTH,
+      height: SHARE_IMAGE_HEIGHT,
+      fonts: [image.headlineFont],
+    }
+  );
+  return new Uint8Array(await sharp(Buffer.from(svg)).png().toBuffer());
+}
