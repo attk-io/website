@@ -11,16 +11,20 @@ html[data-headline-font='amiri'] {
 html[data-headline-font='bona-nova'] {
   --experiment-headline: var(--webfont-bona-nova);
 }
-html[data-headline-font]
-  main
-  :is(h1, h2, h3, h4, h5, h6, [data-headline-sample]) {
+html[data-headline-font] main :is(h1, h2, h4, h5, h6, [data-headline-sample]) {
   font-family: var(--experiment-headline);
   font-synthesis: none;
 }
 html[data-headline-weight]
   main
-  :is(h1, h2, h3, h4, h5, h6, [data-headline-sample]) {
+  :is(h1, h2, h4, h5, h6, [data-headline-sample]) {
   font-weight: var(--experiment-headline-weight);
+  font-synthesis: none;
+}
+/* Third-level headings use the selected body family at their authored size. */
+html[data-body-font] main h3 {
+  font-family: var(--experiment-body);
+  font-weight: var(--experiment-body-bold-weight);
   font-synthesis: none;
 }
 /* Actual reading paragraphs/list text only. Exclude headline specimens and
