@@ -1,0 +1,391 @@
+---
+import {
+  HEADLINE_FONTS,
+  BODY_FONTS,
+  WEIGHT_NAMES,
+  DEFAULT_FONT_SELECTION,
+  type FontCatalog,
+} from '../lib/font-experiment';
+const sections: {
+  key: 'headlines' | 'body';
+  title: string;
+  fonts: FontCatalog;
+  defaultId: string;
+}[] = [
+  {
+    key: 'headlines',
+    title: 'Headlines',
+    fonts: HEADLINE_FONTS,
+    defaultId: DEFAULT_FONT_SELECTION.headlines,
+  },
+  {
+    key: 'body',
+    title: 'Body',
+    fonts: BODY_FONTS,
+    defaultId: DEFAULT_FONT_SELECTION.body,
+  },
+];
+---
+
+<aside id="font-picker" aria-label="Font controls">
+  <button
+    type="button"
+    id="font-widget-handle"
+    aria-label="Show font options"
+    aria-expanded="false"
+    aria-controls="font-widget-panel"
+    ><span aria-hidden="true">Fonts</span></button
+  >
+  <form id="font-widget-panel" aria-label="Font picker" hidden>
+    <p id="font-widget-title">Font picker</p>
+    {
+      sections.map((section) => (
+        <details
+          id={
+            section.key === 'headlines'
+              ? 'headline-font-section'
+              : 'body-font-section'
+          }
+          data-font-section={section.key}
+          open
+        >
+          <summary>
+            <span>
+              {section.title} —{' '}
+              <span
+                id={
+                  section.key === 'headlines'
+                    ? 'font-selection-summary'
+                    : 'body-font-selection-summary'
+                }
+                data-font-summary={section.key}
+                aria-live="polite"
+                aria-atomic="true"
+              >
+                {section.fonts[section.defaultId].name} ·{' '}
+                {
+                  WEIGHT_NAMES[
+                    section.key === 'headlines'
+                      ? DEFAULT_FONT_SELECTION.weights[
+                          DEFAULT_FONT_SELECTION.headlines
+                        ]
+                      : DEFAULT_FONT_SELECTION.bodyWeights[
+                          DEFAULT_FONT_SELECTION.body
+                        ]
+                  ]
+                }
+              </span>
+            </span>
+            <span data-section-chevron aria-hidden="true" />
+          </summary>
+          <fieldset aria-label={`${section.title} font`}>
+            {Object.entries(section.fonts).map(([id, font]) => (
+              <div data-font-option>
+                <label
+                  data-font-button
+                  style={`font-family: ${font.family}; font-synthesis: none`}
+                  data-font-sample={id}
+                >
+                  <input
+                    type="radio"
+                    name={section.key}
+                    value={id}
+                    checked={id === section.defaultId}
+                  />
+                  <span>
+                    {font.name}
+                    {id === section.defaultId ? ' (current)' : ''}
+                  </span>
+                </label>
+                <div data-weight-control>
+                  {font.weights.length <= 1 ? (
+                    <p data-weight-label>
+                      <span>Weight</span>
+                      <span>Regular · 400</span>
+                    </p>
+                  ) : (
+                    <div data-weight-label>
+                      <label for={`weight-${section.key}-${id}`}>Weight</label>
+                      <span data-weight-select>
+                        <select
+                          id={`weight-${section.key}-${id}`}
+                          name={`weight-${id}`}
+                          data-weight-font={id}
+                          aria-label={`${font.name} ${section.key === 'body' ? 'body' : 'headline'} weight`}
+                        >
+                          {font.weights.map((weight) => (
+                            <option value={weight}>
+                              {WEIGHT_NAMES[weight]} · {weight}
+                            </option>
+                          ))}
+                        </select>
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </fieldset>
+        </details>
+      ))
+    }
+  </form>
+</aside>
+<script>
+  import {
+    HEADLINE_FONTS,
+    BODY_FONTS,
+    WEIGHT_NAMES,
+    getFontSelection,
+    applyFontSelection,
+    shareFontSelection,
+    type FontCatalog,
+    type HeadlineFont,
+    type BodyFont,
+  } from '../lib/font-experiment';
+  const widget = document.getElementById('font-picker');
+  const handle = document.querySelector<HTMLButtonElement>(
+    '#font-widget-handle'
+  );
+  const panel = document.querySelector<HTMLFormElement>('#font-widget-panel');
+  if (widget && handle && panel) {
+    const setOpen = (open: boolean) => {
+      panel.hidden = !open;
+      handle.setAttribute('aria-expanded', String(open));
+      handle.setAttribute(
+        'aria-label',
+        open ? 'Hide font options' : 'Show font options'
+      );
+    };
+    handle.addEventListener('click', () =>
+      setOpen(panel.hasAttribute('hidden'))
+    );
+    widget.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !panel.hidden) {
+        setOpen(false);
+        handle.focus();
+      }
+    });
+    const sync = () => {
+      const selection = getFontSelection();
+      for (const key of ['headlines', 'body'] as const) {
+        const section = panel.querySelector<HTMLElement>(
+          `details[data-font-section="${key}"]`
+        );
+        if (!section) continue;
+        const fonts: FontCatalog = key === 'body' ? BODY_FONTS : HEADLINE_FONTS;
+        const active = key === 'body' ? selection.body : selection.headlines;
+        const weights: Record<string, number> =
+          key === 'body' ? selection.bodyWeights : selection.weights;
+        for (const choice of section.querySelectorAll<HTMLInputElement>(
+          'input[type="radio"]'
+        ))
+          choice.checked = choice.value === active;
+        for (const control of section.querySelectorAll<HTMLSelectElement>(
+          '[data-weight-font]'
+        ))
+          control.value = String(weights[control.dataset.weightFont!]);
+        for (const sample of section.querySelectorAll<HTMLElement>(
+          '[data-font-sample]'
+        ))
+          sample.style.fontWeight = String(
+            weights[sample.dataset.fontSample!] ?? (key === 'body' ? 400 : 600)
+          );
+        const summary = section.querySelector('[data-font-summary]');
+        if (summary)
+          summary.textContent = `${fonts[active].name} · ${WEIGHT_NAMES[weights[active]!]}`;
+      }
+    };
+    panel.addEventListener('submit', (event) => event.preventDefault());
+    panel.addEventListener('change', (event) => {
+      const control = event.target;
+      if (
+        !(control instanceof HTMLInputElement) &&
+        !(control instanceof HTMLSelectElement)
+      )
+        return;
+      const key = control.closest('details')?.dataset.fontSection;
+      if (key !== 'headlines' && key !== 'body') return;
+      const fonts: FontCatalog = key === 'body' ? BODY_FONTS : HEADLINE_FONTS;
+      const selection = getFontSelection();
+      const font =
+        control instanceof HTMLSelectElement
+          ? control.dataset.weightFont!
+          : control.value;
+      if (!Object.hasOwn(fonts, font)) return;
+      if (control instanceof HTMLSelectElement) {
+        const weight = Number(control.value);
+        if (!fonts[font].weights.includes(weight)) return;
+        if (key === 'body') selection.bodyWeights[font as BodyFont] = weight;
+        else selection.weights[font as HeadlineFont] = weight;
+      }
+      if (key === 'body') selection.body = font as BodyFont;
+      else selection.headlines = font as HeadlineFont;
+      applyFontSelection(selection);
+      shareFontSelection(selection);
+    });
+    window.addEventListener('attk:fonts-changed', sync);
+    sync();
+  }
+</script>
+<style>
+  #font-picker {
+    display: flex;
+    align-items: flex-start;
+    color: var(--reading-ink);
+  }
+  #font-widget-handle {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    min-height: 104px;
+    padding: 0.75rem;
+    border: 1px solid var(--color-sand-6);
+    border-right: 0;
+    border-radius: 0.5rem 0 0 0.5rem;
+    background: var(--paper);
+    box-shadow: -4px 2px 16px
+      color-mix(in srgb, var(--reading-ink) 10%, transparent);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  #font-widget-handle span {
+    writing-mode: vertical-rl;
+  }
+  #font-widget-panel {
+    width: min(20rem, calc(100vw - 44px - env(safe-area-inset-right, 0px)));
+    max-height: calc(100dvh - 2rem);
+    overflow-y: auto;
+    display: grid;
+    gap: 1rem;
+    padding: 1.25rem;
+    border: 1px solid var(--color-sand-6);
+    border-right: 0;
+    border-radius: 0.5rem 0 0 0.5rem;
+    background: var(--paper);
+    box-shadow: -4px 2px 24px
+      color-mix(in srgb, var(--reading-ink) 12%, transparent);
+  }
+  #font-widget-panel[hidden] {
+    display: none;
+  }
+  #font-widget-title {
+    font-weight: 600;
+  }
+  fieldset {
+    min-width: 0;
+  }
+  summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    min-height: 32px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary::marker {
+    content: '';
+  }
+  [data-section-chevron] {
+    flex-shrink: 0;
+    width: 0.375rem;
+    height: 0.375rem;
+    margin-right: 0.125rem;
+    border-right: 1px solid currentColor;
+    border-bottom: 1px solid currentColor;
+    transform: rotate(-45deg);
+  }
+  details[open] [data-section-chevron] {
+    transform: rotate(45deg);
+  }
+  [data-font-option] {
+    margin-top: 0.75rem;
+  }
+  [data-font-option] + [data-font-option] {
+    margin-top: 16px;
+  }
+  [data-font-button] {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    border: 1px solid var(--color-sand-6);
+    border-radius: 0.25rem;
+    padding: 0.375rem 0.625rem;
+    cursor: pointer;
+  }
+  [data-font-button] {
+    width: 100%;
+    justify-content: flex-start;
+    font-size: 1rem;
+  }
+  label:has(input:checked) {
+    background: var(--color-sand-3);
+    border-color: var(--reading-ink);
+    box-shadow: inset 0 0 0 1px var(--reading-ink);
+  }
+  label:has(input:focus-visible) {
+    outline: 2px solid var(--reading-ink);
+    outline-offset: 3px;
+  }
+  input[type='radio'] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    clip-path: inset(50%);
+  }
+  [data-weight-control] {
+    padding-inline: 0.25rem;
+  }
+  [data-weight-label] {
+    display: flex;
+    align-items: center;
+    min-height: 32px;
+    justify-content: space-between;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+  }
+  [data-weight-select] {
+    position: relative;
+    max-width: 70%;
+  }
+  [data-weight-select]::after {
+    content: '';
+    position: absolute;
+    right: 0.125rem;
+    top: 50%;
+    width: 0.375rem;
+    height: 0.375rem;
+    border-right: 1px solid currentColor;
+    border-bottom: 1px solid currentColor;
+    transform: translateY(-75%) rotate(45deg);
+    pointer-events: none;
+  }
+  select {
+    appearance: none;
+    max-width: 100%;
+    min-height: 32px;
+    padding: 0 1rem 0 0.125rem;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-align: right;
+    text-align-last: right;
+    cursor: pointer;
+  }
+  [data-font-summary] {
+    font-weight: 400;
+    overflow-wrap: anywhere;
+  }
+</style>

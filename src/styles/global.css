@@ -2,7 +2,7 @@
  * ATTK website — global styles
  *
  * Foundations only:
- *   - Single-family Swiss typography: Hanken Grotesk (everything; hierarchy via weight + size)
+ *   - Alice headlines + Source Sans 3 reading text; captions, wordmark and quotes have their own faces
  *   - OKLCH color scales, Radix-style 1..12: sand (warm neutral) + ink/sun/teal (highlights)
  *   - Minimal @layer base for element-level details (selection, focus-visible, text rendering, default font)
  */

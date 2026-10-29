@@ -39,6 +39,7 @@ const html = renderMarkdown(content, classes);
         <!-- The paragraph directly after the H1 is the "Last updated" line;
              it reads as a metadata label rather than body copy. -->
         <article
+          data-legal-document
           class="mt-12 [&>h1+p]:mt-6 [&>h1+p]:text-xs [&>h1+p]:font-medium [&>h1+p]:tracking-[0.12em] [&>h1+p]:text-sand-11 [&>h1+p]:uppercase"
           set:html={html}
         />

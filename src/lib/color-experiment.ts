@@ -8,19 +8,20 @@ export const PALETTES = {
     shade: '#7C3023',
     onAccent: '#FAF0DF',
   },
-  earth: {
-    name: 'Earthy red-orange',
-    accent: '#CE582B',
-    support: '#F0BE9A',
-    shade: '#903B22',
-    onAccent: READING_INK,
+  // Experimental accent candidates; Brick red remains the approved default.
+  forest: {
+    name: 'Forest green',
+    accent: '#367345',
+    support: '#CAD0B6',
+    shade: '#243F30',
+    onAccent: '#FAF0DF',
   },
-  pop: {
-    name: 'Bright red-orange',
-    accent: '#EF572F',
-    support: '#DFC7A4',
-    shade: '#903B22',
-    onAccent: READING_INK,
+  opal: {
+    name: 'Opal blue',
+    accent: '#426F78',
+    support: '#C4D2CF',
+    shade: '#2D4C53',
+    onAccent: '#FAF0DF',
   },
 };
 export const CREAMS = {
@@ -88,6 +89,32 @@ export const COLOR_TOKENS = Object.entries(COLOR_RAMPS)
     )
   )
   .join(';');
+
+// Shared with the before-paint bootstrap; keep this resolver self-contained.
+export function resolveColorSelection(
+  palettes: typeof PALETTES,
+  creams: typeof CREAMS,
+  saved: unknown,
+  query: URLSearchParams,
+  defaults: ColorSelection
+): ColorSelection {
+  const data =
+    saved && typeof saved === 'object'
+      ? (saved as Partial<ColorSelection>)
+      : {};
+  const palette = query.get('palette') ?? data.palette;
+  const cream = query.get('cream') ?? data.cream;
+  return {
+    palette:
+      typeof palette === 'string' && Object.hasOwn(palettes, palette)
+        ? (palette as ColorSelection['palette'])
+        : defaults.palette,
+    cream:
+      typeof cream === 'string' && Object.hasOwn(creams, cream)
+        ? (cream as ColorSelection['cream'])
+        : defaults.cream,
+  };
+}
 
 export function applyColorSelection(selection: ColorSelection, persist = true) {
   const palette = PALETTES[selection.palette];
