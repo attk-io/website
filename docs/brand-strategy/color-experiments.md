@@ -13,7 +13,7 @@ Christian supplied an inspiration image with creamy paper, brick red, deeper rus
 
 ## Current accent candidates
 
-Keep Brick red unchanged as the default. The red-orange variations have been retired. Forest green and Opal blue are additional earthy candidates requested on October 28; they are not final brand decisions.
+Forest green is the default, selected on October 28. Brick red and Opal blue remain available for comparison. The red-orange variations have been retired.
 
 | Role            | Brick red      | Forest green   | Opal blue      |
 | --------------- | -------------- | -------------- | -------------- |
@@ -37,7 +37,7 @@ Christian wanted more visual punch than the original `#302820` ink on `#F2E2C8` 
 
 The `/specimen` page and homepage use one shared theme defined in [color-experiment.ts](../../src/lib/color-experiment.ts). Edit the palette anchors, cream options, ink, or ramps there to change both pages. Both pages include the same [color variant widget](../../src/components/ColorVariantWidget.astro): a vertically centered handle on the right edge opens the Palette and Paper selectors. It starts closed, remains available while scrolling, and closes through its handle or Escape.
 
-Retired or invalid accent choices fall back to Brick red while retaining a valid paper choice. Selections are saved in browser storage and restored across refreshes and navigation between the specimen and homepage. Valid URL choices take priority over saved choices, then defaults; copying the specimen URL preserves a comparison for sharing. Open tabs on the same origin also follow selection changes. Storage contains variant identifiers, so code changes to their colors still reach returning visitors. If storage is blocked, URL choices and the current page still work. Deep ink (`#191613`) is fixed across the variants.
+Retired or invalid accent choices fall back to Forest green while retaining a valid paper choice. Selections are saved in browser storage and restored across refreshes and navigation between the specimen and homepage. Valid URL choices take priority over saved choices, then defaults; copying the specimen URL preserves a comparison for sharing. Open tabs on the same origin also follow selection changes. Storage contains variant identifiers, so code changes to their colors still reach returning visitors. If storage is blocked, URL choices and the current page still work. Deep ink (`#191613`) is fixed across the variants.
 
 The specimen preserves the original foundations page: its full type scale, twelve-step color scales, inline formatting samples, highlight examples, contrast notes, and wordmark weight/tracking comparisons. The new palette and paper controls recolor that system and the homepage through the same theme. The ramps between candidate anchors are exploratory interpolations, not finalized production tokens. Brick Red and Original Cream are the default variants on both pages, including production builds. Other variants remain available through the opt-in widget; valid saved or URL selections override the defaults when switching is enabled. The current color and font comparison work lives on `codex/font-picker`.
 

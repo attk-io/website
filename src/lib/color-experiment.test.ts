@@ -33,8 +33,8 @@ const contrast = (a: string, b: string) => {
   return (light + 0.05) / (dark + 0.05);
 };
 
-test('keeps Brick red and Original cream as the default and preserves valid saved/URL choices', () => {
-  assert.deepEqual(resolve(null), { palette: 'brick', cream: 'original' });
+test('keeps Forest green and Original cream as the default and preserves valid saved/URL choices', () => {
+  assert.deepEqual(resolve(null), { palette: 'forest', cream: 'original' });
   assert.deepEqual(resolve({ palette: 'forest', cream: 'light' }), {
     palette: 'forest',
     cream: 'light',
@@ -44,15 +44,15 @@ test('keeps Brick red and Original cream as the default and preserves valid save
     { palette: 'opal', cream: 'light' }
   );
 });
-test('retired accents fall back to Brick red while preserving the paper choice', () => {
+test('retired accents fall back to Forest green while preserving the paper choice', () => {
   for (const palette of ['earth', 'pop']) {
     assert.deepEqual(resolve({ palette, cream: 'light' }), {
-      palette: 'brick',
+      palette: 'forest',
       cream: 'light',
     });
     assert.deepEqual(
       resolve({ palette: 'forest', cream: 'light' }, `palette=${palette}`),
-      { palette: 'brick', cream: 'light' }
+      { palette: 'forest', cream: 'light' }
     );
   }
   assert.deepEqual(

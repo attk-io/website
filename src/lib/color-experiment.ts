@@ -8,7 +8,6 @@ export const PALETTES = {
     shade: '#7C3023',
     onAccent: '#FAF0DF',
   },
-  // Experimental accent candidates; Brick red remains the approved default.
   forest: {
     name: 'Forest green',
     accent: '#367345',
@@ -34,7 +33,7 @@ export type ColorSelection = {
   cream: keyof typeof CREAMS;
 };
 export const DEFAULT_COLOR_SELECTION: ColorSelection = {
-  palette: 'brick',
+  palette: 'forest',
   cream: 'original',
 };
 export const COLOR_STORAGE_KEY = 'attk-color-experiment';
