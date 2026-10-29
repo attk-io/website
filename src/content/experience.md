@@ -8,7 +8,7 @@ section_label: The experience
 
 ### FundFilter ![](/logos/fundfilter.svg)
 
-I joined FundFilter in 2020 to help build a private fund data and analytics platform. In 2022 FundFilter was acquired by PEI Group. I supported the aquisition by fulfilling technical due dilligence requests and staying on to help transition the product into PEI’s systems.
+I joined FundFilter in 2020 to help build a private fund data and analytics platform. In 2022 FundFilter was acquired by PEI Group. I supported the acquisition by fulfilling technical due diligence requests and staying on to help transition the product into PEI’s systems.
 
 ### Tap Bio ![](/logos/tap-bio.svg)
 
