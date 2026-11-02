@@ -1,0 +1,201 @@
+---
+const intensity = 0.63;
+const width = 49;
+const coverage = 68;
+const start = 0.42;
+const end = 0.18;
+---
+
+<aside id="effects-widget" aria-label="Effects controls">
+  <button
+    id="effects-widget-handle"
+    type="button"
+    aria-label="Show effect options"
+    aria-expanded="false"
+    aria-controls="effects-widget-panel"><span>Effects</span></button
+  >
+  <form
+    id="effects-widget-panel"
+    data-headline-gleam-controls
+    aria-label="Effects"
+    hidden
+  >
+    <fieldset>
+      <legend>Headline shine</legend>
+      <label>
+        <input type="checkbox" name="enabled" checked /> Enable shine
+      </label>
+      <label>
+        Intensity{' '}
+        <>
+          <input
+            name="intensity"
+            type="range"
+            min="0"
+            max="1"
+            step="0.01"
+            value={intensity}
+          />
+          <output></output>
+        </>
+      </label>
+      <label>
+        Width{' '}
+        <>
+          <input name="width" type="range" min="10" max="80" value={width} />
+          <output></output>
+        </>
+      </label>
+      <label>
+        Upper coverage{' '}
+        <>
+          <input
+            name="coverage"
+            type="range"
+            min="15"
+            max="75"
+            value={coverage}
+          />
+          <output></output>
+        </>
+      </label>
+      <label>
+        Begin at viewport{' '}
+        <>
+          <input
+            name="start"
+            type="range"
+            min="0.36"
+            max="0.8"
+            step="0.01"
+            value={start}
+          />
+          <output></output>
+        </>
+      </label>
+      <label>
+        Finish at viewport{' '}
+        <>
+          <input
+            name="end"
+            type="range"
+            min="0"
+            max="0.32"
+            step="0.01"
+            value={end}
+          />
+          <output></output>
+        </>
+      </label>
+      <p>
+        Scroll down to sweep right; scroll up to reverse. Timing measures
+        heading centers from the top of the viewport (0.33 is one-third down).
+      </p>
+      <p data-motion-note>Reduced motion is on: shine is disabled.</p>
+    </fieldset>
+  </form>
+</aside>
+<script>
+  const widget = document.getElementById('effects-widget');
+  const handle = document.querySelector<HTMLButtonElement>(
+    '#effects-widget-handle'
+  );
+  const panel = document.querySelector<HTMLFormElement>(
+    '#effects-widget-panel'
+  );
+  if (widget && handle && panel) {
+    const setOpen = (open: boolean) => {
+      panel.hidden = !open;
+      handle.setAttribute('aria-expanded', String(open));
+      handle.setAttribute(
+        'aria-label',
+        open ? 'Hide effect options' : 'Show effect options'
+      );
+    };
+    panel.addEventListener('submit', (event) => event.preventDefault());
+    handle.addEventListener('click', () =>
+      setOpen(panel.hasAttribute('hidden'))
+    );
+    widget.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !panel.hidden) {
+        setOpen(false);
+        handle.focus();
+      }
+    });
+  }
+</script>
+<style>
+  #effects-widget {
+    display: flex;
+    align-items: flex-start;
+    color: var(--reading-ink);
+  }
+  #effects-widget-handle {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    min-height: 104px;
+    padding: 0.75rem;
+    border: 1px solid var(--color-sand-6);
+    border-right: 0;
+    border-radius: 0.5rem 0 0 0.5rem;
+    background: var(--paper);
+    box-shadow: -4px 2px 16px
+      color-mix(in srgb, var(--reading-ink) 10%, transparent);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  #effects-widget-handle span {
+    writing-mode: vertical-rl;
+  }
+  #effects-widget-panel {
+    width: min(20rem, calc(100vw - 44px - env(safe-area-inset-right, 0px)));
+    max-height: calc(100dvh - 2rem);
+    overflow-y: auto;
+    display: grid;
+    gap: 1rem;
+    padding: 1.25rem;
+    border: 1px solid var(--color-sand-6);
+    border-right: 0;
+    border-radius: 0.5rem 0 0 0.5rem;
+    background: var(--paper);
+    box-shadow: -4px 2px 24px
+      color-mix(in srgb, var(--reading-ink) 12%, transparent);
+  }
+  #effects-widget-panel[hidden] {
+    display: none;
+  }
+
+  fieldset {
+    min-width: 0;
+  }
+  legend {
+    font-weight: 600;
+  }
+  label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+  input[type='range'] {
+    min-width: 0;
+    width: 6rem;
+    margin-left: auto;
+  }
+  output {
+    min-width: 2rem;
+  }
+  p {
+    margin-top: 0.75rem;
+  }
+  [data-motion-note] {
+    display: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    [data-motion-note] {
+      display: block;
+    }
+  }
+</style>

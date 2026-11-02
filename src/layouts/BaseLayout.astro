@@ -10,6 +10,7 @@ import {
 } from '../lib/font-experiment';
 import CloudflareWebAnalytics from '../components/CloudflareWebAnalytics.astro';
 import ColorExperimentHead from '../components/ColorExperimentHead.astro';
+import EffectsWidget from '../components/EffectsWidget.astro';
 import FontPicker from '../components/FontPicker.astro';
 import FontExperimentHead from '../components/FontExperimentHead.astro';
 import ColorVariantWidget from '../components/ColorVariantWidget.astro';
@@ -112,16 +113,39 @@ const showColorSwitcher =
     <slot />
     {
       showColorSwitcher && (
-        <div id="experiment-dock">
-          <ColorVariantWidget />
-          <FontPicker />
-        </div>
+        <>
+          <button
+            id="experiment-settings-toggle"
+            type="button"
+            aria-label="Show design settings"
+            aria-expanded="false"
+            aria-controls="experiment-dock"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="22"
+              height="22"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              aria-hidden="true"
+            >
+              <path d="m9 3-1 3-3 1 1 3-2 2 2 2-1 3 3 1 1 3h6l1-3 3-1-1-3 2-2-2-2 1-3-3-1-1-3Z" />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+          </button>
+          <div id="experiment-dock">
+            <ColorVariantWidget />
+            <FontPicker />
+            {import.meta.env.DEV && <EffectsWidget />}
+          </div>
+        </>
       )
     }
   </body>
 </html>
 
-<style>
+<style is:global>
   #experiment-dock {
     position: fixed;
     z-index: 50;
@@ -138,10 +162,129 @@ const showColorSwitcher =
   }
 </style>
 
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>(
+    '#experiment-settings-toggle'
+  );
+  const dock = document.getElementById('experiment-dock');
+  if (toggle && dock) {
+    const mobile = matchMedia('(max-width: 639px)');
+    const setOpen = (open: boolean) => {
+      dock.dataset.open = String(open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute(
+        'aria-label',
+        open ? 'Hide design settings' : 'Show design settings'
+      );
+    };
+    toggle.addEventListener('click', () =>
+      setOpen(dock.dataset.open !== 'true')
+    );
+    dock.addEventListener('click', (event) => {
+      if (!mobile.matches || !(event.target instanceof Element)) return;
+      const handle = event.target.closest<HTMLButtonElement>(
+        'button[aria-controls]'
+      );
+      if (!handle) return;
+      dock
+        .querySelectorAll<HTMLButtonElement>('button[aria-controls]')
+        .forEach((other) => {
+          if (other === handle) return;
+          const panel = document.getElementById(
+            other.getAttribute('aria-controls') ?? ''
+          );
+          if (panel) panel.hidden = true;
+          other.setAttribute('aria-expanded', 'false');
+          other.setAttribute(
+            'aria-label',
+            (other.getAttribute('aria-label') ?? '').replace('Hide ', 'Show ')
+          );
+        });
+    });
+    dock.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && mobile.matches) {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+    mobile.addEventListener('change', () => setOpen(false));
+    setOpen(false);
+  }
+</script>
 <style is:global>
+  #experiment-settings-toggle {
+    display: none;
+  }
   @media (max-width: 639px) {
-    html[data-color-switcher='enabled'] body {
-      padding-right: calc(44px + env(safe-area-inset-right, 0px));
+    #experiment-settings-toggle {
+      display: grid;
+      place-items: center;
+      position: fixed;
+      z-index: 51;
+      right: calc(1rem + env(safe-area-inset-right, 0px));
+      bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--color-sand-6);
+      border-radius: 50%;
+      background: var(--paper);
+      color: var(--reading-ink);
+      box-shadow: 0 2px 16px
+        color-mix(in srgb, var(--reading-ink) 12%, transparent);
+      cursor: pointer;
+    }
+    #experiment-dock {
+      display: none;
+      top: auto;
+      bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px));
+      left: 1rem;
+      right: calc(1rem + env(safe-area-inset-right, 0px));
+      transform: none;
+      max-height: calc(100dvh - 6rem - env(safe-area-inset-bottom, 0px));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: start;
+      gap: 0;
+      border: 1px solid var(--color-sand-6);
+      border-radius: 0.75rem;
+      background: var(--paper);
+      color: var(--reading-ink);
+      box-shadow: 0 2px 24px
+        color-mix(in srgb, var(--reading-ink) 12%, transparent);
+    }
+    #experiment-dock[data-open='true'] {
+      display: grid;
+    }
+    #experiment-dock :is(#color-variant-widget, #font-picker, #effects-widget) {
+      display: contents;
+    }
+    #experiment-dock
+      :is(#color-widget-handle, #font-widget-handle, #effects-widget-handle) {
+      grid-row: 1;
+      width: auto;
+      min-height: 44px;
+      padding: 0.75rem;
+      border: 0;
+      border-bottom: 1px solid var(--color-sand-6);
+      border-radius: 0;
+      box-shadow: none;
+    }
+    #experiment-dock button[aria-expanded='true'] {
+      background: var(--color-sand-3);
+    }
+    #experiment-dock
+      :is(#color-widget-handle, #font-widget-handle, #effects-widget-handle)
+      span {
+      writing-mode: horizontal-tb;
+    }
+    #experiment-dock
+      :is(#color-widget-panel, #font-widget-panel, #effects-widget-panel) {
+      grid-column: 1 / -1;
+      grid-row: 2;
+      width: 100%;
+      max-height: none;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
     }
   }
 </style>
