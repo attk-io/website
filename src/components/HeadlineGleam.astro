@@ -37,7 +37,12 @@ const {
       overlay.className = 'headline-gleam-overlay';
       overlay.setAttribute('aria-hidden', 'true');
       overlay.inert = true;
-      overlay.innerHTML = heading.innerHTML;
+      // Keep the two masks on separate elements: older Safari versions can
+      // composite multiple mask layers as a union, leaving a static highlight.
+      const coverage = document.createElement('div');
+      coverage.className = 'headline-gleam-coverage';
+      coverage.innerHTML = heading.innerHTML;
+      overlay.append(coverage);
       overlay
         .querySelectorAll('[id]')
         .forEach((node) => node.removeAttribute('id'));
@@ -84,6 +89,8 @@ const {
           '--gleam-intensity',
           String(
             enabled &&
+              progress > 0 &&
+              progress < 1 &&
               !motion.matches &&
               box.bottom > 0 &&
               box.top < innerHeight
@@ -147,23 +154,19 @@ const {
     user-select: none;
     color: var(--paper, #fff8ed);
     opacity: var(--gleam-intensity, 0);
-    mask-image:
-      linear-gradient(90deg, transparent, black 50%, transparent),
-      repeating-linear-gradient(
-        to bottom,
-        black 0,
-        black calc(1lh * var(--gleam-coverage) - 0.12em),
-        transparent calc(1lh * var(--gleam-coverage)),
-        transparent 1lh
-      );
-    mask-size:
-      var(--gleam-width) 100%,
-      100% 100%;
-    mask-position:
-      var(--gleam-x) 0,
-      0 0;
+    mask-image: linear-gradient(90deg, transparent, black 50%, transparent);
+    mask-size: var(--gleam-width) 100%;
+    mask-position: var(--gleam-x) 0;
     mask-repeat: no-repeat;
-    mask-composite: intersect;
+  }
+  .headline-gleam-coverage {
+    mask-image: repeating-linear-gradient(
+      to bottom,
+      black 0,
+      black calc(1lh * var(--gleam-coverage) - 0.12em),
+      transparent calc(1lh * var(--gleam-coverage)),
+      transparent 1lh
+    );
   }
   .headline-gleam-overlay * {
     color: inherit !important;
