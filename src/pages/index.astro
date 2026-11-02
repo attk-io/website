@@ -1,4 +1,5 @@
 ---
+import SectionEyebrow from '../components/SectionEyebrow.astro';
 import { marked, type Token } from 'marked';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../content/site';
@@ -131,26 +132,23 @@ const finalCtaActionsHtml = renderMarkdown(
               />
             </PageSection>
             {index === 0 && (
-              <PageSection
-                number="02"
-                label={about.label}
-                eyebrowClass="min-[780px]:col-span-2"
-                innerClass="col-span-2 grid max-w-[1140px] grid-cols-1 gap-x-12 gap-y-6 min-[780px]:grid-cols-[2fr_minmax(280px,1fr)]"
-              >
-                <div
-                  class="min-[780px]:col-start-1 min-[780px]:row-start-2"
-                  set:html={about.body}
-                />
-                <figure class="relative max-w-[360px] min-[780px]:col-start-2 min-[780px]:row-start-2 min-[780px]:max-w-none">
-                  <img
-                    src="/portrait.jpg"
-                    alt="Christian Naths with his family"
-                    width="512"
-                    height="759"
-                    loading="lazy"
-                    class="aspect-square w-full object-cover object-top min-[780px]:absolute min-[780px]:inset-0 min-[780px]:aspect-auto min-[780px]:h-full"
-                  />
-                </figure>
+              <PageSection innerClass="col-span-2 w-full max-w-[1140px]">
+                <div class="grid w-[calc(50%+22rem)] max-w-full grid-cols-1 gap-x-8 gap-y-6 min-[780px]:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
+                  <div>
+                    <SectionEyebrow number="02" label={about.label ?? ''} />
+                    <div set:html={about.body} />
+                  </div>
+                  <figure class="relative max-w-[360px] min-[780px]:order-first min-[780px]:max-w-none">
+                    <img
+                      src="/christian-illustration-soft-brow.png"
+                      alt="Ink illustration of Christian Naths"
+                      width="1024"
+                      height="1536"
+                      loading="lazy"
+                      class="aspect-square w-full object-cover object-top min-[780px]:absolute min-[780px]:inset-0 min-[780px]:aspect-auto min-[780px]:h-full"
+                    />
+                  </figure>
+                </div>
               </PageSection>
             )}
           </>
