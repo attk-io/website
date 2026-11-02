@@ -1,0 +1,297 @@
+---
+/** Optional enhancement: remove this wrapper to restore the plain headline. */
+interface Props {
+  intensity?: number;
+  width?: number;
+  coverage?: number;
+  start?: number;
+  end?: number;
+}
+const {
+  intensity = 0.63,
+  width = 49,
+  coverage = 68,
+  start = 0.42,
+  end = 0.18,
+} = Astro.props;
+---
+
+<div
+  data-headline-gleam
+  data-intensity={intensity}
+  data-width={width}
+  data-coverage={coverage}
+  data-start={start}
+  data-end={end}
+>
+  <slot />
+</div>
+{
+  import.meta.env.DEV && (
+    <details class="gleam-controls">
+      <summary>Headline shine</summary>
+      <label>
+        <input type="checkbox" name="enabled" checked /> Enable shine
+      </label>
+      <label>
+        Intensity{' '}
+        <>
+          <input
+            name="intensity"
+            type="range"
+            min="0"
+            max="1"
+            step="0.01"
+            value={intensity}
+          />
+          <output />
+        </>
+      </label>
+      <label>
+        Width{' '}
+        <>
+          <input name="width" type="range" min="10" max="80" value={width} />
+          <output />
+        </>
+      </label>
+      <label>
+        Upper coverage{' '}
+        <>
+          <input
+            name="coverage"
+            type="range"
+            min="15"
+            max="75"
+            value={coverage}
+          />
+          <output />
+        </>
+      </label>
+      <label>
+        Begin at viewport{' '}
+        <>
+          <input
+            name="start"
+            type="range"
+            min="0.36"
+            max="0.8"
+            step="0.01"
+            value={start}
+          />
+          <output />
+        </>
+      </label>
+      <label>
+        Finish at viewport{' '}
+        <>
+          <input
+            name="end"
+            type="range"
+            min="0"
+            max="0.32"
+            step="0.01"
+            value={end}
+          />
+          <output />
+        </>
+      </label>
+      <p>
+        Scroll down to sweep right; scroll up to reverse. Timing measures
+        heading centers from the top of the viewport (0.33 is one-third down).
+      </p>
+      <p class="motion-note">Reduced motion is on: shine is disabled.</p>
+    </details>
+  )
+}
+
+<script>
+  const host = document.querySelector<HTMLElement>('[data-headline-gleam]');
+  const headings = host?.querySelectorAll<HTMLElement>('h1, h2');
+  if (host && headings?.length) {
+    headings.forEach((heading) => {
+      // A decorative copy keeps the source text selectable and accessible once.
+      const overlay = document.createElement('div');
+      overlay.className = 'headline-gleam-overlay';
+      overlay.setAttribute('aria-hidden', 'true');
+      overlay.inert = true;
+      overlay.innerHTML = heading.innerHTML;
+      overlay
+        .querySelectorAll('[id]')
+        .forEach((node) => node.removeAttribute('id'));
+      heading.classList.add('headline-gleam-target');
+      heading.append(overlay);
+    });
+    const controls =
+      document.querySelector<HTMLDetailsElement>('.gleam-controls');
+    const motion = matchMedia('(prefers-reduced-motion: reduce)');
+    const options = {
+      intensity: Number(host.dataset.intensity),
+      width: Number(host.dataset.width),
+      coverage: Number(host.dataset.coverage),
+      start: Number(host.dataset.start),
+      end: Number(host.dataset.end),
+    };
+    let enabled = new URL(location.href).searchParams.get('gleam') !== 'off';
+    let pending = false;
+    const update = () => {
+      pending = false;
+      headings.forEach((heading) => {
+        const box = heading.getBoundingClientRect();
+        const center = box.top + box.height / 2;
+        // Sweep through a viewport band centered roughly one-third from the top.
+        const progress = Math.min(
+          1,
+          Math.max(
+            0,
+            (options.start * innerHeight - center) /
+              ((options.start - options.end) * innerHeight)
+          )
+        );
+        heading.style.setProperty(
+          '--gleam-x',
+          `${box.width * (-options.width / 100 + progress * (1 + options.width / 100))}px`
+        );
+        heading.style.setProperty('--gleam-width', `${options.width}%`);
+        heading.style.setProperty(
+          '--gleam-coverage',
+          String(options.coverage / 100)
+        );
+        heading.style.setProperty(
+          '--gleam-intensity',
+          String(
+            enabled &&
+              !motion.matches &&
+              box.bottom > 0 &&
+              box.top < innerHeight
+              ? options.intensity
+              : 0
+          )
+        );
+      });
+    };
+    const schedule = () => {
+      if (!pending) {
+        pending = true;
+        requestAnimationFrame(update);
+      }
+    };
+    const checkbox =
+      controls?.querySelector<HTMLInputElement>('[name="enabled"]');
+    if (checkbox) checkbox.checked = enabled;
+    controls
+      ?.querySelectorAll<HTMLInputElement>('input[type="range"]')
+      .forEach((input) => {
+        const sync = () => {
+          options[input.name as keyof typeof options] = Number(input.value);
+          if (input.nextElementSibling)
+            input.nextElementSibling.textContent = input.value;
+          schedule();
+        };
+        input.addEventListener('input', sync);
+        sync();
+      });
+    checkbox?.addEventListener('change', () => {
+      enabled = checkbox.checked;
+      const url = new URL(location.href);
+      if (enabled) url.searchParams.delete('gleam');
+      else url.searchParams.set('gleam', 'off');
+      history.replaceState(null, '', url);
+      schedule();
+    });
+    addEventListener('scroll', schedule, { passive: true });
+    addEventListener('resize', schedule);
+    motion.addEventListener('change', schedule);
+    const resize = new ResizeObserver(schedule);
+    headings.forEach((heading) => resize.observe(heading));
+    document.fonts.ready.then(schedule);
+    update();
+  }
+</script>
+
+<style is:global>
+  [data-headline-gleam] {
+    display: contents;
+  }
+  .headline-gleam-target {
+    position: relative;
+  }
+  .headline-gleam-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    user-select: none;
+    color: var(--paper, #fff8ed);
+    opacity: var(--gleam-intensity, 0);
+    mask-image:
+      linear-gradient(90deg, transparent, black 50%, transparent),
+      repeating-linear-gradient(
+        to bottom,
+        black 0,
+        black calc(1lh * var(--gleam-coverage) - 0.12em),
+        transparent calc(1lh * var(--gleam-coverage)),
+        transparent 1lh
+      );
+    mask-size:
+      var(--gleam-width) 100%,
+      100% 100%;
+    mask-position:
+      var(--gleam-x) 0,
+      0 0;
+    mask-repeat: no-repeat;
+    mask-composite: intersect;
+  }
+  .headline-gleam-overlay * {
+    color: inherit !important;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .headline-gleam-overlay {
+      display: none;
+    }
+  }
+  .gleam-controls {
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    z-index: 60;
+    width: min(19rem, calc(100vw - 5rem));
+    max-height: 70dvh;
+    overflow: auto;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-sand-6);
+    border-radius: 0.5rem;
+    background: var(--paper);
+    color: var(--reading-ink);
+    font:
+      13px/1.5 system-ui,
+      sans-serif;
+  }
+  .gleam-controls summary {
+    cursor: pointer;
+    min-height: 24px;
+  }
+  .gleam-controls label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+  .gleam-controls input[type='range'] {
+    min-width: 0;
+    width: 6rem;
+    margin-left: auto;
+  }
+  .gleam-controls output {
+    min-width: 2rem;
+  }
+  .gleam-controls p {
+    margin-top: 0.75rem;
+  }
+  .motion-note {
+    display: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .gleam-controls .motion-note {
+      display: block;
+    }
+  }
+</style>

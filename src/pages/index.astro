@@ -4,6 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../content/site';
 import PageFooter from '../components/PageFooter.astro';
 import PageHeader from '../components/PageHeader.astro';
+import HeadlineGleam from '../components/HeadlineGleam.astro';
 import PageSection from '../components/PageSection.astro';
 import {
   parseMarkdownDocument,
@@ -101,111 +102,113 @@ const finalCtaActionsHtml = renderMarkdown(
 
 <BaseLayout colorExperiment title={site.title} description={site.description}>
   <PageHeader />
-  <main class="overflow-clip bg-sand-1">
-    <PageSection spacingClass="px-6 pt-32 pb-24 sm:px-10 sm:pt-44 sm:pb-32">
-      <div set:html={hero.body} />
-    </PageSection>
-    {
-      sections.map((section, index) => (
-        <>
-          <PageSection
-            innerClass={
-              index === 4
-                ? 'col-span-2 max-w-[1140px]'
-                : index === sections.length - 1
-                  ? 'relative z-10 -m-8 bg-sand-1/80 p-8 sm:-m-12 sm:p-12'
-                  : undefined
-            }
-            number={String(index === 0 ? 1 : index + 2).padStart(2, '0')}
-            label={section.label}
-          >
-            <div
-              class:list={[
-                index === 2 && 'how-phases',
-                index === 4 &&
-                  '[&_h3]:flex [&_h3]:items-center [&_h3]:gap-4 [&_p]:max-w-none',
-              ]}
-              set:html={section.body}
-            />
-          </PageSection>
-          {index === 0 && (
+  <HeadlineGleam>
+    <main class="overflow-clip bg-sand-1">
+      <PageSection spacingClass="px-6 pt-32 pb-24 sm:px-10 sm:pt-44 sm:pb-32">
+        <div set:html={hero.body} />
+      </PageSection>
+      {
+        sections.map((section, index) => (
+          <>
             <PageSection
-              number="02"
-              label={about.label}
-              eyebrowClass="min-[780px]:col-span-2"
-              innerClass="col-span-2 grid max-w-[1140px] grid-cols-1 gap-x-12 gap-y-6 min-[780px]:grid-cols-[2fr_minmax(280px,1fr)]"
+              innerClass={
+                index === 4
+                  ? 'col-span-2 max-w-[1140px]'
+                  : index === sections.length - 1
+                    ? 'relative z-10 -m-8 bg-sand-1/80 p-8 sm:-m-12 sm:p-12'
+                    : undefined
+              }
+              number={String(index === 0 ? 1 : index + 2).padStart(2, '0')}
+              label={section.label}
             >
               <div
-                class="min-[780px]:col-start-1 min-[780px]:row-start-2"
-                set:html={about.body}
+                class:list={[
+                  index === 2 && 'how-phases',
+                  index === 4 &&
+                    '[&_h3]:flex [&_h3]:items-center [&_h3]:gap-4 [&_p]:max-w-none',
+                ]}
+                set:html={section.body}
               />
-              <figure class="relative max-w-[360px] min-[780px]:col-start-2 min-[780px]:row-start-2 min-[780px]:max-w-none">
-                <img
-                  src="/portrait.jpg"
-                  alt="Christian Naths with his family"
-                  width="512"
-                  height="759"
-                  loading="lazy"
-                  class="aspect-square w-full object-cover object-top min-[780px]:absolute min-[780px]:inset-0 min-[780px]:aspect-auto min-[780px]:h-full"
-                />
-              </figure>
             </PageSection>
-          )}
-        </>
-      ))
-    }
-    <section
-      class="relative overflow-x-clip bg-sand-2 px-6 pt-24 sm:px-10 sm:pt-32"
-    >
-      <div class="mx-auto grid max-w-480 grid-cols-[1fr_minmax(0,44rem)_3fr]">
-        <div
-          class="relative col-span-2 col-start-2 grid max-w-[1140px] items-center px-8 py-16 min-[540px]:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] min-[540px]:gap-8 min-[540px]:p-0 lg:grid-cols-[minmax(0,16rem)_minmax(0,1fr)] lg:gap-12"
-        >
+            {index === 0 && (
+              <PageSection
+                number="02"
+                label={about.label}
+                eyebrowClass="min-[780px]:col-span-2"
+                innerClass="col-span-2 grid max-w-[1140px] grid-cols-1 gap-x-12 gap-y-6 min-[780px]:grid-cols-[2fr_minmax(280px,1fr)]"
+              >
+                <div
+                  class="min-[780px]:col-start-1 min-[780px]:row-start-2"
+                  set:html={about.body}
+                />
+                <figure class="relative max-w-[360px] min-[780px]:col-start-2 min-[780px]:row-start-2 min-[780px]:max-w-none">
+                  <img
+                    src="/portrait.jpg"
+                    alt="Christian Naths with his family"
+                    width="512"
+                    height="759"
+                    loading="lazy"
+                    class="aspect-square w-full object-cover object-top min-[780px]:absolute min-[780px]:inset-0 min-[780px]:aspect-auto min-[780px]:h-full"
+                  />
+                </figure>
+              </PageSection>
+            )}
+          </>
+        ))
+      }
+      <section
+        class="relative overflow-x-clip bg-sand-2 px-6 pt-24 sm:px-10 sm:pt-32"
+      >
+        <div class="mx-auto grid max-w-480 grid-cols-[1fr_minmax(0,44rem)_3fr]">
           <div
-            class="contents min-[540px]:relative min-[540px]:z-10 min-[540px]:flex min-[540px]:aspect-square min-[540px]:max-w-[44rem] min-[540px]:flex-col min-[540px]:justify-center min-[540px]:py-16 sm:py-20 lg:px-12"
+            class="relative col-span-2 col-start-2 grid max-w-[1140px] items-center px-8 py-16 min-[540px]:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] min-[540px]:gap-8 min-[540px]:p-0 lg:grid-cols-[minmax(0,16rem)_minmax(0,1fr)] lg:gap-12"
           >
-            {
-              finalCta.label && (
-                <div class="mb-12 flex items-baseline gap-6">
-                  <span class="text-small font-medium tracking-[0.14em] text-sand-12 uppercase">
-                    {finalCta.label}
-                  </span>
-                  <span aria-hidden="true" class="h-px flex-1 bg-sand-12" />
-                </div>
-              )
-            }
-            {
-              finalCta.quote && (
-                <h2 class="max-w-[16ch] text-heading font-semibold text-sand-12">
-                  {finalCta.quote}
-                </h2>
-              )
-            }
-            <div class="contents min-[540px]:block">
-              <div class="contents [&>p]:order-1" set:html={finalCtaHtml} />
-              <div
-                data-final-cta-actions
-                class="order-3 [&_a[href^=mailto]]:bg-transparent [&_a[href^=mailto]]:p-0 [&_a[href^=mailto]]:text-sand-12 [&_a[href^=mailto]]:decoration-sand-12 [&_a[href^=mailto]]:underline-offset-4 [&_a[href^=mailto]]:hover:bg-transparent [&_a[href^=mailto]]:hover:text-sand-12 [&_a[href^=mailto]]:hover:decoration-sand-12"
-                set:html={finalCtaActionsHtml}
-              />
+            <div
+              class="contents min-[540px]:relative min-[540px]:z-10 min-[540px]:flex min-[540px]:aspect-square min-[540px]:max-w-[44rem] min-[540px]:flex-col min-[540px]:justify-center min-[540px]:py-16 sm:py-20 lg:px-12"
+            >
+              {
+                finalCta.label && (
+                  <div class="mb-12 flex items-baseline gap-6">
+                    <span class="text-small font-medium tracking-[0.14em] text-sand-12 uppercase">
+                      {finalCta.label}
+                    </span>
+                    <span aria-hidden="true" class="h-px flex-1 bg-sand-12" />
+                  </div>
+                )
+              }
+              {
+                finalCta.quote && (
+                  <h2 class="max-w-[16ch] text-heading font-semibold text-sand-12">
+                    {finalCta.quote}
+                  </h2>
+                )
+              }
+              <div class="contents min-[540px]:block">
+                <div class="contents [&>p]:order-1" set:html={finalCtaHtml} />
+                <div
+                  data-final-cta-actions
+                  class="order-3 [&_a[href^=mailto]]:bg-transparent [&_a[href^=mailto]]:p-0 [&_a[href^=mailto]]:text-sand-12 [&_a[href^=mailto]]:decoration-sand-12 [&_a[href^=mailto]]:underline-offset-4 [&_a[href^=mailto]]:hover:bg-transparent [&_a[href^=mailto]]:hover:text-sand-12 [&_a[href^=mailto]]:hover:decoration-sand-12"
+                  set:html={finalCtaActionsHtml}
+                />
+              </div>
             </div>
+            <figure
+              class="order-2 mt-10 max-w-48 min-[540px]:order-first min-[540px]:mt-0 min-[540px]:max-w-64"
+            >
+              <img
+                src="/portrait.jpg"
+                alt="Christian Naths with his family"
+                width="512"
+                height="759"
+                loading="lazy"
+                class="h-auto w-full"
+              />
+            </figure>
           </div>
-          <figure
-            class="order-2 mt-10 max-w-48 min-[540px]:order-first min-[540px]:mt-0 min-[540px]:max-w-64"
-          >
-            <img
-              src="/portrait.jpg"
-              alt="Christian Naths with his family"
-              width="512"
-              height="759"
-              loading="lazy"
-              class="h-auto w-full"
-            />
-          </figure>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
+    </main>
+  </HeadlineGleam>
   <PageFooter />
 </BaseLayout>
 
