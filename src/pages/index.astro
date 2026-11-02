@@ -133,12 +133,12 @@ const finalCtaActionsHtml = renderMarkdown(
             </PageSection>
             {index === 0 && (
               <PageSection innerClass="col-span-2 w-full max-w-[1140px]">
-                <div class="grid w-[calc(50%+22rem)] max-w-full grid-cols-1 gap-x-8 gap-y-6 min-[780px]:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
+                <div class="grid w-[calc(50%+22rem)] max-w-full grid-cols-1 gap-x-8 gap-y-6 min-[780px]:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
                   <div>
                     <SectionEyebrow number="02" label={about.label ?? ''} />
                     <div set:html={about.body} />
                   </div>
-                  <figure class="relative max-w-[360px] min-[780px]:order-first min-[780px]:max-w-none">
+                  <figure class="relative max-w-[360px] min-[780px]:max-w-none">
                     <img
                       src="/christian-illustration-soft-brow.png"
                       alt="Ink illustration of Christian Naths"
