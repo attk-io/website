@@ -1,6 +1,7 @@
 ---
 import SectionEyebrow from '../components/SectionEyebrow.astro';
 import { marked, type Token } from 'marked';
+import '../styles/mobile-homepage.css';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../content/site';
 import PageFooter from '../components/PageFooter.astro';
@@ -104,7 +105,7 @@ const finalCtaActionsHtml = renderMarkdown(
 <BaseLayout colorExperiment title={site.title} description={site.description}>
   <PageHeader />
   <HeadlineGleam>
-    <main class="overflow-clip bg-sand-1">
+    <main data-homepage class="overflow-clip bg-sand-1">
       <PageSection spacingClass="px-6 pt-32 pb-24 sm:px-10 sm:pt-44 sm:pb-32">
         <div set:html={hero.body} />
       </PageSection>
@@ -219,6 +220,7 @@ const finalCtaActionsHtml = renderMarkdown(
   :global(.experience-columns h3) {
     margin-top: 0;
   }
+
   @media (min-width: 1024px) {
     :global(.experience-columns) {
       grid-template-columns: repeat(3, minmax(0, 1fr));

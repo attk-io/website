@@ -4,7 +4,7 @@ section_label: The experience
 
 ## Experience building, launching, and growing software businesses
 
-<div class="py-6"></div>
+<div class="hidden py-6 sm:block"></div>
 
 ### FundFilter ![](/logos/fundfilter.svg)
 

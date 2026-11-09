@@ -1,0 +1,16 @@
+@media (max-width: 639px) {
+  [data-homepage] h2.text-heading {
+    font-size: 1.75rem;
+    line-height: 1.12;
+  }
+  [data-homepage] h2 + p,
+  [data-homepage] h2 + h3,
+  [data-homepage] h2 + ul,
+  [data-homepage] h2 + ol,
+  [data-homepage] h2 + div > div:first-child > p:first-child {
+    margin-top: 1.5rem;
+  }
+  [data-homepage] .experience-columns {
+    margin-top: 1.5rem;
+  }
+}
