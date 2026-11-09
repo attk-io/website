@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    .letter { fill: #191613; }
+    .square { fill: #367345; }
+    @media (prefers-color-scheme: dark) {
+      .letter { fill: #F2E2C8; }
+      .square { fill: #CAD0B6; }
+    }
+  </style>
+  <path
+    class="letter"
+    transform="translate(2 4) scale(0.017142857142857)"
+    d="M0 1400L368 0H828L1196 1400H924L848 1092H348L272 1400H0ZM410 848H786L616 166H580L410 848Z"
+  />
+  <rect class="square" x="24" y="22" width="6" height="6" />
+</svg>
