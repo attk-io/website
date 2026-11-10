@@ -39,10 +39,10 @@ const about = renderSectionContent(aboutContent, TYPOGRAPHY_BASELINE);
 
 const sections = [
   yourVisionContent,
+  experienceContent,
   theRightProductContent,
   howItWorksContent,
   ongoingSupportContent,
-  experienceContent,
   whoThisIsForContent,
 ].map((content) => {
   const section = renderSectionContent(content, TYPOGRAPHY_BASELINE);
@@ -114,7 +114,7 @@ const finalCtaActionsHtml = renderMarkdown(
           <>
             <PageSection
               innerClass={
-                index === 4
+                index === 1
                   ? 'col-span-2 max-w-[1140px]'
                   : index === sections.length - 1
                     ? 'relative z-10 -m-8 bg-sand-1/80 p-8 sm:-m-12 sm:p-12'
@@ -125,8 +125,8 @@ const finalCtaActionsHtml = renderMarkdown(
             >
               <div
                 class:list={[
-                  index === 2 && 'how-phases',
-                  index === 4 &&
+                  index === 3 && 'how-phases',
+                  index === 1 &&
                     '[&_h3]:flex [&_h3]:items-center [&_h3]:gap-4 [&_p]:max-w-none',
                 ]}
                 set:html={section.body}
