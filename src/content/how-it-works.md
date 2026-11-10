@@ -4,7 +4,7 @@ section_label: The process
 
 ## How we’ll take your product from idea to launch
 
-### Discovery <mark class="block w-fit whitespace-nowrap text-[16px] relative mt-2 sm:inline-block sm:-top-[3px] sm:ml-4 sm:mt-0">_Free • by the end of week 1_</mark>
+### Discovery <mark class="block w-fit whitespace-nowrap text-[16px] relative mt-2 sm:inline-block sm:-top-[3px] sm:ml-4 sm:mt-0">_Complimentary • by the end of week 1_</mark>
 
 We work through your business goals, who the product needs to serve, and what the first release should accomplish. I create an initial roadmap, giving us a shared understanding of what we’re building and why.
 
