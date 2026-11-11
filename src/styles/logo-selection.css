@@ -40,3 +40,10 @@ html[data-logo='archivo-narrow-700'] .attack-logo .current-logo {
 html[data-logo='archivo-narrow-700'] .attack-logo .archivo-narrow-700 {
   display: block;
 }
+
+html[data-logo='custom-04'] .attack-logo .current-logo {
+  display: none;
+}
+html[data-logo='custom-04'] .attack-logo .custom-04 {
+  display: block;
+}

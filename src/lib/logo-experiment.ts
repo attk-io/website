@@ -1,4 +1,5 @@
 export const LOGO_FONTS = {
+  'custom-04': { name: 'Attack-04 · current', round: null },
   'custom-02': { name: 'Attack-02', round: null },
   'montserrat-400': { name: 'Montserrat · Regular 400', round: 1 },
   'montserrat-600': { name: 'Montserrat · Semibold 600', round: 2 },
@@ -8,7 +9,7 @@ export const LOGO_FONTS = {
   'archivo-narrow-700': { name: 'Archivo Narrow · Bold 700', round: 6 },
 };
 export type LogoSelection = keyof typeof LOGO_FONTS;
-export const DEFAULT_LOGO: LogoSelection = 'archivo-narrow-700';
+export const DEFAULT_LOGO: LogoSelection = 'custom-04';
 export const LOGO_STORAGE_KEY = 'attk-logo-experiment';
 export function resolveLogo(
   saved: unknown,
