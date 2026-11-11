@@ -12,6 +12,10 @@ import CloudflareWebAnalytics from '../components/CloudflareWebAnalytics.astro';
 import ColorExperimentHead from '../components/ColorExperimentHead.astro';
 import EffectsWidget from '../components/EffectsWidget.astro';
 import FontPicker from '../components/FontPicker.astro';
+import LogoPicker from '../components/LogoPicker.astro';
+import '../styles/logo-selection.css';
+import LogoExperimentHead from '../components/LogoExperimentHead.astro';
+import { DEFAULT_LOGO } from '../lib/logo-experiment';
 import FontExperimentHead from '../components/FontExperimentHead.astro';
 import ColorVariantWidget from '../components/ColorVariantWidget.astro';
 import {
@@ -44,6 +48,7 @@ const showColorSwitcher =
 
 <!doctype html>
 <html
+  data-logo={DEFAULT_LOGO}
   lang="en"
   style={`${DEFAULT_FONT_STYLE}${colorExperiment ? `;${DEFAULT_COLOR_STYLE};${COLOR_TOKENS}` : ''}`}
   data-headline-font={DEFAULT_FONT_SELECTION.headlines}
@@ -94,6 +99,12 @@ const showColorSwitcher =
       preload={[{ style: 'normal' }]}
     />
     <Font cssVariable="--webfont-space-grotesk" />
+    <Font cssVariable="--webfont-lobster" />
+    <Font cssVariable="--webfont-oxanium" />
+    <Font cssVariable="--webfont-fraunces" />
+    <Font cssVariable="--webfont-alfa-slab-one" />
+    <Font cssVariable="--webfont-bebas-neue" />
+    {showColorSwitcher && <LogoExperimentHead />}
     <Font cssVariable="--webfont-dm-mono" />
     <Font cssVariable="--webfont-spectral" />
     {
@@ -142,6 +153,7 @@ const showColorSwitcher =
           <div id="experiment-dock">
             <ColorVariantWidget />
             <FontPicker />
+            <LogoPicker />
             {import.meta.env.DEV && <EffectsWidget />}
           </div>
         </>
@@ -246,7 +258,7 @@ const showColorSwitcher =
       right: calc(1rem + env(safe-area-inset-right, 0px));
       transform: none;
       max-height: calc(100dvh - 6rem - env(safe-area-inset-bottom, 0px));
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       align-items: start;
       gap: 0;
       border: 1px solid var(--color-sand-6);
@@ -259,11 +271,17 @@ const showColorSwitcher =
     #experiment-dock[data-open='true'] {
       display: grid;
     }
-    #experiment-dock :is(#color-variant-widget, #font-picker, #effects-widget) {
+    #experiment-dock
+      :is(#color-variant-widget, #font-picker, #logo-picker, #effects-widget) {
       display: contents;
     }
     #experiment-dock
-      :is(#color-widget-handle, #font-widget-handle, #effects-widget-handle) {
+      :is(
+        #color-widget-handle,
+        #font-widget-handle,
+        #logo-widget-handle,
+        #effects-widget-handle
+      ) {
       grid-row: 1;
       width: auto;
       min-height: 44px;
@@ -277,12 +295,22 @@ const showColorSwitcher =
       background: var(--color-sand-3);
     }
     #experiment-dock
-      :is(#color-widget-handle, #font-widget-handle, #effects-widget-handle)
+      :is(
+        #color-widget-handle,
+        #font-widget-handle,
+        #logo-widget-handle,
+        #effects-widget-handle
+      )
       span {
       writing-mode: horizontal-tb;
     }
     #experiment-dock
-      :is(#color-widget-panel, #font-widget-panel, #effects-widget-panel) {
+      :is(
+        #color-widget-panel,
+        #font-widget-panel,
+        #logo-widget-panel,
+        #effects-widget-panel
+      ) {
       grid-column: 1 / -1;
       grid-row: 2;
       width: 100%;

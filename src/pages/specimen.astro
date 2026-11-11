@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Logo from '../components/Logo.astro';
 import { COLOR_RAMPS, type Hue } from '../lib/color-experiment';
 
 type Swatch = { step: number; oklch: string };
@@ -483,121 +484,47 @@ const typeScale: {
       </section>
 
       <!-- ─── Wordmark ───────────────────────────────────────────────── -->
-      <section class="mb-24 sm:mb-32">
-        <div class="mb-12 flex items-baseline gap-6">
-          <span
-            class="font-hanken text-small font-medium tracking-[0.14em] text-sand-11 uppercase"
-          >
-            05 · Wordmark
-          </span>
-          <span aria-hidden="true" class="h-px flex-1 bg-sand-7"></span>
-        </div>
-
-        <p class="mb-12 max-w-[60ch] text-body leading-[1.65] text-sand-11">
-          Set in <strong class="font-semibold text-sand-12"
-            >Space Grotesk</strong
-          > — mixed-case <strong class="font-semibold text-sand-12"
-            >"Attk"</strong
-          > followed by the selected accent square mark sitting on the baseline, layered
-          behind the final character. Shown across three weights and two tracking
-          variants.
+      <section id="wordmark" class="mb-24 sm:mb-32">
+        <p class="mb-6 font-hanken text-small tracking-[0.14em] uppercase">
+          05 · Attack / Wordmark study
         </p>
-
-        <div
-          class="grid grid-cols-[auto_1fr_1fr] items-baseline gap-x-3 gap-y-5 sm:gap-x-10"
-        >
-          <span aria-hidden="true"></span>
-          <p
-            class="font-hanken text-caption font-medium tracking-[0.14em] text-sand-11 uppercase"
-          >
-            Natural tracking
-          </p>
-          <p
-            class="font-hanken text-caption font-medium tracking-[0.14em] text-sand-11 uppercase"
-          >
-            Tight · −0.03em
-          </p>
-
-          <p
-            class="font-hanken text-caption font-medium tracking-[0.14em] text-sand-11 uppercase"
-          >
-            500
-          </p>
-          <p
-            class="font-space-grotesk text-[2rem] leading-none font-medium text-sand-12 sm:text-[4rem]"
-          >
-            <span class="isolate inline-block">
-              Attk<span
-                aria-hidden="true"
-                class="relative -z-10 -ml-[0.12em] inline-block size-[0.25em] bg-sun-9 align-baseline"
-              ></span>
-            </span>
-          </p>
-          <p
-            class="font-space-grotesk text-[2rem] leading-none font-medium text-sand-12 sm:text-[4rem]"
-            style="letter-spacing: -0.03em"
-          >
-            <span class="isolate inline-block">
-              Attk<span
-                aria-hidden="true"
-                class="relative -z-10 -ml-[0.12em] inline-block size-[0.25em] bg-sun-9 align-baseline"
-              ></span>
-            </span>
-          </p>
-
-          <p
-            class="font-hanken text-caption font-medium tracking-[0.14em] text-sand-11 uppercase"
-          >
-            600
-          </p>
-          <p
-            class="font-space-grotesk text-[2rem] leading-none font-semibold text-sand-12 sm:text-[4rem]"
-          >
-            <span class="isolate inline-block">
-              Attk<span
-                aria-hidden="true"
-                class="relative -z-10 -ml-[0.12em] inline-block size-[0.25em] bg-sun-9 align-baseline"
-              ></span>
-            </span>
-          </p>
-          <p
-            class="font-space-grotesk text-[2rem] leading-none font-semibold text-sand-12 sm:text-[4rem]"
-            style="letter-spacing: -0.03em"
-          >
-            <span class="isolate inline-block">
-              Attk<span
-                aria-hidden="true"
-                class="relative -z-10 -ml-[0.12em] inline-block size-[0.25em] bg-sun-9 align-baseline"
-              ></span>
-            </span>
-          </p>
-
-          <p
-            class="font-hanken text-caption font-medium tracking-[0.14em] text-sand-11 uppercase"
-          >
-            700
-          </p>
-          <p
-            class="font-space-grotesk text-[2rem] leading-none font-bold text-sand-12 sm:text-[4rem]"
-          >
-            <span class="isolate inline-block">
-              Attk<span
-                aria-hidden="true"
-                class="relative -z-10 -ml-[0.12em] inline-block size-[0.25em] bg-sun-9 align-baseline"
-              ></span>
-            </span>
-          </p>
-          <p
-            class="font-space-grotesk text-[2rem] leading-none font-bold text-sand-12 sm:text-[4rem]"
-            style="letter-spacing: -0.03em"
-          >
-            <span class="isolate inline-block">
-              Attk<span
-                aria-hidden="true"
-                class="relative -z-10 -ml-[0.12em] inline-block size-[0.25em] bg-sun-9 align-baseline"
-              ></span>
-            </span>
-          </p>
+        <h2 class="text-heading">A little more room to say it.</h2>
+        <p class="mt-6 mb-12 text-body">
+          Use the Logo control to compare the shortlisted Attack Software
+          wordmarks on cream and green, at display and header sizes.
+        </p>
+        <div class="wordmark-studies">
+          {
+            [
+              {
+                label: '01 · On cream',
+                reverse: false,
+                detail: 'Ink lettering with a forest green square.',
+              },
+              {
+                label: '02 · On forest',
+                reverse: true,
+                detail: 'Cream lettering with a 35% cream square.',
+              },
+            ].map((option) => (
+              <article
+                class:list={[
+                  'wordmark-study',
+                  option.reverse && 'study-reverse',
+                ]}
+              >
+                <p class="study-label">{option.label}</p>
+                <div class="study-mark-wrap">
+                  <Logo large reverse={option.reverse} />
+                </div>
+                <p class="study-detail">{option.detail}</p>
+                <div class="study-header" aria-label="At header size">
+                  <Logo reverse={option.reverse} />
+                  <span class="study-label">Header size</span>
+                </div>
+              </article>
+            ))
+          }
         </div>
       </section>
 
@@ -715,5 +642,48 @@ const typeScale: {
   }
   [data-swatch] {
     min-height: 80px;
+  }
+</style>
+
+<style>
+  .wordmark-studies {
+    display: grid;
+    gap: 1.5rem;
+  }
+  .wordmark-study {
+    padding: clamp(1.5rem, 5vw, 3rem);
+    border: 1px solid #36734540;
+    background: #f2e2c8;
+    color: #191613;
+  }
+  .study-label {
+    font-family: var(--font-hanken);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .study-mark-wrap {
+    margin: 2rem 0;
+  }
+  .study-detail {
+    max-width: 38ch;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .study-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #36734530;
+  }
+  .study-reverse {
+    background: #367345;
+    color: #f2e2c8;
+  }
+  .study-reverse .study-header {
+    border-top-color: #f2e2c840;
   }
 </style>

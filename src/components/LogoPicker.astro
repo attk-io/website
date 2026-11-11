@@ -1,0 +1,182 @@
+---
+import { LOGO_FONTS, DEFAULT_LOGO } from '../lib/logo-experiment';
+---
+
+<aside id="logo-picker" aria-label="Logo controls">
+  <button
+    type="button"
+    id="logo-widget-handle"
+    aria-label="Show logo options"
+    aria-expanded="false"
+    aria-controls="logo-widget-panel"
+    ><span aria-hidden="true">Logo</span></button
+  >
+  <form id="logo-widget-panel" aria-label="Logo variants" hidden>
+    <p class="widget-title">Logo version</p>
+    <fieldset>
+      <legend>Attack Software</legend>
+      {
+        Object.entries(LOGO_FONTS).map(([id, font]) => (
+          <label>
+            <>
+              <input
+                type="radio"
+                name="logo"
+                value={id}
+                checked={id === DEFAULT_LOGO}
+              />
+              <span>
+                {font.round === null
+                  ? font.name
+                  : `#${font.round} · ${font.name}`}
+              </span>
+            </>
+          </label>
+        ))
+      }
+    </fieldset>
+    <p id="logo-selection-summary" aria-live="polite"></p>
+  </form>
+</aside>
+<script>
+  import {
+    LOGO_FONTS,
+    LOGO_STORAGE_KEY,
+    resolveLogo,
+    applyLogo,
+  } from '../lib/logo-experiment';
+  const widget = document.getElementById('logo-picker');
+  const handle = document.querySelector<HTMLButtonElement>(
+    '#logo-widget-handle'
+  );
+  const panel = document.querySelector<HTMLFormElement>('#logo-widget-panel');
+  const summary = document.getElementById('logo-selection-summary');
+  if (widget && handle && panel && summary) {
+    const setOpen = (open: boolean) => {
+      panel.hidden = !open;
+      handle.setAttribute('aria-expanded', String(open));
+      handle.setAttribute(
+        'aria-label',
+        open ? 'Hide logo options' : 'Show logo options'
+      );
+    };
+    handle.addEventListener('click', () =>
+      setOpen(panel.hasAttribute('hidden'))
+    );
+    widget.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !panel.hidden) {
+        setOpen(false);
+        handle.focus();
+      }
+    });
+    const sync = () => {
+      const selected = resolveLogo(
+        document.documentElement.dataset.logo,
+        new URLSearchParams()
+      );
+      for (const input of panel.querySelectorAll<HTMLInputElement>('input'))
+        input.checked = input.value === selected;
+      summary.textContent = LOGO_FONTS[selected].name;
+    };
+    panel.addEventListener('submit', (event) => event.preventDefault());
+    panel.addEventListener('change', () => {
+      const selection = resolveLogo(
+        new FormData(panel).get('logo'),
+        new URLSearchParams()
+      );
+      applyLogo(selection);
+      const url = new URL(location.href);
+      url.searchParams.set('logo', selection);
+      history.replaceState(null, '', url);
+    });
+    window.addEventListener('attk:logo-changed', sync);
+    window.addEventListener('storage', (event) => {
+      if (event.key === LOGO_STORAGE_KEY)
+        applyLogo(resolveLogo(event.newValue, new URLSearchParams()), false);
+    });
+    window.addEventListener('popstate', () => {
+      let saved: string | null = null;
+      try {
+        saved = localStorage.getItem(LOGO_STORAGE_KEY);
+      } catch {}
+      applyLogo(resolveLogo(saved, new URLSearchParams(location.search)));
+    });
+    sync();
+  }
+</script>
+<style>
+  #logo-picker {
+    display: flex;
+    align-items: flex-start;
+    color: var(--reading-ink);
+  }
+  #logo-widget-handle {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    min-height: 104px;
+    padding: 0.75rem;
+    border: 1px solid var(--color-sand-6);
+    border-right: 0;
+    border-radius: 0.5rem 0 0 0.5rem;
+    background: var(--paper);
+    box-shadow: -4px 2px 16px
+      color-mix(in srgb, var(--reading-ink) 10%, transparent);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  #logo-widget-handle span {
+    writing-mode: vertical-rl;
+  }
+  #logo-widget-panel {
+    width: min(20rem, calc(100vw - 44px - env(safe-area-inset-right, 0px)));
+    max-height: calc(100dvh - 2rem);
+    overflow-y: auto;
+    display: grid;
+    gap: 1rem;
+    padding: 1.25rem;
+    border: 1px solid var(--color-sand-6);
+    border-right: 0;
+    border-radius: 0.5rem 0 0 0.5rem;
+    background: var(--paper);
+    box-shadow: -4px 2px 24px
+      color-mix(in srgb, var(--reading-ink) 12%, transparent);
+  }
+  #logo-widget-panel[hidden] {
+    display: none;
+  }
+  .widget-title {
+    font-weight: 600;
+  }
+  fieldset {
+    min-width: 0;
+  }
+  legend {
+    margin-bottom: 0.5rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+  }
+  label {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    min-height: 44px;
+    padding: 0.375rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    cursor: pointer;
+  }
+  label:has(input:checked) {
+    background: var(--color-sand-2);
+  }
+  input {
+    accent-color: var(--reading-ink);
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+  }
+  #logo-selection-summary {
+    font-size: 0.8125rem;
+  }
+</style>

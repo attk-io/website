@@ -1,0 +1,28 @@
+---
+import {
+  LOGO_FONTS,
+  DEFAULT_LOGO,
+  LOGO_STORAGE_KEY,
+} from '../lib/logo-experiment';
+---
+
+<script
+  is:inline
+  define:vars={{
+    logoFonts: LOGO_FONTS,
+    defaultLogo: DEFAULT_LOGO,
+    logoKey: LOGO_STORAGE_KEY,
+  }}
+>
+  {
+    let saved;
+    try {
+      saved = localStorage.getItem(logoKey);
+    } catch {}
+    const candidate = new URLSearchParams(location.search).get('logo') ?? saved;
+    document.documentElement.dataset.logo =
+      typeof candidate === 'string' && Object.hasOwn(logoFonts, candidate)
+        ? candidate
+        : defaultLogo;
+  }
+</script>

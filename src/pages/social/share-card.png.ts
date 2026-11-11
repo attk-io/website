@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro';
 import { experimental_getFontFileURL, fontData } from 'astro:assets';
 import type { Font } from 'satori';
 import hero from '../../content/hero.md?raw';
-import logo from '../../../public/attk-lockup.svg?raw';
+import logo from '../../../public/logos/attack-custom-02.svg?raw';
 import { site } from '../../content/site';
 import {
   CREAMS,
