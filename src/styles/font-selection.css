@@ -113,3 +113,12 @@ html[data-body-font='source-sans-3']
     font-size: clamp(1.875rem, calc(10vw - 2px), 3.5rem);
   }
 }
+
+/* Legal documents use the reading face throughout, including their headings. */
+html[data-body-font] main[data-legal-page] {
+  font-family: var(--experiment-body);
+}
+html[data-body-font] main[data-legal-page] :is(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--experiment-body);
+  font-weight: 600;
+}
