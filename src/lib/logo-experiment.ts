@@ -1,14 +1,14 @@
 export const LOGO_FONTS = {
-  lobster: { name: 'Lobster', round: 2 },
-  oxanium: { name: 'Oxanium', round: 3 },
-  fraunces: { name: 'Fraunces', round: 5 },
-  alfa: { name: 'Alfa Slab One', round: 6 },
-  bebas: { name: 'Bebas Neue', round: 9 },
-  'custom-01': { name: 'Custom Oxanium · attack-01', round: null },
-  'custom-02': { name: 'Custom Oxanium · attack-02', round: null },
+  'custom-02': { name: 'Attack-02', round: null },
+  'montserrat-400': { name: 'Montserrat · Regular 400', round: 1 },
+  'montserrat-600': { name: 'Montserrat · Semibold 600', round: 2 },
+  'montserrat-800': { name: 'Montserrat · Extra bold 800', round: 3 },
+  'archivo-narrow-400': { name: 'Archivo Narrow · Regular 400', round: 4 },
+  'archivo-narrow-550': { name: 'Archivo Narrow · Medium 550', round: 5 },
+  'archivo-narrow-700': { name: 'Archivo Narrow · Bold 700', round: 6 },
 };
 export type LogoSelection = keyof typeof LOGO_FONTS;
-export const DEFAULT_LOGO: LogoSelection = 'custom-02';
+export const DEFAULT_LOGO: LogoSelection = 'archivo-narrow-700';
 export const LOGO_STORAGE_KEY = 'attk-logo-experiment';
 export function resolveLogo(
   saved: unknown,

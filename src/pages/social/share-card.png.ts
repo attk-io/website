@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro';
 import { experimental_getFontFileURL, fontData } from 'astro:assets';
 import type { Font } from 'satori';
 import hero from '../../content/hero.md?raw';
-import logo from '../../../public/logos/attack-custom-02.svg?raw';
+import logo from '../../../public/logos/qualifier-variants/archivo-narrow-700.svg?raw';
 import { site } from '../../content/site';
 import {
   CREAMS,
@@ -65,7 +65,11 @@ export const GET: APIRoute = async ({ url }) => {
   ]);
   const palette = PALETTES[DEFAULT_COLOR_SELECTION.palette];
   const themedLogo = logo
-    .replaceAll('fill="black"', `fill="${READING_INK}"`)
+    .replaceAll('fill="currentColor"', `fill="${READING_INK}"`)
+    .replaceAll(
+      'fill="var(--custom-square, #367345)"',
+      `fill="${palette.accent}"`
+    )
     .replaceAll('fill="#FDCF18"', `fill="${palette.accent}"`);
   // Retain the headline treatment as a development-only comparison.
   const useHeadline =

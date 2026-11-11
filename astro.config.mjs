@@ -20,20 +20,6 @@ export default defineConfig({
   },
   trailingSlash: 'ignore',
   fonts: [
-    ...[
-      ['Lobster', 400],
-      ['Oxanium', 600],
-      ['Fraunces', 900],
-      ['Alfa Slab One', 400],
-      ['Bebas Neue', 400],
-    ].map(([name, weight]) => ({
-      provider: fontProviders.google(),
-      name,
-      cssVariable: `--webfont-${name.toLowerCase().replaceAll(' ', '-')}`,
-      weights: [weight],
-      styles: ['normal'],
-      fallbacks: sans,
-    })),
     ...['Open Sans', 'Source Sans 3', 'Lato'].map((name) => ({
       provider: fontProviders.google(),
       name,

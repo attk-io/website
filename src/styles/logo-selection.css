@@ -1,50 +1,42 @@
-:root,
-html[data-logo='fraunces'] {
-  --logo-font: var(--webfont-fraunces);
-  --logo-weight: 900;
-  --logo-tracking: -0.04em;
-}
-html[data-logo='lobster'] {
-  --logo-font: var(--webfont-lobster);
-  --logo-weight: 400;
-  --logo-tracking: -0.01em;
-}
-html[data-logo='oxanium'] {
-  --logo-font: var(--webfont-oxanium);
-  --logo-weight: 600;
-  --logo-tracking: -0.035em;
-}
-html[data-logo='alfa'] {
-  --logo-font: var(--webfont-alfa-slab-one);
-  --logo-weight: 400;
-  --logo-tracking: -0.025em;
-}
-html[data-logo='bebas'] {
-  --logo-font: var(--webfont-bebas-neue);
-  --logo-weight: 400;
-  --logo-tracking: 0.015em;
-}
-
-.attack-logo .custom-version {
+.attack-logo .logo-version {
   display: none;
 }
-.attack-logo .type-version {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-html[data-logo='custom-01'] .attack-logo .custom-01 {
+.attack-logo .current-logo {
   display: block;
 }
-html[data-logo='custom-01'] .attack-logo .type-version,
-html[data-logo='custom-02'] .attack-logo .type-version {
+html[data-logo='montserrat-400'] .attack-logo .current-logo {
   display: none;
 }
-
-.attack-logo.reverse .custom-version {
-  --custom-square: rgb(242 226 200 / 35%);
+html[data-logo='montserrat-400'] .attack-logo .montserrat-400 {
+  display: block;
 }
-
-html[data-logo='custom-02'] .attack-logo .custom-02 {
+html[data-logo='montserrat-600'] .attack-logo .current-logo {
+  display: none;
+}
+html[data-logo='montserrat-600'] .attack-logo .montserrat-600 {
+  display: block;
+}
+html[data-logo='montserrat-800'] .attack-logo .current-logo {
+  display: none;
+}
+html[data-logo='montserrat-800'] .attack-logo .montserrat-800 {
+  display: block;
+}
+html[data-logo='archivo-narrow-400'] .attack-logo .current-logo {
+  display: none;
+}
+html[data-logo='archivo-narrow-400'] .attack-logo .archivo-narrow-400 {
+  display: block;
+}
+html[data-logo='archivo-narrow-550'] .attack-logo .current-logo {
+  display: none;
+}
+html[data-logo='archivo-narrow-550'] .attack-logo .archivo-narrow-550 {
+  display: block;
+}
+html[data-logo='archivo-narrow-700'] .attack-logo .current-logo {
+  display: none;
+}
+html[data-logo='archivo-narrow-700'] .attack-logo .archivo-narrow-700 {
   display: block;
 }
