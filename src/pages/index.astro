@@ -63,6 +63,11 @@ const sections = [
   );
   if (content === experienceContent) {
     // Keep each company heading and its copy together in a desktop column.
+    // Mark company headings that link off-site with an external-link icon.
+    section.body = section.body.replace(
+      /(<h3[^>]*><a href="https?:\/\/[\s\S]*?)<\/a><\/h3>/g,
+      '$1<svg class="external-link-icon" aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5H3.5v9h9V10"/><path d="M9 3h4v4"/><path d="M13 3 7.5 8.5"/></svg></a></h3>'
+    );
     const entriesStart = section.body.indexOf('<h3');
     const entries = section.body
       .slice(entriesStart)
@@ -228,6 +233,18 @@ const finalCtaActionsHtml = renderMarkdown(
   :global(.experience-columns h3 a:hover),
   :global(.experience-columns h3 a:focus-visible) {
     color: var(--color-ocean-11);
+  }
+  :global(.external-link-icon) {
+    display: inline-block;
+    width: 0.7em;
+    height: 0.7em;
+    margin-left: 0.3em;
+    vertical-align: 0.3em;
+    color: var(--color-sand-9);
+  }
+  :global(.experience-columns h3 a:hover .external-link-icon),
+  :global(.experience-columns h3 a:focus-visible .external-link-icon) {
+    color: currentColor;
   }
   :global(.experience-columns h3 a:hover .proof-logo),
   :global(.experience-columns h3 a:focus-visible .proof-logo) {
