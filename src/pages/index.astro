@@ -47,23 +47,30 @@ const sections = [
 ].map((content) => {
   const section = renderSectionContent(content, TYPOGRAPHY_BASELINE);
   // Render decorative proof marks as masks so they inherit the live theme.
-  // `brand` is each company's own colour, shown when its heading link is hovered.
-  const logos: Record<string, { mask: string; ratio: number; brand: string }> =
-    {
-      'fundfilter.svg': {
-        mask: 'fundfilter.svg',
-        ratio: 61 / 59,
-        brand: '#2f6fe4',
-      },
-      'tap-bio.svg': { mask: 'tap-bio-mask.svg', ratio: 1, brand: '#7b3fe4' },
-      'yardly.svg': { mask: 'yardly.svg', ratio: 1, brand: '#7aec9c' },
-    };
+  // On hover each mark shows its company's own colours: a flat `brand` tint
+  // for single-colour marks, or a full-colour `hover` image for two-tone ones.
+  const logos: Record<
+    string,
+    { mask: string; ratio: number; brand?: string; hover?: string }
+  > = {
+    'fundfilter.svg': {
+      mask: 'fundfilter.svg',
+      ratio: 61 / 59,
+      brand: '#4eaad3',
+    },
+    'tap-bio.svg': {
+      mask: 'tap-bio-mask.svg',
+      ratio: 1,
+      hover: 'tap-bio-hover.svg',
+    },
+    'yardly.svg': { mask: 'yardly.svg', ratio: 1, hover: 'yardly-hover.svg' },
+  };
   section.body = section.body.replace(
     /<img src="\/logos\/([^"]+)" alt="">/g,
     (image, name: string) => {
       const logo = logos[name];
       return logo
-        ? `<span class="proof-logo" aria-hidden="true" style="width:${logo.ratio}em;--logo-brand:${logo.brand};mask-image:url('/logos/${logo.mask}')"></span>`
+        ? `<span class="proof-logo" aria-hidden="true" style="width:${logo.ratio}em;mask-image:url('/logos/${logo.mask}')${logo.brand ? `;--logo-brand:${logo.brand}` : ''}${logo.hover ? `;--logo-hover:url('/logos/${logo.hover}')` : ''}"></span>`
         : image;
     }
   );
@@ -250,7 +257,15 @@ const finalCtaActionsHtml = renderMarkdown(
   }
   :global(.experience-columns h3 a:hover .proof-logo),
   :global(.experience-columns h3 a:focus-visible .proof-logo) {
-    background-color: var(--logo-brand);
+    background-color: var(--logo-brand, var(--color-sand-4));
+  }
+  /* Two-tone marks swap the tinted mask for their full-colour artwork. */
+  :global(.experience-columns h3 a:hover .proof-logo[style*='--logo-hover']),
+  :global(
+    .experience-columns h3 a:focus-visible .proof-logo[style*='--logo-hover']
+  ) {
+    mask-image: none !important;
+    background: var(--logo-hover) center / contain no-repeat;
   }
 
   @media (min-width: 1024px) {
