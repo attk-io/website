@@ -47,17 +47,23 @@ const sections = [
 ].map((content) => {
   const section = renderSectionContent(content, TYPOGRAPHY_BASELINE);
   // Render decorative proof marks as masks so they inherit the live theme.
-  const logos: Record<string, { mask: string; ratio: number }> = {
-    'fundfilter.svg': { mask: 'fundfilter.svg', ratio: 61 / 59 },
-    'tap-bio.svg': { mask: 'tap-bio-mask.svg', ratio: 1 },
-    'yardly.svg': { mask: 'yardly.svg', ratio: 1 },
-  };
+  // `brand` is each company's own colour, shown when its heading link is hovered.
+  const logos: Record<string, { mask: string; ratio: number; brand: string }> =
+    {
+      'fundfilter.svg': {
+        mask: 'fundfilter.svg',
+        ratio: 61 / 59,
+        brand: '#2f6fe4',
+      },
+      'tap-bio.svg': { mask: 'tap-bio-mask.svg', ratio: 1, brand: '#7b3fe4' },
+      'yardly.svg': { mask: 'yardly.svg', ratio: 1, brand: '#3f9b4a' },
+    };
   section.body = section.body.replace(
     /<img src="\/logos\/([^"]+)" alt="">/g,
     (image, name: string) => {
       const logo = logos[name];
       return logo
-        ? `<span class="proof-logo" aria-hidden="true" style="width:${logo.ratio}em;mask-image:url('/logos/${logo.mask}')"></span>`
+        ? `<span class="proof-logo" aria-hidden="true" style="width:${logo.ratio}em;--logo-brand:${logo.brand};mask-image:url('/logos/${logo.mask}')"></span>`
         : image;
     }
   );
@@ -240,7 +246,7 @@ const finalCtaActionsHtml = renderMarkdown(
     height: 0.58em;
     margin-left: 0.25em;
     vertical-align: 0.4em;
-    color: var(--color-sand-9);
+    color: var(--color-sand-4);
   }
   :global(.experience-columns h3 a:hover .external-link-icon),
   :global(.experience-columns h3 a:focus-visible .external-link-icon) {
@@ -248,7 +254,7 @@ const finalCtaActionsHtml = renderMarkdown(
   }
   :global(.experience-columns h3 a:hover .proof-logo),
   :global(.experience-columns h3 a:focus-visible .proof-logo) {
-    background-color: var(--color-ocean-9);
+    background-color: var(--logo-brand);
   }
 
   @media (min-width: 1024px) {
