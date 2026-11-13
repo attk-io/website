@@ -70,7 +70,7 @@ const sections = [
     (image, name: string) => {
       const logo = logos[name];
       return logo
-        ? `<span class="proof-logo" aria-hidden="true" style="width:${logo.ratio}em;mask-image:url('/logos/${logo.mask}')${logo.brand ? `;--logo-brand:${logo.brand}` : ''}${logo.hover ? `;--logo-hover:url('/logos/${logo.hover}')` : ''}"></span>`
+        ? `<span class="proof-logo" aria-hidden="true" style="width:${logo.ratio * 0.7}em;width:calc(${logo.ratio} * 1cap);mask-image:url('/logos/${logo.mask}')${logo.brand ? `;--logo-brand:${logo.brand}` : ''}${logo.hover ? `;--logo-hover:url('/logos/${logo.hover}')` : ''}"></span>`
         : image;
     }
   );
@@ -252,7 +252,6 @@ const finalCtaActionsHtml = renderMarkdown(
     width: 0.58em;
     height: 0.58em;
     margin-left: 0.25em;
-    vertical-align: 0.4em;
     color: var(--color-sand-4);
   }
   :global(.experience-columns h3 a:hover .proof-logo),
@@ -274,10 +273,12 @@ const finalCtaActionsHtml = renderMarkdown(
     }
   }
 
+  /* Marks are cap-height tall and sit on the text baseline, like a glyph. */
   :global(.proof-logo) {
     display: inline-block;
     flex-shrink: 0;
-    height: 1em;
+    height: 0.7em;
+    height: 1cap;
     max-width: 45%;
     background-color: var(--color-sand-4);
     mask-repeat: no-repeat;
