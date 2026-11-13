@@ -220,6 +220,19 @@ const finalCtaActionsHtml = renderMarkdown(
   :global(.experience-columns h3) {
     margin-top: 0;
   }
+  /* Company headings link out but keep the heading's ink colour. */
+  :global(.experience-columns h3 a) {
+    color: inherit;
+    text-decoration: none;
+  }
+  :global(.experience-columns h3 a:hover),
+  :global(.experience-columns h3 a:focus-visible) {
+    color: var(--color-ocean-11);
+  }
+  :global(.experience-columns h3 a:hover .proof-logo),
+  :global(.experience-columns h3 a:focus-visible .proof-logo) {
+    background-color: var(--color-ocean-9);
+  }
 
   @media (min-width: 1024px) {
     :global(.experience-columns) {
