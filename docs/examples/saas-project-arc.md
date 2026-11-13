@@ -20,7 +20,7 @@ The general release model is defined in [Product Releases](../../process/product
 
 ## Fit Check (free)
 
-The free entry point. Its job is to decide whether a paid Discovery engagement makes sense.
+The free entry point. Its job is to decide whether complimentary [Discovery](../process/discovery.md) makes sense.
 
 **Objectives:**
 
@@ -40,15 +40,15 @@ The free entry point. Its job is to decide whether a paid Discovery engagement m
 
 ---
 
-## Discovery
+## Discovery (complimentary)
 
-The first paid engagement. It turns the Fit Check into an MVP scope and a commercial commitment.
+The free working phase after the [Fit Check](../process/fit-check.md). It establishes product direction and an initial roadmap, typically by the end of week 1.
 
 **Objectives:**
 
-- MVP scope is clear enough to price and commit to.
+- Initial roadmap identifies the first release’s priorities and what can wait.
 - Business goals and core principles are captured.
-- Contract exists for the paid build engagement.
+- Scope and budget are agreed for paid [Planning & Design](../process/planning-and-design.md).
 
 **Dependencies:**
 
@@ -61,24 +61,25 @@ The first paid engagement. It turns the Fit Check into an MVP scope and a commer
 - Map the vision, market, users, business goals, and constraints.
 - Identify the feature areas the MVP must cover and what can wait.
 - Separate known work from risky, novel, or assumption-heavy work.
-- Draft the MVP scope, estimates, named unknowns, and contract.
+- Draft the initial roadmap, high-level feature list, and named unknowns. Detailed scope and a build estimate follow during Planning & Design.
 
 ---
 
 ## Planning & Design
 
-The second paid engagement. It turns the MVP scope into build-ready detail.
+The first paid engagement, with its own agreed budget. It turns the initial roadmap into build-ready detail, typically by week 4.
 
 **Objectives:**
 
 - Full MVP backlog is ready for development.
 - UI direction is anchored enough to build consistently.
 - Ambiguous flows are resolved before implementation.
+- Defined scope and a build estimate are available for the client’s decision on whether to proceed.
 
 **Dependencies:**
 
 - Discovery is complete.
-- MVP scope and contract are in place.
+- Planning & Design scope and budget are agreed.
 
 **Workload:**
 
@@ -86,6 +87,7 @@ The second paid engagement. It turns the MVP scope into build-ready detail.
 - Wireframe the key user flows.
 - Create representative hi-fi UI examples.
 - Write GitHub issues and organize the project backlog.
+- Define the build scope and estimate its cost.
 
 ---
 

@@ -1,6 +1,6 @@
 # Discovery
 
-Discovery is the first paid engagement after a successful Fit Check. The goal is to learn about the client's business goals and uncover how a custom software product could serve those goals.
+Discovery is a complimentary working phase after a successful [Fit Check](./fit-check.md), typically completed by the end of week 1. The goal is to learn about the client's business goals and uncover how a custom software product could serve those goals.
 
 ## Format
 
@@ -23,7 +23,11 @@ What I cover:
 
 ## Outcomes
 
-The outcomes of Discovery are concrete artifacts that make the product direction easier to discuss, scope, and revise.
+Discovery produces an initial roadmap that gives the client and me a shared understanding of what we’re building and why. The outcomes below capture the initial product direction; detailed scope and a build estimate are produced during paid [Planning & Design](./planning-and-design.md).
+
+**Initial roadmap:**
+
+A high-level sequence of priorities for the first release and what can wait. It identifies open questions and gives Planning & Design a starting point; it is not a build-ready backlog or a build quote.
 
 **Business goals:**
 

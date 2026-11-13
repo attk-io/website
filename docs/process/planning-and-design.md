@@ -1,12 +1,12 @@
 # Planning & Design
 
-Planning & Design is the second paid engagement after a successful Discovery. The goal is to turn the MVP scope from Discovery into build-ready detail: a full backlog, resolved flows, and enough UI direction to build consistently.
+Planning & Design is the first paid engagement after complimentary [Discovery](./discovery.md), with its own agreed budget. The goal is to turn the initial roadmap from Discovery into build-ready detail: a full backlog, resolved flows, and enough UI direction to build consistently.
 
 ## Format
 
 Planning & Design is primarily independent execution — I work through the artifacts without the client present, and loop them in when a decision is blocked or a course correction is needed. Ad-hoc calls handle realignment; there is no fixed meeting cadence.
 
-The engagement typically runs one to two weeks, depending on the scope and complexity agreed during Discovery.
+The website places completion by week 4, following Discovery by the end of week 1. The work is scoped and budgeted before this paid phase begins.
 
 What I work through:
 
@@ -17,7 +17,11 @@ What I work through:
 
 ## Outcomes
 
-The outcomes of Planning & Design are the artifacts that create overall plan and set the expectations of what the upcoming development cycles will focus on.
+Planning & Design produces a defined scope and build estimate so the client can decide how to proceed before committing to development. Its artifacts establish the overall plan and the focus of upcoming development cycles.
+
+**Defined scope and build estimate**
+
+The work proposed for the build, its boundaries, and an estimate of the build cost. These give the client a basis for deciding whether to proceed.
 
 **Project Arc**
 

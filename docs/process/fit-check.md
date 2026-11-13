@@ -1,6 +1,6 @@
 # Fit Check
 
-A Fit Check is the first conversation with a prospective client. The client talks a little about their project and business; I explain how I work, where I tend to be useful, what the relationship asks of them, and what next step makes sense. The goal is to decide whether to continue into Discovery, talk about a different working relationship, or end the conversation here.
+A Fit Check is the first conversation with a prospective client. The client talks a little about their project and business; I explain how I work, where I tend to be useful, what the relationship asks of them, and what next step makes sense. The goal is to decide whether to continue into complimentary [Discovery](./discovery.md), talk about a different working relationship, or end the conversation here.
 
 ## Format
 
@@ -29,7 +29,7 @@ What I cover:
 **If Discovery is the right next step:**
 
 - Agreement to begin a Discovery engagement.
-- A rough time budget for Discovery (two to three working days) and a target start window.
+- An agreed Discovery start window, aiming to complete the initial roadmap by the end of week 1.
 - An understanding of the broad shape of the project, enough for Discovery to be set up usefully.
 - A short written follow-up confirming the above, sent within a day or two of the call.
 

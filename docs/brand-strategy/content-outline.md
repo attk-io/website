@@ -24,11 +24,15 @@ Describe the ideal client's situation: what they already have (vision, domain ex
 
 ## Process / How It Works
 
-Walk the reader through the engagement using the same three components named on the Pricing page (Discovery, Base Platform, Custom Work), then describe two moments that punctuate the rhythm (Launch isn't a finish line, Development hardening). The job of this section is to give the reader confidence in a sound, efficient method where every step earns its place toward their goal — and to make clear that the rhythm continues through and past launch, rather than ending at a single checkpoint.
+Walk the reader through the engagement using the website’s four phases (Discovery, Planning & Design, Base Platform Configuration, Custom Development Cycles), then describe two moments that punctuate the rhythm (Launch isn't a finish line, Development hardening). The job of this section is to give the reader confidence in a sound, efficient method where every step earns its place toward their goal — and to make clear that the rhythm continues through and past launch, rather than ending at a single checkpoint.
 
 ### Discovery
 
-A 2-3 day paid working session that produces an honest fit assessment, an MVP scope decision, and a clear technical picture the client keeps regardless of whether the engagement continues.
+A complimentary working phase, typically completed by the end of week 1. Work through business goals, product audiences, and what the first release should accomplish. Produce an initial roadmap that the client keeps regardless of whether the engagement continues.
+
+### Planning & Design
+
+The first paid phase, with its own agreed budget, typically completed by week 4. Turn the initial roadmap into a prioritized plan, resolve important product and interface questions, and produce a defined scope and build estimate so the client can decide whether to proceed.
 
 ### Base Platform
 
@@ -60,7 +64,7 @@ Set the tone: be direct and transparent about costs. The goal is to remove ambig
 
 ### Tier 1 — Entry / Discovery Engagement
 
-A low-commitment paid engagement to evaluate fit. The client gets value even if they don't proceed — a clear technical picture of what their product needs.
+The introductory Fit Check and Discovery are free. Discovery gives the client an initial roadmap. Planning & Design is the first paid phase, with its own agreed budget; it produces a defined scope and build estimate before the client commits to the build.
 
 ### Tier 2 — Foundation / Platform Build
 

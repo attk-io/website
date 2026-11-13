@@ -20,52 +20,29 @@ The three release milestones (v0, v1-beta, v1) share a common shape: prep before
 
 ### Fit Check (free)
 
-- Founder reaches out.
-- Short call (or async exchange) to understand what they're building, what stage they're at, and what they think they need.
-- Two-way fit check: is this a product I can do good work on, and am I the right person for it?
-- We discuss goals (perhaps setting some explicitly), the high-level shape of the project, and the rough constraints.
-- If it's not a fit, I say so and try to point them somewhere useful.
-- If it might be a fit, we agree to a paid Discovery engagement.
-- No money changes hands. This is the only stage of the engagement that's free.
-
-**Dependencies:**
-
-- None — this is the entry point.
-
-**Deliverables:**
-
-- A clear go / no-go decision.
-- If go: agreement to begin a paid Discovery engagement.
+A short introductory call or async exchange to decide whether the relationship is a fit. If it is, continue into complimentary [Discovery](../discovery.md). See [Fit Check](../fit-check.md) for the current process.
 
 ---
 
-## Milestone 1: Discovery (paid)
+## Milestone 1: Discovery (complimentary)
 
-The first paid engagement. Produces the artifacts that everything that follows depends on.
+Work through the business goals, product audiences, and what the first release should accomplish. Produce an initial roadmap, typically by the end of week 1. The client keeps the output whether or not the engagement continues. See [Discovery](../discovery.md).
 
 **Dependencies:**
 
-- Fit Check (a "go" decision and agreement to begin a paid engagement).
-
-**Planning:**
-
-- Scope set by Fit Check — agreed time budget, two-way fit confirmation, broad shape of the project.
-- Identify the key unknowns to surface during the engagement.
-
-**Workload:**
-
-- Two to three working days at the start of every engagement.
-- Founder walks me through the vision, market, and constraints in depth.
-- I ask the questions that matter and give an honest read: what the build will take, what the risks are, where the assumptions are weakest.
-- Roadmap work, separating what's easy (known solutions, off-the-shelf patterns) from what's hard or unique to this product. High-level estimates produced for the known work first; the unique work called out for closer inspection.
-- Scope developed in two passes: a **broad** pass that maps the territory, then a **granular** pass that defines each feature set in enough detail to commit to.
+- A successful Fit Check.
+- Client availability and existing project materials.
 
 **Deliverables:**
 
-- A granular **v1 scope document** — defines the MVP.
-- A contract.
+- Initial roadmap, high-level feature list, and open questions.
+- Agreed scope and budget for paid Planning & Design.
 
-The founder owns these regardless of whether we keep working together. All work from here on out is paid against this contract.
+### Planning & Design (paid)
+
+The first paid phase, with its own agreed budget, typically completed by week 4. Turn the initial roadmap into build-ready detail. Produce a defined scope and build estimate so the client can decide whether to proceed. See [Planning & Design](../planning-and-design.md).
+
+Detailed feature breakdowns and build commitments belong here rather than in complimentary Discovery.
 
 ---
 
@@ -75,7 +52,7 @@ Optional. A public marketing presence goes live before the product itself is usa
 
 **Dependencies:**
 
-- Discovery (v1 scope shapes what we say the product is and roughly when it'll be ready).
+- [Discovery](../discovery.md) supplies the initial direction; [Planning & Design](../planning-and-design.md) defines the v1 scope and build estimate.
 - Brand framing / messaging direction — derived from Discovery or developed alongside v0 work.
 
 **Planning:**
@@ -114,12 +91,12 @@ Optional. The product (or a meaningful first slice of it) is real and deployed t
 
 **Dependencies:**
 
-- Discovery (granular v1 scope, Custom Work feature breakdown).
+- [Planning & Design](../planning-and-design.md) (granular v1 scope and Custom Work feature breakdown).
 - v0 if shipped (the audience built during v0 as one source of warm-channel users). If v0 was skipped: direct outreach lists from the founder.
 
 **Planning:**
 
-- Granular v1 scope from Discovery drives the Custom Work breakdown into feature sets.
+- Granular v1 scope from Planning & Design drives the Custom Work breakdown into feature sets.
 - Identify the Base Platform components needed for this product — auth, hosting, monitoring, error tracking, admin tooling, plus whatever transaction or exchange plumbing the model requires.
 - Pick the gating mechanism (invite codes, allowlist, manual approval) and identify warm-channel sources for first users.
 - Define the release-prep checklist: feature flags, telemetry, support channel, smoke tests, production baseline.
@@ -162,7 +139,7 @@ Public release of the MVP. Access is opened to anyone in the target audience and
 
 **Dependencies:**
 
-- Discovery (v1 scope).
+- [Planning & Design](../planning-and-design.md) (v1 scope).
 - v1-beta if shipped (real gated-usage signal — priorities, defects, product fit). If v1-beta was skipped: internal feedback, founder testing, and user interviews stand in.
 - v0 if shipped (the v0 audience to reach at launch).
 
