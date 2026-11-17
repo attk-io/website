@@ -24,7 +24,7 @@
     "sharp": "^0.35.5"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.9",
+    "@astrojs/check": "^0.9.12",
     "@tailwindcss/vite": "^4",
     "@typescript-eslint/parser": "^8.72.2",
     "astro-eslint-parser": "^1.4.0",
