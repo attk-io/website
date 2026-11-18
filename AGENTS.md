@@ -20,10 +20,6 @@ Work directly in `/Users/christiannaths/Projects/attk/website` by default. Use a
 
 The user runs the dev server at [http://localhost:4321/](http://localhost:4321/) and keeps a browser tab open to see changes. Use this existing server to check UI changes in the browser, including relevant interactions and desktop/mobile layouts. Start or restart the server only when needed and coordinated with the user.
 
-## Questions and discussion
-
-When working through a series of questions with the user, ask one question at a time and wait for the answer before asking the next. Use each answer to shape the next question. Apply this flow to all multi-question discussions, including discovery, planning, clarification, and skill workflows.
-
 ## Agent skills
 
 ### Issue tracker
