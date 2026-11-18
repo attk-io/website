@@ -6,11 +6,7 @@ Built with Astro 5 and Tailwind 4. Each design variant is fully independent — 
 
 Website copy in `src/content/` is the source of truth. Edit the section files imported by `src/pages/index.astro` for homepage changes. Earlier writing drafts and unused copy are preserved in [the website copy archive](archive/2026-10-26-website-copy/README.md) and are no longer maintained.
 
-Strategic reference documents live in `docs/brand-strategy/`:
-
-- `brand-voice.md` — archetype, voice spectrums, tone variations
-- `target-audience.md` — JTBD + Value Proposition Canvas
-- `content-outline.md` — page structure and section briefs
+Before writing or editing site copy, read the [handbook's brand strategy docs](https://github.com/attk-io/handbook/tree/main/brand-strategy), especially brand voice, target audience and the content outline. The handbook is cloned locally at `../handbook`.
 
 The previous "quiet authority" design direction (users, brand personality, aesthetic direction, design principles, accessibility guidelines) has been archived to `archive/2026-04-10-quiet-authority/README.md`. A new design direction will be written here when the next phase starts.
 
