@@ -1,14 +1,19 @@
 # Domain docs
 
-This repo uses a single-context layout:
-[root glossary](../../GLOSSARY.md) and ADRs under `docs/adr/`.
+This repo uses a single-context layout: `GLOSSARY.md` at the repo root
+and ADRs under `docs/adr/`.
+
+Site copy also uses client process terms, such as Discovery and
+Development Cycle. The
+[handbook glossary](https://github.com/attk-io/handbook/blob/main/GLOSSARY.md)
+defines them. The handbook is cloned locally at `../handbook`.
 
 ## Before exploring
 
-Read the glossary and any ADRs relevant to the work.
+Read both glossaries and any ADRs relevant to the work.
 
-If either is absent, proceed silently. The domain-modeling skill creates
-domain documentation when terms or decisions are resolved.
+If any of these is absent, proceed silently. The domain-modeling skill
+creates domain documentation when terms or decisions are resolved.
 
 ## Vocabulary
 
