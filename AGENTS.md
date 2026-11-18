@@ -6,11 +6,7 @@ Built with Astro 5 and Tailwind 4. Each design variant is fully independent — 
 
 Website copy in `src/content/` is the source of truth. Edit the section files imported by `src/pages/index.astro` for homepage changes. Earlier writing drafts and unused copy are preserved in [the website copy archive](archive/2026-10-26-website-copy/README.md) and are no longer maintained.
 
-Strategic reference documents live in `docs/brand-strategy/`:
-
-- `brand-voice.md` — archetype, voice spectrums, tone variations
-- `target-audience.md` — JTBD + Value Proposition Canvas
-- `content-outline.md` — page structure and section briefs
+Before writing or editing site copy, read the [handbook's brand strategy docs](https://github.com/attk-io/handbook/tree/main/brand-strategy), especially brand voice, target audience and the content outline. The handbook is cloned locally at `../handbook`.
 
 The previous "quiet authority" design direction (users, brand personality, aesthetic direction, design principles, accessibility guidelines) has been archived to `archive/2026-04-10-quiet-authority/README.md`. A new design direction will be written here when the next phase starts.
 
@@ -19,10 +15,6 @@ The previous "quiet authority" design direction (users, brand personality, aesth
 Work directly in `/Users/christiannaths/Projects/attk/website` by default. Use a separate worktree or cloud environment only when the user requests it.
 
 The user runs the dev server at [http://localhost:4321/](http://localhost:4321/) and keeps a browser tab open to see changes. Use this existing server to check UI changes in the browser, including relevant interactions and desktop/mobile layouts. Start or restart the server only when needed and coordinated with the user.
-
-## Questions and discussion
-
-When working through a series of questions with the user, ask one question at a time and wait for the answer before asking the next. Use each answer to shape the next question. Apply this flow to all multi-question discussions, including discovery, planning, clarification, and skill workflows.
 
 ## Agent skills
 
